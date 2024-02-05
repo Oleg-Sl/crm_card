@@ -193,7 +193,8 @@ export default class DealClients {
             if (target.closest('.deal-clients__email')) {
                 const url = this.bx24.getUrlSendMessageFromDealId(this.dealId);
                 console.log('Send email to url = ', url);
-                // window.open(`https://wa.me/${phoneNumber}`, '_blank');
+                window.open(url, "_blank");
+//                window.open(`https://wa.me/${phoneNumber}`, '_blank');
             }
         });
 
