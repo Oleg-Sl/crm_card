@@ -97,6 +97,16 @@ class App {
         const departments       = resBatch?.result?.departments;
         const fieldsDeal        = resBatch?.result?.fields;
 
+        console.log("dealData = ", dealData);
+        console.log("contactsData = ", contactsData);
+        console.log("companyData = ", companyData);
+        console.log("companyContacts = ", companyContacts);
+        console.log("stageHistory = ", stageHistory);
+        console.log("dealSources = ", dealSources);
+        console.log("userCurrent = ", userCurrent);
+        console.log("departments = ", departments);
+        console.log("fieldsDeal = ", fieldsDeal);
+
         this.dealDesc.init(dealData, dealSources);
         this.dealClients.init(companyData, companyContacts, contactsData);
         this.dealState.init(dealData, stageHistory);
