@@ -74,7 +74,7 @@ export default class TaskManager {
     }
 
     async getProductsData() {
-        const data = await this.bx24.batch.getBatch({
+        const data = await this.bx24.batch.getData({
             fieldGroup: `crm.item.fields?entityTypeId=${SP_GROUP_ID}`,
             fieldProduct: `crm.item.fields?entityTypeId=${SP_PRODUCT_ID}`,
             fieldTechnology: `crm.item.fields?entityTypeId=${SP_TECHOLOGY_ID}`,
@@ -84,7 +84,7 @@ export default class TaskManager {
             [SP_PRODUCT_ID]: `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}`,
             [SP_TECHOLOGY_ID]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}`,
         });
-
+        console.log("task manager = ", data);
         this.fieldGroup = data?.fieldGroup?.fields;
         this.fieldProduct = data?.fieldProduct?.fields;
         this.fieldTechnology = data?.fieldTechnology?.fields;
