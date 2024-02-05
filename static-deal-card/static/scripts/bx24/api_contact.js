@@ -25,7 +25,7 @@ export default class ContactMethods {
         if (!contactIds || (Array.isArray(contactIds) && contactIds.length === 0)) {
             return null;
         }
-        
+
         let reqPackage = {};
         for (const contactId of contactIds) {
             reqPackage[contactId] = ["crm.contact.list", {
@@ -34,7 +34,7 @@ export default class ContactMethods {
                 start: -1,
             }];
         }
-        
+
         const response = await this.bx24.batchMethod(reqPackage);
         return response;
     }

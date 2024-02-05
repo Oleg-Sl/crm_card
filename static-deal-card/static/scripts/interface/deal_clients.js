@@ -17,9 +17,13 @@ export default class DealClients {
     async init (companyData, companyContacts, contactsData) {
         this.companyData = companyData;
         this.companyContacts = companyContacts;
-        
+        console.log("companyData = ", companyData);
+        console.log("companyContacts = ", companyContacts);
+        console.log("contactsData = ", contactsData);
         let data = await this.getContactsData([...companyContacts, ...contactsData]);
-        this.contactsData = data?.result?.result || [];
+        console.log("getContactsData = ", data);
+
+        this.contactsData = data?.result || [];
 
         this.render();
         this.addEventListeners();
