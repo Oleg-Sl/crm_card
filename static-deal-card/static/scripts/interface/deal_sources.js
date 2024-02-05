@@ -62,6 +62,7 @@ class YandexDiskManager {
 class FilePreviewManager {
     constructor(bx24, previewFolder) {
         this.fileManagerPrview = new FileManager(bx24);
+        console.log("this.fileManagerPrview = ", this.fileManagerPrview);
         this.previewFolder = previewFolder;
     }
 
@@ -69,6 +70,7 @@ class FilePreviewManager {
         console.log("FilePreviewDownload");
         try {
             const filePreview = await this.convertAndCompressImage(fileData);
+            console.log("this.fileManagerPrview2 = ", this.fileManagerPrview);
             return await this.fileManagerPrview.uploadFile(this.previewFolder, filePreview);
         } catch (error) {
             console.error('Error uploading preview file:', error);
