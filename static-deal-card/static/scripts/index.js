@@ -86,16 +86,16 @@ class App {
         };
 
         const resBatch = await this.bx24.batch.getData(cmd);
-
-        const dealData          = resBatch?.result?.deal;
-        const contactsData      = resBatch?.result?.contacts;
-        const companyData       = resBatch?.result?.company;
-        const companyContacts   = resBatch?.result?.company_contacts;
-        const stageHistory      = resBatch?.result?.stage_history;
-        const dealSources       = resBatch?.result?.sources;
-        const userCurrent       = resBatch?.result?.user_current;
-        const departments       = resBatch?.result?.departments;
-        const fieldsDeal        = resBatch?.result?.fields;
+        console.log(resBatch);
+        const dealData          = resBatch?.deal;
+        const contactsData      = resBatch?.contacts;
+        const companyData       = resBatch?.company;
+        const companyContacts   = resBatch?.company_contacts;
+        const stageHistory      = resBatch?.stage_history;
+        const dealSources       = resBatch?.sources;
+        const userCurrent       = resBatch?.user_current;
+        const departments       = resBatch?.departments;
+        const fieldsDeal        = resBatch?.fields;
 
         console.log("dealData = ", dealData);
         console.log("contactsData = ", contactsData);

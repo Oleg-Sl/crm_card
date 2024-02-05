@@ -11,7 +11,6 @@ export default class BatchMethods {
             cmd: cmd
         });
 
-        console.log("Start data = ", data);
         return data?.result;
     }
 
