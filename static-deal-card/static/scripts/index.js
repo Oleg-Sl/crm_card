@@ -87,15 +87,15 @@ class App {
 
         const resBatch = await this.bx24.batch.getData(cmd);
 
-        const dealData          = resBatch?.result?.result?.deal;
-        const contactsData      = resBatch?.result?.result?.contacts;
-        const companyData       = resBatch?.result?.result?.company;
-        const companyContacts   = resBatch?.result?.result?.company_contacts;
-        const stageHistory      = resBatch?.result?.result?.stage_history;
-        const dealSources       = resBatch?.result?.result?.sources;
-        const userCurrent       = resBatch?.result?.result?.user_current;
-        const departments       = resBatch?.result?.result?.departments;
-        const fieldsDeal        = resBatch?.result?.result?.fields;
+        const dealData          = resBatch?.result?.deal;
+        const contactsData      = resBatch?.result?.contacts;
+        const companyData       = resBatch?.result?.company;
+        const companyContacts   = resBatch?.result?.company_contacts;
+        const stageHistory      = resBatch?.result?.stage_history;
+        const dealSources       = resBatch?.result?.sources;
+        const userCurrent       = resBatch?.result?.user_current;
+        const departments       = resBatch?.result?.departments;
+        const fieldsDeal        = resBatch?.result?.fields;
 
         this.dealDesc.init(dealData, dealSources);
         this.dealClients.init(companyData, companyContacts, contactsData);
