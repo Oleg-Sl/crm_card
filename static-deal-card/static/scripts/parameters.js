@@ -1,5 +1,6 @@
 
-//export const FOLDER_PREVIEW_ID = 6249;
+// ID директории в битрикс с превью
+export const FOLDER_PREVIEW_ID = 947233;
 
 // Поля блока - описание сделки
 export const FIELD_DEAL_TITLE = 'TITLE';
@@ -20,6 +21,7 @@ export const FIELD_DEAL_DESCRIPTIONS = [
 // Поля блока - состояние сделки
 export const FIELD_DEAL_CREATE_DATE = 'DATE_CREATE';
 export const FIELD_DEAL_MODIFY_DATE = 'DATE_MODIFY';
+
 
 // Поля блока - сумма
 export const FIELD_DEAL_AMOUNT = 'OPPORTUNITY';
