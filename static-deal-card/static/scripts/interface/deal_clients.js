@@ -172,7 +172,7 @@ export default class DealClients {
             if (target.classList.contains('deal-clients__title')) {
                 const path = target.getAttribute('data-path-bx24');
                 console.log('Open contact = ', path);
-                await this.bx24.openPath(path);
+                this.bx24.openPath(path);
             }
         });
 
