@@ -213,9 +213,9 @@ export default class DealWorkers {
         let userDataMOP = usersData[idResponsibleMOP] ? (usersData[idResponsibleMOP][0] || {}) : {};
         let userDataMOS = usersData[idResponsibleMOS] ? (usersData[idResponsibleMOS][0] || {}) : {};
 
-        console.log("idsObservers = ", idsObservers);
+//        console.log("idsObservers = ", idsObservers);
         let usersObserversData = this.getUserSelectedData(idsObservers, usersData);
-        console.log("usersObserversData = ", usersObserversData);
+//        console.log("usersObserversData = ", usersObserversData);
 
         let containerMOP      = this.container.querySelector(`.deal-workers__mop`);
         let containerMOS      = this.container.querySelector(`.deal-workers__mos`);
@@ -236,7 +236,7 @@ export default class DealWorkers {
 
     async getUsersData(idsUsers) {
         const users = await this.bx24.user.getList(idsUsers);
-        console.log("users = ", users);
+//        console.log("users = ", users);
         return users?.result;
     }
 
