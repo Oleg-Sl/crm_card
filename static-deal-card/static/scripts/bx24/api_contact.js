@@ -36,6 +36,7 @@ export default class ContactMethods {
         }
 
         const response = await this.bx24.batchMethod(reqPackage);
+        console.log("contacts list = ", response);
         return response;
     }
 }
