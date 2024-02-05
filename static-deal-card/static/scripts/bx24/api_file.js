@@ -8,23 +8,39 @@ export default class FilesMethods {
         try {
             const base64Data = await this.readFileAsBase64(file);
             const result = await this.bx24.callMethod("disk.folder.uploadfile", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
+                id: folderId,
+                data: {
+                    NAME: file.name
                 },
-                body: JSON.stringify({
-                    id: folderId,
-                    data: {
-                        NAME: file.name
-                    },
-                    fileContent: base64Data,
-                    generateUniqueName: true
-                })
+                fileContent: base64Data,
+                generateUniqueName: true
             });
             console.log("preview result = ", result);
             return result;
         } catch (error) {
             console.error('Error uploading file: ', error);
+        }
+    }
+
+    async removeFile(fileId) {
+        try {
+            const result = await this.bx24.callMethod("disk.file.markdeleted", {
+                id: fileId
+            })
+            return result;
+        } catch (error) {
+            console.error('Error deleting file:', error);
+        }
+    }
+
+    async getFilesFromFolder(folderId) {
+        try {
+            const result = await this.bx24.callMethod("disk.folder.getchildren", {
+                id: folderId
+            });
+            return result;
+        } catch (error) {
+            console.error('Error uploading file:', error);
         }
     }
 
