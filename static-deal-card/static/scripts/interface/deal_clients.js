@@ -68,7 +68,7 @@ export default class DealClients {
                 <label for="">Компания</label>
                 <div class="deal-clients__row">
                     <div class="deal-clients__name">
-                        <div class="deal-clients__title" data-path-bx24="/company/details/${companyData.ID}/">${companyName}</div>
+                        <div class="deal-clients__title" data-path-bx24="/crm/company/details/${companyData.ID}/">${companyName}</div>
                     </div>
                     <div class="deal-clients__phone ${classElementPhone}">
                         <i class="bi bi-telephone-forward"></i>
@@ -113,7 +113,7 @@ export default class DealClients {
                 <label for="">Клиент</label>
                 <div class="deal-clients__row">
                     <div class="deal-clients__name">
-                        <div  class="deal-clients__title" data-path-bx24="/contact/details/${contact.ID}/">${contact.LAST_NAME || ""} ${contact.NAME || ""}</div>
+                        <div  class="deal-clients__title" data-path-bx24="/crm/contact/details/${contact.ID}/">${contact.LAST_NAME || ""} ${contact.NAME || ""}</div>
                         <div  class="deal-clients__title-info">${phone.VALUE || ""}${separator} ${email.VALUE || ""}</div>
                     </div>
                     <div class="deal-clients__phone ${classElementPhone}">
@@ -172,7 +172,7 @@ export default class DealClients {
             if (target.classList.contains('deal-clients__title')) {
                 const path = target.getAttribute('data-path-bx24');
                 console.log('Open contact = ', path);
-                this.bx24.openPath(path);
+                await this.bx24.openPath(path);
             }
         });
 
