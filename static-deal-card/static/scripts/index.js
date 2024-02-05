@@ -86,7 +86,7 @@ class App {
         };
 
         const resBatch = await this.bx24.batch.getData(cmd);
-        console.log(resBatch);
+//        console.log(resBatch);
         const dealData          = resBatch?.deal;
         const contactsData      = resBatch?.contacts;
         const companyData       = resBatch?.company;
@@ -97,15 +97,15 @@ class App {
         const departments       = resBatch?.departments;
         const fieldsDeal        = resBatch?.fields;
 
-        console.log("dealData = ", dealData);
-        console.log("contactsData = ", contactsData);
-        console.log("companyData = ", companyData);
-        console.log("companyContacts = ", companyContacts);
-        console.log("stageHistory = ", stageHistory);
-        console.log("dealSources = ", dealSources);
-        console.log("userCurrent = ", userCurrent);
-        console.log("departments = ", departments);
-        console.log("fieldsDeal = ", fieldsDeal);
+//        console.log("dealData = ", dealData);
+//        console.log("contactsData = ", contactsData);
+//        console.log("companyData = ", companyData);
+//        console.log("companyContacts = ", companyContacts);
+//        console.log("stageHistory = ", stageHistory);
+//        console.log("dealSources = ", dealSources);
+//        console.log("userCurrent = ", userCurrent);
+//        console.log("departments = ", departments);
+//        console.log("fieldsDeal = ", fieldsDeal);
 
         this.dealDesc.init(dealData, dealSources);
         this.dealClients.init(companyData, companyContacts, contactsData);

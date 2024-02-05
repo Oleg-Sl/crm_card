@@ -263,9 +263,9 @@ export default class DealDocs {
 
     init(dataDeal) {
         let dataDocs = dataDeal?.[FIELD_DEAL_DOCS] || [];
-        console.log(dataDocs);
+//        console.log(dataDocs);
         this.data = this.parseList(dataDocs);
-        console.log(this.data);
+//        console.log(this.data);
         this.updateHTML();
     }
 

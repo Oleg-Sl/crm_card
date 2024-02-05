@@ -30,7 +30,10 @@ export default class DealClients {
     }
 
     async getContactsData(contacts) {
+        console.log("getContactsData 1 = ", contacts);
         const contactIds = contacts.map(item => item.CONTACT_ID);
+        console.log("getContactsData 2 = ", contactIds);
+
         const data = await this.bx24.contact.getList(contactIds);
         console.log("getContactsData contacts list = ", data);
 
