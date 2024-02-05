@@ -74,7 +74,7 @@ export default class TaskManager {
     }
 
     async getProductsData() {
-        const data = await this.bx24.smartProcess.getBatch({
+        const data = await this.bx24.batch.getBatch({
             fieldGroup: `crm.item.fields?entityTypeId=${SP_GROUP_ID}`,
             fieldProduct: `crm.item.fields?entityTypeId=${SP_PRODUCT_ID}`,
             fieldTechnology: `crm.item.fields?entityTypeId=${SP_TECHOLOGY_ID}`,
