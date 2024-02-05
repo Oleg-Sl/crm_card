@@ -204,7 +204,7 @@ export default class DealClients {
             if (target.classList.contains('menu-open-line-item-text')) {
                 const openLineId = target.getAttribute('data-open-line-id');
                 console.log('Open openline = ', openLineId);
-                this.bx24.makeCall(openLineId);
+                this.bx24.openLine(openLineId);
                 // window.open(`https://wa.me/${phoneNumber}`, '_blank');
             }
         });
