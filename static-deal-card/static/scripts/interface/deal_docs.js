@@ -20,7 +20,7 @@ class FileManager {
 
     async uploadFile(folderId, file) {
         const result = await this.bx24.files.uploadFile(folderId, file);
-        return result?.result;
+        return result;
     }
 
     async removeFile(fileId) {
@@ -30,7 +30,7 @@ class FileManager {
 
     async getFiles(folderId) {
         const result = await this.bx24.files.getFilesFromFolder(folderId);
-        return result?.result || [];
+        return result || [];
     }
 }
 
