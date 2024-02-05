@@ -237,7 +237,7 @@ export default class DealWorkers {
     async getUsersData(idsUsers) {
         const users = await this.bx24.user.getList(idsUsers);
         console.log("users = ", users);
-        return users;
+        return users?.result;
     }
 
     getUserSelectedData(ids, usersData) {
