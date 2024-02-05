@@ -1,0 +1,86 @@
+@import block_deal_desc
+@import block_deal_clients
+@import block_deal_state
+@import block_deal_amounts
+@import block_deal_workers
+@import block_deal_files
+@import block_deal_docs
+@import block_deal_accounts
+@import block_deal_acts
+@import block_deal_finance
+@import block_deal_invoices_acts
+
+@import block_task_technical
+@import block_task_app
+@import block_task_commerc_offer
+@import block_task_order
+@import block_task_products
+@import block_menu
+@import element_switch
+@import window_search_user
+
+@import spinner
+@import tooltip
+
+
+.deal-container > div
+    background-color: #FDFDFD
+    border-radius: 12px
+
+.deal-container
+    .deal-desc
+        grid-area: desc
+    .deal-clients
+        grid-area: clients
+    .deal-empty
+        grid-area: empty
+    .deal-state
+        grid-area: state
+    .deal-amounts
+        grid-area: amounts
+    .deal-workers
+        grid-area: workers
+    .deal-files
+        grid-area: files
+    .deal-docs
+        grid-area: docs
+    .deal-invoices
+        grid-area: accounts
+    .deal-acts
+        grid-area: acts
+    .deal-finance
+        grid-area: finance
+
+
+.deal-container
+    width: 100%
+    display: grid
+    gap: 10px
+    grid-template-columns: auto 24% 10% 10% 12%
+    grid-template-rows: 55px 116px 55px 164px
+    grid-template-areas: "desc  clients empty    empty   workers" "desc  clients state    state   workers" "desc  clients amounts  amounts workers" "files docs    accounts acts    finance"
+    padding: 10px
+    background-color: #EEF2F4
+    box-sizing: border-box
+
+.task-container
+    background-color: #EEF2F4
+    height: 100vh
+    padding: 10px
+    // margin: 0 15px
+    // margin: 10px
+
+.nav-tabs
+    margin-top: 20px
+
+.tab-pane
+    display: none
+
+.tab-pane.show
+    display: block
+
+.tab-pane.fade
+    transition: opacity 0.5s
+
+.nav-link.active
+    background-color: #f8f9fa

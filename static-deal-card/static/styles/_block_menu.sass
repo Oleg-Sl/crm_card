@@ -1,0 +1,142 @@
+$nav-font: 900 10px Roboto
+$title-font: 300 10px Roboto
+$date-font: 400 8px Roboto
+$changing-state-font: 900 14px Roboto
+$activities-font: 400 15px Roboto
+
+
+
+.task-container__menu
+    display: flex
+    align-items: center
+    justify-content: space-between
+    margin: 15px 0
+
+    .task-container__menu-nav
+        margin: 0
+        button
+            font: $nav-font
+            color: #999999
+            background: none
+            border: 2px solid #00000000
+            &.active
+                color: #464A4E
+                border: 2px solid #FF8600
+            &:hover
+                color: #343537
+
+    .task-container__menu-task-data
+        display: grid
+        grid-template-columns: auto auto auto
+        gap: 10px
+        .task-container__menu-task-title
+            font: $title-font
+        .task-container__menu-task-link
+            color: #80868E
+            font-size: 16px
+            cursor: pointer
+            &:hover
+                color: #5a5c5e
+        .task-container__menu-task-date
+            font: $date-font
+            color: #97999B
+            .task-container__menu-task-createdate
+            .task-container__menu-task-changedate
+
+    .task-container__menu-buttons
+        display: grid
+        grid-template-columns: auto auto auto auto
+        gap: 10px
+        position: relative
+        font: $changing-state-font
+        button
+            width: 100%
+            height: 35px
+            color: #fff
+            border: none
+
+        .task-container__menu-update-task
+            background-color: #FFDE8A
+            &:hover
+                background-color: #ebc156
+
+        .task-container__menu-save-task
+            background-color: #45D153
+            &:hover
+                background-color: #139220
+
+        .task-container__menu-cancel-task
+            background-color: #C2C5CA
+            &:hover
+                background-color: #8c8e90
+        
+        .task-container__menu-activity
+            display: flex
+            align-items: center
+            justify-content: space-between
+            width: 170px
+            padding: 0 10px
+            background-color: #3BC8F5
+            color: #fff
+            border-radius: 12px
+            .task-container__menu-activity-left
+                flex-grow: 1
+                text-align: center
+
+            .task-container__menu-activity-split i
+                display: block
+                transform: rotateX(90deg)
+                font-size: 22px
+
+            .task-container__menu-activity-right
+                i
+                    display: block
+                    // transform: rotateX(180deg)
+                    font-size: 22px
+                    padding-left: 10px
+                    border-left: 1px solid #fff
+            &:hover
+                background-color: #5eacff
+
+            &.expand .task-container__menu-activity-right i
+                transform: rotateX(180deg)
+
+        .expand-menu
+            display: block !important
+
+        .task-container__activities
+            display: none
+            width: 300px
+            padding: 15px
+            background-color: #fff
+            font: $activities-font
+            color: #464A4E
+            position: absolute
+            top: 40px
+            right: 0
+            border: 2px solid #5896f9
+            z-index: 1000
+
+            .task-container__activities-group
+                padding: 5px 0
+
+                .task-container__activities-row
+                    display: grid
+                    grid-template-columns: 1fr 25px
+                    gap: 15px
+                    padding: 4px 0
+                    cursor: default
+
+                    .task-container__activities-title
+                        text-align: right
+
+                    .task-container__activities-lable
+                
+                    &:hover .task-container__activities-title
+                        text-decoration: underline
+
+                &:nth-child(n + 2)
+                    border-top: 1px solid #D7D9DC
+
+                .task-container__menu-create-order i
+                    color: #54b434

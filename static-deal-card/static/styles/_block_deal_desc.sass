@@ -1,0 +1,88 @@
+$label-font: 400 10px Roboto
+$input-font: 400 12px Roboto
+$table-head-font: 400 10px Roboto
+$table-content-font: 400 10px Inter
+
+$field-border: 2px solid #EEF2F4
+
+
+.deal-desc__container
+    box-sizing: border-box
+    padding: 5px 15px 0 15px
+    height: 100%
+    border: 2px solid #fff
+    border-radius: 12px
+
+    &:hover
+        border: 2px solid #5896f9
+
+    label
+        width: 100%
+        font: $label-font
+        overflow: hidden
+        letter-spacing: 0em
+        color: #97999B
+        white-space: nowrap
+        text-overflow: ellipsis
+
+
+    .deal-desc__row-one
+        display: grid
+        gap: 10px
+        grid-template-columns: 16% auto 20%
+        height: fit-content
+
+        input, select
+            width: 100%
+            height: 29px
+            overflow: hidden
+            box-sizing: border-box
+            background-color: #fff
+            border: $field-border
+            font: $input-font
+            color: #000000
+            line-height: 12px
+            letter-spacing: 0em
+            text-align: center
+
+        input:focus, select:focus
+                border: 1px solid #6dacff
+                outline: none
+
+    .deal-desc__row-two
+        .table
+            display: grid
+            grid-template-columns: 85px 1fr
+            align-content: start
+
+        .cell
+            display: flex
+            align-items: center
+            font: $table-content-font
+            border: $field-border
+            border-radius: 0
+            height: 17px
+            box-sizing: border-box
+
+            span
+                padding: 2px
+
+            input
+                width: 100%
+                height: 100%
+                border-radius: 0
+                border: none
+                box-sizing: border-box
+                font: $table-content-font
+
+            input:focus
+                border: 1px solid #6dacff
+                outline: none
+
+
+        .cell:nth-child(2n + 1) 
+            color: #BABABA
+            border-right: none
+        
+        .cell:nth-child(n + 3) 
+            border-top: none

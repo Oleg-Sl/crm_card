@@ -1,0 +1,36 @@
+
+// deal-files__button-add">
+//     <span class="sr-only">Добавить файл</span>
+@mixin rotate-forever
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)
+
+@keyframes rotate-forever
+    +rotate-forever
+
+.spinner-border
+    animation-duration: 1.0s
+    animation-iteration-count: infinite
+    animation-name: rotate-forever
+    animation-timing-function: linear
+
+    display: inline-block
+    width: 2rem
+    height: 2rem
+    vertical-align: text-bottom
+    border: 0.25em solid #595959
+    border-right-color: transparent
+    border-radius: 50%
+    // -webkit-animation: spinner-border .75s linear infinite
+    // animation: spinner-border .75s linear infinite
+    width: 10px
+    height: 10px
+    border-width: 0.2em
+
+    // &:::after
+    //     display: block
+    //     clear: both
+    //     content: ""
+    //     box-sizing: border-box

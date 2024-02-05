@@ -1,0 +1,163 @@
+$label-font: 400 10px Roboto
+$input-font: 400 12px Roboto
+$row-font: 400 10px Roboto
+
+    
+.deal-files__container
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: 5px
+    position: relative
+    box-sizing: border-box
+    padding: 5px 15px 20px 15px
+    height: 100%
+    // height: fit-content
+    transition: height 0.3s ease
+    border: 2px solid #fff
+    border-radius: 12px
+    background-color: #FDFDFD
+
+    &:hover
+        border: 2px solid #5896f9
+
+    label
+        // position: absolute
+        // width: 100%
+        font: $label-font
+        overflow-y: hidden
+        letter-spacing: 0em
+        color: #97999B
+        white-space: nowrap
+        text-overflow: ellipsis
+
+    .deal-files__expand
+        position: absolute
+        bottom: -4px
+        left: 50%
+        transform: translateX(-50%)
+        i
+            display: block
+            transition: transform 0.3s ease
+        i:hover
+            color: #5896f9
+
+    .deal-files__content
+        height: 100%
+        overflow: hidden
+
+        .deal-files__left, .deal-files__right
+            height: 100%
+            box-sizing: border-box
+            position: relative
+            padding-top: 20px
+
+            label
+                position: absolute
+                top: 5px
+
+                button
+                display: block
+                position: absolute
+
+            .deal-files__content-files
+                height: 100%
+                box-sizing: border-box
+                border: 1px solid #D7D9DC
+                padding: 5px
+                position: relative
+                padding-bottom: 25px
+
+                button
+                    // width: 100%
+                    white-space: nowrap
+                    overflow: hidden
+                    text-overflow: ellipsis
+                    box-sizing: border-box
+                    margin-left: 32px
+                //     border: 1px solid #97999B66
+
+            .deal-files__files
+                height: 100%
+                // overflow-y: hidden
+                overflow-y: auto
+                &::-webkit-scrollbar
+                    width: 0
+
+            .deal-files__file-row
+                display: grid
+                grid-template-columns: 10px 14px 140px 1fr 14px
+                gap: 4px
+                font: $row-font
+                white-space: nowrap
+                overflow-y: hidden
+                text-overflow: ellipsis
+                // box-sizins
+                .deal-files__file-row-numb
+                    width: 10px
+                .deal-files__file-row-prev
+                    width: 14px
+                    cursor: default
+                .deal-files__file-row-url
+                    width: 140px
+                    cursor: pointer
+                    color: #005EEA
+                    &:hover
+                        text-decoration: underline
+                    a
+                        text-overflow: ellipsis
+                        overflow: hidden
+                .deal-files__file-row-desc
+                    input
+                        width: 100%
+                        border: none
+                .deal-files__file-row-del
+                    width: 14px
+                    cursor: pointer
+                    font-size: 12px
+                    &:hover
+                        color: #056cda
+
+            .deal-files__file-row > div
+                display: flex
+                align-items: center
+
+.deal-files .expand
+    height: 200%
+    border: 2px solid #5896f9
+    z-index: 101
+
+    .deal-files__files
+        overflow-y: auto !important
+
+        &::-webkit-scrollbar
+            width: 10px !important
+            background-color: #f9f9fd
+
+        &::-webkit-scrollbar-thumb
+            border-radius: 10px
+            background-color: #3679f996
+
+        &::-webkit-scrollbar-track
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2)
+            border-radius: 10px
+            background-color: #f9f9fd
+
+    .deal-files__expand i
+        transform: rotateX(180deg)
+
+.file-container
+    display: flex
+    gap: 10px
+
+
+.file
+    border: 1px solid #ccc
+    padding: 10px
+    cursor: pointer
+
+.tooltip
+    position: absolute
+    background-color: #fff
+    border: 1px solid #ccc
+    padding: 10px
+    display: none

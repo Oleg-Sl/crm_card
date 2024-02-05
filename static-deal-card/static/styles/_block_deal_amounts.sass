@@ -1,0 +1,35 @@
+$key-font: 100 15px Roboto
+$val-font: 100 16px Roboto
+$profit-font: 700 22px Roboto
+
+
+
+.deal-amounts__container
+    display: flex
+    flex-direction: column
+    box-sizing: border-box
+    padding: 5px 15px 0 15px
+    border: 2px solid #fff
+    border-radius: 12px
+
+    &:hover
+        border: 2px solid #5896f9
+
+    .deal-amounts__row
+        display: grid
+        gap: 15px
+        grid-template-columns: auto 100px
+
+        .deal-amounts__title
+            font: $key-font
+            text-align: right
+            // white-space: nowrap
+        
+        .deal-amounts__value
+            font: $val-font
+            text-align: right
+
+    
+    .deal-amounts__profit .deal-amounts__value span
+        font: $profit-font
+        color: #00AA44

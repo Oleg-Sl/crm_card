@@ -1,0 +1,42 @@
+$key-font: 400 8px Roboto
+$val-font: 400 8px Roboto
+
+$text-color: #464A4E
+
+
+.deal-state__container
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: 10px
+    box-sizing: border-box
+    padding: 5px 15px 10px 15px
+    height: 100%
+    border: 2px solid #fff
+    border-radius: 12px
+
+    &:hover
+        border: 2px solid #5896f9
+    
+    .deal-state__left, .deal-state__right
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+
+    .deal-state__row
+        display: grid
+        grid-template-columns: auto 50px
+        gap: 5px
+        color: $text-color
+
+        div
+            white-space: nowrap
+            overflow: hidden
+            text-overflow: ellipsis
+        
+
+        .deal-state__row-key
+            font: $key-font
+            text-align: right
+
+        .deal-state__row-val
+            font: $val-font

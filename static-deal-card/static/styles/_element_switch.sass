@@ -1,0 +1,56 @@
+.switch
+    position: relative
+    display: inline-block
+    // width: 60px
+    // height: 34px
+    width: 14px
+    height: 7px
+
+
+.switch input
+    display: none
+
+
+.slider
+    position: absolute
+    cursor: pointer
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: #ccc
+    -webkit-transition: .4s
+    transition: .4s
+
+
+.slider:before
+    position: absolute
+    content: ""
+    height: 6px
+    width: 6px
+    left: 1px
+    bottom: 1px
+    background-color: white
+    -webkit-transition: .4s
+    transition: .4s
+
+
+input:checked + .slider
+    background-color: #41AD49
+
+input:focus + .slider
+    box-shadow: 0 0 1px #41AD49
+
+
+input:checked + .slider:before
+    -webkit-transform: translateX(6px)
+    -ms-transform: translateX(6px)
+    transform: translateX(6px)
+
+
+.slider.round
+    border-radius: 7px
+
+
+.slider.round:before
+    border-radius: 50%

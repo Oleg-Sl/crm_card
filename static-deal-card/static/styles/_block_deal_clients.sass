@@ -1,0 +1,139 @@
+$label-font: 400 10px Roboto
+$input-ref-font: 700 12px Roboto
+$input-info-font: 400 10px Roboto
+
+$field-border: 2px solid #EEF2F4
+
+
+
+.deal-clients__container
+    box-sizing: border-box
+    padding: 5px 15px 0 15px
+    height: 100%
+    background-color: #FDFDFD
+    border: 2px solid #fff
+    border-radius: 12px
+    position: relative
+    z-index: 101
+    transition: height 0.3s ease
+    overflow: hidden
+
+    &:hover
+        border: 2px solid #5896f9
+    
+    .deal-clients__row-container
+        &:nth-child(n + 2)
+            margin-top: 4px
+
+        label
+            width: 100%
+            font: $label-font
+            overflow: hidden
+            letter-spacing: 0em
+            color: #97999B
+            white-space: nowrap
+            text-overflow: ellipsis
+
+        .deal-clients__row > div:nth-child(n + 2)
+            padding-left: 7px
+
+        .deal-clients__row
+            display: flex
+            flex-direction: row
+
+            & .inactive i
+                color: #c5c9cd !important
+            
+            i
+                cursor: pointer
+                display: block
+                // color: #A3C6F1
+                color: #6dacff
+                font-size: 20px
+                padding-right: 1px
+            
+            i:hover
+                color: #3681e4
+                font-weight: 700
+                font-size: 21px
+                padding-right: 0
+
+            input
+                width: 100%
+                width: 100%
+                height: 29px
+                overflow: hidden
+                box-sizing: border-box
+                background-color: #fff
+                border: $field-border
+                font: $input-font
+                color: #464A4E
+                line-height: 12px
+
+            input:focus
+                border: 1px solid #6dacff
+                outline: none
+
+            .deal-clients__name
+                display: flex
+                justify-content: center
+                flex-direction: column
+                flex-grow: 1
+                height: 30px
+                padding: 0 3px 0 3px
+                border: $field-border
+
+                .deal-clients__title
+                    font: $input-ref-font
+                    &:hover
+                        cursor: pointer
+                        text-decoration: underline
+
+                .deal-clients__title-info
+                    font: $input-info-font
+                    color: #97999B
+            
+            .deal-clients__phone, .deal-clients__email, .deal-clients__whatsapp, .deal-clients__thelegram
+                display: flex
+                align-items: center
+                position: relative
+
+
+    .close
+        display: none !important
+
+    .menu-phones-items, .menu-open-lines-items
+        min-width: 100px
+        min-height: 40px
+        max-width: 250px
+        position: absolute
+        border: 1px solid #c1c1c1
+        background-color: #fff
+        z-index: 101211
+        right: 0
+        top: 27px
+        box-shadow: 0 7px 21px rgba(83,92,105,.12), 0 -1px 6px 0 rgba(83,92,105,.06)
+        border-radius: 10px
+        padding: 8px 0
+        color: #525c68
+        font-size: 12px
+        display: flex
+        flex-direction: column
+        justify-content: center
+        width: fit-content
+
+        .menu-phone-item, .menu-open-line-item
+            height: 30px
+            display: flex
+            align-items: center
+            display: flex
+            cursor: pointer
+
+            .menu-phone-item-text, .menu-open-line-item-text
+                padding: 0 15px
+                white-space: nowrap
+                overflow: hidden
+                text-overflow: ellipsis
+
+            &:hover
+                background-color: #f1f1f1

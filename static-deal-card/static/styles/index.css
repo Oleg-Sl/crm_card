@@ -1,0 +1,2898 @@
+@charset "UTF-8";
+.deal-desc__container {
+  box-sizing: border-box;
+  padding: 5px 15px 0 15px;
+  height: 100%;
+  border: 2px solid #fff;
+  border-radius: 12px;
+}
+.deal-desc__container:hover {
+  border: 2px solid #5896f9;
+}
+.deal-desc__container label {
+  width: 100%;
+  font: 400 10px Roboto;
+  overflow: hidden;
+  letter-spacing: 0em;
+  color: #97999B;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.deal-desc__container .deal-desc__row-one {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 16% auto 20%;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.deal-desc__container .deal-desc__row-one input, .deal-desc__container .deal-desc__row-one select {
+  width: 100%;
+  height: 29px;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 2px solid #EEF2F4;
+  font: 400 12px Roboto;
+  color: #000000;
+  line-height: 12px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.deal-desc__container .deal-desc__row-one input:focus, .deal-desc__container .deal-desc__row-one select:focus {
+  border: 1px solid #6dacff;
+  outline: none;
+}
+.deal-desc__container .deal-desc__row-two .table {
+  display: grid;
+  grid-template-columns: 85px 1fr;
+  align-content: start;
+}
+.deal-desc__container .deal-desc__row-two .cell {
+  display: flex;
+  align-items: center;
+  font: 400 10px Inter;
+  border: 2px solid #EEF2F4;
+  border-radius: 0;
+  height: 17px;
+  box-sizing: border-box;
+}
+.deal-desc__container .deal-desc__row-two .cell span {
+  padding: 2px;
+}
+.deal-desc__container .deal-desc__row-two .cell input {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  border: none;
+  box-sizing: border-box;
+  font: 400 10px Inter;
+}
+.deal-desc__container .deal-desc__row-two .cell input:focus {
+  border: 1px solid #6dacff;
+  outline: none;
+}
+.deal-desc__container .deal-desc__row-two .cell:nth-child(2n+1) {
+  color: #BABABA;
+  border-right: none;
+}
+.deal-desc__container .deal-desc__row-two .cell:nth-child(n+3) {
+  border-top: none;
+}
+
+.deal-clients__container {
+  box-sizing: border-box;
+  padding: 5px 15px 0 15px;
+  height: 100%;
+  background-color: #FDFDFD;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  position: relative;
+  z-index: 101;
+  transition: height 0.3s ease;
+  overflow: hidden;
+}
+.deal-clients__container:hover {
+  border: 2px solid #5896f9;
+}
+.deal-clients__container .deal-clients__row-container:nth-child(n+2) {
+  margin-top: 4px;
+}
+.deal-clients__container .deal-clients__row-container label {
+  width: 100%;
+  font: 400 10px Roboto;
+  overflow: hidden;
+  letter-spacing: 0em;
+  color: #97999B;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.deal-clients__container .deal-clients__row-container .deal-clients__row > div:nth-child(n+2) {
+  padding-left: 7px;
+}
+.deal-clients__container .deal-clients__row-container .deal-clients__row {
+  display: flex;
+  flex-direction: row;
+}
+.deal-clients__container .deal-clients__row-container .deal-clients__row .inactive i {
+  color: #c5c9cd !important;
+}
+.deal-clients__container .deal-clients__row-container .deal-clients__row i {
+  cursor: pointer;
+  display: block;
+  color: #6dacff;
+  font-size: 20px;
+  padding-right: 1px;
+}
+.deal-clients__container .deal-clients__row-container .deal-clients__row i:hover {
+  color: #3681e4;
+  font-weight: 700;
+  font-size: 21px;
+  padding-right: 0;
+}
+.deal-clients__container .deal-clients__row-container .deal-clients__row input {
+  width: 100%;
+  width: 100%;
+  height: 29px;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 2px solid #EEF2F4;
+  font: 400 12px Roboto;
+  color: #464A4E;
+  line-height: 12px;
+}
+.deal-clients__container .deal-clients__row-container .deal-clients__row input:focus {
+  border: 1px solid #6dacff;
+  outline: none;
+}
+.deal-clients__container .deal-clients__row-container .deal-clients__row .deal-clients__name {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 30px;
+  padding: 0 3px 0 3px;
+  border: 2px solid #EEF2F4;
+}
+.deal-clients__container .deal-clients__row-container .deal-clients__row .deal-clients__name .deal-clients__title {
+  font: 700 12px Roboto;
+}
+.deal-clients__container .deal-clients__row-container .deal-clients__row .deal-clients__name .deal-clients__title:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.deal-clients__container .deal-clients__row-container .deal-clients__row .deal-clients__name .deal-clients__title-info {
+  font: 400 10px Roboto;
+  color: #97999B;
+}
+.deal-clients__container .deal-clients__row-container .deal-clients__row .deal-clients__phone, .deal-clients__container .deal-clients__row-container .deal-clients__row .deal-clients__email, .deal-clients__container .deal-clients__row-container .deal-clients__row .deal-clients__whatsapp, .deal-clients__container .deal-clients__row-container .deal-clients__row .deal-clients__thelegram {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.deal-clients__container .close {
+  display: none !important;
+}
+.deal-clients__container .menu-phones-items, .deal-clients__container .menu-open-lines-items {
+  min-width: 100px;
+  min-height: 40px;
+  max-width: 250px;
+  position: absolute;
+  border: 1px solid #c1c1c1;
+  background-color: #fff;
+  z-index: 101211;
+  right: 0;
+  top: 27px;
+  box-shadow: 0 7px 21px rgba(83, 92, 105, 0.12), 0 -1px 6px 0 rgba(83, 92, 105, 0.06);
+  border-radius: 10px;
+  padding: 8px 0;
+  color: #525c68;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.deal-clients__container .menu-phones-items .menu-phone-item, .deal-clients__container .menu-phones-items .menu-open-line-item, .deal-clients__container .menu-open-lines-items .menu-phone-item, .deal-clients__container .menu-open-lines-items .menu-open-line-item {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+}
+.deal-clients__container .menu-phones-items .menu-phone-item .menu-phone-item-text, .deal-clients__container .menu-phones-items .menu-phone-item .menu-open-line-item-text, .deal-clients__container .menu-phones-items .menu-open-line-item .menu-phone-item-text, .deal-clients__container .menu-phones-items .menu-open-line-item .menu-open-line-item-text, .deal-clients__container .menu-open-lines-items .menu-phone-item .menu-phone-item-text, .deal-clients__container .menu-open-lines-items .menu-phone-item .menu-open-line-item-text, .deal-clients__container .menu-open-lines-items .menu-open-line-item .menu-phone-item-text, .deal-clients__container .menu-open-lines-items .menu-open-line-item .menu-open-line-item-text {
+  padding: 0 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.deal-clients__container .menu-phones-items .menu-phone-item:hover, .deal-clients__container .menu-phones-items .menu-open-line-item:hover, .deal-clients__container .menu-open-lines-items .menu-phone-item:hover, .deal-clients__container .menu-open-lines-items .menu-open-line-item:hover {
+  background-color: #f1f1f1;
+}
+
+.deal-state__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  box-sizing: border-box;
+  padding: 5px 15px 10px 15px;
+  height: 100%;
+  border: 2px solid #fff;
+  border-radius: 12px;
+}
+.deal-state__container:hover {
+  border: 2px solid #5896f9;
+}
+.deal-state__container .deal-state__left, .deal-state__container .deal-state__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.deal-state__container .deal-state__row {
+  display: grid;
+  grid-template-columns: auto 50px;
+  gap: 5px;
+  color: #464A4E;
+}
+.deal-state__container .deal-state__row div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.deal-state__container .deal-state__row .deal-state__row-key {
+  font: 400 8px Roboto;
+  text-align: right;
+}
+.deal-state__container .deal-state__row .deal-state__row-val {
+  font: 400 8px Roboto;
+}
+
+.deal-amounts__container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 5px 15px 0 15px;
+  border: 2px solid #fff;
+  border-radius: 12px;
+}
+.deal-amounts__container:hover {
+  border: 2px solid #5896f9;
+}
+.deal-amounts__container .deal-amounts__row {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: auto 100px;
+}
+.deal-amounts__container .deal-amounts__row .deal-amounts__title {
+  font: 100 15px Roboto;
+  text-align: right;
+}
+.deal-amounts__container .deal-amounts__row .deal-amounts__value {
+  font: 100 16px Roboto;
+  text-align: right;
+}
+.deal-amounts__container .deal-amounts__profit .deal-amounts__value span {
+  font: 700 22px Roboto;
+  color: #00AA44;
+}
+
+.deal-workers__container {
+  box-sizing: border-box;
+  padding: 5px 15px 0 15px;
+  height: 100%;
+  border: 2px solid #fff;
+  border-radius: 12px;
+}
+.deal-workers__container:hover {
+  border: 2px solid #5896f9;
+}
+.deal-workers__container label {
+  width: 100%;
+  font: 400 10px Roboto;
+  overflow: hidden;
+  letter-spacing: 0em;
+  color: #97999B;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.deal-workers__container img {
+  width: 40px;
+  height: 40px;
+}
+.deal-workers__container .deal-workers__user {
+  position: relative;
+  margin-top: 10px;
+}
+.deal-workers__container .deal-workers__user .deal-workers__user-labels {
+  display: flex;
+  justify-content: space-between;
+}
+.deal-workers__container .deal-workers__user .deal-workers__user-labels .deal-workers__user-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.deal-workers__container .deal-workers__user .deal-workers__user-labels .deal-workers__user-change label {
+  color: #D1C2C1;
+}
+.deal-workers__container .deal-workers__user .deal-workers__user-labels .deal-workers__user-change label:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.deal-workers__container .deal-workers__user .deal-workers__user-container {
+  display: flex;
+  margin-top: 5px;
+}
+.deal-workers__container .deal-workers__user .deal-workers__user-container .deal-workers__user-photo {
+  height: 40px;
+  margin-right: 5px;
+  overflow: hidden;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.deal-workers__container .deal-workers__user .deal-workers__user-container .deal-workers__user-name {
+  display: flex;
+  align-items: center;
+  font: 900 12px Roboto;
+  color: #464A4E;
+  cursor: pointer;
+}
+.deal-workers__container .deal-workers__user .deal-workers__user-container .deal-workers__user-name span {
+  display: block;
+}
+.deal-workers__container .deal-workers__observers {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #EEF2F4;
+  padding: 4px 10px;
+  margin-top: 10px;
+  position: relative;
+}
+.deal-workers__container .deal-workers__observers .deal-workers__observers-container {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 25px;
+}
+.deal-workers__container .deal-workers__observers .deal-workers__observers-container .deal-workers__observers-userslist {
+  height: 50px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.deal-workers__container .deal-workers__observers .deal-workers__observers-container .deal-workers__observers-userslist .deal-workers__observers-user {
+  font: 400 12px Roboto;
+  color: #464A4E;
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.deal-workers__container .deal-workers__observers .deal-workers__observers-container .deal-workers__observers-userslist .deal-workers__observers-user:hover {
+  text-decoration: underline;
+}
+.deal-workers__container .deal-workers__observers .deal-workers__observers-container .deal-workers__observers-userslist::-webkit-scrollbar {
+  width: 8px !important;
+  background-color: #f9f9fd;
+}
+.deal-workers__container .deal-workers__observers .deal-workers__observers-container .deal-workers__observers-userslist::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  background-color: rgba(54, 121, 249, 0.5882352941);
+}
+.deal-workers__container .deal-workers__observers .deal-workers__observers-container .deal-workers__observers-userslist::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 7px;
+  background-color: #f9f9fd;
+}
+.deal-workers__container .deal-workers__observers .deal-workers__observers-container .deal-workers__observers-add {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.deal-workers__container .deal-workers__observers .deal-workers__observers-container .deal-workers__observers-add i {
+  display: block;
+  font-size: 16px;
+  cursor: pointer;
+}
+.deal-workers__container .deal-workers__observers .deal-workers__observers-container .deal-workers__observers-add i:hover {
+  color: #292929;
+}
+
+.deal-files__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  position: relative;
+  box-sizing: border-box;
+  padding: 5px 15px 20px 15px;
+  height: 100%;
+  transition: height 0.3s ease;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  background-color: #FDFDFD;
+}
+.deal-files__container:hover {
+  border: 2px solid #5896f9;
+}
+.deal-files__container label {
+  font: 400 10px Roboto;
+  overflow-y: hidden;
+  letter-spacing: 0em;
+  color: #97999B;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.deal-files__container .deal-files__expand {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.deal-files__container .deal-files__expand i {
+  display: block;
+  transition: transform 0.3s ease;
+}
+.deal-files__container .deal-files__expand i:hover {
+  color: #5896f9;
+}
+.deal-files__container .deal-files__content {
+  height: 100%;
+  overflow: hidden;
+}
+.deal-files__container .deal-files__content .deal-files__left, .deal-files__container .deal-files__content .deal-files__right {
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  padding-top: 20px;
+}
+.deal-files__container .deal-files__content .deal-files__left label, .deal-files__container .deal-files__content .deal-files__right label {
+  position: absolute;
+  top: 5px;
+  display: block;
+  position: absolute;
+}
+.deal-files__container .deal-files__content .deal-files__left .deal-files__content-files, .deal-files__container .deal-files__content .deal-files__right .deal-files__content-files {
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid #D7D9DC;
+  padding: 5px;
+  position: relative;
+  padding-bottom: 25px;
+}
+.deal-files__container .deal-files__content .deal-files__left .deal-files__content-files button, .deal-files__container .deal-files__content .deal-files__right .deal-files__content-files button {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+  margin-left: 32px;
+}
+.deal-files__container .deal-files__content .deal-files__left .deal-files__files, .deal-files__container .deal-files__content .deal-files__right .deal-files__files {
+  height: 100%;
+  overflow-y: auto;
+}
+.deal-files__container .deal-files__content .deal-files__left .deal-files__files::-webkit-scrollbar, .deal-files__container .deal-files__content .deal-files__right .deal-files__files::-webkit-scrollbar {
+  width: 0;
+}
+.deal-files__container .deal-files__content .deal-files__left .deal-files__file-row, .deal-files__container .deal-files__content .deal-files__right .deal-files__file-row {
+  display: grid;
+  grid-template-columns: 10px 14px 140px 1fr 14px;
+  gap: 4px;
+  font: 400 10px Roboto;
+  white-space: nowrap;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+}
+.deal-files__container .deal-files__content .deal-files__left .deal-files__file-row .deal-files__file-row-numb, .deal-files__container .deal-files__content .deal-files__right .deal-files__file-row .deal-files__file-row-numb {
+  width: 10px;
+}
+.deal-files__container .deal-files__content .deal-files__left .deal-files__file-row .deal-files__file-row-prev, .deal-files__container .deal-files__content .deal-files__right .deal-files__file-row .deal-files__file-row-prev {
+  width: 14px;
+  cursor: default;
+}
+.deal-files__container .deal-files__content .deal-files__left .deal-files__file-row .deal-files__file-row-url, .deal-files__container .deal-files__content .deal-files__right .deal-files__file-row .deal-files__file-row-url {
+  width: 140px;
+  cursor: pointer;
+  color: #005EEA;
+}
+.deal-files__container .deal-files__content .deal-files__left .deal-files__file-row .deal-files__file-row-url:hover, .deal-files__container .deal-files__content .deal-files__right .deal-files__file-row .deal-files__file-row-url:hover {
+  text-decoration: underline;
+}
+.deal-files__container .deal-files__content .deal-files__left .deal-files__file-row .deal-files__file-row-url a, .deal-files__container .deal-files__content .deal-files__right .deal-files__file-row .deal-files__file-row-url a {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.deal-files__container .deal-files__content .deal-files__left .deal-files__file-row .deal-files__file-row-desc input, .deal-files__container .deal-files__content .deal-files__right .deal-files__file-row .deal-files__file-row-desc input {
+  width: 100%;
+  border: none;
+}
+.deal-files__container .deal-files__content .deal-files__left .deal-files__file-row .deal-files__file-row-del, .deal-files__container .deal-files__content .deal-files__right .deal-files__file-row .deal-files__file-row-del {
+  width: 14px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.deal-files__container .deal-files__content .deal-files__left .deal-files__file-row .deal-files__file-row-del:hover, .deal-files__container .deal-files__content .deal-files__right .deal-files__file-row .deal-files__file-row-del:hover {
+  color: #056cda;
+}
+.deal-files__container .deal-files__content .deal-files__left .deal-files__file-row > div, .deal-files__container .deal-files__content .deal-files__right .deal-files__file-row > div {
+  display: flex;
+  align-items: center;
+}
+
+.deal-files .expand {
+  height: 200%;
+  border: 2px solid #5896f9;
+  z-index: 101;
+}
+.deal-files .expand .deal-files__files {
+  overflow-y: auto !important;
+}
+.deal-files .expand .deal-files__files::-webkit-scrollbar {
+  width: 10px !important;
+  background-color: #f9f9fd;
+}
+.deal-files .expand .deal-files__files::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(54, 121, 249, 0.5882352941);
+}
+.deal-files .expand .deal-files__files::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9fd;
+}
+.deal-files .expand .deal-files__expand i {
+  transform: rotateX(180deg);
+}
+
+.file-container {
+  display: flex;
+  gap: 10px;
+}
+
+.file {
+  border: 1px solid #ccc;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: none;
+}
+
+.deal-docs__container {
+  position: relative;
+  box-sizing: border-box;
+  padding: 5px 15px 20px 15px;
+  height: 100%;
+  transition: height 0.3s ease;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  background-color: #FDFDFD;
+}
+.deal-docs__container:hover {
+  border: 2px solid #5896f9;
+}
+.deal-docs__container label {
+  font: 400 10px Roboto;
+  overflow-y: hidden;
+  letter-spacing: 0em;
+  color: #97999B;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.deal-docs__container .deal-docs__expand {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.deal-docs__container .deal-docs__expand i {
+  display: block;
+  transition: transform 0.3s ease;
+}
+.deal-docs__container .deal-docs__expand i:hover {
+  color: #5896f9;
+}
+.deal-docs__container .deal-docs__content {
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  padding-top: 20px;
+}
+.deal-docs__container .deal-docs__content label {
+  position: absolute;
+  top: 5px;
+  display: block;
+  position: absolute;
+}
+.deal-docs__container .deal-docs__content .deal-docs__content-files {
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid #D7D9DC;
+  padding: 5px;
+  position: relative;
+  padding-bottom: 25px;
+}
+.deal-docs__container .deal-docs__content .deal-docs__content-files button {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+.deal-docs__container .deal-docs__content .deal-docs__content-files .deal-files__buttons {
+  display: flex;
+  justify-content: space-around;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+.deal-docs__container .deal-docs__content .deal-docs__content-files .deal-files__buttons > div {
+  max-width: 50%;
+}
+.deal-docs__container .deal-docs__content .deal-docs__files {
+  height: 100%;
+  overflow-y: auto;
+}
+.deal-docs__container .deal-docs__content .deal-docs__files::-webkit-scrollbar {
+  width: 0;
+}
+.deal-docs__container .deal-docs__content .deal-docs__file-row {
+  display: grid;
+  grid-template-columns: 10px 14px 140px 1fr 14px 14px 14px;
+  gap: 4px;
+  font: 400 10px Roboto;
+  white-space: nowrap;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+.deal-docs__container .deal-docs__content .deal-docs__file-row .deal-docs__file-row-numb {
+  width: 10px;
+}
+.deal-docs__container .deal-docs__content .deal-docs__file-row .deal-docs__file-row-prev {
+  width: 14px;
+  cursor: default;
+}
+.deal-docs__container .deal-docs__content .deal-docs__file-row .deal-docs__file-row-url {
+  width: 140px;
+  cursor: pointer;
+  color: #005EEA;
+}
+.deal-docs__container .deal-docs__content .deal-docs__file-row .deal-docs__file-row-url:hover {
+  text-decoration: underline;
+}
+.deal-docs__container .deal-docs__content .deal-docs__file-row .deal-docs__file-row-url a {
+  overflow: hidden;
+}
+.deal-docs__container .deal-docs__content .deal-docs__file-row .deal-docs__file-row-desc input {
+  width: 100%;
+  border: none;
+}
+.deal-docs__container .deal-docs__content .deal-docs__file-row .deal-docs__file-row-del {
+  width: 14px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.deal-docs__container .deal-docs__content .deal-docs__file-row .deal-docs__file-row-del:hover {
+  color: #056cda;
+}
+.deal-docs__container .deal-docs__content .deal-docs__file-row .deal-docs__file-row-draganddrop {
+  border-left: 2px solid #97999B;
+  width: 14px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #97999B;
+}
+.deal-docs__container .deal-docs__content .deal-docs__file-row .deal-docs__file-row-draganddrop:hover {
+  color: #056cda;
+}
+.deal-docs__container .deal-docs__content .deal-docs__file-row .deal-docs__file-row-update {
+  width: 14px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #97999B;
+}
+.deal-docs__container .deal-docs__content .deal-docs__file-row .deal-docs__file-row-update:hover {
+  color: #056cda;
+}
+.deal-docs__container .deal-docs__content .deal-docs__file-row > div {
+  display: flex;
+  align-items: center;
+}
+
+.deal-docs .expand {
+  height: 200%;
+  border: 2px solid #5896f9;
+  z-index: 101;
+}
+.deal-docs .expand .deal-docs__files {
+  overflow-y: auto !important;
+}
+.deal-docs .expand .deal-docs__files::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f9f9fd;
+}
+.deal-docs .expand .deal-docs__files::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(54, 121, 249, 0.5882352941);
+}
+.deal-docs .expand .deal-docs__files::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9fd;
+}
+.deal-docs .expand .deal-docs__expand i {
+  transform: rotateX(180deg);
+}
+
+.deal-accounts__container {
+  position: relative;
+  box-sizing: border-box;
+  padding: 5px 15px 20px 15px;
+  height: 100%;
+  transition: height 0.3s ease;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  background-color: #FDFDFD;
+}
+.deal-accounts__container:hover {
+  border: 2px solid #5896f9;
+}
+.deal-accounts__container label {
+  font: 400 10px Roboto;
+  overflow-y: hidden;
+  letter-spacing: 0em;
+  color: #97999B;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.deal-accounts__container .deal-accounts__expand {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.deal-accounts__container .deal-accounts__expand i {
+  display: block;
+  transition: transform 0.3s ease;
+}
+.deal-accounts__container .deal-accounts__expand i:hover {
+  color: #5896f9;
+}
+.deal-accounts__container .deal-accounts__content {
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  padding-top: 20px;
+}
+.deal-accounts__container .deal-accounts__content label {
+  position: absolute;
+  top: 5px;
+  display: block;
+  position: absolute;
+}
+.deal-accounts__container .deal-accounts__content .deal-accounts__content-files {
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid #D7D9DC;
+  padding: 5px;
+  position: relative;
+  padding-bottom: 25px;
+}
+.deal-accounts__container .deal-accounts__content .deal-accounts__content-files .deal-accounts__button-add {
+  display: flex;
+  justify-content: center;
+}
+.deal-accounts__container .deal-accounts__content .deal-accounts__content-files .deal-accounts__button-add button {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+.deal-accounts__container .deal-accounts__content .deal-accounts__files {
+  height: 100%;
+  overflow-y: auto;
+}
+.deal-accounts__container .deal-accounts__content .deal-accounts__files::-webkit-scrollbar {
+  width: 0;
+}
+.deal-accounts__container .deal-accounts__content .deal-accounts__file-row {
+  display: grid;
+  grid-template-columns: 10px 14px 1fr 14px;
+  gap: 4px;
+  font: 400 10px Roboto;
+  white-space: nowrap;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+.deal-accounts__container .deal-accounts__content .deal-accounts__file-row .deal-accounts__file-row-prev {
+  cursor: default;
+  font-size: 12px;
+  color: #ff0000;
+}
+.deal-accounts__container .deal-accounts__content .deal-accounts__file-row .deal-accounts__file-row-url {
+  cursor: pointer;
+  color: #005EEA;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.deal-accounts__container .deal-accounts__content .deal-accounts__file-row .deal-accounts__file-row-url:hover {
+  text-decoration: underline;
+}
+.deal-accounts__container .deal-accounts__content .deal-accounts__file-row .deal-accounts__file-row-del {
+  width: 14px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.deal-accounts__container .deal-accounts__content .deal-accounts__file-row .deal-accounts__file-row-del:hover {
+  color: #056cda;
+}
+.deal-accounts__container .deal-accounts__content .deal-accounts__file-row > div {
+  display: flex;
+  align-items: center;
+}
+
+.deal-accounts .expand {
+  height: 200%;
+  border: 2px solid #5896f9;
+  z-index: 101;
+}
+.deal-accounts .expand .deal-accounts__files {
+  overflow-y: auto !important;
+}
+.deal-accounts .expand .deal-accounts__files::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f9f9fd;
+}
+.deal-accounts .expand .deal-accounts__files::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(54, 121, 249, 0.5882352941);
+}
+.deal-accounts .expand .deal-accounts__files::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9fd;
+}
+.deal-accounts .expand .deal-accounts__expand i {
+  transform: rotateX(180deg);
+}
+
+.deal-acts__container {
+  position: relative;
+  box-sizing: border-box;
+  padding: 5px 15px 20px 15px;
+  height: 100%;
+  transition: height 0.3s ease;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  background-color: #FDFDFD;
+}
+.deal-acts__container:hover {
+  border: 2px solid #5896f9;
+}
+.deal-acts__container label {
+  font: 400 10px Roboto;
+  overflow-y: hidden;
+  letter-spacing: 0em;
+  color: #97999B;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.deal-acts__container .deal-acts__expand {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.deal-acts__container .deal-acts__expand i {
+  display: block;
+  transition: transform 0.3s ease;
+}
+.deal-acts__container .deal-acts__expand i:hover {
+  color: #5896f9;
+}
+.deal-acts__container .deal-acts__content {
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  padding-top: 20px;
+}
+.deal-acts__container .deal-acts__content label {
+  position: absolute;
+  top: 5px;
+}
+.deal-acts__container .deal-acts__content button {
+  display: block;
+  position: absolute;
+}
+.deal-acts__container .deal-acts__content .deal-acts__content-files {
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid #D7D9DC;
+  padding: 5px;
+  position: relative;
+  padding-bottom: 25px;
+}
+.deal-acts__container .deal-acts__content .deal-acts__content-files .deal-acts__button-add {
+  display: flex;
+  justify-content: center;
+}
+.deal-acts__container .deal-acts__content .deal-acts__content-files .deal-acts__button-add button {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+.deal-acts__container .deal-acts__content .deal-acts__files {
+  height: 100%;
+  overflow-y: auto;
+}
+.deal-acts__container .deal-acts__content .deal-acts__files::-webkit-scrollbar {
+  width: 0;
+}
+.deal-acts__container .deal-acts__content .deal-acts__file-row {
+  display: grid;
+  grid-template-columns: 10px 14px 1fr 14px;
+  gap: 4px;
+  font: 400 10px Roboto;
+  white-space: nowrap;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+.deal-acts__container .deal-acts__content .deal-acts__file-row .deal-acts__file-row-prev {
+  cursor: default;
+  font-size: 12px;
+  color: #ff0000;
+}
+.deal-acts__container .deal-acts__content .deal-acts__file-row .deal-acts__file-row-url {
+  cursor: pointer;
+  color: #005EEA;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.deal-acts__container .deal-acts__content .deal-acts__file-row .deal-acts__file-row-url:hover {
+  text-decoration: underline;
+}
+.deal-acts__container .deal-acts__content .deal-acts__file-row .deal-acts__file-row-del {
+  width: 14px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.deal-acts__container .deal-acts__content .deal-acts__file-row .deal-acts__file-row-del:hover {
+  color: #056cda;
+}
+.deal-acts__container .deal-acts__content .deal-acts__file-row > div {
+  display: flex;
+  align-items: center;
+}
+
+.deal-acts .expand {
+  height: 200%;
+  border: 2px solid #5896f9;
+  z-index: 101;
+}
+.deal-acts .expand .deal-acts__files {
+  overflow-y: auto !important;
+}
+.deal-acts .expand .deal-acts__files::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f9f9fd;
+}
+.deal-acts .expand .deal-acts__files::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(54, 121, 249, 0.5882352941);
+}
+.deal-acts .expand .deal-acts__files::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9fd;
+}
+.deal-acts .expand .deal-acts__expand i {
+  transform: rotateX(180deg);
+}
+
+.deal-finance__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 5px 15px 10px 15px;
+  height: 100%;
+  border: 2px solid #fff;
+  border-radius: 12px;
+}
+.deal-finance__container:hover {
+  border: 2px solid #5896f9;
+}
+.deal-finance__container label {
+  width: 100%;
+  font: 400 10px Roboto;
+  overflow: hidden;
+  letter-spacing: 0em;
+  color: #97999B;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.deal-finance__container input, .deal-finance__container select {
+  width: 100%;
+  height: 29px;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 2px solid #EEF2F4;
+  font: 400 12px Roboto;
+  color: #000000;
+  line-height: 12px;
+  letter-spacing: 0em;
+}
+.deal-finance__container input:focus, .deal-finance__container select:focus {
+  border: 1px solid #6dacff;
+  outline: none;
+}
+
+.deal-invoices .deal-files-container, .deal-acts .deal-files-container {
+  position: relative;
+  box-sizing: border-box;
+  padding: 5px 15px 20px 15px;
+  height: 100%;
+  transition: height 0.3s ease;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  background-color: #FDFDFD;
+}
+.deal-invoices .deal-files-container:hover, .deal-acts .deal-files-container:hover {
+  border: 2px solid #5896f9;
+}
+.deal-invoices .deal-files-container label, .deal-acts .deal-files-container label {
+  font: 400 10px Roboto;
+  overflow-y: hidden;
+  letter-spacing: 0em;
+  color: #97999B;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.deal-invoices .deal-files-container .deal-expand, .deal-acts .deal-files-container .deal-expand {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.deal-invoices .deal-files-container .deal-expand i, .deal-acts .deal-files-container .deal-expand i {
+  display: block;
+  transition: transform 0.3s ease;
+}
+.deal-invoices .deal-files-container .deal-expand i:hover, .deal-acts .deal-files-container .deal-expand i:hover {
+  color: #5896f9;
+}
+.deal-invoices .deal-files-container .deal-content, .deal-acts .deal-files-container .deal-content {
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  padding-top: 20px;
+}
+.deal-invoices .deal-files-container .deal-content label, .deal-acts .deal-files-container .deal-content label {
+  position: absolute;
+  top: 5px;
+  display: block;
+  position: absolute;
+}
+.deal-invoices .deal-files-container .deal-content .deal-files, .deal-acts .deal-files-container .deal-content .deal-files {
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid #D7D9DC;
+  padding: 5px;
+  position: relative;
+  padding-bottom: 25px;
+}
+.deal-invoices .deal-files-container .deal-content .deal-files .deal-button-add, .deal-acts .deal-files-container .deal-content .deal-files .deal-button-add {
+  display: flex;
+  justify-content: center;
+}
+.deal-invoices .deal-files-container .deal-content .deal-files .deal-button-add button, .deal-acts .deal-files-container .deal-content .deal-files .deal-button-add button {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+.deal-invoices .deal-files-container .deal-content .files-items-container, .deal-acts .deal-files-container .deal-content .files-items-container {
+  height: 100%;
+  overflow-y: auto;
+}
+.deal-invoices .deal-files-container .deal-content .files-items-container::-webkit-scrollbar, .deal-acts .deal-files-container .deal-content .files-items-container::-webkit-scrollbar {
+  width: 0;
+}
+.deal-invoices .deal-files-container .deal-content .deal-file-row, .deal-acts .deal-files-container .deal-content .deal-file-row {
+  display: grid;
+  grid-template-columns: 10px 14px 1fr 14px;
+  gap: 4px;
+  font: 400 10px Roboto;
+  white-space: nowrap;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+.deal-invoices .deal-files-container .deal-content .deal-file-row .deal-file-row-prev, .deal-acts .deal-files-container .deal-content .deal-file-row .deal-file-row-prev {
+  cursor: default;
+  font-size: 12px;
+  color: #ff0000;
+}
+.deal-invoices .deal-files-container .deal-content .deal-file-row .deal-file-row-url, .deal-acts .deal-files-container .deal-content .deal-file-row .deal-file-row-url {
+  cursor: pointer;
+  color: #005EEA;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.deal-invoices .deal-files-container .deal-content .deal-file-row .deal-file-row-url:hover, .deal-acts .deal-files-container .deal-content .deal-file-row .deal-file-row-url:hover {
+  text-decoration: underline;
+}
+.deal-invoices .deal-files-container .deal-content .deal-file-row .deal-file-row-del, .deal-acts .deal-files-container .deal-content .deal-file-row .deal-file-row-del {
+  width: 14px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.deal-invoices .deal-files-container .deal-content .deal-file-row .deal-file-row-del:hover, .deal-acts .deal-files-container .deal-content .deal-file-row .deal-file-row-del:hover {
+  color: #056cda;
+}
+.deal-invoices .deal-files-container .deal-content .deal-file-row > div, .deal-acts .deal-files-container .deal-content .deal-file-row > div {
+  display: flex;
+  align-items: center;
+}
+.deal-invoices .expand, .deal-acts .expand {
+  height: 200%;
+  border: 2px solid #5896f9;
+  z-index: 101;
+}
+.deal-invoices .expand .files-items-container, .deal-acts .expand .files-items-container {
+  overflow-y: auto !important;
+}
+.deal-invoices .expand .files-items-container::-webkit-scrollbar, .deal-acts .expand .files-items-container::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f9f9fd;
+}
+.deal-invoices .expand .files-items-container::-webkit-scrollbar-thumb, .deal-acts .expand .files-items-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(54, 121, 249, 0.5882352941);
+}
+.deal-invoices .expand .files-items-container::-webkit-scrollbar-track, .deal-acts .expand .files-items-container::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9fd;
+}
+.deal-invoices .expand .deal-expand i, .deal-acts .expand .deal-expand i {
+  transform: rotateX(180deg);
+}
+
+.task-container__app table {
+  display: grid;
+  grid-template-columns: 15px 1fr 110px 120px 80px 80px 80px 110px 80px 90px 80px;
+  border-collapse: collapse;
+}
+.task-container__app table thead, .task-container__app table tbody {
+  display: contents;
+}
+.task-container__app table thead tr, .task-container__app table tbody tr {
+  display: contents;
+}
+.task-container__app table thead tr th, .task-container__app table thead tr td, .task-container__app table tbody tr th, .task-container__app table tbody tr td {
+  padding: 2px;
+  font: 400 8px Roboto;
+  border-right: 1px solid #97999B;
+  border-bottom: 1px solid #97999B;
+}
+.task-container__app table thead tr th, .task-container__app table tbody tr th {
+  font: 700 10px Roboto;
+  border-right: 1px solid #97999B;
+  border-top: 1px solid #97999B;
+}
+.task-container__app table thead tr td:first-child, .task-container__app table thead tr th:first-child, .task-container__app table tbody tr td:first-child, .task-container__app table tbody tr th:first-child {
+  border-left: 1px solid #97999B;
+}
+.task-container__app table .grid-row-zero {
+  grid-row: span 0;
+}
+.task-container__app table .technology-item {
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+.task-container__app table .block-center {
+  display: flex;
+  align-items: center;
+}
+.task-container__app table .shared {
+  grid-row: span 2;
+}
+.task-container__app table .vertical-input {
+  display: block;
+  writing-mode: horizontal-tb !important;
+}
+.task-container__app table input[type=number]::-webkit-inner-spin-button,
+.task-container__app table input[type=number]::-webkit-outer-spin-button,
+.task-container__app table input[type=number] {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.task-container__app table input[type=number] {
+  -moz-appearance: textfield;
+}
+.task-container__app table select, .task-container__app table input, .task-container__app table textarea {
+  font: 400 8px Roboto;
+  background: none;
+  border: 1px solid rgba(151, 153, 155, 0.2);
+  border-radius: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: 17px;
+}
+.task-container__app table textarea {
+  resize: vertical;
+}
+.task-container__app table thead th {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font: 700 10px Roboto;
+}
+.task-container__app table thead .task-container_group-header-add-group {
+  color: #fff200;
+}
+.task-container__app table thead .task-container__group-header-consumption {
+  display: flex;
+}
+.task-container__app table thead .task-container__group-header-consumption > div:first-child {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.task-container__app table thead .task-container__group-header-consumption > div:nth-child(n+2) {
+  display: flex;
+  flex-direction: column;
+}
+.task-container__app table thead .task-container__group-header-area-mounting div {
+  display: flex;
+  flex-direction: column;
+}
+.task-container__app table thead .task-container_group-header-technology {
+  display: flex;
+}
+.task-container__app table thead .task-container_group-header-technology div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.task-container__app table tbody .task-container__item-info {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.task-container__app table tbody .task-container__item-info div {
+  margin-bottom: 3px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.task-container__app table tbody .task-container__item-technologies {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+}
+.task-container__app table tbody .task-container__item-technologies .task-container__item-technologies-list {
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+}
+.task-container__app table tbody .task-container__item-technologies .task-container__item-technologies-list-container {
+  box-sizing: border-box;
+  width: 100%;
+}
+.task-container__app table tbody .task-container__item-technologies .task-container__item-technologies-list-container > div:nth-child(n+2) {
+  margin: 2px 0;
+}
+.task-container__app table tbody .task-container__item-technologies .task-container__item-technologies-list-container input, .task-container__app table tbody .task-container__item-technologies .task-container__item-technologies-list-container select {
+  background: none;
+  border: 1px solid rgba(151, 153, 155, 0.2);
+  width: 100%;
+  height: 100%;
+}
+.task-container__app table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 15px 17px 1fr 11px;
+  grid-template-rows: 17px 17px;
+  grid-template-areas: "A B C E" "A B D E";
+}
+.task-container__app table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology .task-container__item-technologies-technology-mchs {
+  grid-area: A;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.task-container__app table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology .task-container__item-technologies-technology-mchs > span {
+  width: -moz-fit-content;
+  width: fit-content;
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+}
+.task-container__app table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology .task-container__item-technologies-technology-type {
+  grid-area: B;
+}
+.task-container__app table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology .task-container__item-technologies-technology-type select {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  height: 100%;
+  line-height: 14px;
+  text-align: center;
+}
+.task-container__app table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology .task-container__item-technologies-technology-type select option {
+  writing-mode: horizontal-tb;
+}
+.task-container__app table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology .task-container__item-technologies-technology-material-1 {
+  grid-area: C;
+}
+.task-container__app table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology .task-container__item-technologies-technology-material-2 {
+  grid-area: D;
+}
+.task-container__app table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology .task-container__item-technologies-technology-remove {
+  grid-area: E;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+.task-container__app table tbody .task-container__item-technologies .task-container__item-technology-add {
+  display: flex;
+  justify-content: flex-end;
+}
+.task-container__app table tbody .task-container_group-item-sources {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.task-container__app table tbody .task-container_group-item-sources .task-container_group-item-sources-list {
+  position: relative;
+}
+.task-container__app table tbody .task-container_group-item-sources .task-container_group-item-sources-list > div:nth-child(n+2) {
+  margin: 2px 0;
+}
+.task-container__app table tbody .task-container_group-item-sources .task-container_group-item-sources-list .task-container_group-item-sources-item {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 12px 1fr 11px;
+}
+.task-container__app table tbody .task-container_group-item-sources .task-container_group-item-sources-list .task-container_group-item-sources-item div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.task-container__app table tbody .task-container_group-item-sources .task-container_group-item-sources-list .task-container_group-item-sources-item .task-container_group-item-sources-remove {
+  align-items: flex-end;
+}
+.task-container__app table tbody .task-container_group-item-sources .task-container_group-item-sources-add {
+  bottom: -11px;
+  display: flex;
+  justify-content: flex-end;
+}
+.task-container__app table tbody .task-container_group-item-measurements {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+}
+.task-container__app table tbody .task-container_group-item-measurements .task-container_group-item-measurements-list > select:nth-child(n+2) {
+  margin: 2px 0;
+}
+.task-container__app table tbody .task-container_group-item-design {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+}
+.task-container__app table tbody .task-container_group-item-design .task-container_group-item-design-list > select:nth-child(n+2) {
+  margin: 2px 0;
+}
+.task-container__app table tbody .task-container_group-item-color-test {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+}
+.task-container__app table tbody .task-container_group-item-color-test .task-container_group-item-color-test-list > select:nth-child(n+2) {
+  margin: 2px 0;
+}
+.task-container__app table tbody .task-container_group-item-mounting {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+}
+.task-container__app table tbody .task-container_group-item-mounting .task-container_group-item-mounting-container {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 15px 1fr 15px;
+  grid-template-rows: 17px 17px;
+  grid-template-areas: "A B D" "A C D";
+  width: 100%;
+}
+.task-container__app table tbody .task-container_group-item-mounting .task-container_group-item-mounting-left {
+  grid-area: A;
+}
+.task-container__app table tbody .task-container_group-item-mounting .task-container_group-item-mounting-left select {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  height: 100%;
+  line-height: 14px;
+  text-align: center;
+}
+.task-container__app table tbody .task-container_group-item-mounting .task-container_group-item-mounting-left select option {
+  writing-mode: horizontal-tb;
+}
+.task-container__app table tbody .task-container_group-item-mounting .task-container_group-item-mounting-top {
+  grid-area: B;
+}
+.task-container__app table tbody .task-container_group-item-mounting .task-container_group-item-mounting-bottom {
+  grid-area: C;
+}
+.task-container__app table tbody .task-container_group-item-mounting .task-container_group-item-mounting-right {
+  grid-area: D;
+}
+.task-container__app table tbody .task-container_group-item-mounting .task-container_group-item-mounting-right select {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  height: 100%;
+  line-height: 14px;
+  text-align: center;
+}
+.task-container__app table tbody .task-container_group-item-mounting .task-container_group-item-mounting-right select option {
+  writing-mode: horizontal-tb;
+}
+.task-container__app table tbody .task-container_group-item-deadlines {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+}
+.task-container__app table tbody .task-container_group-item-deadlines .task-container_group-item-deadlines-list > input {
+  margin: 2px 0;
+}
+.task-container__app table tbody .task-container_group-item-dismantling {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+}
+.task-container__app table tbody .task-container_group-item-dismantling .task-container_group-item-dismantling-container {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 1fr 15px;
+  grid-template-rows: 17px 17px;
+  grid-template-areas: "A C" "B C";
+}
+.task-container__app table tbody .task-container_group-item-dismantling .task-container_group-item-dismantling-top {
+  grid-area: A;
+}
+.task-container__app table tbody .task-container_group-item-dismantling .task-container_group-item-dismantling-bottom {
+  grid-area: B;
+}
+.task-container__app table tbody .task-container_group-item-dismantling .task-container_group-item-dismantling-area {
+  grid-area: C;
+  writing-mode: vertical-lr;
+  transform: rotate(270deg);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  line-height: 14px;
+  text-align: center;
+  width: 36px;
+  height: 17px;
+  position: relative;
+  top: 9px;
+  left: -9px;
+}
+.task-container__app table tbody .task-container_group-item-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.task-container__app table tbody .task-container_group-item-right .task-container_group-item-add {
+  color: #00A185;
+}
+.task-container__app table tbody .task-container_group-item-right .task-container_group-item-remove {
+  color: rgba(255, 0, 0, 0.5882352941);
+}
+.task-container__commerc-offer table, .task-container__offer table {
+  display: grid;
+  grid-template-columns: 10px 1fr 25px 105px 110px 27px 45px 65px 60px 80px 75px 110px 75px 40px 55px 42px 45px 25px;
+  border-collapse: collapse;
+}
+.task-container__commerc-offer table thead, .task-container__commerc-offer table tbody, .task-container__offer table thead, .task-container__offer table tbody {
+  display: contents;
+}
+.task-container__commerc-offer table thead tr, .task-container__commerc-offer table tbody tr, .task-container__offer table thead tr, .task-container__offer table tbody tr {
+  display: contents;
+}
+.task-container__commerc-offer table thead tr th, .task-container__commerc-offer table thead tr td, .task-container__commerc-offer table tbody tr th, .task-container__commerc-offer table tbody tr td, .task-container__offer table thead tr th, .task-container__offer table thead tr td, .task-container__offer table tbody tr th, .task-container__offer table tbody tr td {
+  padding: 2px;
+  font: 400 8px Roboto;
+  border-right: 1px solid #97999B;
+  border-bottom: 1px solid #97999B;
+}
+.task-container__commerc-offer table thead tr th, .task-container__commerc-offer table tbody tr th, .task-container__offer table thead tr th, .task-container__offer table tbody tr th {
+  font: 700 10px Roboto;
+  border-right: 1px solid #97999B;
+  border-top: 1px solid #97999B;
+}
+.task-container__commerc-offer table thead tr td:first-child, .task-container__commerc-offer table thead tr th:first-child, .task-container__commerc-offer table tbody tr td:first-child, .task-container__commerc-offer table tbody tr th:first-child, .task-container__offer table thead tr td:first-child, .task-container__offer table thead tr th:first-child, .task-container__offer table tbody tr td:first-child, .task-container__offer table tbody tr th:first-child {
+  border-left: 1px solid #97999B;
+}
+.task-container__commerc-offer table .grid-row-zero, .task-container__offer table .grid-row-zero {
+  grid-row: span 0;
+}
+.task-container__commerc-offer table .technology-item, .task-container__offer table .technology-item {
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+.task-container__commerc-offer table .block-center, .task-container__offer table .block-center {
+  display: flex;
+  align-items: center;
+}
+.task-container__commerc-offer table .shared, .task-container__offer table .shared {
+  grid-row: span 2;
+}
+.task-container__commerc-offer table select, .task-container__commerc-offer table input, .task-container__commerc-offer table textarea, .task-container__offer table select, .task-container__offer table input, .task-container__offer table textarea {
+  font: 400 8px Roboto;
+  background: none;
+  border: 1px solid rgba(151, 153, 155, 0.2);
+  border-radius: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: 17px;
+}
+.task-container__commerc-offer table textarea, .task-container__offer table textarea {
+  resize: vertical;
+}
+.task-container__commerc-offer table .vertical-input, .task-container__offer table .vertical-input {
+  display: block;
+  writing-mode: horizontal-tb !important;
+}
+.task-container__commerc-offer table input[type=number]::-webkit-inner-spin-button,
+.task-container__commerc-offer table input[type=number]::-webkit-outer-spin-button,
+.task-container__commerc-offer table input[type=number], .task-container__offer table input[type=number]::-webkit-inner-spin-button,
+.task-container__offer table input[type=number]::-webkit-outer-spin-button,
+.task-container__offer table input[type=number] {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.task-container__commerc-offer table input[type=number], .task-container__offer table input[type=number] {
+  -moz-appearance: textfield;
+}
+.task-container__commerc-offer table thead th, .task-container__offer table thead th {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.task-container__commerc-offer table thead .task-container__group-header-consumption, .task-container__offer table thead .task-container__group-header-consumption {
+  display: flex;
+}
+.task-container__commerc-offer table thead .task-container__group-header-consumption > div:first-child, .task-container__offer table thead .task-container__group-header-consumption > div:first-child {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.task-container__commerc-offer table thead .task-container__group-header-consumption > div:nth-child(n+2), .task-container__offer table thead .task-container__group-header-consumption > div:nth-child(n+2) {
+  display: flex;
+  flex-direction: column;
+}
+.task-container__commerc-offer table thead .task-container__group-header-area-mounting div, .task-container__offer table thead .task-container__group-header-area-mounting div {
+  display: flex;
+  flex-direction: column;
+}
+.task-container__commerc-offer table tbody .task-container__item-info, .task-container__offer table tbody .task-container__item-info {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.task-container__commerc-offer table tbody .task-container__item-info div, .task-container__offer table tbody .task-container__item-info div {
+  margin-bottom: 3px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.task-container__commerc-offer table tbody .task-container__item-is-offer input, .task-container__offer table tbody .task-container__item-is-offer input {
+  border-radius: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+.task-container__commerc-offer table tbody .task-container__item-technologies, .task-container__offer table tbody .task-container__item-technologies {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 2px;
+}
+.task-container__commerc-offer table tbody .task-container__item-technologies .task-container__item-technology, .task-container__offer table tbody .task-container__item-technologies .task-container__item-technology {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 17px 1fr 17px;
+  grid-template-rows: 17px 17px;
+  grid-template-areas: "A B D" "A C D";
+}
+.task-container__commerc-offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-type, .task-container__offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-type {
+  grid-area: A;
+}
+.task-container__commerc-offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-type select, .task-container__offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-type select {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  height: 100%;
+  line-height: 14px;
+  text-align: center;
+}
+.task-container__commerc-offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-type select option, .task-container__offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-type select option {
+  writing-mode: horizontal-tb;
+}
+.task-container__commerc-offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-material-1, .task-container__offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-material-1 {
+  grid-area: B;
+}
+.task-container__commerc-offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-material-2, .task-container__offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-material-2 {
+  grid-area: C;
+}
+.task-container__commerc-offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-price, .task-container__offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-price {
+  grid-area: D;
+  position: relative;
+}
+.task-container__commerc-offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-price input, .task-container__offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-price input {
+  writing-mode: vertical-lr;
+  transform: rotate(270deg);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  line-height: 14px;
+  text-align: center;
+  width: 36px;
+  height: 17px;
+  position: absolute;
+  top: 9px;
+  left: -9px;
+  -moz-appearance: textfield;
+}
+.task-container__commerc-offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-price input::-webkit-inner-spin-button, .task-container__commerc-offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-price input::-webkit-outer-spin-button, .task-container__offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-price input::-webkit-inner-spin-button, .task-container__offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-price input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.task-container__commerc-offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-price input, .task-container__offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-price input {
+  box-sizing: border-box;
+}
+.task-container__commerc-offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-price::before, .task-container__offer table tbody .task-container__item-technologies .task-container__item-technology .task-container__item-technology-price::before {
+  content: "₽";
+  position: absolute;
+  left: 6.5px;
+  transform: rotate(270deg);
+  color: #555;
+  font: 400 8px Roboto;
+}
+.task-container__commerc-offer table tbody .task-container__item-consumption, .task-container__offer table tbody .task-container__item-consumption {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 2px;
+  font: 400 8px Roboto;
+}
+.task-container__commerc-offer table tbody .task-container__item-consumption .task-container__item-consumption-item, .task-container__offer table tbody .task-container__item-consumption .task-container__item-consumption-item {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 17px 1fr 5px 1fr 20px;
+  grid-template-rows: 17px 17px;
+  grid-template-areas: "A B B B C" "D E F G H";
+  width: 100%;
+}
+.task-container__commerc-offer table tbody .task-container__item-consumption .task-container__item-consumption-item > div, .task-container__offer table tbody .task-container__item-consumption .task-container__item-consumption-item > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.task-container__commerc-offer table tbody .task-container__item-consumption .task-container__item-consumption-item input, .task-container__offer table tbody .task-container__item-consumption .task-container__item-consumption-item input {
+  width: 100%;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+.task-container__commerc-offer table tbody .task-container__item-consumption .task-container__item-consumption-item input::-webkit-inner-spin-button, .task-container__commerc-offer table tbody .task-container__item-consumption .task-container__item-consumption-item input::-webkit-outer-spin-button, .task-container__offer table tbody .task-container__item-consumption .task-container__item-consumption-item input::-webkit-inner-spin-button, .task-container__offer table tbody .task-container__item-consumption .task-container__item-consumption-item input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.task-container__commerc-offer table tbody .task-container__item-consumption .task-container__item-consumption-item .task-container__item-consumption-item-img, .task-container__offer table tbody .task-container__item-consumption .task-container__item-consumption-item .task-container__item-consumption-item-img {
+  grid-area: A;
+}
+.task-container__commerc-offer table tbody .task-container__item-consumption .task-container__item-consumption-item .task-container__item-consumption-item-title, .task-container__offer table tbody .task-container__item-consumption .task-container__item-consumption-item .task-container__item-consumption-item-title {
+  grid-area: B;
+}
+.task-container__commerc-offer table tbody .task-container__item-consumption .task-container__item-consumption-item .task-container__item-consumption-item-empty, .task-container__offer table tbody .task-container__item-consumption .task-container__item-consumption-item .task-container__item-consumption-item-empty {
+  grid-area: C;
+}
+.task-container__commerc-offer table tbody .task-container__item-consumption .task-container__item-consumption-item .task-container__item-consumption-item-m2, .task-container__offer table tbody .task-container__item-consumption .task-container__item-consumption-item .task-container__item-consumption-item-m2 {
+  grid-area: D;
+}
+.task-container__commerc-offer table tbody .task-container__item-consumption .task-container__item-consumption-item .task-container__item-consumption-item-width, .task-container__offer table tbody .task-container__item-consumption .task-container__item-consumption-item .task-container__item-consumption-item-width {
+  grid-area: E;
+}
+.task-container__commerc-offer table tbody .task-container__item-consumption .task-container__item-consumption-item .task-container__item-consumption-item-product, .task-container__offer table tbody .task-container__item-consumption .task-container__item-consumption-item .task-container__item-consumption-item-product {
+  grid-area: F;
+}
+.task-container__commerc-offer table tbody .task-container__item-consumption .task-container__item-consumption-item .task-container__item-consumption-item-length, .task-container__offer table tbody .task-container__item-consumption .task-container__item-consumption-item .task-container__item-consumption-item-length {
+  grid-area: G;
+}
+.task-container__commerc-offer table tbody .task-container__item-consumption .task-container__item-consumption-item .task-container__item-consumption-item-result, .task-container__offer table tbody .task-container__item-consumption .task-container__item-consumption-item .task-container__item-consumption-item-result {
+  grid-area: H;
+}
+.task-container__commerc-offer table tbody .task-container__item-area-mounting input, .task-container__offer table tbody .task-container__item-area-mounting input {
+  width: 100%;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+.task-container__commerc-offer table tbody .task-container__item-area-mounting input::-webkit-inner-spin-button, .task-container__commerc-offer table tbody .task-container__item-area-mounting input::-webkit-outer-spin-button, .task-container__offer table tbody .task-container__item-area-mounting input::-webkit-inner-spin-button, .task-container__offer table tbody .task-container__item-area-mounting input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.task-container__commerc-offer table tbody .task-container__item-amounts, .task-container__offer table tbody .task-container__item-amounts {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 2px;
+}
+.task-container__commerc-offer table tbody .task-container__item-amounts .task-container__item-amount, .task-container__offer table tbody .task-container__item-amounts .task-container__item-amount {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 1fr 20px 1fr;
+  grid-template-rows: 17px 17px;
+  grid-template-areas: "A A A" "B C D";
+  width: 100%;
+}
+.task-container__commerc-offer table tbody .task-container__item-amounts .task-container__item-amount .task-container__item-amount-costprice, .task-container__offer table tbody .task-container__item-amounts .task-container__item-amount .task-container__item-amount-costprice {
+  grid-area: A;
+}
+.task-container__commerc-offer table tbody .task-container__item-amounts .task-container__item-amount .task-container__item-amount-symbol-plus, .task-container__offer table tbody .task-container__item-amounts .task-container__item-amount .task-container__item-amount-symbol-plus {
+  grid-area: B;
+  justify-content: flex-end;
+}
+.task-container__commerc-offer table tbody .task-container__item-amounts .task-container__item-amount .task-container__item-amount-value-percent, .task-container__offer table tbody .task-container__item-amounts .task-container__item-amount .task-container__item-amount-value-percent {
+  grid-area: C;
+}
+.task-container__commerc-offer table tbody .task-container__item-amounts .task-container__item-amount .task-container__item-amount-symbol-percent, .task-container__offer table tbody .task-container__item-amounts .task-container__item-amount .task-container__item-amount-symbol-percent {
+  grid-area: D;
+  justify-content: flex-start;
+}
+.task-container__commerc-offer table tbody .task-container__item-amounts .task-container__item-amount > div, .task-container__offer table tbody .task-container__item-amounts .task-container__item-amount > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.task-container__commerc-offer table tbody .task-container__item-amounts .task-container__item-amount input, .task-container__offer table tbody .task-container__item-amounts .task-container__item-amount input {
+  width: 100%;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+.task-container__commerc-offer table tbody .task-container__item-amounts .task-container__item-amount input::-webkit-inner-spin-button, .task-container__commerc-offer table tbody .task-container__item-amounts .task-container__item-amount input::-webkit-outer-spin-button, .task-container__offer table tbody .task-container__item-amounts .task-container__item-amount input::-webkit-inner-spin-button, .task-container__offer table tbody .task-container__item-amounts .task-container__item-amount input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.task-container__commerc-offer table tbody .task-container__item-measure, .task-container__offer table tbody .task-container__item-measure {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 1fr 20px 1fr;
+  grid-template-rows: 17px 17px;
+  grid-template-areas: "A A A" "B B B" "C C C" "D E F";
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.task-container__commerc-offer table tbody .task-container__item-measure > div, .task-container__offer table tbody .task-container__item-measure > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.task-container__commerc-offer table tbody .task-container__item-measure input, .task-container__offer table tbody .task-container__item-measure input {
+  text-align: center;
+}
+.task-container__commerc-offer table tbody .task-container__item-measure .task-container__item-measure-status, .task-container__offer table tbody .task-container__item-measure .task-container__item-measure-status {
+  grid-area: A;
+}
+.task-container__commerc-offer table tbody .task-container__item-measure .task-container__item-measure-address, .task-container__offer table tbody .task-container__item-measure .task-container__item-measure-address {
+  grid-area: B;
+}
+.task-container__commerc-offer table tbody .task-container__item-measure .task-container__item-measure-costprice, .task-container__offer table tbody .task-container__item-measure .task-container__item-measure-costprice {
+  grid-area: C;
+}
+.task-container__commerc-offer table tbody .task-container__item-measure .task-container__item-measure-symbol-plus, .task-container__offer table tbody .task-container__item-measure .task-container__item-measure-symbol-plus {
+  grid-area: D;
+  justify-content: flex-end;
+}
+.task-container__commerc-offer table tbody .task-container__item-measure .task-container__item-measure-value-persent, .task-container__offer table tbody .task-container__item-measure .task-container__item-measure-value-persent {
+  grid-area: E;
+}
+.task-container__commerc-offer table tbody .task-container__item-measure .task-container__item-measure-symbol-percent, .task-container__offer table tbody .task-container__item-measure .task-container__item-measure-symbol-percent {
+  grid-area: F;
+  justify-content: flex-start;
+}
+.task-container__commerc-offer table tbody .task-container__item-design, .task-container__offer table tbody .task-container__item-design {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 1fr 7px;
+  grid-template-rows: 17px 17px;
+  grid-template-areas: "A A" "B C";
+  width: 100%;
+}
+.task-container__commerc-offer table tbody .task-container__item-design > div, .task-container__offer table tbody .task-container__item-design > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.task-container__commerc-offer table tbody .task-container__item-design .task-container__item-design-type, .task-container__offer table tbody .task-container__item-design .task-container__item-design-type {
+  grid-area: A;
+}
+.task-container__commerc-offer table tbody .task-container__item-design .task-container__item-design-amount, .task-container__offer table tbody .task-container__item-design .task-container__item-design-amount {
+  grid-area: B;
+}
+.task-container__commerc-offer table tbody .task-container__item-design .task-container__item-design-symbol-rub, .task-container__offer table tbody .task-container__item-design .task-container__item-design-symbol-rub {
+  grid-area: C;
+}
+.task-container__commerc-offer table tbody .task-container__item-mounting, .task-container__offer table tbody .task-container__item-mounting {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 1fr 7px 20px 7px;
+  grid-template-rows: 17px 4px 17px 17px;
+  grid-template-areas: "A B B B" "_1 _2 C _3" "D E E E" "_4 F G H";
+  width: 100%;
+}
+.task-container__commerc-offer table tbody .task-container__item-mounting > div, .task-container__offer table tbody .task-container__item-mounting > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.task-container__commerc-offer table tbody .task-container__item-mounting input, .task-container__offer table tbody .task-container__item-mounting input {
+  width: 100%;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+.task-container__commerc-offer table tbody .task-container__item-mounting input::-webkit-inner-spin-button, .task-container__commerc-offer table tbody .task-container__item-mounting input::-webkit-outer-spin-button, .task-container__offer table tbody .task-container__item-mounting input::-webkit-inner-spin-button, .task-container__offer table tbody .task-container__item-mounting input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.task-container__commerc-offer table tbody .task-container__item-mounting .task-container__item-mounting-city, .task-container__offer table tbody .task-container__item-mounting .task-container__item-mounting-city {
+  grid-area: A;
+}
+.task-container__commerc-offer table tbody .task-container__item-mounting .task-container__item-mounting-count-day, .task-container__offer table tbody .task-container__item-mounting .task-container__item-mounting-count-day {
+  grid-area: B;
+}
+.task-container__commerc-offer table tbody .task-container__item-mounting .task-container__item-mounting-symbol-mul, .task-container__offer table tbody .task-container__item-mounting .task-container__item-mounting-symbol-mul {
+  grid-area: C;
+}
+.task-container__commerc-offer table tbody .task-container__item-mounting .task-container__item-mounting-type, .task-container__offer table tbody .task-container__item-mounting .task-container__item-mounting-type {
+  grid-area: D;
+}
+.task-container__commerc-offer table tbody .task-container__item-mounting .task-container__item-mounting-costprice, .task-container__offer table tbody .task-container__item-mounting .task-container__item-mounting-costprice {
+  grid-area: E;
+}
+.task-container__commerc-offer table tbody .task-container__item-mounting .task-container__item-mounting-symbol-plus, .task-container__offer table tbody .task-container__item-mounting .task-container__item-mounting-symbol-plus {
+  grid-area: F;
+}
+.task-container__commerc-offer table tbody .task-container__item-mounting .task-container__item-mounting-value-percent, .task-container__offer table tbody .task-container__item-mounting .task-container__item-mounting-value-percent {
+  grid-area: G;
+}
+.task-container__commerc-offer table tbody .task-container__item-mounting .task-container__item-mounting-symbol-percent, .task-container__offer table tbody .task-container__item-mounting .task-container__item-mounting-symbol-percent {
+  grid-area: H;
+}
+.task-container__commerc-offer table tbody .task-container__item-mounting .empty-1, .task-container__offer table tbody .task-container__item-mounting .empty-1 {
+  grid-area: _1;
+}
+.task-container__commerc-offer table tbody .task-container__item-mounting .empty-2, .task-container__offer table tbody .task-container__item-mounting .empty-2 {
+  grid-area: _2;
+}
+.task-container__commerc-offer table tbody .task-container__item-mounting .empty-3, .task-container__offer table tbody .task-container__item-mounting .empty-3 {
+  grid-area: _3;
+}
+.task-container__commerc-offer table tbody .task-container__item-mounting .empty-4, .task-container__offer table tbody .task-container__item-mounting .empty-4 {
+  grid-area: _4;
+}
+.task-container__commerc-offer table tbody .task-container__item-deadlines, .task-container__offer table tbody .task-container__item-deadlines {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 17px 17px;
+  grid-template-areas: "A" "B";
+  width: 100%;
+}
+.task-container__commerc-offer table tbody .task-container__item-deadlines > div, .task-container__offer table tbody .task-container__item-deadlines > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.task-container__commerc-offer table tbody .task-container__item-deadlines .task-container__item-deadlines-type, .task-container__offer table tbody .task-container__item-deadlines .task-container__item-deadlines-type {
+  grid-area: A;
+}
+.task-container__commerc-offer table tbody .task-container__item-deadlines .task-container__item-deadlines-data, .task-container__offer table tbody .task-container__item-deadlines .task-container__item-deadlines-data {
+  grid-area: B;
+}
+.task-container__commerc-offer table tbody .task-container__item-dismantling, .task-container__offer table tbody .task-container__item-dismantling {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 17px 1fr 7px 20px 7px;
+  grid-template-rows: 17px 17px 17px;
+  grid-template-areas: "A B C C C" "A D E E E" "_1 _1 F G H";
+  width: 100%;
+}
+.task-container__commerc-offer table tbody .task-container__item-dismantling > div, .task-container__offer table tbody .task-container__item-dismantling > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.task-container__commerc-offer table tbody .task-container__item-dismantling input, .task-container__offer table tbody .task-container__item-dismantling input {
+  width: 100%;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+.task-container__commerc-offer table tbody .task-container__item-dismantling input::-webkit-inner-spin-button, .task-container__commerc-offer table tbody .task-container__item-dismantling input::-webkit-outer-spin-button, .task-container__offer table tbody .task-container__item-dismantling input::-webkit-inner-spin-button, .task-container__offer table tbody .task-container__item-dismantling input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.task-container__commerc-offer table tbody .task-container__item-dismantling .task-container__item-dismantling-area, .task-container__offer table tbody .task-container__item-dismantling .task-container__item-dismantling-area {
+  grid-area: A;
+  position: relative;
+}
+.task-container__commerc-offer table tbody .task-container__item-dismantling .task-container__item-dismantling-area input, .task-container__offer table tbody .task-container__item-dismantling .task-container__item-dismantling-area input {
+  transform: rotate(270deg);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  line-height: 14px;
+  text-align: center;
+  width: 36px;
+  height: 17px;
+  position: absolute;
+  top: 9px;
+  left: -9px;
+  -moz-appearance: textfield;
+}
+.task-container__commerc-offer table tbody .task-container__item-dismantling .task-container__item-dismantling-area input::-webkit-inner-spin-button, .task-container__commerc-offer table tbody .task-container__item-dismantling .task-container__item-dismantling-area input::-webkit-outer-spin-button, .task-container__offer table tbody .task-container__item-dismantling .task-container__item-dismantling-area input::-webkit-inner-spin-button, .task-container__offer table tbody .task-container__item-dismantling .task-container__item-dismantling-area input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.task-container__commerc-offer table tbody .task-container__item-dismantling .task-container__item-dismantling-area input, .task-container__offer table tbody .task-container__item-dismantling .task-container__item-dismantling-area input {
+  box-sizing: border-box;
+}
+.task-container__commerc-offer table tbody .task-container__item-dismantling .task-container__item-dismantling-difficulty-desc, .task-container__offer table tbody .task-container__item-dismantling .task-container__item-dismantling-difficulty-desc {
+  grid-area: B;
+}
+.task-container__commerc-offer table tbody .task-container__item-dismantling .task-container__item-dismantling-difficulty-price, .task-container__offer table tbody .task-container__item-dismantling .task-container__item-dismantling-difficulty-price {
+  grid-area: C;
+}
+.task-container__commerc-offer table tbody .task-container__item-dismantling .task-container__item-dismantling-cost-desc, .task-container__offer table tbody .task-container__item-dismantling .task-container__item-dismantling-cost-desc {
+  grid-area: D;
+}
+.task-container__commerc-offer table tbody .task-container__item-dismantling .task-container__item-dismantling-cost-price, .task-container__offer table tbody .task-container__item-dismantling .task-container__item-dismantling-cost-price {
+  grid-area: E;
+}
+.task-container__commerc-offer table tbody .task-container__item-dismantling .task-container__item-dismantling-symbol-plus, .task-container__offer table tbody .task-container__item-dismantling .task-container__item-dismantling-symbol-plus {
+  grid-area: F;
+}
+.task-container__commerc-offer table tbody .task-container__item-dismantling .task-container__item-dismantling-value-percent, .task-container__offer table tbody .task-container__item-dismantling .task-container__item-dismantling-value-percent {
+  grid-area: G;
+}
+.task-container__commerc-offer table tbody .task-container__item-dismantling .task-container__item-dismantling-symbol-percent, .task-container__offer table tbody .task-container__item-dismantling .task-container__item-dismantling-symbol-percent {
+  grid-area: H;
+}
+.task-container__commerc-offer table tbody .task-container__item-dismantling .empty-1, .task-container__offer table tbody .task-container__item-dismantling .empty-1 {
+  grid-area: _1;
+}
+.task-container__commerc-offer table tbody .task-container__item-business-trip, .task-container__offer table tbody .task-container__item-business-trip {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 1fr 7px 20px 7px;
+  grid-template-rows: 17px 17px;
+  grid-template-areas: "A A A A" "B C D E";
+  width: 100%;
+}
+.task-container__commerc-offer table tbody .task-container__item-business-trip > div, .task-container__offer table tbody .task-container__item-business-trip > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.task-container__commerc-offer table tbody .task-container__item-business-trip input, .task-container__offer table tbody .task-container__item-business-trip input {
+  width: 100%;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+.task-container__commerc-offer table tbody .task-container__item-business-trip input::-webkit-inner-spin-button, .task-container__commerc-offer table tbody .task-container__item-business-trip input::-webkit-outer-spin-button, .task-container__offer table tbody .task-container__item-business-trip input::-webkit-inner-spin-button, .task-container__offer table tbody .task-container__item-business-trip input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.task-container__commerc-offer table tbody .task-container__item-business-trip .task-container__item-business-trip-type, .task-container__offer table tbody .task-container__item-business-trip .task-container__item-business-trip-type {
+  grid-area: A;
+}
+.task-container__commerc-offer table tbody .task-container__item-business-trip .task-container__item-business-trip-costprice, .task-container__offer table tbody .task-container__item-business-trip .task-container__item-business-trip-costprice {
+  grid-area: B;
+}
+.task-container__commerc-offer table tbody .task-container__item-business-trip .task-container__item-business-trip-symbol-plus, .task-container__offer table tbody .task-container__item-business-trip .task-container__item-business-trip-symbol-plus {
+  grid-area: C;
+}
+.task-container__commerc-offer table tbody .task-container__item-business-trip .task-container__item-business-trip-value-percent, .task-container__offer table tbody .task-container__item-business-trip .task-container__item-business-trip-value-percent {
+  grid-area: D;
+}
+.task-container__commerc-offer table tbody .task-container__item-business-trip .task-container__item-business-trip-symbol-percent, .task-container__offer table tbody .task-container__item-business-trip .task-container__item-business-trip-symbol-percent {
+  grid-area: E;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-container, .task-container__offer table tbody .task-container__item-delivery-container {
+  display: flex;
+  align-items: center;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-container .task-container__item-delivery, .task-container__offer table tbody .task-container__item-delivery-container .task-container__item-delivery {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 17px 4px 17px;
+  grid-template-areas: "A" "B" "C";
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-container .task-container__item-delivery > div, .task-container__offer table tbody .task-container__item-delivery-container .task-container__item-delivery > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-container .task-container__item-delivery input, .task-container__offer table tbody .task-container__item-delivery-container .task-container__item-delivery input {
+  width: 100%;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-container .task-container__item-delivery input::-webkit-inner-spin-button, .task-container__commerc-offer table tbody .task-container__item-delivery-container .task-container__item-delivery input::-webkit-outer-spin-button, .task-container__offer table tbody .task-container__item-delivery-container .task-container__item-delivery input::-webkit-inner-spin-button, .task-container__offer table tbody .task-container__item-delivery-container .task-container__item-delivery input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-container .task-container__item-delivery .task-container__item-delivery-count, .task-container__offer table tbody .task-container__item-delivery-container .task-container__item-delivery .task-container__item-delivery-count {
+  grid-area: A;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-container .task-container__item-delivery .task-container__item-delivery-mul, .task-container__offer table tbody .task-container__item-delivery-container .task-container__item-delivery .task-container__item-delivery-mul {
+  grid-area: B;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-container .task-container__item-delivery .task-container__item-delivery-price, .task-container__offer table tbody .task-container__item-delivery-container .task-container__item-delivery .task-container__item-delivery-price {
+  grid-area: C;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container, .task-container__offer table tbody .task-container__item-delivery-cp-container {
+  display: flex;
+  align-items: center;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 3fr;
+  grid-template-rows: 17px auto 17px 17px;
+  grid-template-areas: "A A A" "B B B" "C C C" "D E F";
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 3fr;
+  grid-template-rows: 17px auto 17px 17px;
+  grid-template-areas: "A A A" "B B B" "C C C" "D E F";
+  width: 100%;
+  height: fit-content;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp > div, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp > div, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp input, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp input {
+  width: 100%;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp input::-webkit-inner-spin-button, .task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp input::-webkit-outer-spin-button, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp input::-webkit-inner-spin-button, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp textarea, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp textarea {
+  resize: vertical;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-method, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-method {
+  grid-area: A;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-address, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-address {
+  grid-area: B;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-cost, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-cost {
+  grid-area: C;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-symbol-plus, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-symbol-plus {
+  grid-area: D;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-percent, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-percent {
+  grid-area: E;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-symbol-percent, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-symbol-percent {
+  grid-area: F;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp input, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp input {
+  width: 100%;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp input::-webkit-inner-spin-button, .task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp input::-webkit-outer-spin-button, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp input::-webkit-inner-spin-button, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp textarea, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp textarea {
+  resize: vertical;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-method, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-method {
+  grid-area: A;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-address, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-address {
+  grid-area: B;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-cost, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-cost {
+  grid-area: C;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-symbol-plus, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-symbol-plus {
+  grid-area: D;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-percent, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-percent {
+  grid-area: E;
+}
+.task-container__commerc-offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-symbol-percent, .task-container__offer table tbody .task-container__item-delivery-cp-container .task-container__item-delivery-cp .task-container__item-delivery-cp-symbol-percent {
+  grid-area: F;
+}
+.task-container__commerc-offer table tbody .task-container__item-summary-percent, .task-container__offer table tbody .task-container__item-summary-percent {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 7px 20px 7px;
+  grid-template-areas: "A B C";
+  width: 100%;
+}
+.task-container__commerc-offer table tbody .task-container__item-summary-percent > div, .task-container__offer table tbody .task-container__item-summary-percent > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.task-container__commerc-offer table tbody .task-container__item-summary-percent input, .task-container__offer table tbody .task-container__item-summary-percent input {
+  width: 100%;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+.task-container__commerc-offer table tbody .task-container__item-summary-percent input::-webkit-inner-spin-button, .task-container__commerc-offer table tbody .task-container__item-summary-percent input::-webkit-outer-spin-button, .task-container__offer table tbody .task-container__item-summary-percent input::-webkit-inner-spin-button, .task-container__offer table tbody .task-container__item-summary-percent input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.task-container__commerc-offer table tbody .task-container__item-summary-percent .task-container__item-summary-percent-plus, .task-container__offer table tbody .task-container__item-summary-percent .task-container__item-summary-percent-plus {
+  grid-area: A;
+}
+.task-container__commerc-offer table tbody .task-container__item-summary-percent .task-container__item-summary-percent-value, .task-container__offer table tbody .task-container__item-summary-percent .task-container__item-summary-percent-value {
+  grid-area: B;
+}
+.task-container__commerc-offer table tbody .task-container__item-summary-percent .task-container__item-summary-percent-percent, .task-container__offer table tbody .task-container__item-summary-percent .task-container__item-summary-percent-percent {
+  grid-area: C;
+}
+.task-container__commerc-offer table tbody .task-container__item-summary-amount, .task-container__offer table tbody .task-container__item-summary-amount {
+  display: flex;
+  justify-content: flex-end !important;
+}
+.task-container__commerc-offer table tbody .task-container__item-added input, .task-container__offer table tbody .task-container__item-added input {
+  border-radius: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.task-container__menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+.task-container__menu .task-container__menu-nav {
+  margin: 0;
+}
+.task-container__menu .task-container__menu-nav button {
+  font: 900 10px Roboto;
+  color: #999999;
+  background: none;
+  border: 2px solid rgba(0, 0, 0, 0);
+}
+.task-container__menu .task-container__menu-nav button.active {
+  color: #464A4E;
+  border: 2px solid #FF8600;
+}
+.task-container__menu .task-container__menu-nav button:hover {
+  color: #343537;
+}
+.task-container__menu .task-container__menu-task-data {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 10px;
+}
+.task-container__menu .task-container__menu-task-data .task-container__menu-task-title {
+  font: 300 10px Roboto;
+}
+.task-container__menu .task-container__menu-task-data .task-container__menu-task-link {
+  color: #80868E;
+  font-size: 16px;
+  cursor: pointer;
+}
+.task-container__menu .task-container__menu-task-data .task-container__menu-task-link:hover {
+  color: #5a5c5e;
+}
+.task-container__menu .task-container__menu-task-data .task-container__menu-task-date {
+  font: 400 8px Roboto;
+  color: #97999B;
+}
+.task-container__menu .task-container__menu-buttons {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 10px;
+  position: relative;
+  font: 900 14px Roboto;
+}
+.task-container__menu .task-container__menu-buttons button {
+  width: 100%;
+  height: 35px;
+  color: #fff;
+  border: none;
+}
+.task-container__menu .task-container__menu-buttons .task-container__menu-update-task {
+  background-color: #FFDE8A;
+}
+.task-container__menu .task-container__menu-buttons .task-container__menu-update-task:hover {
+  background-color: #ebc156;
+}
+.task-container__menu .task-container__menu-buttons .task-container__menu-save-task {
+  background-color: #45D153;
+}
+.task-container__menu .task-container__menu-buttons .task-container__menu-save-task:hover {
+  background-color: #139220;
+}
+.task-container__menu .task-container__menu-buttons .task-container__menu-cancel-task {
+  background-color: #C2C5CA;
+}
+.task-container__menu .task-container__menu-buttons .task-container__menu-cancel-task:hover {
+  background-color: #8c8e90;
+}
+.task-container__menu .task-container__menu-buttons .task-container__menu-activity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 170px;
+  padding: 0 10px;
+  background-color: #3BC8F5;
+  color: #fff;
+  border-radius: 12px;
+}
+.task-container__menu .task-container__menu-buttons .task-container__menu-activity .task-container__menu-activity-left {
+  flex-grow: 1;
+  text-align: center;
+}
+.task-container__menu .task-container__menu-buttons .task-container__menu-activity .task-container__menu-activity-split i {
+  display: block;
+  transform: rotateX(90deg);
+  font-size: 22px;
+}
+.task-container__menu .task-container__menu-buttons .task-container__menu-activity .task-container__menu-activity-right i {
+  display: block;
+  font-size: 22px;
+  padding-left: 10px;
+  border-left: 1px solid #fff;
+}
+.task-container__menu .task-container__menu-buttons .task-container__menu-activity:hover {
+  background-color: #5eacff;
+}
+.task-container__menu .task-container__menu-buttons .task-container__menu-activity.expand .task-container__menu-activity-right i {
+  transform: rotateX(180deg);
+}
+.task-container__menu .task-container__menu-buttons .expand-menu {
+  display: block !important;
+}
+.task-container__menu .task-container__menu-buttons .task-container__activities {
+  display: none;
+  width: 300px;
+  padding: 15px;
+  background-color: #fff;
+  font: 400 15px Roboto;
+  color: #464A4E;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  border: 2px solid #5896f9;
+  z-index: 1000;
+}
+.task-container__menu .task-container__menu-buttons .task-container__activities .task-container__activities-group {
+  padding: 5px 0;
+}
+.task-container__menu .task-container__menu-buttons .task-container__activities .task-container__activities-group .task-container__activities-row {
+  display: grid;
+  grid-template-columns: 1fr 25px;
+  gap: 15px;
+  padding: 4px 0;
+  cursor: default;
+}
+.task-container__menu .task-container__menu-buttons .task-container__activities .task-container__activities-group .task-container__activities-row .task-container__activities-title {
+  text-align: right;
+}
+.task-container__menu .task-container__menu-buttons .task-container__activities .task-container__activities-group .task-container__activities-row:hover .task-container__activities-title {
+  text-decoration: underline;
+}
+.task-container__menu .task-container__menu-buttons .task-container__activities .task-container__activities-group:nth-child(n+2) {
+  border-top: 1px solid #D7D9DC;
+}
+.task-container__menu .task-container__menu-buttons .task-container__activities .task-container__activities-group .task-container__menu-create-order i {
+  color: #54b434;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 7px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 6px;
+  width: 6px;
+  left: 1px;
+  bottom: 1px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #41AD49;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #41AD49;
+}
+
+input:checked + .slider:before {
+  transform: translateX(6px);
+}
+
+.slider.round {
+  border-radius: 7px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.window-searchcontact {
+  position: absolute;
+  height: 400px;
+  width: 600px;
+  border: 1px solid #e1d6d6;
+  background: #ffffff;
+  z-index: 101;
+}
+.window-searchcontact .window-searchcontact-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: #ffffff;
+  z-index: 101;
+}
+.window-searchcontact .window-searchcontact-container .filter-window-data-close, .window-searchcontact .window-searchcontact-container .filter-window-close {
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  z-index: 99999;
+}
+.window-searchcontact .window-searchcontact-container .filter-window-data-close i, .window-searchcontact .window-searchcontact-container .filter-window-close i {
+  cursor: pointer;
+}
+.window-searchcontact .window-searchcontact-container .filter-window-data-close i:hover, .window-searchcontact .window-searchcontact-container .filter-window-close i:hover {
+  color: #5b5b5b !important;
+}
+.window-searchcontact .window-searchcontact-container .btn-search-responsible, .window-searchcontact .window-searchcontact-container .btn-search-department, .window-searchcontact .window-searchcontact-container .btn-search-invite {
+  position: absolute;
+  left: -37px;
+  top: 25px;
+  height: 40px;
+  width: 120px;
+  background-color: #2fc6f6;
+  border-radius: 20px 0 0 20px;
+  transition: left 750ms;
+  z-index: -99;
+  opacity: 0.99;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  cursor: pointer;
+}
+.window-searchcontact .window-searchcontact-container .btn-search-responsible:hover, .window-searchcontact .window-searchcontact-container .btn-search-department:hover, .window-searchcontact .window-searchcontact-container .btn-search-invite:hover {
+  left: -120px;
+}
+.window-searchcontact .window-searchcontact-container .btn-search-responsible .btn-search-logo, .window-searchcontact .window-searchcontact-container .btn-search-department .btn-search-logo, .window-searchcontact .window-searchcontact-container .btn-search-invite .btn-search-logo {
+  margin: 0 auto;
+}
+.window-searchcontact .window-searchcontact-container .btn-search-responsible .btn-search-logo i, .window-searchcontact .window-searchcontact-container .btn-search-department .btn-search-logo i, .window-searchcontact .window-searchcontact-container .btn-search-invite .btn-search-logo i {
+  line-height: 40px;
+  color: #ffffff;
+}
+.window-searchcontact .window-searchcontact-container .btn-search-responsible .btn-search-desc, .window-searchcontact .window-searchcontact-container .btn-search-department .btn-search-desc, .window-searchcontact .window-searchcontact-container .btn-search-invite .btn-search-desc {
+  line-height: 40px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+}
+.window-searchcontact .window-searchcontact-container .btn-search-inactive {
+  background: #e4ebed;
+}
+.window-searchcontact .window-searchcontact-container .btn-search-inactive .btn-search-logo i, .window-searchcontact .window-searchcontact-container .btn-search-inactive .btn-search-desc {
+  color: #707782;
+}
+.window-searchcontact .window-searchcontact-container .btn-search-department {
+  top: 70px;
+}
+.window-searchcontact .window-searchcontact-container .btn-search-invite {
+  top: 115px;
+}
+.window-searchcontact .window-searchcontact-container .container-data {
+  height: 100%;
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-block {
+  border-bottom: 1px solid rgba(82, 92, 105, 0.1019607843);
+  margin-top: 10px;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-block .container-data-head {
+  margin: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(82, 92, 105, 0.1019607843);
+  background: #fff;
+  border: 1px solid #c6cdd3;
+  border-radius: 2px;
+  padding: 2px 3px;
+  overflow: hidden;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-block .container-data-head .container-data-head-selector {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  min-height: 33px;
+  overflow-x: hidden;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-block .container-data-head .container-data-head-selector input {
+  width: 100%;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-block .user-item {
+  display: grid;
+  grid-template-columns: 1fr 25px;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
+  max-width: 200px;
+  background-color: #bcedfc;
+  color: #1066bb !important;
+  margin: 2px;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-block .user-item .user-item-content {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  cursor: pointer;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-block .user-item .user-item-content .user-item-avatar {
+  background-image: url("./photo/default-user.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 21px;
+  width: 21px;
+  margin: auto;
+  border-radius: 50%;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-block .user-item .user-item-content .user-item-title {
+  margin: auto 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font: bold 13px/29px "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-block .user-item .user-item-remove {
+  margin: auto;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-block .user-item .user-item-remove > div {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-block .user-item .user-item-remove button {
+  font-size: 10px;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-block .user-item-guest {
+  background-color: #ffec91;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-block .user-item-guest .user-item-content .user-item-title {
+  color: #a26b00;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-block .user-item-guest .user-item-content .user-item-avatar {
+  background-image: url("./photo/email-user.svg");
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-block span {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0px;
+  display: inline-block;
+  min-width: 40px;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-block input {
+  border: 0;
+  outline: 0;
+  background: #fff;
+  color: #555;
+  font-size: 13px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin: 2px;
+  height: 29px;
+  box-shadow: none;
+}
+.window-searchcontact .container-data-user {
+  display: flex;
+  flex-direction: column;
+}
+.window-searchcontact .container-data-depart, .window-searchcontact .container-data-user {
+  padding: 15px 15px 0 15px;
+  height: 100%;
+  overflow: auto;
+  overflow-y: scroll;
+}
+.window-searchcontact .container-data-depart .ui-selector-item-useravatar, .window-searchcontact .container-data-user .ui-selector-item-useravatar {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  background: #cfcfcf;
+}
+.window-searchcontact .container-data-depart .ui-selector-item-useravatar i, .window-searchcontact .container-data-user .ui-selector-item-useravatar i {
+  display: inline-block;
+  color: #ffffff;
+}
+.window-searchcontact .container-data-depart .ui-selector-item, .window-searchcontact .container-data-user .ui-selector-item {
+  display: grid;
+  grid-template-columns: 28px 1fr 45px;
+  min-height: 44px;
+  cursor: pointer;
+  align-items: center;
+}
+.window-searchcontact .container-data-depart .ui-selector-item .ui-selector-item-avatar, .window-searchcontact .container-data-user .ui-selector-item .ui-selector-item-avatar {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  background: #55d0e0;
+}
+.window-searchcontact .container-data-depart .ui-selector-item .ui-selector-item-avatar i, .window-searchcontact .container-data-user .ui-selector-item .ui-selector-item-avatar i {
+  display: inline-block;
+  color: #ffffff;
+}
+.window-searchcontact .container-data-depart .ui-selector-item-titles, .window-searchcontact .container-data-user .ui-selector-item-titles {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  margin-left: 10px;
+}
+.window-searchcontact .container-data-depart .ui-selector-item-titles .ui-selector-item-supertitle, .window-searchcontact .container-data-user .ui-selector-item-titles .ui-selector-item-supertitle {
+  font-size: 9px;
+  font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  color: #b1b6bb;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.window-searchcontact .container-data-depart .ui-selector-item-titles .ui-selector-item-title-box, .window-searchcontact .container-data-user .ui-selector-item-titles .ui-selector-item-title-box {
+  display: flex;
+  overflow: hidden;
+}
+.window-searchcontact .container-data-depart .ui-selector-item-titles .ui-selector-item-title-box .ui-selector-item-title-box-title, .window-searchcontact .container-data-user .ui-selector-item-titles .ui-selector-item-title-box .ui-selector-item-title-box-title {
+  font-size: 14px;
+  color: #535c69;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.window-searchcontact .container-data-depart .ui-selector-item-titles .ui-selector-item-title-box .ui-selector-item-title-box-status, .window-searchcontact .container-data-user .ui-selector-item-titles .ui-selector-item-title-box .ui-selector-item-title-box-status {
+  display: flex;
+  overflow: hidden;
+}
+.window-searchcontact .container-data-depart .ui-selector-item-titles .ui-selector-item-title-box .ui-selector-item-title-box-status span, .window-searchcontact .container-data-user .ui-selector-item-titles .ui-selector-item-title-box .ui-selector-item-title-box-status span {
+  display: none;
+  font-size: 9px;
+  background-color: rgba(47, 198, 246, 0.17);
+  padding: 4px 8px;
+  margin-left: 7px;
+  border-radius: 10px;
+  color: #23a2ca;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgb(35, 162, 202);
+  background-color: rgb(220, 246, 254);
+}
+.window-searchcontact .container-data-depart .ui-selector-item-titles .ui-selector-item-title-box .ui-selector-item-title-box-workposition, .window-searchcontact .container-data-user .ui-selector-item-titles .ui-selector-item-title-box .ui-selector-item-title-box-workposition {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  color: rgba(83, 92, 105, 0.5019607843);
+  margin-left: 7px;
+}
+.window-searchcontact .container-data-depart .ui-selector-item-user-link, .window-searchcontact .container-data-user .ui-selector-item-user-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #9b9b9b;
+  border-bottom: 1px dashed rgba(155, 155, 155, 0.4);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.window-searchcontact .container-data-depart .ui-selector-item-indicator, .window-searchcontact .container-data-user .ui-selector-item-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s;
+}
+.window-searchcontact .container-data-depart .ui-selector-item-indicator > div, .window-searchcontact .container-data-user .ui-selector-item-indicator > div {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.window-searchcontact .container-data-depart .ui-selector-item-children, .window-searchcontact .container-data-user .ui-selector-item-children {
+  overflow: hidden;
+  height: 0;
+  margin-left: 16px;
+  padding-left: 16px;
+  border-left: 1px solid #ebecee;
+}
+.window-searchcontact .container-data-depart .ui-selector-item-box-open > .ui-selector-item > .ui-selector-item-indicator, .window-searchcontact .container-data-user .ui-selector-item-box-open > .ui-selector-item > .ui-selector-item-indicator {
+  transform: rotate(180deg);
+}
+.window-searchcontact .container-data-depart .ui-selector-item-children-heightnull, .window-searchcontact .container-data-user .ui-selector-item-children-heightnull {
+  transform: scaleY(1);
+  opacity: 1;
+}
+.window-searchcontact .container-data-depart .ui-selector-item-box .ui-selector-item-guest .ui-selector-item-title-box-status span, .window-searchcontact .container-data-user .ui-selector-item-box .ui-selector-item-guest .ui-selector-item-title-box-status span {
+  background-color: #ffec91;
+  color: #a26b00;
+}
+.window-searchcontact .container-data-depart .ui-selector-item:hover, .window-searchcontact .container-data-user .ui-selector-item:hover {
+  background: #f7f8f8;
+}
+.window-searchcontact .container-data-depart::-webkit-scrollbar, .window-searchcontact .container-data-user::-webkit-scrollbar {
+  width: 5px;
+  background-color: #ffffff;
+}
+.window-searchcontact .container-data-depart::-webkit-scrollbar-thumb, .window-searchcontact .container-data-user::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #9a9b9b;
+}
+.window-searchcontact .container-data-depart::-webkit-scrollbar-track, .window-searchcontact .container-data-user::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #f9f9fd;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-invite {
+  width: 100%;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-invite .container-data-invite-header {
+  font-family: "OpenSans-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  color: #333;
+  letter-spacing: 0;
+  margin: 5px 15px;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-invite .container-data-invite-form {
+  margin: 5px 15px;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-invite .container-data-invite-form div {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-invite .container-data-invite-form div > label {
+  margin-bottom: 2px;
+}
+.window-searchcontact .window-searchcontact-container .container-data .container-data-invite .container-data-invite-btn {
+  height: 45px;
+  box-shadow: 0 -2px 4px 0 #c6c9cb;
+}
+.window-searchcontact .ui-selector-item-box-guest .ui-selector-item .ui-selector-item-title-box-status span {
+  display: block !important;
+  background-color: #ffec91 !important;
+  color: #a26b00 !important;
+}
+.window-searchcontact .ui-selector-item-box-guest .ui-selector-item .ui-selector-item-useravatar {
+  background-image: url("./photo/email-user.svg") !important;
+}
+.window-searchcontact .ui-selector-item-useravatar {
+  background-image: url("./photo/default-user.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 28px;
+  height: 28px;
+  margin: auto;
+  border-radius: 50%;
+}
+
+@keyframes rotate-forever {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.spinner-border {
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-name: rotate-forever;
+  animation-timing-function: linear;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  border: 0.25em solid #595959;
+  border-right-color: transparent;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  border-width: 0.2em;
+}
+
+.tooltip-img {
+  position: absolute;
+  visibility: hidden;
+  white-space: nowrap;
+  padding: 5px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  z-index: 11111;
+  transition: ease 0.4s;
+}
+
+.deal-container > div {
+  background-color: #FDFDFD;
+  border-radius: 12px;
+}
+
+.deal-container .deal-desc {
+  grid-area: desc;
+}
+.deal-container .deal-clients {
+  grid-area: clients;
+}
+.deal-container .deal-empty {
+  grid-area: empty;
+}
+.deal-container .deal-state {
+  grid-area: state;
+}
+.deal-container .deal-amounts {
+  grid-area: amounts;
+}
+.deal-container .deal-workers {
+  grid-area: workers;
+}
+.deal-container .deal-files {
+  grid-area: files;
+}
+.deal-container .deal-docs {
+  grid-area: docs;
+}
+.deal-container .deal-invoices {
+  grid-area: accounts;
+}
+.deal-container .deal-acts {
+  grid-area: acts;
+}
+.deal-container .deal-finance {
+  grid-area: finance;
+}
+
+.deal-container {
+  width: 100%;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto 24% 10% 10% 12%;
+  grid-template-rows: 55px 116px 55px 164px;
+  grid-template-areas: "desc  clients empty    empty   workers" "desc  clients state    state   workers" "desc  clients amounts  amounts workers" "files docs    accounts acts    finance";
+  padding: 10px;
+  background-color: #EEF2F4;
+  box-sizing: border-box;
+}
+
+.task-container {
+  background-color: #EEF2F4;
+  height: 100vh;
+  padding: 10px;
+}
+
+.nav-tabs {
+  margin-top: 20px;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.show {
+  display: block;
+}
+
+.tab-pane.fade {
+  transition: opacity 0.5s;
+}
+
+.nav-link.active {
+  background-color: #f8f9fa;
+}/*# sourceMappingURL=index.css.map */

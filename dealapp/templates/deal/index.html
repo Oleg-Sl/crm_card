@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="{% static 'styles/index.css' %}" rel="stylesheet">
+
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.slim.js"
+        integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
+        crossorigin="anonymous"></script>
+
+    <script>
+        let dealId = {{ id }};
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="deal-container">
+        <div class="deal-desc">
+            <div class="deal-desc__container">
+                <div class="deal-desc__row-one">
+                    <div class="deal-desc__number-order">
+                        <label class="deal-desc__number-order-label" for="dealDescNumberOrder">№ заказа (автом.)</label>
+                        <div><input class="deal-desc__number-order-input" id="dealDescNumberOrder" type="text" value="13245" disabled></div>
+                    </div>
+                    <div class="deal-desc__title">
+                        <label class="deal-desc__title-label" for="dealDescTitle">Название сделки</label>
+                        <div><input class="deal-desc__title-input" id="dealDescTitle" type="text" value="Title deal"></div>
+                    </div>
+                    <div class="deal-desc__source">
+                        <label class="deal-desc__source-label" for="dealDescSource">Источник Заявки</label>
+                        <div>
+                            <select class="deal-desc__source-input"  id="dealDescSource">
+                                <!-- Список источников -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deal-desc__row-two">
+                    <div class="deal-desc__table-container">
+                        <label>Что делаем по заказу</label>
+                        <div class="deal-desc__table table">
+                            <div class="cell"> <input id="dealDescKeyField1" placeholder="как вас зовут" type="text"></div>
+                            <div class="cell"><input class="deal-desc__desc-order" id="dealDescValueField1" type="text" placeholder="Введите данные"></div>
+                            <div class="cell"> <input id="dealDescKeyField2" placeholder="какой и сколько" type="text"></div>
+                            <div class="cell"><input class="deal-desc__desc-order" id="dealDescValueField2" type="text" placeholder="Введите данные"></div>
+                            <div class="cell"> <input id="dealDescKeyField3" placeholder="макет исходники" type="text"></div>
+                            <div class="cell"><input class="deal-desc__desc-order" id="dealDescValueField3" type="text" placeholder="Введите данные"></div>
+                            <div class="cell"> <input id="dealDescKeyField4" placeholder="есть ли замеры" type="text"></div>
+                            <div class="cell"><input class="deal-desc__desc-order" id="dealDescValueField4" type="text" placeholder="Введите данные"></div>
+                            <div class="cell"> <input id="dealDescKeyField5" placeholder="есть ли демонтаж" type="text"></div>
+                            <div class="cell"><input class="deal-desc__desc-order" id="dealDescValueField5" type="text" placeholder="Введите данные"></div>
+                            <div class="cell"> <input id="dealDescKeyField6" placeholder="с ндс" type="text"></div>
+                            <div class="cell"><input class="deal-desc__desc-order" id="dealDescValueField6" type="text" placeholder="Введите данные"></div>
+                            <div class="cell"> <input id="dealDescKeyField7" placeholder="какие сроки" type="text"></div>
+                            <div class="cell"><input class="deal-desc__desc-order" id="dealDescValueField7" type="text" placeholder="Введите данные"></div>
+                            <div class="cell"> <input id="dealDescKeyField8" placeholder="компания" type="text"></div>
+                            <div class="cell"><input class="deal-desc__desc-order" id="dealDescValueField8" type="text" placeholder="Введите данные"></div>
+                            <div class="cell"> <input id="dealDescKeyField9" placeholder="способ связи" type="text"></div>
+                            <div class="cell"><input class="deal-desc__desc-order" id="dealDescValueField9" type="text" placeholder="Введите данные"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="deal-clients">
+            <div class="deal-clients__container">
+                <!-- Список данных клиента -->
+            </div>
+        </div>
+        <div class="deal-empty">
+        </div>
+        <div class="deal-state">
+            <div class="deal-state__container">
+                <div class="deal-state__left">
+                    <div class="deal-state__row">
+                        <div class="deal-state__row-key">Дата создания сделки:</div>
+                        <div class="deal-state__row-val" id="dealStateOneLeft">07.01.2023</div>
+                    </div>
+                    <div class="deal-state__row">
+                        <div class="deal-state__row-key">Время на стадии:</div>
+                        <div class="deal-state__row-val" id="dealStateTwoLeft">113.86ч.</div>
+                    </div>
+                    <div class="deal-state__row">
+                        <div class="deal-state__row-key">Дней прошло с создания:</div>
+                        <div class="deal-state__row-val" id="dealStateThreeLeft">12</div>
+                    </div>
+                    <div class="deal-state__row">
+                        <div class="deal-state__row-key">Заказ в работе:</div>
+                        <div class="deal-state__row-val" id="dealStateFourLeft">4</div>
+                    </div>
+                    <div class="deal-state__row">
+                        <div class="deal-state__row-key">Монтаж в работе:</div>
+                        <div class="deal-state__row-val" id="dealStateFiveLeft">1</div>
+                    </div>
+                    <div class="deal-state__row">
+                        <div class="deal-state__row-key">Какая то статистика:</div>
+                        <div class="deal-state__row-val" id="dealStateSixLeft">1</div>
+                    </div>
+                    <div class="deal-state__row">
+                        <div class="deal-state__row-key">Какая то статистика:</div>
+                        <div class="deal-state__row-val" id="dealStateSevenLeft">1</div>
+                    </div>
+                </div>
+                <div class="deal-state__right">
+                    <div class="deal-state__row">
+                        <div class="deal-state__row-key">Дата создания сделки:</div>
+                        <div class="deal-state__row-val" id="dealStateOneRight">07.01.2023</div>
+                    </div>
+                    <div class="deal-state__row">
+                        <div class="deal-state__row-key">Время на стадии:</div>
+                        <div class="deal-state__row-val" id="dealStateTwoRight">113.86ч.</div>
+                    </div>
+                    <div class="deal-state__row">
+                        <div class="deal-state__row-key">Дней прошло с создания:</div>
+                        <div class="deal-state__row-val" id="dealStateThreeRight">12</div>
+                    </div>
+                    <div class="deal-state__row">
+                        <div class="deal-state__row-key">Заказ в работе:</div>
+                        <div class="deal-state__row-val" id="dealStateFourRight">4</div>
+                    </div>
+                    <div class="deal-state__row">
+                        <div class="deal-state__row-key">Монтаж в работе:</div>
+                        <div class="deal-state__row-val" id="dealStateFiveRight">1</div>
+                    </div>
+                    <div class="deal-state__row">
+                        <div class="deal-state__row-key">Какая то статистика:</div>
+                        <div class="deal-state__row-val" id="dealStateSixRight">1</div>
+                    </div>
+                    <div class="deal-state__row">
+                        <div class="deal-state__row-key">Какая то статистика:</div>
+                        <div class="deal-state__row-val" id="dealStateSevenRight">1</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="deal-amounts">
+            <div class="deal-amounts__container">
+                <div class="deal-amounts__row deal-amounts__amount">
+                    <div class="deal-amounts__title">сумма сделки: </div>
+                    <div class="deal-amounts__value"><span id="dealAmountsAmount">133 500</span>&nbsp;₽</div>
+                </div>
+                <div class="deal-amounts__row deal-amounts__profit">
+                    <div class="deal-amounts__title">% от суммы сделки: </div>
+                    <div class="deal-amounts__value"><span id="dealAmountsPayment">4 500</span>&nbsp;₽</div>
+                </div>
+            </div>
+        </div>
+        <div class="deal-workers">
+            <div class="deal-workers__container">
+                <div class="deal-workers__user deal-workers__mop">
+                    <div class="deal-workers__user-labels">
+                        <div class="deal-workers__user-title">
+                            <label for="">Ответсвенный (МОП)</label>
+                        </div>
+                        <div class="deal-workers__user-change">
+                            <label for="">Сменить</label>
+                        </div>
+                    </div>
+                    <div class="deal-workers__user-container">
+                        <div class="deal-workers__user-photo"><img class="deal-workers__user-photo-img" src="{% static 'images/photo_default.png' %}" alt=""></div>
+                        <div class="deal-workers__user-name"><span class="deal-workers__user-name-span"></span></div>
+                    </div>
+                </div>
+                <div class="deal-workers__user deal-workers__mos">
+                    <div class="deal-workers__user-labels">
+                        <div class="deal-workers__user-title">
+                            <label for="">Ответсвенный (МОС)</label>
+                        </div>
+                        <div class="deal-workers__user-change">
+                            <label for="">Сменить</label>
+                        </div>
+                    </div>
+                    <div class="deal-workers__user-container">
+                        <div class="deal-workers__user-photo"><img class="deal-workers__user-photo-img" src="{% static 'images/photo_default.png' %}" alt=""></div>
+                        <div class="deal-workers__user-name"><span class="deal-workers__user-name-span"></span></div>
+                    </div>
+                </div>
+
+                <div class="deal-workers__observers">
+                    <label>Наблюдатели</label>
+                    <div class="deal-workers__observers-container">
+                        <div class="deal-workers__observers-userslist">
+                            <!-- Cписок наблюдателей -->
+                        </div>
+                        <div class="deal-workers__observers-add">
+                            <i class="bi bi-plus-square deal-workers__observers-add-icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="deal-files">
+            <div class="deal-files__container">
+                <div class="deal-files__content">
+                    <div class="deal-files__left">
+                        <label for="">Исходники (ссылки)</label>
+                        <div class="deal-files__content-files">
+                            <div class="deal-files__files">
+                                <!-- Cтроки с файлами -->
+                            </div>
+                            <button class="deal-files__button-add">Добавить ссылку</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="deal-files__content">
+                    <div class="deal-files__right">
+                        <label for="">Исходники (Файлы)</label>
+                        <div class="deal-files__content-files">
+                            <div class="deal-files__files">
+                                <!-- Cтроки с файлами -->
+                            </div>
+                            <div>
+                                <button class="deal-files__button-add">
+                                    <span class="sr-only">Добавить файл</span>
+                                    <span class="d-none spinner-border" role="status" aria-hidden="true"></span>
+                                </button>
+                                <input class="d-none deal-files__sources-files" type="file" id="" multiple>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="deal-files__expand">
+                    <i class="bi bi-chevron-down" onclick="toggleStyle('deal-files__container', 'expand')"></i>
+                </div>
+            </div>
+        </div>
+        <div class="deal-docs">
+            <div class="deal-docs__container">
+                <div class="deal-docs__content">
+                    <label for="">Документы и Ссылки по сделке</label>
+                    <div class="deal-docs__content-files">
+                        <div class="deal-docs__files">
+                            <!-- Cтроки с файлами -->
+                        </div>
+                        <div class="deal-files__buttons">
+                            <div>
+                                <button class="deal-files__button-add-file">
+                                    <span class="sr-only">Добавить файл</span>
+                                    <span class="d-none spinner-border" role="status" aria-hidden="true"></span>
+                                </button>
+                                <input class="d-none deal-files__sources-files" type="file" id="" multiple>
+                            </div>
+                            <div>
+                                <button class="deal-files__button-add-link">Добавить ссылку</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deal-docs__expand">
+                    <i class="bi bi-chevron-down" onclick="toggleStyle('deal-docs__container', 'expand')"></i>
+                </div>
+            </div>
+        </div>
+        <div class="deal-invoices">
+            <div class="deal-invoices__container deal-files-container">
+                <div class="deal-content">
+                    <label for="">Документы</label>
+                    <div class="deal-files">
+                        <div class="files-items-container">
+                            <!-- Cтроки с файлами -->
+                        </div>
+                        <div class="deal-button-add">
+                            <button class="button-add-file">
+                                <span class="sr-only">Добавить файл</span>
+                                <span class="d-none spinner-border" role="status" aria-hidden="true"></span>
+                            </button>
+                            <input class="d-none choice-files-input" type="file" id="" multiple>
+                        </div>
+                    </div>
+                </div>
+                <div class="deal-expand">
+                    <i class="bi bi-chevron-down" onclick="toggleStyle('deal-invoices__container', 'expand')"></i>
+                </div>
+            </div>
+        </div>
+        <div class="deal-acts">
+            <div class="deal-acts__container deal-files-container">
+                <div class="deal-content">
+                    <label for="">Акты</label>
+                    <div class="deal-files">
+                        <div class="files-items-container">
+                            <!-- Cтроки с файлами -->
+                        </div>
+                        <div class="deal-button-add">
+                            <button class="button-add-file">
+                                <span class="sr-only">Добавить файл</span>
+                                <span class="d-none spinner-border" role="status" aria-hidden="true"></span>
+                            </button>
+                            <input class="d-none choice-files-input" type="file" id="" multiple>
+                        </div>
+                    </div>
+                </div>
+                <div class="deal-expand">
+                    <i class="bi bi-chevron-down" onclick="toggleStyle('deal-acts__container', 'expand')"></i>
+                </div>
+            </div>
+        </div>
+        <div class="deal-finance">
+            <div class="deal-finance__container">
+                <div class="deal-finance__our-requisites">
+                    <label class="deal-finance__our-requisites-label" for="">Наши реквизиты</label>
+                    <select class="deal-finance__our-requisites-select"  id="">
+                    </select>
+                </div>
+                <div class="deal-finance__payment-method">
+                    <label class="deal-finance__payment-method-label" for="">Способ оплаты</label>
+                    <select class="deal-finance__payment-method-select"  id="">
+                    </select>
+                </div>
+                <div class="deal-finance__document-flow">
+                    <label class="deal-finance__document-flow-label" for="">ЭДО</label>
+                    <select class="deal-finance__document-flow-select"  id="">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="task-container" id="taskContainer">
+        <nav class="task-container__menu">
+            <div class="task-container__menu-nav nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link" id="nav-technical-tab" data-bs-toggle="tab" data-bs-target="#nav-technical" type="button" role="tab" aria-controls="nav-technical" aria-selected="true">Техничка</button>
+                <button class="nav-link" id="nav-app-tab" data-bs-toggle="tab" data-bs-target="#nav-app" type="button" role="tab" aria-controls="nav-app" aria-selected="false">Заявка</button>
+                <button class="nav-link active" id="nav-commerc_offer-tab" data-bs-toggle="tab" data-bs-target="#nav-commerc_offer" type="button" role="tab" aria-controls="nav-commerc_offer" aria-selected="false">КП</button>
+                <button class="nav-link" id="nav-order-tab" data-bs-toggle="tab" data-bs-target="#nav-order" type="button" role="tab" aria-controls="nav-order" aria-selected="false">Заказ</button>
+                <button class="nav-link" id="nav-products-tab" data-bs-toggle="tab" data-bs-target="#nav-products" type="button" role="tab" aria-controls="nav-products" aria-selected="false">Товары</button>
+            </div>
+
+            <div class="task-container__menu-task-data">
+                <div class="task-container__menu-task-title">🎰 | 13879КМ | Сделка тест | Смета</div>
+                <div class="task-container__menu-task-link"><i class="bi bi-link-45deg"></i></div>
+                <div class="task-container__menu-task-date">
+                    <div class="task-container__menu-task-createdate">
+                        Создано: <span>00.00.00г. в 17:53 (МСК)</span>
+                    </div>
+                    <div class="task-container__menu-task-changedate">
+                        Перезаписано: <span>00.00.00г. в 17:53 (МСК)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-container__menu-buttons">
+                <button class="task-container__menu-update-task">ИЗМЕНИТЬ</button>
+                <button class="task-container__menu-save-task">СОХРАНИТЬ</button>
+                <button class="task-container__menu-cancel-task">ОТМЕНИТЬ</button>
+                <div class="task-container__menu-activity">
+                    <div class="task-container__menu-activity-left">Activity</div>
+                    <div class="task-container__menu-activity-right"><i class="bi bi-chevron-down"></i></div>
+                </div>
+                <div class="task-container__activities">
+                    <div class="task-container__activities-group task-container__activities-estimate">
+                        <div class="task-container__activities-row task-container__menu-create-estimate">
+                            <div class="task-container__activities-title">Создать Смету</div>
+                            <div class="task-container__activities-lable"></div>
+                        </div>
+                        <div class="task-container__activities-row task-container__menu-update-estimate">
+                            <div class="task-container__activities-title">Перезаписать Смету</div>
+                            <div class="task-container__activities-lable"></div>
+                        </div>
+                    </div>
+                    <div class="task-container__activities-group task-container__activities-commerc_offer">
+                        <div class="task-container__activities-row task-container__menu-create-commerc_offer">
+                            <div class="task-container__activities-title">Создать КП</div>
+                            <div class="task-container__activities-lable"></div>
+                        </div>
+                        <div class="task-container__activities-row task-container__menu-update-commerc_offer">
+                            <div class="task-container__activities-title">Перезаписать КП</div>
+                            <div class="task-container__activities-lable"></div>
+                        </div>
+                    </div>
+                    <div class="task-container__activities-group task-container__activities-order">
+                        <div class="task-container__activities-row task-container__menu-create-order">
+                            <div class="task-container__activities-title">Создать Заказ</div>
+                            <div class="task-container__activities-lable"><i class="bi bi-check-circle-fill"></i></div>
+                        </div>
+                        <div class="task-container__activities-row task-container__menu-update-order">
+                            <div class="task-container__activities-title">Перезаписать Заказ</div>
+                            <div class="task-container__activities-lable"><i class="bi bi-arrow-clockwise"></i></div>
+                        </div>
+                    </div>
+                    <div class="task-container__activities-group task-container__activities-invoice">
+                        <div class="task-container__activities-row task-container__menu-create-payment">
+                            <div class="task-container__activities-title">Создать Счет на оплату</div>
+                            <div class="task-container__activities-lable"></div>
+                        </div>
+                        <div class="task-container__activities-row task-container__menu-create-invoice-prepayment">
+                            <div class="task-container__activities-title">Создать Счет на Предоплату</div>
+                            <div class="task-container__activities-lable"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="task-container__offer tab-pane fade" id="nav-technical" role="tabpanel" aria-labelledby="nav-technical-tab" tabindex="0">
+                <div class="task-container__groups" id="taksOffer">
+
+                </div>
+            </div>
+            <div class="task-container__app tab-pane fade" id="nav-app" role="tabpanel" aria-labelledby="nav-app-tab" tabindex="0">
+                <div class="task-container__groups" id="taskApplication">
+
+                </div>
+            </div>
+            <div class="task-container__commerc-offer tab-pane fade show active" id="nav-commerc_offer" role="tabpanel" aria-labelledby="nav-commerc_offer-tab" tabindex="0">
+                <div class="task-container__groups" id="taskOffer">
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-order" role="tabpanel" aria-labelledby="nav-order-tab" tabindex="0">
+                <div class="task-container__groups" id="taksOrder">
+                    Заказ
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-products" role="tabpanel" aria-labelledby="nav-products-tab" tabindex="0">
+                Товары
+            </div>
+        </div>
+        <div class="task-container__summary"></div>
+    </div>
+
+    <div class="tooltip-img" id="tooltip"></div>
+
+    <script>
+        function toggleStyle(containerClassName, className) {
+            let container = document.querySelector(`.${containerClassName}`);
+            // container.classList.toggle(className);
+            let hasClass = container.classList.contains(className);
+            if (hasClass) {
+                container.classList.remove(className);
+            } else {
+                container.classList.add(className);
+            }
+        }
+
+        document.addEventListener('click', (event) => {
+            let containers = document.querySelectorAll('.expand');
+
+            let isClickInsideContainer = Array.from(containers).some(function(container) {
+                return container.contains(event.target);
+            });
+
+            if (!isClickInsideContainer) {
+                containers.forEach(function(container) {
+                    container.classList.remove('expand');
+                });
+            }
+        });
+
+        document.querySelector('.task-container__menu-activity').addEventListener('click', (event) => {
+            document.querySelector('.task-container__activities').classList.toggle('expand-menu');
+        });
+
+        document.addEventListener('click', (event) => {
+            let container = document.querySelector('.task-container__activities');
+            let buttton = document.querySelector('.task-container__menu-activity');
+            if (!container.contains(event.target) && !buttton.contains(event.target)) {
+                container.classList.remove('expand-menu');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let tabs = document.querySelectorAll('.nav-link');
+
+            tabs.forEach(function(tab) {
+                tab.addEventListener('click', function() {
+                    let targetId = this.getAttribute('data-bs-target').substring(1);
+                    let targetElement = document.getElementById(targetId);
+
+                    document.querySelectorAll('.tab-pane').forEach(function(tabContent) {
+                        tabContent.classList.remove('show', 'active');
+                    });
+
+                    document.querySelectorAll('.nav-link').forEach(function(tab) {
+                        tab.classList.remove('show', 'active');
+                    });
+
+                    this.classList.add('show', 'active');
+                    targetElement.classList.add('show', 'active');
+                });
+            });
+        });
+    </script>
+
+    <script type="module" src="{% static 'scripts/index.js' %}"></script>
+
+
+</body>
+</html>

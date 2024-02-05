@@ -1,0 +1,408 @@
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 7px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 6px;
+  width: 6px;
+  left: 1px;
+  bottom: 1px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #41AD49;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #41AD49;
+}
+
+input:checked + .slider:before {
+  transform: translateX(6px);
+}
+
+.slider.round {
+  border-radius: 7px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+table {
+  display: grid;
+  grid-template-columns: 15px 1fr 110px 120px 80px 80px 80px 110px 80px 90px 80px;
+  border-collapse: collapse;
+}
+table thead, table tbody {
+  display: contents;
+}
+table thead tr, table tbody tr {
+  display: contents;
+}
+table thead tr th, table thead tr td, table tbody tr th, table tbody tr td {
+  padding: 2px;
+  font: 400 8px Roboto;
+  border-right: 1px solid #97999B;
+  border-bottom: 1px solid #97999B;
+}
+table thead tr th, table tbody tr th {
+  font: 700 10px Roboto;
+  border-right: 1px solid #97999B;
+  border-top: 1px solid #97999B;
+}
+table thead tr td:first-child, table thead tr th:first-child, table tbody tr td:first-child, table tbody tr th:first-child {
+  border-left: 1px solid #97999B;
+}
+table .grid-row-zero {
+  grid-row: span 0;
+}
+table .technology-item {
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+table .block-center {
+  display: flex;
+  align-items: center;
+}
+table .shared {
+  grid-row: span 2;
+}
+table .vertical-input {
+  display: block;
+  writing-mode: horizontal-tb !important;
+}
+table input[type=number]::-webkit-inner-spin-button,
+table input[type=number]::-webkit-outer-spin-button,
+table input[type=number] {
+  -webkit-appearance: none;
+  margin: 0;
+}
+table input[type=number] {
+  -moz-appearance: textfield;
+}
+table select, table input, table textarea {
+  font: 400 8px Roboto;
+  background: none;
+  border: 1px solid rgba(151, 153, 155, 0.2);
+  border-radius: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: 17px;
+}
+table textarea {
+  resize: vertical;
+}
+table thead th {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font: 700 10px Roboto;
+}
+table thead .task-container_group-header-add-group {
+  color: #fff200;
+}
+table thead .task-container__group-header-consumption {
+  display: flex;
+}
+table thead .task-container__group-header-consumption > div:first-child {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+table thead .task-container__group-header-consumption > div:nth-child(n+2) {
+  display: flex;
+  flex-direction: column;
+}
+table thead .task-container__group-header-area-mounting div {
+  display: flex;
+  flex-direction: column;
+}
+table thead .task-container_group-header-technology {
+  display: flex;
+}
+table thead .task-container_group-header-technology div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+table tbody .task-container__item-info {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+table tbody .task-container__item-info div {
+  margin-bottom: 3px;
+  width: 100%;
+  box-sizing: border-box;
+}
+table tbody .task-container__item-technologies {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+}
+table tbody .task-container__item-technologies .task-container__item-technologies-list {
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+  margin-bottom: 8px;
+}
+table tbody .task-container__item-technologies .task-container__item-technologies-list-container {
+  box-sizing: border-box;
+  width: 100%;
+}
+table tbody .task-container__item-technologies .task-container__item-technologies-list-container > div:nth-child(n+2) {
+  margin: 2px 0;
+}
+table tbody .task-container__item-technologies .task-container__item-technologies-list-container input, table tbody .task-container__item-technologies .task-container__item-technologies-list-container select {
+  background: none;
+  border: 1px solid rgba(151, 153, 155, 0.2);
+  width: 100%;
+  height: 100%;
+}
+table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 15px 17px 1fr 11px;
+  grid-template-rows: 17px 17px;
+  grid-template-areas: "A B C E" "A B D E";
+}
+table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology .task-container__item-technologies-technology-mchs {
+  grid-area: A;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology .task-container__item-technologies-technology-mchs > span {
+  width: -moz-fit-content;
+  width: fit-content;
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+}
+table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology .task-container__item-technologies-technology-type {
+  grid-area: B;
+}
+table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology .task-container__item-technologies-technology-type select {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  height: 100%;
+  line-height: 14px;
+  text-align: center;
+}
+table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology .task-container__item-technologies-technology-type select option {
+  writing-mode: horizontal-tb;
+}
+table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology .task-container__item-technologies-technology-material-1 {
+  grid-area: C;
+}
+table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology .task-container__item-technologies-technology-material-2 {
+  grid-area: D;
+}
+table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology .task-container__item-technologies-technology-remove {
+  grid-area: E;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+table tbody .task-container__item-technologies .task-container__item-technology-add {
+  position: absolute;
+  right: 0;
+  bottom: -7px;
+}
+table tbody .task-container_group-item-sources {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+table tbody .task-container_group-item-sources .task-container_group-item-sources-list {
+  position: relative;
+}
+table tbody .task-container_group-item-sources .task-container_group-item-sources-list > div:nth-child(n+2) {
+  margin: 2px 0;
+}
+table tbody .task-container_group-item-sources .task-container_group-item-sources-list .task-container_group-item-sources-item {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 12px 1fr 11px;
+}
+table tbody .task-container_group-item-sources .task-container_group-item-sources-list .task-container_group-item-sources-item div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+table tbody .task-container_group-item-sources .task-container_group-item-sources-list .task-container_group-item-sources-item .task-container_group-item-sources-remove {
+  align-items: flex-end;
+}
+table tbody .task-container_group-item-sources .task-container_group-item-sources-list .task-container_group-item-sources-add {
+  position: absolute;
+  right: 0;
+  bottom: -11px;
+}
+table tbody .task-container_group-item-measurements {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+}
+table tbody .task-container_group-item-measurements .task-container_group-item-measurements-list > select:nth-child(n+2) {
+  margin: 2px 0;
+}
+table tbody .task-container_group-item-design {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+}
+table tbody .task-container_group-item-design .task-container_group-item-design-list > select:nth-child(n+2) {
+  margin: 2px 0;
+}
+table tbody .task-container_group-item-color-test {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+}
+table tbody .task-container_group-item-color-test .task-container_group-item-color-test-list > select:nth-child(n+2) {
+  margin: 2px 0;
+}
+table tbody .task-container_group-item-mounting {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+}
+table tbody .task-container_group-item-mounting .task-container_group-item-mounting-container {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 15px 1fr 15px;
+  grid-template-rows: 17px 17px;
+  grid-template-areas: "A B D" "A C D";
+  width: 100%;
+}
+table tbody .task-container_group-item-mounting .task-container_group-item-mounting-left {
+  grid-area: A;
+  writing-mode: vertical-lr;
+  transform: rotate(270deg);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  line-height: 14px;
+  text-align: center;
+  width: 36px;
+  height: 17px;
+  position: relative;
+  top: 9px;
+  left: -9px;
+}
+table tbody .task-container_group-item-mounting .task-container_group-item-mounting-top {
+  grid-area: B;
+}
+table tbody .task-container_group-item-mounting .task-container_group-item-mounting-bottom {
+  grid-area: C;
+}
+table tbody .task-container_group-item-mounting .task-container_group-item-mounting-right {
+  grid-area: D;
+  writing-mode: vertical-lr;
+  transform: rotate(270deg);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  line-height: 14px;
+  text-align: center;
+  width: 36px;
+  height: 17px;
+  position: relative;
+  top: 9px;
+  left: -9px;
+}
+table tbody .task-container_group-item-deadlines {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+}
+table tbody .task-container_group-item-deadlines .task-container_group-item-deadlines-list > input {
+  margin: 2px 0;
+}
+table tbody .task-container_group-item-dismantling {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+}
+table tbody .task-container_group-item-dismantling .task-container_group-item-dismantling-container {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 1fr 15px;
+  grid-template-rows: 17px 17px;
+  grid-template-areas: "A C" "B C";
+}
+table tbody .task-container_group-item-dismantling .task-container_group-item-dismantling-top {
+  grid-area: A;
+}
+table tbody .task-container_group-item-dismantling .task-container_group-item-dismantling-bottom {
+  grid-area: B;
+}
+table tbody .task-container_group-item-dismantling .task-container_group-item-dismantling-area {
+  grid-area: C;
+  writing-mode: vertical-lr;
+  transform: rotate(270deg);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  line-height: 14px;
+  text-align: center;
+  width: 36px;
+  height: 17px;
+  position: relative;
+  top: 9px;
+  left: -9px;
+}
+table tbody .task-container_group-item-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+table tbody .task-container_group-item-right .task-container_group-item-add {
+  color: #00A185;
+}
+table tbody .task-container_group-item-right .task-container_group-item-remove {
+  color: rgba(255, 0, 0, 0.5882352941);
+}/*# sourceMappingURL=test2.css.map */

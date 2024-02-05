@@ -1,0 +1,611 @@
+$group-title-font: 700 10px Roboto
+$header-font: 700 10px Roboto
+$item-font: 400 8px Roboto
+$input-height: 17px
+$body-font: 400 8px Roboto
+
+.task-container__app
+    // .task-container__groups
+    //     .task-container_group
+    //         i
+    //             cursor: pointer
+    //             &:hover
+    //                 color: #0779cb
+    
+    //     .task-container_group-title
+    //         span
+    //             color: #464A4E
+    //             font: $group-title-font
+    //         input
+    //             background: none
+    //             border: 1px solid #00000000
+    //             font: $group-title-font
+
+    
+    //     .task-container_group-header
+    //         // display: flex
+    //         display: grid
+    //         grid-template-columns: 10px 1fr 110px 120px 80px 80px 80px 110px 80px 90px 76px
+    //         gap: 4px
+    //         font: $header-font
+    //         >div
+    //             text-align: center
+    //         .task-container_group-header-add-group
+    //             color: #fff200
+    //         .task-container_group-header-product-desc
+    //         .task-container_group-header-technology
+    //             display: flex
+    //             div
+    //                 display: flex
+    //                 justify-content: center
+    //                 align-items: center
+    //                 width: 100%
+    //         .task-container_group-header-sources
+    //         .task-container_group-header-measurements
+    //         .task-container_group-header-design
+    //         .task-container_group-header-color
+    //         .task-container_group-header-mounting
+    //         .task-container_group-header-deadlines
+    //         .task-container_group-header-dismantling
+        
+    //     .task-container_group-item
+    //         width: 100%
+    //         display: grid
+    //         grid-template-columns: 1fr 80px
+            
+    //     .task-container_group-item-left
+    //         display: grid
+    //         grid-template-columns: 10px 1fr 110px 120px 80px 80px 80px 110px 80px 90px
+    //         gap: 4px
+    //         font: $item-font
+
+    //         >div
+    //             display: flex
+    //             align-items: center
+    //             justify-content: center
+
+    //         select, input, textarea
+    //             font: $item-font
+    //             background: none
+    //             border: 1px solid #97999B33
+    //             width: 100%
+    //             box-sizing: border-box
+    //             height: $input-height
+
+    //         .task-container_group-item-number
+    //             box-sizing: border-box
+
+    //         .task-container_group-item-info
+    //             display: flex
+    //             flex-direction: column
+    //             justify-content: center
+    //             box-sizing: border-box
+    //             div
+    //                 margin-bottom: 3px
+    //                 width: 100%
+    //                 box-sizing: border-box
+
+    //             .task-container_group-item-title
+    //             .task-container_group-item-count
+    //             .task-container_group-item-desc
+            
+    //         .task-container_group-item-technologies
+    //             display: flex
+    //             flex-direction: column
+    //             box-sizing: border-box
+    //             // border-right: 2px solid #737373
+    //             .task-container_group-item-technologies-list
+    //                 box-sizing: border-box
+    //                 width: 100%
+    //                 position: relative
+    //             .task-container_group-item-technologies-list-container
+    //                 box-sizing: border-box
+    //                 width: 100%
+    //                 >div:nth-child(n+2)
+    //                     margin: 2px 0
+    //                 input, select
+    //                     background: none
+    //                     border: 1px solid #97999B33
+    //                     width: 100%
+    //                     height: 100%
+    //                 .task-container_group-item-technology
+    //                     display: grid
+    //                     gap: 2px
+    //                     grid-template-columns: 15px $input-height 1fr 11px
+    //                     grid-template-rows: $input-height $input-height
+    //                     grid-template-areas: "A B C E" "A B D E"
+    //                     .task-container_group-item-technology-mchs
+    //                         grid-area: A
+    //                         display: flex
+    //                         flex-direction: column
+    //                         justify-content: center
+    //                         align-items: center
+    //                         >span
+    //                             width: fit-content
+    //                             writing-mode: vertical-lr
+    //                             transform: rotate(180deg)
+    //                     .task-container_group-item-technology-type
+    //                         grid-area: B
+    //                         select
+    //                             writing-mode: vertical-lr
+    //                             transform: rotate(180deg)
+    //                             appearance: none
+    //                             width: 100%
+    //                             height: 100%
+    //                             line-height: 14px
+    //                             text-align: center
+    //                             option
+    //                                 writing-mode: horizontal-tb
+    //                     .task-container_group-item-technology-material-1
+    //                         grid-area: C
+    //                     .task-container_group-item-technology-material-2
+    //                         grid-area: D
+    //                     .task-container_group-item-technology-remove
+    //                         grid-area: E
+    //                         display: flex
+    //                         flex-direction: column
+    //                         justify-content: center
+    //                         // align-items: center
+    //                         align-items: flex-end
+    //             .task-container_group-item-technology-add
+    //                     position: absolute
+    //                     right: 0
+    //                     bottom: -7px
+    //             // .task-container_group-item-technology-add
+    //             //     display: grid
+    //             //     gap: 6px
+    //             //     grid-template-columns: 1fr 11px
+    //             //     width: 100%
+    //             //     div
+    //             //         display: flex
+    //             //         justify-content: center
+
+    //         .task-container_group-item-sources
+    //             display: flex
+    //             flex-direction: column
+    //             .task-container_group-item-sources-list
+    //                 position: relative
+    //                 >div:nth-child(n+2)
+    //                     margin: 2px 0
+    //                 .task-container_group-item-sources-item
+    //                     display: grid
+    //                     gap: 2px
+    //                     grid-template-columns: 12px 1fr 11px
+    //                     div
+    //                         display: flex
+    //                         flex-direction: column
+    //                         justify-content: center
+    //                         align-items: center
+    //                     .task-container_group-item-sources-item-prev
+    //                     .task-container_group-item-sources-item-value
+    //                     .task-container_group-item-sources-remove
+    //                         align-items: flex-end
+    //                 .task-container_group-item-sources-add
+    //                     position: absolute
+    //                     right: 0
+    //                     bottom: -11px
+    //             // .task-container_group-item-sources-add
+    //             //     display: flex
+    //             //     justify-content: flex-end
+    //             //     margin: 2px
+
+    //         .task-container_group-item-measurements
+    //             .task-container_group-item-measurements-list
+    //                 >select:nth-child(n+2)
+    //                     margin: 2px 0
+
+    //         .task-container_group-item-design
+    //             .task-container_group-item-design-list
+    //                 >select:nth-child(n+2)
+    //                     margin: 2px 0
+
+    //         .task-container_group-item-color
+    //             .task-container_group-item-color-list
+    //                 >select:nth-child(n+2)
+    //                     margin: 2px 0
+
+    //         .task-container_group-item-mounting
+    //             .task-container_group-item-mounting-container
+    //                 display: grid
+    //                 gap: 2px
+    //                 grid-template-columns: 15px 1fr 15px
+    //                 grid-template-rows: 17px 17px
+    //                 grid-template-areas: "A B D" "A C D"
+    //                 width: 100%
+    //             .task-container_group-item-mounting-left
+    //                 grid-area: A
+    //                 writing-mode: vertical-lr
+    //                 transform: rotate(270deg)
+    //                 appearance: none
+    //                 width: 100%
+    //                 line-height: 14px
+    //                 text-align: center
+    //                 width: 36px
+    //                 height: 17px
+    //                 position: relative
+    //                 top: 9px
+    //                 left: -9px
+    //             .task-container_group-item-mounting-top
+    //                 grid-area: B
+    //             .task-container_group-item-mounting-bottom
+    //                 grid-area: C
+    //             .task-container_group-item-mounting-right
+    //                 grid-area: D
+    //                 writing-mode: vertical-lr
+    //                 transform: rotate(270deg)
+    //                 appearance: none
+    //                 width: 100%
+    //                 line-height: 14px
+    //                 text-align: center
+    //                 width: 36px
+    //                 height: 17px
+    //                 position: relative
+    //                 top: 9px
+    //                 left: -9px
+
+    //         .task-container_group-item-deadlines
+    //             margin-left: 5px
+    //             .task-container_group-item-deadlines-list
+    //                 >input
+    //                     margin: 2px 0
+
+    //         .task-container_group-item-dismantling
+    //             .task-container_group-item-dismantling-container
+    //                 display: grid
+    //                 gap: 2px
+    //                 grid-template-columns: 1fr 15px
+    //                 grid-template-rows: 17px 17px
+    //                 grid-template-areas: "A C" "B C"
+    //             .task-container_group-item-dismantling-top
+    //                 grid-area: A
+    //             .task-container_group-item-dismantling-bottom
+    //                 grid-area: B
+    //             .task-container_group-item-dismantling-area
+    //                 grid-area: C
+    //                 writing-mode: vertical-lr
+    //                 transform: rotate(270deg)
+    //                 appearance: none
+    //                 width: 100%
+    //                 line-height: 14px
+    //                 text-align: center
+    //                 width: 36px
+    //                 height: 17px
+    //                 position: relative
+    //                 top: 9px
+    //                 left: -9px
+
+    //     .task-container_group-item-right
+    //         display: flex
+    //         align-items: center
+    //         justify-content: space-between
+    //         .task-container_group-item-move
+    //         .task-container_group-item-add
+    //             color: #00A185
+    //         .task-container_group-item-copy
+    //         .task-container_group-item-remove
+    //             color: #FF000096
+
+    table
+        display: grid
+        grid-template-columns: 15px 1fr 110px 120px 80px 80px 80px 110px 80px 90px 80px
+        border-collapse: collapse
+        thead, tbody
+            display: contents
+            tr
+                display: contents
+                th, td
+                    padding: 2px
+                    font: $body-font
+                    border-right: 1px solid #97999B
+                    border-bottom: 1px solid #97999B
+                th
+                    font: $header-font
+                    border-right: 1px solid #97999B
+                    border-top: 1px solid #97999B
+                td:first-child, th:first-child
+                    border-left: 1px solid #97999B
+        .grid-row-zero
+            grid-row: span 0
+        .technology-item
+            height: calc($input-height * 2 + 2px)
+            display: flex
+            align-items: center
+        .block-center
+            display: flex
+            align-items: center
+        .shared
+            grid-row: span 2
+        .vertical-input
+            display: block
+            writing-mode: horizontal-tb !important
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]
+            -webkit-appearance: none
+            margin: 0
+        input[type="number"]
+            -moz-appearance: textfield
+        select, input, textarea
+            font: $body-font
+            background: none
+            border: 1px solid #97999B33
+            border-radius: 0
+            width: 100%
+            box-sizing: border-box
+            height: $input-height
+        textarea
+            resize: vertical
+        thead
+            th
+                display: flex
+                justify-content: center
+                align-items: center
+                text-align: center
+                font: $header-font
+            .task-container_group-header-add-group
+                color: #fff200
+            .task-container__group-header-consumption
+                display: flex
+                >div:first-child
+                    flex-grow: 1
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                >div:nth-child(n+2)
+                    display: flex
+                    flex-direction: column
+            .task-container__group-header-area-mounting
+                div
+                    display: flex
+                    flex-direction: column
+            .task-container_group-header-technology
+                display: flex
+                div
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    width: 100%
+        tbody
+            .task-container__item-number
+            .task-container__item-info
+                display: flex
+                flex-direction: column
+                box-sizing: border-box
+                div
+                    margin-bottom: 3px
+                    width: 100%
+                    box-sizing: border-box
+                .task-container_item-title
+                .task-container_item-count
+                .task-container_item-desc
+            .task-container__item-technologies
+                display: flex
+                flex-direction: column
+                box-sizing: border-box
+                justify-content: center
+                .task-container__item-technologies-list
+                    box-sizing: border-box
+                    width: 100%
+                    position: relative
+                    // margin-bottom: 8px
+                .task-container__item-technologies-list-container
+                    box-sizing: border-box
+                    width: 100%
+                    >div:nth-child(n+2)
+                        margin: 2px 0
+                    input, select
+                        background: none
+                        border: 1px solid #97999B33
+                        width: 100%
+                        height: 100%
+                    .task-container__item-technologies-technology
+                        display: grid
+                        gap: 2px
+                        grid-template-columns: 15px $input-height 1fr 11px
+                        grid-template-rows: $input-height $input-height
+                        grid-template-areas: "A B C E" "A B D E"
+                        .task-container__item-technologies-technology-mchs
+                            grid-area: A
+                            display: flex
+                            flex-direction: column
+                            justify-content: center
+                            align-items: center
+                            >span
+                                width: fit-content
+                                writing-mode: vertical-lr
+                                transform: rotate(180deg)
+                        .task-container__item-technologies-technology-type
+                            grid-area: B
+                            select
+                                writing-mode: vertical-lr
+                                transform: rotate(180deg)
+                                appearance: none
+                                width: 100%
+                                height: 100%
+                                line-height: 14px
+                                text-align: center
+                                option
+                                    writing-mode: horizontal-tb
+                        .task-container__item-technologies-technology-material-1
+                            grid-area: C
+                        .task-container__item-technologies-technology-material-2
+                            grid-area: D
+                        .task-container__item-technologies-technology-remove
+                            grid-area: E
+                            display: flex
+                            flex-direction: column
+                            justify-content: center
+                            // align-items: center
+                            align-items: flex-end
+                .task-container__item-technology-add
+                    display: flex
+                    justify-content: flex-end
+                        // position: absolute
+                        // right: 0
+                        // bottom: -7px
+            .task-container_group-item-sources
+                display: flex
+                flex-direction: column
+                justify-content: center
+                .task-container_group-item-sources-list
+                    position: relative
+                    
+
+                    >div:nth-child(n+2)
+                        margin: 2px 0
+                    .task-container_group-item-sources-item
+                        display: grid
+                        gap: 2px
+                        grid-template-columns: 12px 1fr 11px
+                        div
+                            display: flex
+                            flex-direction: column
+                            justify-content: center
+                            align-items: center
+                        .task-container_group-item-sources-item-prev
+                        .task-container_group-item-sources-item-value
+                        .task-container_group-item-sources-remove
+                            align-items: flex-end
+                .task-container_group-item-sources-add
+                    // position: absolute
+                    // right: 0
+                    bottom: -11px
+                    display: flex
+                    justify-content: flex-end
+            .task-container_group-item-measurements
+                display: flex
+                flex-direction: column
+                box-sizing: border-box
+                justify-content: center
+                .task-container_group-item-measurements-list
+                    >select:nth-child(n+2)
+                        margin: 2px 0
+            .task-container_group-item-design
+                display: flex
+                flex-direction: column
+                box-sizing: border-box
+                justify-content: center
+                .task-container_group-item-design-list
+                    >select:nth-child(n+2)
+                        margin: 2px 0
+            .task-container_group-item-color-test
+                display: flex
+                flex-direction: column
+                box-sizing: border-box
+                justify-content: center
+                .task-container_group-item-color-test-list
+                    >select:nth-child(n+2)
+                        margin: 2px 0
+            .task-container_group-item-mounting
+                display: flex
+                flex-direction: column
+                box-sizing: border-box
+                justify-content: center
+                .task-container_group-item-mounting-container
+                    display: grid
+                    gap: 2px
+                    grid-template-columns: 15px 1fr 15px
+                    grid-template-rows: 17px 17px
+                    grid-template-areas: "A B D" "A C D"
+                    width: 100%
+                .task-container_group-item-mounting-left
+                    grid-area: A
+                    // writing-mode: vertical-lr
+                    // transform: rotate(270deg)
+                    // appearance: none
+                    // width: 100%
+                    // line-height: 14px
+                    // text-align: center
+                    // width: 36px
+                    // height: 17px
+                    // position: relative
+                    // top: 9px
+                    // left: -9px
+                    select
+                        writing-mode: vertical-lr
+                        transform: rotate(180deg)
+                        appearance: none
+                        width: 100%
+                        height: 100%
+                        line-height: 14px
+                        text-align: center
+                        option
+                            writing-mode: horizontal-tb
+                .task-container_group-item-mounting-top
+                    grid-area: B
+                .task-container_group-item-mounting-bottom
+                    grid-area: C
+                .task-container_group-item-mounting-right
+                    grid-area: D
+                    // writing-mode: vertical-lr
+                    // transform: rotate(270deg)
+                    // appearance: none
+                    // width: 100%
+                    // line-height: 14px
+                    // text-align: center
+                    // width: 36px
+                    // height: 17px
+                    // position: relative
+                    // top: 9px
+                    // left: -9px
+                    select
+                        writing-mode: vertical-lr
+                        transform: rotate(180deg)
+                        appearance: none
+                        width: 100%
+                        height: 100%
+                        line-height: 14px
+                        text-align: center
+                        option
+                            writing-mode: horizontal-tb
+            .task-container_group-item-deadlines
+                display: flex
+                flex-direction: column
+                box-sizing: border-box
+                justify-content: center
+                // margin-left: 5px
+                .task-container_group-item-deadlines-list
+                    >input
+                        margin: 2px 0
+            .task-container_group-item-dismantling
+                display: flex
+                flex-direction: column
+                box-sizing: border-box
+                justify-content: center
+                .task-container_group-item-dismantling-container
+                    display: grid
+                    gap: 2px
+                    grid-template-columns: 1fr 15px
+                    grid-template-rows: 17px 17px
+                    grid-template-areas: "A C" "B C"
+                .task-container_group-item-dismantling-top
+                    grid-area: A
+                .task-container_group-item-dismantling-bottom
+                    grid-area: B
+                .task-container_group-item-dismantling-area
+                    grid-area: C
+                    writing-mode: vertical-lr
+                    transform: rotate(270deg)
+                    appearance: none
+                    width: 100%
+                    line-height: 14px
+                    text-align: center
+                    width: 36px
+                    height: 17px
+                    position: relative
+                    top: 9px
+                    left: -9px
+            .task-container_group-item-right
+                display: flex
+                align-items: center
+                justify-content: space-around
+                .task-container_group-item-move
+                .task-container_group-item-add
+                    color: #00A185
+                .task-container_group-item-copy
+                .task-container_group-item-remove
+                    color: #FF000096
+
+
+    .task-container__summary
+// text

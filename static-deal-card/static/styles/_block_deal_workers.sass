@@ -1,0 +1,125 @@
+$label-font: 400 10px Roboto
+$username-font: 900 12px Roboto
+$observername-font: 400 12px Roboto
+
+// $input-font: 400 12px Roboto
+// $table-head-font: 400 10px Roboto
+// $table-content-font: 400 10px Inter
+
+// $field-border: 2px solid #EEF2F4
+
+
+
+
+.deal-workers__container
+    box-sizing: border-box
+    padding: 5px 15px 0 15px
+    height: 100%
+    border: 2px solid #fff
+    border-radius: 12px
+
+    &:hover
+        border: 2px solid #5896f9
+
+    label
+        width: 100%
+        font: $label-font
+        overflow: hidden
+        letter-spacing: 0em
+        color: #97999B
+        white-space: nowrap
+        text-overflow: ellipsis
+
+    img
+        width: 40px
+        height: 40px
+
+    .deal-workers__user
+        position: relative
+        margin-top: 10px
+
+        .deal-workers__user-labels
+            display: flex
+            justify-content: space-between
+            
+            .deal-workers__user-title
+                overflow: hidden
+                white-space: nowrap
+                text-overflow: ellipsis
+            .deal-workers__user-change
+                label
+                    color: #D1C2C1
+                    &:hover
+                        cursor: pointer
+                        text-decoration: underline
+
+        .deal-workers__user-container
+            display: flex
+            margin-top: 5px
+
+            .deal-workers__user-photo
+                height: 40px
+                margin-right: 5px
+                overflow: hidden
+                border-radius: 50%
+                cursor: pointer
+
+            .deal-workers__user-name
+                display: flex
+                align-items: center
+                font: $username-font
+                color: #464A4E
+                cursor: pointer
+                span
+                    display: block
+
+    .deal-workers__observers
+        width: 100%
+        box-sizing: border-box
+        border: 1px solid #EEF2F4
+        padding: 4px 10px
+        margin-top: 10px
+        position: relative
+
+        .deal-workers__observers-container
+            display: grid
+            gap: 10px
+            grid-template-columns: 1fr 25px
+            .deal-workers__observers-userslist
+                height: 50px
+                overflow-y: auto
+                overflow-x: hidden
+                
+                .deal-workers__observers-user
+                    font: $observername-font
+                    color: #464A4E
+                    cursor: pointer
+                    white-space: nowrap
+                    text-overflow: ellipsis
+                    overflow: hidden
+                    &:hover
+                        text-decoration: underline
+
+                &::-webkit-scrollbar
+                    width: 8px !important
+                    background-color: #f9f9fd
+
+                &::-webkit-scrollbar-thumb
+                    border-radius: 7px
+                    background-color: #3679f996
+
+                &::-webkit-scrollbar-track
+                    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2)
+                    border-radius: 7px
+                    background-color: #f9f9fd
+
+            .deal-workers__observers-add
+                display: flex
+                align-items: center
+                justify-content: flex-end
+                i
+                    display: block
+                    font-size: 16px
+                    cursor: pointer
+                    &:hover
+                        color: #292929
