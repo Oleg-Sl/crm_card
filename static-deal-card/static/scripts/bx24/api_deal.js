@@ -31,7 +31,7 @@ export default class DealMethods {
 //        return result;
 //    }
     async update(body) {
-        let result = await bx24.callMethod("crm.deal.update", body);
+        let result = await this.bx24.callMethod("crm.deal.update", body);
         return result;
     }
 }
