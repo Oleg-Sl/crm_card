@@ -6,6 +6,16 @@ export default class BatchMethods {
         this.bx24 = bx24;
     }
 
+    async getData(cmd) {
+        let data = await this.bx24.callMethod("batch", {
+            halt: 0,
+            cmd: cmd
+        });
+
+        console.log("Start data = ", data);
+        return data?.result;
+    }
+
     async getDataForStart(smartNumber, dealId) {
         const cmd = {
             currentUser: 'user.current',
