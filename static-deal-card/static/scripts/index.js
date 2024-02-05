@@ -140,12 +140,12 @@ class App {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    BX24.init(async function(){
+    BX24.init(async function() {
         const bx24 = new BitrixService();
         let secretKeyYandex = await BX24.appOption.get(SETTINGS__SECRETS_KEY);
         const yaDisk = new YaDisk(secretKeyYandex);
         bx24.init();
-        const app = new App(id, bx24, yaDisk);
+        const app = new App(dealId, bx24, yaDisk);
         app.init();
     });
 });
