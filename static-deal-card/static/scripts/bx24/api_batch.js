@@ -1,4 +1,3 @@
-import { SMART_FIELDS, } from '../parameters.js';
 
 
 export default class BatchMethods {
