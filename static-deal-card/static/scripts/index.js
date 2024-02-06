@@ -143,6 +143,22 @@ class App {
                     fields: dealData,
                     params: { "REGISTER_SONET_EVENT": "Y" }
                 });
+
+                let batch = {};
+                for (let smart of smartsData) {
+                    batch[`${smart.entityTypeId}_${smart.entityId}`] = [
+                        "crm.item.update",
+                        {
+                            entityTypeId: smart.entityTypeId,
+                            id: smart.entityId,
+                            fields: smart
+                        }
+                    ];
+                }
+                console.log(batch);
+                BX24.callBatch(batch, (res) => {
+                    console.log(res);
+                });
             }
         })
 
