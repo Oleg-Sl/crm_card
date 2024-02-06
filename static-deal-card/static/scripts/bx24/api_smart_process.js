@@ -63,7 +63,7 @@ export default class SmartProcessMethods {
 //    }
     async add(entityTypeId, data) {
         let result = await this.bx24.callMethod("crm.item.add", {
-            entityTypeId: smartNumber,
+            entityTypeId: entityTypeId,
             fields: data
         });
 
