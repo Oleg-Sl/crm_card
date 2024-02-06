@@ -23,6 +23,10 @@
 @import tooltip
 
 
+body
+    margin: 0
+    padding: 0
+
 .deal-container > div
     background-color: #FDFDFD
     border-radius: 12px
@@ -51,7 +55,6 @@
     .deal-finance
         grid-area: finance
 
-
 .deal-container
     width: 100%
     display: grid
@@ -59,14 +62,14 @@
     grid-template-columns: auto 24% 10% 10% 12%
     grid-template-rows: 55px 116px 55px 164px
     grid-template-areas: "desc  clients empty    empty   workers" "desc  clients state    state   workers" "desc  clients amounts  amounts workers" "files docs    accounts acts    finance"
-    padding: 10px
+    padding: 10px 0
     background-color: #EEF2F4
     box-sizing: border-box
 
 .task-container
     background-color: #EEF2F4
     height: 100vh
-    padding: 10px
+    padding: 10px 0
     // margin: 0 15px
     // margin: 10px
 

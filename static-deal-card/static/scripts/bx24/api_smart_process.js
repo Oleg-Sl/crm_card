@@ -61,6 +61,14 @@ export default class SmartProcessMethods {
 //        const data = await this.bx24.callMethod("crm.item.list", params);
 //        return data.items;
 //    }
+    async add(entityTypeId, data) {
+        let result = await this.bx24.callMethod("crm.item.add", {
+            entityTypeId: smartNumber,
+            fields: data
+        });
+
+        return result;
+    }
 
     async delete(smartNumber, smartId) {
         let data = await this.bx24.callMethod("crm.item.delete", {

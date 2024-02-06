@@ -2254,7 +2254,7 @@
 }
 .task-container__menu .task-container__menu-buttons {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto auto auto auto;
   gap: 10px;
   position: relative;
   font: 900 14px Roboto;
@@ -2264,6 +2264,12 @@
   height: 35px;
   color: #fff;
   border: none;
+}
+.task-container__menu .task-container__menu-buttons .task-container__menu-add-group {
+  background-color: #FFDE8A;
+}
+.task-container__menu .task-container__menu-buttons .task-container__menu-add-group:hover {
+  background-color: #ebc156;
 }
 .task-container__menu .task-container__menu-buttons .task-container__menu-update-task {
   background-color: #FFDE8A;
@@ -2820,6 +2826,11 @@ input:checked + .slider:before {
   transition: ease 0.4s;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .deal-container > div {
   background-color: #FDFDFD;
   border-radius: 12px;
@@ -2866,7 +2877,7 @@ input:checked + .slider:before {
   grid-template-columns: auto 24% 10% 10% 12%;
   grid-template-rows: 55px 116px 55px 164px;
   grid-template-areas: "desc  clients empty    empty   workers" "desc  clients state    state   workers" "desc  clients amounts  amounts workers" "files docs    accounts acts    finance";
-  padding: 10px;
+  padding: 10px 0;
   background-color: #EEF2F4;
   box-sizing: border-box;
 }
@@ -2874,7 +2885,7 @@ input:checked + .slider:before {
 .task-container {
   background-color: #EEF2F4;
   height: 100vh;
-  padding: 10px;
+  padding: 10px 0;
 }
 
 .nav-tabs {

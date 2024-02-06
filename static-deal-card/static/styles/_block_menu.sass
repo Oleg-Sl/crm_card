@@ -45,7 +45,7 @@ $activities-font: 400 15px Roboto
 
     .task-container__menu-buttons
         display: grid
-        grid-template-columns: auto auto auto auto
+        grid-template-columns: auto auto auto auto auto
         gap: 10px
         position: relative
         font: $changing-state-font
@@ -54,6 +54,11 @@ $activities-font: 400 15px Roboto
             height: 35px
             color: #fff
             border: none
+        
+        .task-container__menu-add-group
+            background-color: #FFDE8A
+            &:hover
+                background-color: #ebc156
 
         .task-container__menu-update-task
             background-color: #FFDE8A
