@@ -145,6 +145,16 @@ class App {
                 });
             }
         })
+
+        // добавление группы товарощзуьв
+        document.addEventListener('click', async (event) => {
+            const target = event.target;
+
+            if (target.tagName === 'BUTTON' && target.classList.contains('task-container__menu-add-group')) {
+                await this.tasks.dataManager.createProductGroup();
+                this.tasks.dataManager.updateHTML();
+            }
+        })
     }
 }
 
