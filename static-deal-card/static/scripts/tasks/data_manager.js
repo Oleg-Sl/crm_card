@@ -201,7 +201,10 @@ export class DataManager {
         const entityTypeId = SP_GROUP_ID;
         const data = {parentId2: this.dealId};
         let response = await this.bx24.smartProcess.add(entityTypeId, data);
+        constole.log("createProductGroup = ", response);
         if (response?.result?.item) {
+            constole.log("response?.result?.item = ", response?.result?.item);
+
             const group = new ProductGroup(response?.result?.item);
             // let responseProduct = await this.bx24.smartProcess.add(entityTypeId, data);
             // if (responseProduct?.result?.item) {
