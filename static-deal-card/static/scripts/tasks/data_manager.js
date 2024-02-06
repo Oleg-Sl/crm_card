@@ -144,8 +144,8 @@ export class DataManager {
         const data = {[`parentId${SP_PRODUCT_ID}`]: productId, parentId2: this.dealId};
         let response = await this.bx24.smartProcess.add(SP_TECHOLOGY_ID, data);
         
-        if (response?.result?.item) {
-            const technology = new Technology(response?.result?.item);
+        if (response?.item) {
+            const technology = new Technology(response?.item);
             for (let group of this.productGroups) {
                 const productData = group.products.find(product => product.id == technology.parentId);
                 if (productData) {
@@ -154,7 +154,7 @@ export class DataManager {
             }
         }
 
-        return response?.result?.item;
+        return response?.item;
     }
 
     async removeTechnology(productId, technologyId) {
@@ -176,12 +176,12 @@ export class DataManager {
         const entityTypeId = SP_PRODUCT_ID;
         const data = {[`parentId${SP_GROUP_ID}`]: groupId, parentId2: this.dealId};
         let response = await this.bx24.smartProcess.add(entityTypeId, data);
-        if (response?.result?.item) {
-            const product = new Product(response?.result?.item);
+        if (response?.item) {
+            const product = new Product(response?.item);
             this.productGroups.find(productGroup => productGroup.id == groupId).addProduct(product);
         }
 
-        return response?.result?.item;
+        return response?.item;
     }
 
     async removeProduct(productId) {
@@ -202,20 +202,15 @@ export class DataManager {
         const data = {parentId2: this.dealId};
         let response = await this.bx24.smartProcess.add(entityTypeId, data);
         console.log("createProductGroup = ", response);
-        if (response?.result?.item) {
-            console.log("response?.result?.item = ", response?.result?.item);
+        if (response?.item) {
+            console.log("response?.item = ", response?.item);
 
-            const group = new ProductGroup(response?.result?.item);
-            // let responseProduct = await this.bx24.smartProcess.add(entityTypeId, data);
-            // if (responseProduct?.result?.item) {
-            //     const product = new Product(responseProduct?.result?.item);
-            //     group.addProduct(product);
-            // }
+            const group = new ProductGroup(response?.item);
             this.productGroups.push(group);
             await this.createProduct(group.id);
         }
 
-        return response?.result?.item;
+        return response?.item;
     }
 
     addProductGroup(productGroup) {
