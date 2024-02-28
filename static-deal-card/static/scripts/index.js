@@ -85,6 +85,8 @@ class App {
         ]);
         this.initHandlers();
         this.handleMutation();
+        BX24.fitWindow();
+
     }
 
     async initData() {
@@ -129,19 +131,19 @@ class App {
         console.log("taskPrepayment = ", taskPrepayment);
         this.userCurrent = userCurrent;
 
-        this.dealDesc.init(dealData, dealSources);
-        this.dealClients.init(companyData, companyContacts, contactsData);
-        this.dealState.init(dealData, stageHistory);
-        this.dealAmounts.init(dealData);
-        this.dealWorkers.init(dealData, departments);
-        this.dealFinance.init(dealData, fieldsDeal);
-        this.dealSources.init(dealData);
-        this.dealDocs.init(dealData);
-        this.dealActs.init(dealData?.[FIELD_DEAL_ACTS_ID], FIELD_DEAL_ACTS_ID);
-        this.dealInvoices.init(dealData?.[FIELD_DEAL_INVOICES_ID], FIELD_DEAL_INVOICES_ID);
-        this.taskMenu.init(dealData, taskEstimate, taskCommercOffer, taskOrder, taskPayment, taskPrepayment);
+        await this.dealDesc.init(dealData, dealSources);
+        await this.dealClients.init(companyData, companyContacts, contactsData);
+        await this.dealState.init(dealData, stageHistory);
+        await this.dealAmounts.init(dealData);
+        await this.dealWorkers.init(dealData, departments);
+        await this.dealFinance.init(dealData, fieldsDeal);
+        await this.dealSources.init(dealData);
+        await this.dealDocs.init(dealData);
+        await this.dealActs.init(dealData?.[FIELD_DEAL_ACTS_ID], FIELD_DEAL_ACTS_ID);
+        await this.dealInvoices.init(dealData?.[FIELD_DEAL_INVOICES_ID], FIELD_DEAL_INVOICES_ID);
+        await this.taskMenu.init(dealData, taskEstimate, taskCommercOffer, taskOrder, taskPayment, taskPrepayment);
 
-        this.tasks.init();
+        await this.tasks.init();
     }
 
     initHandlers() {
