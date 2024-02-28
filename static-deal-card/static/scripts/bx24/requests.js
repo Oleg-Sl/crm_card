@@ -97,9 +97,14 @@ export default class Bitrix24 {
             const result = await new Promise((resolve, reject) => {
                 BX24.callBatch(reqPackage, response => {
                     const responseData = {};
-                    console.log("response[key] = ", response);
                     
-                    // for (let key in response) {
+                    for (let key in response) {
+                        console.log("response[key] = ", response[key]);
+                        let { status, error, data } = response[key];
+                        console.log("status", status);
+                        console.log("data", data());
+                        console.log("error", error());
+
                     //     console.log("key = ", key);
                     //     const { status, error, data } = response[key];
                     //     console.log("status", status);
@@ -120,7 +125,7 @@ export default class Bitrix24 {
                     //     // }
                     //     // const resData = response[key].data();
                     //     // responseData[key] = resData;
-                    // }
+                    }
                     resolve(responseData);
                 });
             });
