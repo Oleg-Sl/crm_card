@@ -77,7 +77,7 @@ export class TaskMenu {
         if (!this.task[taskType]) {
             this.showCreatingProcess(container);
             const fields = objTaskBody.getTaskData(this.dataObject);
-            const result = await this.bx24.task.create(fields)
+            const result = await this.bx24.task.add(fields)
             const taskId = result?.task?.id;
             this.task[taskType] = result?.task;
             this.bx24.deal.update({
