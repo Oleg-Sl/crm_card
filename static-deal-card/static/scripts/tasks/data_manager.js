@@ -42,6 +42,10 @@ export class DataManager {
         this.uiTaskOrder = null;
     }
 
+    clear() {
+        this.productGroups = [];
+    }
+
     init(fieldsData) {
         this.productGroups = [];
 

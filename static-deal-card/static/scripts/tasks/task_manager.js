@@ -29,6 +29,13 @@ export default class TaskManager {
         this.fieldTechnology = null;
 
         this.dataManager = new DataManager(this.bx24, this.dealId, this.commercial_offer, this.application, this.order);
+        // this.dataManager.init({
+        //     fieldGroup: this.fieldGroup,
+        //     fieldProduct: this.fieldProduct,
+        //     fieldTechnology: this.fieldTechnology,
+        //     fieldFilms: this.fieldFilms,
+        //     filmsDataList: this.filmsDataList,
+        // });
     }
 
     async init() {
@@ -41,6 +48,16 @@ export default class TaskManager {
             fieldFilms: this.fieldFilms,
             filmsDataList: this.filmsDataList,
         });
+
+        this.addProducts(groupsDataList, productsDataList,technologiesDataList );
+        this.dataManager.updateHTML();
+    }
+
+
+    async initReload() {
+        const { technologiesDataList, productsDataList, groupsDataList } = await this.getProductsData();
+
+        this.dataManager.clear();
 
         this.addProducts(groupsDataList, productsDataList,technologiesDataList );
         this.dataManager.updateHTML();

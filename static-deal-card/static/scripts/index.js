@@ -82,6 +82,7 @@ class App {
         await Promise.all([
             this.createFolderYaDisk(),
             this.initData(),
+            this.tasks.init(),
         ]);
         this.initHandlers();
         this.handleMutation();
@@ -143,7 +144,7 @@ class App {
         await this.dealInvoices.init(dealData?.[FIELD_DEAL_INVOICES_ID], FIELD_DEAL_INVOICES_ID);
         await this.taskMenu.init(dealData, taskEstimate, taskCommercOffer, taskOrder, taskPayment, taskPrepayment);
 
-        await this.tasks.init();
+        await this.tasks.initReload();
     }
 
     initHandlers() {

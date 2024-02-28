@@ -81,10 +81,11 @@ export class UiTaskApplication {
 
             if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-sources-remove')) {
                 const containerProductRow = target.closest('.product-row');
+                console.log("containerProductRow = ", containerProductRow);
                 const containerSourcesList = target.parentElement.parentElement.parentElement;
-                target.parentElement.parentElement.remove();
                 const groupId = containerProductRow.dataset.groupId;
                 const productId = containerProductRow.dataset.productId;
+                target.parentElement.parentElement.remove();
                 this.updateSources(containerSourcesList, groupId, productId);
             }
         })
