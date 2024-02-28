@@ -8,7 +8,7 @@ export default class BatchMethods {
     async call(calls) {
         let data = await this.bx24.batchMethod(calls);
 
-        return data?.result;
+        return data;
     }
 
     async getData(cmd) {
