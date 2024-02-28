@@ -100,12 +100,16 @@ export default class Bitrix24 {
                     
                     for (let key in response) {
                         console.log("response[key] = ", response[key]);
-                        let { status, error, data } = response[key];
-                        console.log("status", status);
-                        console.log("data", data);
-                        console.log("error", error);
-                        console.log("data", data());
-                        console.log("error", error());
+                        // let { status, error, data } = response[key];
+                        console.log("status", response[key]?.status);
+                        console.log("data", response[key]?.data);
+                        console.log("error", response[key]?.error);
+                        console.log("data", response[key]?.data());
+                        console.log("error", response[key]?.error());
+                        // console.log("data", data);
+                        // console.log("error", error);
+                        // console.log("data", data());
+                        // console.log("error", error());
 
                     //     console.log("key = ", key);
                     //     const { status, error, data } = response[key];
