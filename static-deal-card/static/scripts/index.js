@@ -189,8 +189,11 @@ class App {
                 }
                 
                 console.log("batch = ", batch);
-                const resBatch = await this.bx24.batch.call(batch);
-                console.log("resBatch = ", resBatch);
+                if (Object.keys(batch).length > 0) {
+                    const resBatch = await this.bx24.batch.call(batch);
+                    console.log("resBatch = ", resBatch);
+                }
+
                 spinner.classList.add('d-none');
             }
         })
