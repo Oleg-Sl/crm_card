@@ -84,6 +84,7 @@ class App {
             this.initData(),
         ]);
         this.initHandlers();
+        this.handleMutation();
     }
 
     async initData() {
@@ -229,6 +230,16 @@ class App {
 
         const createDirRes = await this.yaDisk.createDir(this.dealId);
         const results = await Promise.all(pathStorage.map(path => this.yaDisk.createDir(path)));
+    }
+
+    handleMutation() {
+        const targetNode = document.querySelector('#taskContainer');
+        const observer = new MutationObserver((mutationsList, observer) => {
+            BX24.fitWindow();
+            console.log('HTML был изменен в дочерних элементах');
+        });
+        const config = { childList: true, subtree: true };
+        observer.observe(targetNode, config);
     }
 }
 
