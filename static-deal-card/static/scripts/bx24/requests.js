@@ -115,6 +115,8 @@ export default class Bitrix24 {
                 });
             });
 
+            console.log("result = ", result);
+
             return result;
         } catch (error) {
             const errorMessage = `An error occurred in batchMethod: ${error}`;
