@@ -4,12 +4,10 @@ import {
 } from '../parameters.js';
 
 
-const FIELD_DOCS = "UF_DOCS";
 const CLASS_LIST_ITEMS = "deal-docs__files";
 const CLASS_BUTTON_ADD_FILE = "deal-files__button-add-file";
 const CLASS_BUTTON_ADD_LINK = "deal-files__button-add-link";
 
-const CLASS_INPUT_FILE = "deal-files__sources-files";
 const CLASS_SPINNER = "spinner-border";
 
 
@@ -173,7 +171,7 @@ class UIManager {
                         <div><div class="deal-docs__file-row-numb">${i + 1}.</div></div>
                         <div><div class="deal-docs__file-row-prev">🔗</div></div>
                         <div class="deal-docs__file-row-url" data-link="${url}"><a href="${url}" target="_blank" title="${url}">${url}</a></div>
-                        <div class="deal-docs__file-row-desc"><input class="files-desc" data-index="${i}" type="text" placeholder="описание файла (не обязательно)" value="${description}"></div>
+                        <div class="deal-docs__file-row-desc"><input class="files-desc" data-index="${i}" type="text" placeholder="описание файла (не обязательно)" value="${description || ''}"></div>
                         <div class="deal-docs__file-row-del"><i class="bi bi-dash-square file-row-del" data-index="${i}"></i></div>
                         <div class="deal-docs__file-row-draganddrop"><i class="bi bi-list"></i></div>
                         <div class="deal-docs__file-row-update"><i class="bi bi-arrow-repeat"></i></div>
@@ -263,9 +261,7 @@ export default class DealDocs {
 
     init(dataDeal) {
         let dataDocs = dataDeal?.[FIELD_DEAL_DOCS] || [];
-//        console.log(dataDocs);
-        this.data = this.parseList(dataDocs);
-//        console.log(this.data);
+        this.data = this.parseFilesDataFromBx(dataDocs);
         this.updateHTML();
     }
 
@@ -312,7 +308,7 @@ export default class DealDocs {
         const fileName = fileData.name;
         const fileSize = fileData.size;
     
-        const dirPath = `${this.dealId}`;
+        const dirPath = `${this.dealId}/docs`;
         const linkPromise = this.yaDiskManager.uploadFile(dirPath, fileName, fileData);
     
         let previewUrlPromise = null;
@@ -349,7 +345,7 @@ export default class DealDocs {
         return file.type.startsWith('image/');
     }
 
-    parseList(dataList) {
+    parseFilesDataFromBx(dataList) {
         // "file;https://yadi.sk/d/lIjE3soll7ZK6A;file.jpg;19.58KB;Краткое описание;https://yadi.sk/d/lIjE3soll7ZK6A;"
         // "link;https://google.com;;;Краткое описание;;"
         const parsedData = [];
@@ -364,7 +360,7 @@ export default class DealDocs {
                     url: fileLink,
                     title: fileName,
                     size: fileSize,
-                    desc: fileDescription,
+                    description: fileDescription,
                     urlPrev: filePreviewLink,
                 });
             } else if (type === 'link') {
@@ -372,7 +368,7 @@ export default class DealDocs {
                 parsedData.push({
                     type: 'link',
                     url: fileLink,
-                    desc: linkDescription || "",
+                    description: linkDescription || "",
                 });
             }
         }
@@ -398,7 +394,11 @@ export default class DealDocs {
         };
     }
 
+    getData() {
+        return this.data;
+    }
+
     stringifyData(dataArray) {
-        return dataArray.map(item => `${item.type};${item.title};${item.size};${item.url};${item.urlPrev};${item.desc || ""}`);
+        return dataArray.map(item => `${item.type};${item.title};${item.size};${item.url};${item.urlPrev};${item.description || ""}`);
     }
 }

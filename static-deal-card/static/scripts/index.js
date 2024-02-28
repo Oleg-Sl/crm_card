@@ -6,7 +6,15 @@ import {
     FIELD_DEAL_ACTS_ID,
     FIELD_DEAL_INVOICES_ID,
 
+    FIELD_DEAL_TASK_ESTIMATE,
+    FIELD_DEAL_TASK_COMMERC_OFFER,
+    FIELD_DEAL_TASK_ORDER,
+    FIELD_DEAL_TASK_PAYMENT,
+    FIELD_DEAL_TASK_PREPAYMENT,
+
 } from './parameters.js';
+
+import { TaskMenu } from './menu.js';
 
 import DealDescription from './interface/deal_description.js';
 import DealClients from './interface/deal_clients.js';
@@ -59,20 +67,27 @@ class App {
         this.dealDocs = new DealDocs(elemDealDocs, this.bx24, this.yaDisk, this.dealId);
 
         const elemDealActs = document.querySelector('.deal-acts');
-        this.dealActs = new DealActs(elemDealActs, this.bx24, this.yaDisk, this.dealId, FIELD_DEAL_ACTS_ID);
+        this.dealActs = new DealActs(elemDealActs, this.bx24, this.yaDisk, this.dealId, FIELD_DEAL_ACTS_ID, 'acts');
 
         const elemDealInvoices = document.querySelector('.deal-invoices');
-        this.dealInvoices = new DealActs(elemDealInvoices, this.bx24, this.yaDisk, this.dealId, FIELD_DEAL_INVOICES_ID);
+        this.dealInvoices = new DealActs(elemDealInvoices, this.bx24, this.yaDisk, this.dealId, FIELD_DEAL_INVOICES_ID, 'invoices');
 
         const elemTasks = document.querySelector('#taskContainer');
-        this.tasks = new TaskManager(elemTasks, this.bx24, 797); 
+        this.tasks = new TaskManager(elemTasks, this.bx24, this.dealId);
 
+        const elemTaskMenu = document.querySelector('#taskMenu');
+        this.taskMenu = new TaskMenu(elemTaskMenu, this.bx24, this.dealId, this);
     }
 
-
     async init() {
-//        const dealId = 797;
+        await Promise.all([
+            this.createFolderYaDisk(),
+            this.initData(),
+        ]);
+        this.initHandlers();
+    }
 
+    async initData() {
         const cmd = {
             deal: `crm.deal.get?id=${this.dealId}`,
             contacts: `crm.deal.contact.items.get?id=${this.dealId}`,
@@ -83,10 +98,15 @@ class App {
             user_current: `user.current`,
             departments: `department.get`,
             fields: `crm.deal.fields`,
+            taskEstimate: `tasks.task.get?taskId=$result[deal][${FIELD_DEAL_TASK_ESTIMATE}]`,
+            taskCommercOffer: `tasks.task.get?taskId=$result[deal][${FIELD_DEAL_TASK_COMMERC_OFFER}]`,
+            taskOrder: `tasks.task.get?taskId=$result[deal][${FIELD_DEAL_TASK_ORDER}]`,
+            taskPayment: `tasks.task.get?taskId=$result[deal][${FIELD_DEAL_TASK_PAYMENT}]&select[]=ID&select[]=TITLE&select[]=CREATED_DATE&select[]=CHANGED_DATE&select[]=CLOSED_DATE&select[]=STATUS`,
+            taskPrepayment: `tasks.task.get?taskId=$result[deal][${FIELD_DEAL_TASK_PREPAYMENT}]&select[]=ID&select[]=TITLE&select[]=CREATED_DATE&select[]=CHANGED_DATE&select[]=CLOSED_DATE&select[]=STATUS`,
         };
 
         const resBatch = await this.bx24.batch.getData(cmd);
-//        console.log(resBatch);
+
         const dealData          = resBatch?.deal;
         const contactsData      = resBatch?.contacts;
         const companyData       = resBatch?.company;
@@ -97,15 +117,17 @@ class App {
         const departments       = resBatch?.departments;
         const fieldsDeal        = resBatch?.fields;
 
-//        console.log("dealData = ", dealData);
-//        console.log("contactsData = ", contactsData);
-//        console.log("companyData = ", companyData);
-//        console.log("companyContacts = ", companyContacts);
-//        console.log("stageHistory = ", stageHistory);
-//        console.log("dealSources = ", dealSources);
-//        console.log("userCurrent = ", userCurrent);
-//        console.log("departments = ", departments);
-//        console.log("fieldsDeal = ", fieldsDeal);
+        const taskEstimate      = resBatch?.taskEstimate?.task;
+        const taskCommercOffer  = resBatch?.taskCommercOffer?.task;
+        const taskOrder         = resBatch?.taskOrder?.task;
+        const taskPayment       = resBatch?.taskPayment?.task;
+        const taskPrepayment    = resBatch?.taskPrepayment?.task;
+        console.log("taskEstimate = ", taskEstimate);
+        console.log("taskCommercOffer = ", taskCommercOffer);
+        console.log("taskOrder = ", taskOrder);
+        console.log("taskPayment = ", taskPayment);
+        console.log("taskPrepayment = ", taskPrepayment);
+        this.userCurrent = userCurrent;
 
         this.dealDesc.init(dealData, dealSources);
         this.dealClients.init(companyData, companyContacts, contactsData);
@@ -117,33 +139,40 @@ class App {
         this.dealDocs.init(dealData);
         this.dealActs.init(dealData?.[FIELD_DEAL_ACTS_ID], FIELD_DEAL_ACTS_ID);
         this.dealInvoices.init(dealData?.[FIELD_DEAL_INVOICES_ID], FIELD_DEAL_INVOICES_ID);
-        this.tasks.init();
+        this.taskMenu.init(dealData, taskEstimate, taskCommercOffer, taskOrder, taskPayment, taskPrepayment);
 
-        this.initHandlers();
+        this.tasks.init();
     }
 
     initHandlers() {
+        // сохранение измененных данных
         document.addEventListener('click', async (event) => {
             const target = event.target;
-            if (target.classList.contains('task-container__menu-save-task')) {
-                let dealDesc = this.dealDesc.getChangedData();
-                let dealWorkers = this.dealWorkers.getChangedData();
-                let dealSources = this.dealSources.getChangedData();
-                let dealDocs = this.dealDocs.getChangedData();
-                let dealActs = this.dealActs.getChangedData();
-                let dealInvoices = this.dealInvoices.getChangedData();
-                let dealFinance = this.dealFinance.getChangedData();
+            const button = target.closest('.task-container__menu-save-task');
+            if (button) {
+                const spinner = button.querySelector(`.spinner`);
+                spinner.classList.remove('d-none');
+                const dealDesc = this.dealDesc.getChangedData();
+                const dealWorkers = this.dealWorkers.getChangedData();
+                const dealSources = this.dealSources.getChangedData();
+                const dealDocs = this.dealDocs.getChangedData();
+                const dealActs = this.dealActs.getChangedData();
+                const dealInvoices = this.dealInvoices.getChangedData();
+                const dealFinance = this.dealFinance.getChangedData();
 
                 const dealData = {...dealDesc, ...dealWorkers, ...dealSources, ...dealDocs, ...dealActs, ...dealInvoices, ...dealFinance};
-
                 let smartsData = this.tasks.getChangedData();
-
+                console.log("dealData = ", dealData);
+                console.log("smartsData = ", smartsData);
+                
+                // Обновляем сделку
                 let res = await this.bx24.deal.update({
                     id: this.dealId,
                     fields: dealData,
                     params: { "REGISTER_SONET_EVENT": "Y" }
                 });
 
+                // Обновляем товары
                 let batch = {};
                 for (let smart of smartsData) {
                     batch[`${smart.entityTypeId}_${smart.entityId}`] = [
@@ -155,22 +184,52 @@ class App {
                         }
                     ];
                 }
+                
                 console.log(batch);
-                BX24.callBatch(batch, (res) => {
-                    console.log(res);
-                });
+                const resBatch = await this.bx24.batch.call(batch);
+                console.log("resBatch = ", resBatch);
+                spinner.classList.add('d-none');
             }
         })
 
-        // добавление группы товарощзуьв
+        // добавление группы товаров
         document.addEventListener('click', async (event) => {
             const target = event.target;
+            const button = target.closest('.task-container__menu-add-group');
 
-            if (target.tagName === 'BUTTON' && target.classList.contains('task-container__menu-add-group')) {
+            if (button) {
+                const spinner = button.querySelector(`.spinner`);
+                spinner.classList.remove('d-none');
                 await this.tasks.dataManager.createProductGroup();
                 this.tasks.dataManager.updateHTML();
+                spinner.classList.add('d-none');
             }
         })
+
+        // отменить изменения
+        document.addEventListener('click', async (event) => {
+            const target = event.target;
+            const button = target.closest('.task-container__menu-cancel-task');
+
+            if (button) {
+                const spinner = button.querySelector(`.spinner`);
+                spinner.classList.remove('d-none');
+                await this.initData();
+                spinner.classList.add('d-none');
+            }
+        })
+    }
+
+    async createFolderYaDisk() {
+        const pathStorage = [
+            [`${this.dealId}/sources`],
+            [`${this.dealId}/docs`],
+            [`${this.dealId}/acts`],
+            [`${this.dealId}/invoices`],
+        ];
+
+        const createDirRes = await this.yaDisk.createDir(this.dealId);
+        const results = await Promise.all(pathStorage.map(path => this.yaDisk.createDir(path)));
     }
 }
 

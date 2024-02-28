@@ -62,15 +62,12 @@ class YandexDiskManager {
 class FilePreviewManager {
     constructor(bx24, previewFolder) {
         this.fileManagerPrview = new FileManager(bx24);
-        console.log("this.fileManagerPrview = ", this.fileManagerPrview);
         this.previewFolder = previewFolder;
     }
 
     async uploadFile(fileData) {
-        console.log("FilePreviewDownload");
         try {
             const filePreview = await this.convertAndCompressImage(fileData);
-            console.log("this.fileManagerPrview2 = ", this.fileManagerPrview);
             return await this.fileManagerPrview.uploadFile(this.previewFolder, filePreview);
         } catch (error) {
             console.error('Error uploading preview file:', error);
@@ -268,7 +265,7 @@ class DealFiles {
         const fileName = fileData.name;
         const fileSize = fileData.size;
 
-        const dirPath = `${this.dealId}`;
+        const dirPath = `${this.dealId}/sources`;
         const linkPromise = this.yaDiskManager.uploadFile(dirPath, fileName, fileData);
 
         let previewUrlPromise = null;
@@ -327,6 +324,10 @@ class DealFiles {
         return dataArray;
     }
 
+    getFiles() {
+        return this.files;
+    }
+
     getData() {
         return this.stringifyData(this.files);
     }
@@ -351,6 +352,10 @@ class DealLinks {
         this.initHadler();
     }
 
+    getLinks() {
+        return this.links;
+    }
+
     getData() {
         return this.stringifyData(this.links);
     }
@@ -366,6 +371,14 @@ class DealLinks {
                 const index = target.closest('.deal-files__file-row').dataset.index;
                 this.links.splice(index, 1);
                 this.updateHTML();
+            }
+        })
+
+        this.boxList.addEventListener('change', (event) => {
+            const target = event.target;
+            if (target.classList.contains('links-desc')) {
+                const index = target.dataset.index;
+                this.links[index].description = target.value;
             }
         })
     }
@@ -389,7 +402,7 @@ class DealLinks {
                     <div><div class="deal-files__file-row-numb">${i + 1}.</div></div>
                     <div><div class="deal-files__file-row-prev">🖼</div></div>
                     <div class="deal-files__file-row-url"><a href="${url}" target="_blank">${url}</a></div>
-                    <div class="deal-files__file-row-desc"><input type="text" placeholder="описание ссылки (не обязательно)" value="${description}"></div>
+                    <div class="deal-files__file-row-desc"><input type="text" data-index="${i}" class="links-desc" placeholder="описание ссылки (не обязательно)" value="${description}"></div>
                     <div class="deal-files__file-row-del"><i class="bi bi-dash-square"></i></div>
                 </div>
             `;
@@ -429,8 +442,8 @@ export default class DealSources {
     }
 
     init(dealData) {
-        let links = dealData[FIELD_DEAL_SOURCE_LINKS] || [];
-        let files = dealData[FIELD_DEAL_SOURCE_FILES] || [];
+        const links = dealData[FIELD_DEAL_SOURCE_LINKS] || [];
+        const files = dealData[FIELD_DEAL_SOURCE_FILES] || [];
         this.objLinks = new DealLinks(this.boxLinks, this.bx24, links);
         this.objFiles = new DealFiles(this.boxFiles, this.bx24, this.yaDisk, this.dealId, files);
     }
@@ -441,226 +454,12 @@ export default class DealSources {
             [FIELD_DEAL_SOURCE_FILES]: this.objFiles.getData(),
         }
     }
+
+    getLinks() {
+        return this.objLinks.getLinks();
+    }
+
+    getFiles() {
+        return this.objFiles.getFiles();
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// class DealFiles {
-//     constructor(container, bx24, yaDisk, dealId, dataFiles) {
-//         this.container = container;
-//         this.bx24 = bx24;
-//         this.yaDisk = yaDisk;
-//         this.dealId = dealId;
-//         this.previewFolder = FOLDER_PREVIEW_ID;
-//         this.fileManagerPrview = new FileManager(bx24);
-
-//         this.files = this.parseData(dataFiles);
-
-//         this.boxList = this.container.querySelector(`.${CLASS_LIST_ITEMS}`);
-//         this.btnAdd = this.container.querySelector(`.${CLASS_BUTTON_ADD}`);
-
-//         this.updateHTML();
-//         this.initHadler();
-//     }
-
-//     initHadler() {
-//         // нажатие кнопки "Добавить файл"
-//         this.btnAdd.addEventListener('click', (event) => {
-//             let elemInput = event.target.parentNode.parentNode.querySelector("input");
-//             elemInput.click();
-//         });
-
-//         // Пользователь подтвердил выбор файла
-//         this.container.addEventListener('change', async (e) => {
-//             if (e.target.classList.contains(CLASS_INPUT_FILE)) {
-//                 let elemSpinner = this.btnAdd.querySelector(`.${CLASS_SPINNER}`);
-//                 elemSpinner.classList.remove("d-none");
-                
-//                 for (let file of e.target.files) {
-//                     await this.addFile(file);
-//                 }
-
-//                 elemSpinner.classList.add("d-none");
-//             }
-//         });
-
-//         // Изменение описания файла
-//         this.boxList.addEventListener('change', (event) => {
-//             if (event.target.classList.contains('files-desc')) {
-//                 const index = event.target.dataset.index;
-//                 this.files[index].desc = event.target.value;
-//             }
-//         })
-
-//         // Событие удаления файла
-//         this.boxList.addEventListener('click', (event) => {
-//             if (event.target.classList.contains('file-row-del')) {
-//                 const index = event.target.dataset.index;
-//                 this.files.splice(index, 1);
-//                 this.updateHTML();
-//             }
-//         })
-
-//     }
-
-//     handleEventPreviewShow(event) {
-//         const target = event.target;
-//         if (target.tagName === 'DIV' && target.classList.contains('deal-files__file-row-prev') && target.dataset.link) {
-//             const smile = target.textContent;
-//             const previewLink = target.dataset.link;
-//             const previewContainer = document.getElementById('tooltip');
-//             previewContainer.innerHTML = `<div style="max-width: 250px;"><img src="${previewLink}" alt="${smile}" style="width: 100%;"></div>`;
-//             previewContainer.style.visibility = "visible";
-//             previewContainer.style.left = event.pageX + 'px';
-//             previewContainer.style.opacity = '1';
-//             previewContainer.style.top = event.pageY + 'px';
-//         }
-
-//     }
-
-//     handleEventPreviewHide(event) {
-//         const previewContainer = document.getElementById('tooltip');
-//         previewContainer.style.opacity = '0';
-//         previewContainer.style.visibility = "hidden";
-//     }
-
-
-
-//     addPreviewEventListeners() {
-//         const list = this.boxList.querySelectorAll('.file-row-prev');
-
-//         list.forEach(item => {
-//             item.addEventListener('mouseover', this.handleEventPreviewShow);
-//             item.addEventListener('mouseout', this.handleEventPreviewHide);
-//         });
-//     }
-
-//     removePreviewEventListeners() {
-//         const list = this.boxList.querySelectorAll('.file-row-prev');
-
-//         list.forEach(item => {
-//             item.removeEventListener('mouseover', this.handleEventPreviewShow);
-//             item.removeEventListener('mouseout', this.handleEventPreviewHide);
-//         });
-//     }
-      
-
-//     getData() {
-//         return this.stringifyData(this.files);
-//     }
-
-//     updateHTML() {
-//         let contentHTML = "";
-
-//         this.removePreviewEventListeners();
-
-//         for (let i = 0; i < this.files.length; i++) {
-//             const { title, size, url, urlPrev, desc } = this.files[i];
-//             contentHTML += `
-//                 <div class="deal-files__file-row file-row">
-//                     <div><div class="deal-files__file-row-numb">${i + 1}.</div></div>
-//                     <div><div class="deal-files__file-row-prev file-row-prev" data-link="${urlPrev}">🖼</div></div>
-//                     <div class="deal-files__file-row-url" data-link="${url}"><a href="${url}" target="_blank" title="${title} (${size})">${title} (${size})</a></div>
-//                     <div class="deal-files__file-row-desc"><input class="files-desc" data-index="${i}" type="text" placeholder="описание файла (не обязательно)" value="${desc}"></div>
-//                     <div class="deal-files__file-row-del"><i class="bi bi-dash-square file-row-del" data-index="${i}"></i></div>
-//                 </div>
-//             `;
-//         }
-
-//         this.boxList.innerHTML = contentHTML;
-
-//         this.addPreviewEventListeners();
-//     }
-
-//     parseData(inputString) {
-//         const dataArray = inputString.map(item => {
-//             const [title, size, url, urlPrev, desc] = item.split(';');
-//             return { title, size, url, urlPrev, desc };
-//         });
-    
-//         return dataArray;
-//     }
-
-//     stringifyData(dataArray) {
-//         const stringArray = dataArray.map(item => `${item.title};${item.size};${item.url};${item.urlPrev};${item.desc}`);
-//         return stringArray;
-//     }
-
-//     async addFile(fileData) {
-//         const fileName = fileData.name;
-//         const fileSize = fileData.size;
-        
-//         let dirPath = `${this.dealId}`;
-//         let link = await this.yaDisk.uploadFile(dirPath, fileName, fileData);
-//         let previewUrl = null; 
-//         if (this.isImageFile(fileData)) {
-//             const filePreview = await convertAndCompressImage(fileData);
-//             let preview = await this.fileManagerPrview.uploadFile(this.previewFolder, filePreview);
-//             previewUrl = preview?.DOWNLOAD_URL;
-//         }
-
-//         if (!link) {
-//             console.error("Error upload file to YandexDisk");
-//             return;
-//         }
-
-//         this.files.push({
-//             title: fileName,
-//             size: this.getFormatingFileSize(fileSize),
-//             url: link,
-//             urlPrev: previewUrl,
-//             desc: ""
-//         });
-
-//         this.updateHTML();
-//         // BX24.fitWindow();
-//     }
-
-//     isImageFile(file) {
-//         console.log("file.type = ", file.type);
-//         console.log("file.type.startsWith('image/') = ", file.type.startsWith('image/'));
-//         return file.type.startsWith('image/');
-//     }
-
-//     getFormatingFileSize(size) {
-//         const KB = 1024;
-//         const MB = KB * KB;
-//         if (size < KB) {
-//             return size + "B";
-//         } else if (size < MB) {
-//             return (size / KB).toFixed(2) + "KB";
-//         } else {
-//             return (size / MB).toFixed(2) + "MB";
-//         }
-//     }
-// }

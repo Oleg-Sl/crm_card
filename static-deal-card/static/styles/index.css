@@ -1081,6 +1081,8 @@
 .deal-invoices .deal-files-container .deal-content label, .deal-acts .deal-files-container .deal-content label {
   position: absolute;
   top: 5px;
+}
+.deal-invoices .deal-files-container .deal-content label button, .deal-acts .deal-files-container .deal-content label button {
   display: block;
   position: absolute;
 }
@@ -1171,6 +1173,15 @@
   transform: rotateX(180deg);
 }
 
+.task-container__app .task-container__group-title span {
+  color: #464A4E;
+  font: 700 10px Roboto;
+}
+.task-container__app .task-container__group-title input {
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0);
+  font: 700 10px Roboto;
+}
 .task-container__app table {
   display: grid;
   grid-template-columns: 15px 1fr 110px 120px 80px 80px 80px 110px 80px 90px 80px;
@@ -1525,6 +1536,15 @@
 }
 .task-container__app table tbody .task-container_group-item-right .task-container_group-item-remove {
   color: rgba(255, 0, 0, 0.5882352941);
+}
+.task-container__commerc-offer .task-container__group-title span, .task-container__offer .task-container__group-title span {
+  color: #464A4E;
+  font: 700 10px Roboto;
+}
+.task-container__commerc-offer .task-container__group-title input, .task-container__offer .task-container__group-title input {
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0);
+  font: 700 10px Roboto;
 }
 .task-container__commerc-offer table, .task-container__offer table {
   display: grid;
@@ -2260,10 +2280,16 @@
   font: 900 14px Roboto;
 }
 .task-container__menu .task-container__menu-buttons button {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   width: 100%;
   height: 35px;
   color: #fff;
   border: none;
+  padding: 1px 20px;
 }
 .task-container__menu .task-container__menu-buttons .task-container__menu-add-group {
   background-color: #FFDE8A;
@@ -2355,7 +2381,11 @@
 .task-container__menu .task-container__menu-buttons .task-container__activities .task-container__activities-group:nth-child(n+2) {
   border-top: 1px solid #D7D9DC;
 }
-.task-container__menu .task-container__menu-buttons .task-container__activities .task-container__activities-group .task-container__menu-create-order i {
+.task-container__menu .task-container__menu-buttons .task-container__activities .task-container__activities-group .task-container__menu-create-estimate i,
+.task-container__menu .task-container__menu-buttons .task-container__activities .task-container__activities-group .task-container__menu-create-commerc_offer i,
+.task-container__menu .task-container__menu-buttons .task-container__activities .task-container__activities-group .task-container__menu-create-order i,
+.task-container__menu .task-container__menu-buttons .task-container__activities .task-container__activities-group .task-container__menu-create-payment i,
+.task-container__menu .task-container__menu-buttons .task-container__activities .task-container__activities-group .task-container__menu-create-invoice-prepayment i {
   color: #54b434;
 }
 
@@ -2826,6 +2856,10 @@ input:checked + .slider:before {
   transition: ease 0.4s;
 }
 
+.d-none {
+  display: none;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -2906,4 +2940,8 @@ body {
 
 .nav-link.active {
   background-color: #f8f9fa;
+}
+
+.task-container__groups .application-group:nth-child(n+2) {
+  margin-top: 15px;
 }/*# sourceMappingURL=index.css.map */

@@ -22,6 +22,9 @@ export function parseDateFromDatetimeString(dateString) {
         const year = dateObject.getFullYear();
         const month = dateObject.getMonth() + 1; // Месяцы в JavaScript начинаются с 0
         const day = dateObject.getDate();
+        if (isNaN(year) || isNaN(month) || isNaN(day)) {
+            return null;
+        }
         const formattedDate = `${year}-${month < 10 ? '0' : ''}${month}-${day < 10 ? '0' : ''}${day}`;
         return formattedDate;
     } catch (error) {

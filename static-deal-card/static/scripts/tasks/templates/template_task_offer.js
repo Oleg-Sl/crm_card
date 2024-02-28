@@ -36,7 +36,7 @@ export class TemplateTaskOffer {
         return `
             <div class="offer-group" data-group-id="${groupData.id}">
                 <div class="task-container__group-title">
-                    <span>Группа 1: </span><input type="text" placeholder="Название" value="${this.customToString(groupData.title)}" data-group-field="title" data-group-type="text">
+                    <span>Группа ${numberGroup}: </span><input type="text" placeholder="Название" value="${this.customToString(groupData.title)}" data-group-field="title" data-group-type="text">
                 </div>
                 <table>
                     <thead>
@@ -323,7 +323,7 @@ export class TemplateTaskOffer {
             let checked = technology.inKP ? 'checked' : '';
             contentHTML += `
                 <div class="task-container__item-is-offer technology-item technology-row" data-technology-id="${technology.id}">
-                    <input type="checkbox" name="" id="" ${technology.inKP ? 'checked' : ''} data-technology-field="inKP" data-technology-type="checkbox">
+                    <input type="checkbox" name="" id="" ${checked} data-technology-field="inKP" data-technology-type="checkbox">
                 </div>
             `;
         }
@@ -613,4 +613,12 @@ export class TemplateTaskOffer {
         }
     }
 
+    formatDateForInput(dateString) {
+        if (!dateString) return "";
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        let month = (date.getMonth() + 1).toString().padStart(2, '0');
+        let day = date.getDate().toString().padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
 };

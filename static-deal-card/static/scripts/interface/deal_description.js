@@ -57,13 +57,15 @@ export default class DealDescription extends ChangeHistory {
         this.dealTitle = null;
         this.requestSource = null;
         this.fieldValues = Array(9).fill(null);
+
+        this.addEventListeners();
     }
 
     init(dealData, dealSources) {
         this.sources = dealSources;
-        this.setData(dealData)
+        this.clearHistory();
+        this.setData(dealData, dealSources)
         this.render();
-        this.addEventListeners();
     }
 
     getChangedData() {
@@ -99,7 +101,9 @@ export default class DealDescription extends ChangeHistory {
         super.updateHistory(fieldId, oldValue, newValue);
     }
 
-    setData(dealData) {
+    setData(dealData, dealSources) {
+        this.sources = dealSources;
+
         this.orderNumber = dealData?.[FIELD_DEAL_ORDER_NUMBER];
         this.dealTitle = dealData?.[FIELD_DEAL_TITLE];
         this.requestSource = dealData?.[FIELD_DEAL_SOURCE_ID];

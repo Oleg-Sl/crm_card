@@ -18,7 +18,6 @@ export class UiTaskApplication {
     }
 
     initHandlers() {
-        
         // добавление/удаление технологии
         this.container.addEventListener('click', async (event) => {
             let target = event.target;
@@ -26,7 +25,7 @@ export class UiTaskApplication {
                 const containerProductRow = event.target.closest('.product-row');
                 const productId = containerProductRow.dataset.productId;
                 await this.dataManager.createTechnology(productId);
-                this.updateHTML();
+                this.dataManager.updateHTML();
             }
 
             if (target.tagName === 'I' && target.parentElement.classList.contains('task-container__item-technologies-technology-remove')) {
@@ -35,7 +34,7 @@ export class UiTaskApplication {
                 const containerTechnologyRow = target.closest('.technology-row');
                 const technologyId = containerTechnologyRow.dataset.technologyId;
                 await this.dataManager.removeTechnology(productId, technologyId);
-                this.updateHTML();
+                this.dataManager.updateHTML();
             }
         })
 
@@ -47,7 +46,7 @@ export class UiTaskApplication {
                 const containerProductRow = event.target.closest('.application-group');
                 const groupId = containerProductRow.dataset.groupId;
                 await this.dataManager.createProduct(groupId);
-                this.updateHTML();
+                this.dataManager.updateHTML();
             }
 
             if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-remove')) {
@@ -55,7 +54,7 @@ export class UiTaskApplication {
                 const productId = containerProductRow.dataset.productId;
                 await this.dataManager.removeProduct(productId);
                 containerProductRow.remove();
-                // this.updateHTML();
+                this.dataManager.updateHTML();
             }
         })
 
@@ -67,7 +66,7 @@ export class UiTaskApplication {
                 const containerRow = event.target.closest('.application-group');
                 // const groupId = containerProductRow.dataset.groupId;
                 await this.dataManager.createProductGroup();
-                this.updateHTML();
+                this.dataManager.updateHTML();
             }
         })
         

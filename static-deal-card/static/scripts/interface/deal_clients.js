@@ -1,7 +1,4 @@
 
-// const OPEN_EMAIL = "https://bits24.bitrix24.ru/bitrix/components/bitrix/crm.activity.planner/slider.php?context=deal-797&ajax_action=ACTIVITY_EDIT&activity_id=0&TYPE_ID=4&OWNER_ID=797&OWNER_TYPE=DEAL&OWNER_PSID=0&FROM_ACTIVITY_ID=0&MESSAGE_TYPE=&SUBJECT=&BODY=&=undefined&__post_data_hash=-1046067848&IFRAME=Y&IFRAME_TYPE=SIDE_SLIDER";
-
-
 export default class DealClients {
     constructor(container, bx24, dealId) {
         this.dealId = dealId;
@@ -12,31 +9,31 @@ export default class DealClients {
         this.companyData = null;
         this.companyContacts = null;
         this.contactsData = null;
-    }
 
-    async init (companyData, companyContacts, contactsData) {
-        this.companyData = companyData;
-        this.companyContacts = companyContacts;
-        console.log("companyData = ", companyData);
-        console.log("companyContacts = ", companyContacts);
-        console.log("contactsData = ", contactsData);
-        let data = await this.getContactsData([...companyContacts, ...contactsData]);
-        console.log("getContactsData = ", data);
-
-        this.contactsData = data?.result || [];
-
-        this.render();
         this.addEventListeners();
     }
 
+    async init (companyData, companyContacts, contactsData) {
+        let data = await this.getContactsData([...companyContacts, ...contactsData]);
+
+        this.companyData = companyData;
+        this.companyContacts = companyContacts;
+        this.contactsData = data?.result?.result || [];
+
+        this.render();
+    }
+
+    getData() {
+        return {
+            companyData: this.companyData,
+            companyContacts: this.companyContacts,
+            contactsData: this.contactsData
+        };
+    }
+
     async getContactsData(contacts) {
-        console.log("getContactsData 1 = ", contacts);
         const contactIds = contacts.map(item => item.CONTACT_ID);
-        console.log("getContactsData 2 = ", contactIds);
-
         const data = await this.bx24.contact.getList(contactIds);
-        console.log("getContactsData contacts list = ", data);
-
         return data;
     }
 
@@ -194,7 +191,7 @@ export default class DealClients {
                 const url = this.bx24.getUrlSendMessageFromDealId(this.dealId);
                 console.log('Send email to url = ', url);
                 window.open(url, "_blank");
-//                window.open(`https://wa.me/${phoneNumber}`, '_blank');
+                // window.open(`https://wa.me/${phoneNumber}`, '_blank');
             }
         });
 

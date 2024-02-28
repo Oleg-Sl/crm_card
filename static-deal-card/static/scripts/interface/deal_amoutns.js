@@ -16,6 +16,9 @@ export default class DealAmounts {
         this.bx24 = bx24;
         this.container = container;
 
+        this.elemAmount = this.container.querySelector(`#${ID_DEAL_AMOUNT}`);
+        this.elemPayment = this.container.querySelector(`#${ID_DEAL_PAYMENT}`);
+
         this.dealAmount = null;
         this.payment = null;
     }
@@ -23,13 +26,14 @@ export default class DealAmounts {
     init(dealData) {
         this.dealAmount = dealData[FIELD_DEAL_AMOUNT];
         this.payment = dealData[FIELD_DEAL_PAYMENT];
-        const profit = this.dealAmount - this.payment;
 
-        const elemAmount = this.container.querySelector(`#${ID_DEAL_AMOUNT}`);
-        const elemPayment = this.container.querySelector(`#${ID_DEAL_PAYMENT}`);
-
-        elemAmount.innerHTML = isNaN(this.dealAmount) ? '0' : this.dealAmount.toLocaleString();
-        elemPayment.innerHTML = isNaN(profit) ? '0' : profit.toLocaleString();
+        this.render();
     }
 
+    render() {
+        const profit = this.dealAmount - this.payment;
+
+        this.elemAmount.innerHTML = isNaN(this.dealAmount) ? '0' : this.dealAmount.toLocaleString();
+        this.elemPayment.innerHTML = isNaN(profit) ? '0' : profit.toLocaleString();
+    }
 };

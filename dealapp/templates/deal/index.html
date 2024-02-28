@@ -19,6 +19,39 @@
     <script>
         let dealId = {{ id }};
     </script>
+    <style>
+        .spinner {
+            position: absolute;
+            right: 2px;
+            margin-left: 4px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #7983ff;
+            border-radius: 50%;
+            width: 9px;
+            height: 9px;
+            animation: spin 1s linear infinite;
+        }
+
+        .rotate {
+            position: absolute;
+            animation: spin 1s linear infinite;
+        }
+
+        .blinking {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.5; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
     <title>Document</title>
 </head>
 
@@ -72,13 +105,15 @@
                 </div>
             </div>
         </div>
+
         <div class="deal-clients">
             <div class="deal-clients__container">
                 <!-- Список данных клиента -->
             </div>
         </div>
-        <div class="deal-empty">
-        </div>
+
+        <div class="deal-empty"></div>
+
         <div class="deal-state">
             <div class="deal-state__container">
                 <div class="deal-state__left">
@@ -143,18 +178,20 @@
                 </div>
             </div>
         </div>
+
         <div class="deal-amounts">
             <div class="deal-amounts__container">
                 <div class="deal-amounts__row deal-amounts__amount">
                     <div class="deal-amounts__title">сумма сделки: </div>
-                    <div class="deal-amounts__value"><span id="dealAmountsAmount">133 500</span>&nbsp;₽</div>
+                    <div class="deal-amounts__value"><span id="dealAmountsAmount"></span>&nbsp;₽</div>
                 </div>
                 <div class="deal-amounts__row deal-amounts__profit">
                     <div class="deal-amounts__title">% от суммы сделки: </div>
-                    <div class="deal-amounts__value"><span id="dealAmountsPayment">4 500</span>&nbsp;₽</div>
+                    <div class="deal-amounts__value"><span id="dealAmountsPayment"></span>&nbsp;₽</div>
                 </div>
             </div>
         </div>
+
         <div class="deal-workers">
             <div class="deal-workers__container">
                 <div class="deal-workers__user deal-workers__mop">
@@ -199,6 +236,7 @@
                 </div>
             </div>
         </div>
+
         <div class="deal-files">
             <div class="deal-files__container">
                 <div class="deal-files__content">
@@ -208,7 +246,13 @@
                             <div class="deal-files__files">
                                 <!-- Cтроки с файлами -->
                             </div>
-                            <button class="deal-files__button-add">Добавить ссылку</button>
+                            <div>
+                                <button class="deal-files__button-add">
+                                    <span class="sr-only">Добавить файл</span>
+                                    <span class="d-none spinner-border" role="status" aria-hidden="true"></span>
+                                </button>
+                                <input class="d-none deal-files__sources-files" type="file" id="" multiple>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -234,6 +278,7 @@
                 </div>
             </div>
         </div>
+
         <div class="deal-docs">
             <div class="deal-docs__container">
                 <div class="deal-docs__content">
@@ -265,7 +310,7 @@
         <div class="deal-invoices">
             <div class="deal-invoices__container deal-files-container">
                 <div class="deal-content">
-                    <label for="">Документы</label>
+                    <label for="">Счета</label>
                     <div class="deal-files">
                         <div class="files-items-container">
                             <!-- Cтроки с файлами -->
@@ -306,6 +351,7 @@
                 </div>
             </div>
         </div>
+
         <div class="deal-finance">
             <div class="deal-finance__container">
                 <div class="deal-finance__our-requisites">
@@ -350,53 +396,61 @@
             </div>
 
             <div class="task-container__menu-buttons">
-                <button class="task-container__menu-add-group">ДОБАВИТЬ ГРУППУ</button>
-                <button class="task-container__menu-update-task">ИЗМЕНИТЬ</button>
-                <button class="task-container__menu-save-task">СОХРАНИТЬ</button>
-                <button class="task-container__menu-cancel-task">ОТМЕНИТЬ</button>
+                <button class="task-container__menu-add-group">
+                    <div>ДОБАВИТЬ ГРУППУ</div><div class="spinner d-none"></div>
+                </button>
+                <button class="task-container__menu-update-task">
+                    <div>ИЗМЕНИТЬ</div><div class="spinner d-none"></div>
+                </button>
+                <button class="task-container__menu-save-task">
+                    <div>СОХРАНИТЬ</div><div class="spinner d-none"></div>
+                </button>
+                <button class="task-container__menu-cancel-task">
+                    <div>ОТМЕНИТЬ</div><div class="spinner d-none"></div>
+                </button>
                 <div class="task-container__menu-activity">
                     <div class="task-container__menu-activity-left">Activity</div>
                     <div class="task-container__menu-activity-right"><i class="bi bi-chevron-down"></i></div>
                 </div>
-                <div class="task-container__activities">
-                    <div class="task-container__activities-group task-container__activities-estimate">
+                <div id="taskMenu" class="task-container__activities">
+                    <div class="task-container__activities-rows task-container__activities-group task-container__activities-estimate">
                         <div class="task-container__activities-row task-container__menu-create-estimate">
-                            <div class="task-container__activities-title">Создать Смету</div>
-                            <div class="task-container__activities-lable"></div>
+                            <div id="btnCreateTaskEstimate" class="task-container__activities-title">Создать Смету</div>
+                            <div class="task-container__activities-lable"><i class="bi bi-check-circle-fill"></i></div>
                         </div>
                         <div class="task-container__activities-row task-container__menu-update-estimate">
-                            <div class="task-container__activities-title">Перезаписать Смету</div>
-                            <div class="task-container__activities-lable"></div>
+                            <div id="btnUpdateTaskEstimate" class="task-container__activities-title">Перезаписать Смету</div>
+                            <div class="task-container__activities-lable"><i class="bi bi-arrow-clockwise"></i></div>
                         </div>
                     </div>
-                    <div class="task-container__activities-group task-container__activities-commerc_offer">
+                    <div class="task-container__activities-rows task-container__activities-group task-container__activities-commerc_offer">
                         <div class="task-container__activities-row task-container__menu-create-commerc_offer">
-                            <div class="task-container__activities-title">Создать КП</div>
-                            <div class="task-container__activities-lable"></div>
+                            <div id="btnCreateTaskCommercOffer" class="task-container__activities-title">Создать КП</div>
+                            <div class="task-container__activities-lable"><i class="bi bi-check-circle-fill"></i></div>
                         </div>
                         <div class="task-container__activities-row task-container__menu-update-commerc_offer">
-                            <div class="task-container__activities-title">Перезаписать КП</div>
-                            <div class="task-container__activities-lable"></div>
+                            <div id="btnUpdateTaskCommercOffer" class="task-container__activities-title">Перезаписать КП</div>
+                            <div class="task-container__activities-lable"><i class="bi bi-arrow-clockwise"></i></div>
                         </div>
                     </div>
-                    <div class="task-container__activities-group task-container__activities-order">
+                    <div class="task-container__activities-rows task-container__activities-group task-container__activities-order">
                         <div class="task-container__activities-row task-container__menu-create-order">
-                            <div class="task-container__activities-title">Создать Заказ</div>
+                            <div id="btnCreateTaskOrder" class="task-container__activities-title">Создать Заказ</div>
                             <div class="task-container__activities-lable"><i class="bi bi-check-circle-fill"></i></div>
                         </div>
                         <div class="task-container__activities-row task-container__menu-update-order">
-                            <div class="task-container__activities-title">Перезаписать Заказ</div>
+                            <div id="btnUpdateTaskOrder" class="task-container__activities-title">Перезаписать Заказ</div>
                             <div class="task-container__activities-lable"><i class="bi bi-arrow-clockwise"></i></div>
                         </div>
                     </div>
                     <div class="task-container__activities-group task-container__activities-invoice">
-                        <div class="task-container__activities-row task-container__menu-create-payment">
-                            <div class="task-container__activities-title">Создать Счет на оплату</div>
-                            <div class="task-container__activities-lable"></div>
+                        <div class="task-container__activities-rows task-container__activities-row task-container__menu-create-payment">
+                            <div id="btnCreateTaskPayment" class="task-container__activities-title">Создать Счет на оплату</div>
+                            <div class="task-container__activities-lable"><i class="bi bi-check-circle-fill"></i></div>
                         </div>
-                        <div class="task-container__activities-row task-container__menu-create-invoice-prepayment">
-                            <div class="task-container__activities-title">Создать Счет на Предоплату</div>
-                            <div class="task-container__activities-lable"></div>
+                        <div class="task-container__activities-rows task-container__activities-row task-container__menu-create-invoice-prepayment">
+                            <div id="btnCreateTaskPrepayment" class="task-container__activities-title">Создать Счет на Предоплату</div>
+                            <div class="task-container__activities-lable"><i class="bi bi-check-circle-fill"></i></div>
                         </div>
                     </div>
                 </div>
@@ -405,17 +459,14 @@
         <div class="tab-content" id="nav-tabContent">
             <div class="task-container__offer tab-pane fade" id="nav-technical" role="tabpanel" aria-labelledby="nav-technical-tab" tabindex="0">
                 <div class="task-container__groups" id="taksOffer">
-
                 </div>
             </div>
             <div class="task-container__app tab-pane fade" id="nav-app" role="tabpanel" aria-labelledby="nav-app-tab" tabindex="0">
                 <div class="task-container__groups" id="taskApplication">
-
                 </div>
             </div>
             <div class="task-container__commerc-offer tab-pane fade show active" id="nav-commerc_offer" role="tabpanel" aria-labelledby="nav-commerc_offer-tab" tabindex="0">
                 <div class="task-container__groups" id="taskOffer">
-
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-order" role="tabpanel" aria-labelledby="nav-order-tab" tabindex="0">

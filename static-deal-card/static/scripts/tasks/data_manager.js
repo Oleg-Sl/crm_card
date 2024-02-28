@@ -43,6 +43,8 @@ export class DataManager {
     }
 
     init(fieldsData) {
+        this.productGroups = [];
+
         this.fieldGroup = fieldsData?.fieldGroup;
         this.fieldProduct = fieldsData?.fieldProduct;
         this.fieldTechnology = fieldsData?.fieldTechnology;
@@ -189,6 +191,10 @@ export class DataManager {
             const productData = group.products.find(product => product.id == productId);
             if (productData) {
                 group.removeProduct(productData);
+                if (group.products.length == 0) {
+                    await this.bx24.smartProcess.delete(SP_GROUP_ID, group.id);
+                    this.removeProductGroup(group);
+                }
             }
         }
 
@@ -201,10 +207,7 @@ export class DataManager {
         const entityTypeId = SP_GROUP_ID;
         const data = {parentId2: this.dealId};
         let response = await this.bx24.smartProcess.add(entityTypeId, data);
-        console.log("createProductGroup = ", response);
         if (response?.item) {
-            console.log("response?.item = ", response?.item);
-
             const group = new ProductGroup(response?.item);
             this.productGroups.push(group);
             await this.createProduct(group.id);

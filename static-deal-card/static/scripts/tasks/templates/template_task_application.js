@@ -25,13 +25,13 @@ export class TemplateTaskApplication {
         if (products.length === 0) {
             products = [];
         }
-    
+
         let productsHTML = '';
         for (let ind in products) {
             const productData = products[ind];
             productsHTML += this.getProductHTML(groupData, productData, +ind + 1);
         }
-    
+
         return `
             <div class="application-group" data-group-id="${groupData.id}">
                 <div class="task-container__group-title">
@@ -127,14 +127,13 @@ export class TemplateTaskApplication {
             </div>
         `;
     }
-    
-    
+
     getProductHTML(groupData, productData, number) {
         let technologies = productData?.technologies || [];
         if (!technologies.length) {
             technologies = [];
         }
-    
+
         return `
             <tr class="product-row" data-product-id="${productData.id}" data-group-id="${groupData.id}">
                 <td>
@@ -177,7 +176,6 @@ export class TemplateTaskApplication {
                             ${this.getOptionsHTML(this.fieldProduct?.[SP_PRODUCT_FIELDS.measurement]?.items, productData.measurement)}
                         </select>
                         <select name="" id="">
-                            
                         </select>
                     </div>
                 </td>
@@ -226,7 +224,7 @@ export class TemplateTaskApplication {
                         <select name="" id="" data-product-field="terms" data-product-type="select">
                             ${this.getOptionsHTML(this.fieldProduct?.[SP_PRODUCT_FIELDS.terms]?.items, productData.terms)}
                         </select>
-                        <input type="date" value="${productData.termsDate || ''}" data-product-field="termsDate" data-product-type="date">
+                        <input type="date" value="${this.customToString(productData.termsDate)}" data-product-field="termsDate" data-product-type="date">
                     </div>
                 </td>
                 <td class="task-container_group-item-dismantling">
@@ -249,8 +247,7 @@ export class TemplateTaskApplication {
             </tr>
         `;
     }
-    
-    
+
     getTechnologiesHTML(technologies) {
         let contentHTML = '';
         for (let technology of technologies) {
@@ -284,7 +281,7 @@ export class TemplateTaskApplication {
                 </div>
             `;
         }
-    
+
         return contentHTML;
     }
 
@@ -308,10 +305,10 @@ export class TemplateTaskApplication {
                 </div>
             `;
         }
-    
+
         return contentHTML;
     }
-    
+
     getOptionsHTML(fields, value) {
         let contentHTML = '<option value=""></option>';
         for (const field of fields) {
@@ -323,7 +320,7 @@ export class TemplateTaskApplication {
         }
         return contentHTML;
     }
-    
+
     customToString(value) {
         if (value === 0) {
             return "0";
@@ -374,7 +371,17 @@ export class TemplateTaskApplication {
                 widthsListHTML += `<option value="${width}">${width}</option>`
             }
         }
-        
+
         return widthsListHTML;
+    }
+
+    customToString(value) {
+        if (value === 0) {
+            return "0";
+        } else if (value === null || value === undefined || (typeof value === 'number' && isNaN(value))) {
+            return "";
+        } else {
+            return value;
+        }
     }
 };

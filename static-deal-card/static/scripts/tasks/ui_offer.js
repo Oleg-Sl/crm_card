@@ -19,92 +19,9 @@ export class UiTaskOffer {
     }
 
     initHandlers() {
-        // добавление/удаление технологии
-        this.container.addEventListener('click', async (event) => {
-            let target = event.target;
-            if (target.tagName === 'I' && target.parentElement.classList.contains('task-container__item-technology-add')) {
-                const containerProductRow = event.target.closest('.product-row');
-                const productId = containerProductRow.dataset.productId;
-                await this.dataManager.createTechnology(productId);
-                this.updateHTML();
-            }
-
-            if (target.tagName === 'I' && target.parentElement.classList.contains('task-container__item-technologies-technology-remove')) {
-                const containerProductRow = target.closest('.product-row');
-                const productId = containerProductRow.dataset.productId;
-                const containerTechnologyRow = target.closest('.technology-row');
-                const technologyId = containerTechnologyRow.dataset.technologyId;
-                await this.dataManager.removeTechnology(productId, technologyId);
-                this.updateHTML();
-            }
-        })
-
-        // добвление/удаление товара
-        this.container.addEventListener('click', async (event) => {
-            const target = event.target;
-            
-            if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-add')) {
-                const containerProductRow = event.target.closest('.application-group');
-                const groupId = containerProductRow.dataset.groupId;
-                await this.dataManager.createProduct(groupId);
-                this.updateHTML();
-            }
-
-            if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-remove')) {
-                const containerProductRow = target.closest('.product-row');
-                const productId = containerProductRow.dataset.productId;
-                await this.dataManager.removeProduct(productId);
-                containerProductRow.remove();
-                // this.updateHTML();
-            }
-        })
-
-        // добавление группы товаров
-        this.container.addEventListener('click', async (event) => {
-            const target = event.target;
-
-            if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-header-add-group')) {
-                const containerRow = event.target.closest('.application-group');
-                // const groupId = containerProductRow.dataset.groupId;
-                await this.dataManager.createProductGroup();
-                this.updateHTML();
-            }
-        })
-        
-        // добавление/удаление исходного файла
-        this.container.addEventListener('click', event => {
-            const target = event.target;
-
-            if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-sources-add')) {
-                const sourceItemHTML = this.templatesTaskOffer.getSourcesHTML([{}]);
-                target.parentElement.parentElement.querySelector('.task-container_group-item-sources-list').insertAdjacentHTML('beforeend', sourceItemHTML);
-            }
-
-            if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-sources-remove')) {
-                const containerProductRow = target.closest('.product-row');
-                const containerSourcesList = target.parentElement.parentElement.parentElement;
-                target.parentElement.parentElement.remove();
-                const groupId = containerProductRow.dataset.groupId;
-                const productId = containerProductRow.dataset.productId;
-                this.updateSources(containerSourcesList, groupId, productId);
-            }
-        })
-
-        // Обновление исходных файлов
-        this.container.addEventListener('change', event => {
-            if (event.target.tagName === 'SELECT' && event.target.classList.contains('product-source-select')) {
-                const containerProductRow = event.target.closest('.product-row');
-                const containerSourcesList = event.target.parentElement.parentElement.parentElement;
-                const groupId = containerProductRow.dataset.groupId;
-                const productId = containerProductRow.dataset.productId;
-                this.updateSources(containerSourcesList, groupId, productId);
-            }
-        })
-
         this.handlersGropupProducts();
         this.handlersProduct();
         this.handlersTechnology();
-
     }
 
     handlersGropupProducts() {

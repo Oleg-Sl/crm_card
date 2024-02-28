@@ -1,6 +1,19 @@
 
-// ID директории в битрикс с превью
 export const FOLDER_PREVIEW_ID = 947233;
+
+export const FIELD_DEAL_ASSIGNED_BY_ID = 'ASSIGNED_BY_ID';
+
+// ID задачи СМЕТА
+export const FIELD_DEAL_TASK_ESTIMATE = 'UF_CRM_1694710433';
+// ID задачи КП
+export const FIELD_DEAL_TASK_COMMERC_OFFER = 'UF_CRM_1709109026';
+// ID задачи  ЗАКАЗ
+export const FIELD_DEAL_TASK_ORDER = 'UF_CRM_1661089895';
+// ID задачи  СЧЕТ НА ОПЛАТУ
+export const FIELD_DEAL_TASK_PAYMENT = 'UF_CRM_1661089811';
+// ID задачи  СЧЕТ НА ПРЕДОПЛАТУ
+export const FIELD_DEAL_TASK_PREPAYMENT = 'UF_CRM_1661253202';
+
 
 // Поля блока - описание сделки
 export const FIELD_DEAL_TITLE = 'TITLE';

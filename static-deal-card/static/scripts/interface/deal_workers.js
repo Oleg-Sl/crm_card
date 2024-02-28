@@ -196,9 +196,9 @@ export default class DealWorkers {
         this.bx24 = bx24;
         this.dealId = dealId;
 
-        this.mos = null;
-        this.mop = null;
-        this.observers;
+        this.userMOS = null;
+        this.userMOP = null;
+        this.usersObserver = null;
     }
 
     async init(dealData, departments) {
@@ -209,13 +209,10 @@ export default class DealWorkers {
         let idsObservers      = dealData[FIELD_DEAL_OBSERVERS] || [];
         
         let usersData = await this.getUsersData([idResponsibleMOP, idResponsibleMOS, ...idsObservers]);
-
         let userDataMOP = usersData[idResponsibleMOP] ? (usersData[idResponsibleMOP][0] || {}) : {};
         let userDataMOS = usersData[idResponsibleMOS] ? (usersData[idResponsibleMOS][0] || {}) : {};
 
-//        console.log("idsObservers = ", idsObservers);
         let usersObserversData = this.getUserSelectedData(idsObservers, usersData);
-//        console.log("usersObserversData = ", usersObserversData);
 
         let containerMOP      = this.container.querySelector(`.deal-workers__mop`);
         let containerMOS      = this.container.querySelector(`.deal-workers__mos`);
@@ -236,7 +233,6 @@ export default class DealWorkers {
 
     async getUsersData(idsUsers) {
         const users = await this.bx24.user.getList(idsUsers);
-//        console.log("users = ", users);
         return users?.result;
     }
 

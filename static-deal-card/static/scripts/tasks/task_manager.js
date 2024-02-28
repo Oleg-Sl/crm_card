@@ -84,7 +84,6 @@ export default class TaskManager {
             [SP_PRODUCT_ID]: `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}`,
             [SP_TECHOLOGY_ID]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}`,
         });
-        console.log("task manager = ", data);
         this.fieldGroup = data?.fieldGroup?.fields;
         this.fieldProduct = data?.fieldProduct?.fields;
         this.fieldTechnology = data?.fieldTechnology?.fields;
