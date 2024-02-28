@@ -107,6 +107,7 @@ export class DataManager {
     }
 
     getChangedFieldsMap(changedFields) {
+        console.log("changedFields = ", changedFields);
         const changedFieldsMap = {};
 
         for (const key in changedFields) {

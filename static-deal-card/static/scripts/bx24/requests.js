@@ -101,7 +101,6 @@ export default class Bitrix24 {
                     for (let key in response) {
                         const res = response[key]
                         if (res.status !== 200 || res.error()) {
-                            console.log("status !== 200 || error()", `${res.error()} (method ${reqPackage[key].method}: ${JSON.stringify(reqPackage[key].params)})`);
                             this.logError(`${res.error()} (method ${reqPackage[key].method}: ${JSON.stringify(reqPackage[key].params)})`);
                             continue;
                         }
@@ -109,13 +108,9 @@ export default class Bitrix24 {
                         responseData[key] = res.data();
                     }
 
-                    console.log("responseData = ", responseData);
-
                     resolve(responseData);
                 });
             });
-
-            console.log("result = ", result);
 
             return result;
         } catch (error) {
@@ -165,7 +160,6 @@ export default class Bitrix24 {
                     });
                 }
                 const infoMessage = `Executed ${countBatch} requests out of ${countBatch}`;
-                console.log(infoMessage);
             }
 
             return result;

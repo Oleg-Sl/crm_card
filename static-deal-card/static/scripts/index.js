@@ -182,17 +182,9 @@ class App {
                             fields: smart
                         }
                     }
-                    // batch[`${smart.entityTypeId}_${smart.entityId}`] = [
-                    //     "crm.item.update",
-                    //     {
-                    //         entityTypeId: smart.entityTypeId,
-                    //         id: smart.entityId,
-                    //         fields: smart
-                    //     }
-                    // ];
                 }
                 
-                console.log(batch);
+                console.log("batch = ", batch);
                 const resBatch = await this.bx24.batch.call(batch);
                 console.log("resBatch = ", resBatch);
                 spinner.classList.add('d-none');
