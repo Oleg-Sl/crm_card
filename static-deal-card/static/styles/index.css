@@ -1235,7 +1235,7 @@
 .task-container__app table input[type=number] {
   -moz-appearance: textfield;
 }
-.task-container__app table select, .task-container__app table input, .task-container__app table textarea {
+.task-container__app table select, .task-container__app table input {
   font: 400 8px Roboto;
   background: none;
   border: 1px solid rgba(151, 153, 155, 0.2);
@@ -1586,7 +1586,7 @@
 .task-container__commerc-offer table .shared, .task-container__offer table .shared {
   grid-row: span 2;
 }
-.task-container__commerc-offer table select, .task-container__commerc-offer table input, .task-container__commerc-offer table textarea, .task-container__offer table select, .task-container__offer table input, .task-container__offer table textarea {
+.task-container__commerc-offer table select, .task-container__commerc-offer table input, .task-container__offer table select, .task-container__offer table input {
   font: 400 8px Roboto;
   background: none;
   border: 1px solid rgba(151, 153, 155, 0.2);
