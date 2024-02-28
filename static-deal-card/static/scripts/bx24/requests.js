@@ -99,38 +99,30 @@ export default class Bitrix24 {
                     const responseData = {};
                     
                     for (let key in response) {
+                        const result = response[key]
                         console.log("response[key] = ", response[key]);
-                        // let { status, error, data } = response[key];
+
                         console.log("status", response[key]?.status);
                         console.log("data", response[key]?.data);
                         console.log("error", response[key]?.error);
                         console.log("data", response[key]?.data());
                         console.log("error", response[key]?.error());
-                        // console.log("data", data);
-                        // console.log("error", error);
-                        // console.log("data", data());
-                        // console.log("error", error());
 
-                    //     console.log("key = ", key);
-                    //     const { status, error, data } = response[key];
-                    //     console.log("status", status);
-                    //     console.log("data", data());
-                    //     console.log("error", error());
 
-                    //     if (status !== 200 || error()) {
-                    //         console.log("status !== 200 || error()", `${error()} (method ${reqPackage[key].method}: ${JSON.stringify(reqPackage[key].params)})`);
-                    //         this.logError(`${error()} (method ${reqPackage[key].method}: ${JSON.stringify(reqPackage[key].params)})`);
-                    //         continue;
-                    //     }
-                    //     responseData[key] = data();
-                    //     console.log("responseData = ", responseData);
+                        if (result.status !== 200 || result.error()) {
+                            console.log("status !== 200 || error()", `${result.error()} (method ${reqPackage[key].method}: ${JSON.stringify(reqPackage[key].params)})`);
+                            this.logError(`${result.error()} (method ${reqPackage[key].method}: ${JSON.stringify(reqPackage[key].params)})`);
+                            continue;
+                        }
+                        responseData[key] = result.data();
+                        console.log("responseData = ", responseData);
 
-                    //     // if (response[key].status !== 200 || response[key].error()) {
-                    //     //     this.logError(`${response[key].error()} (method ${reqPackage[key].method}: ${JSON.stringify(reqPackage[key].params)})`);
-                    //     //     continue;
-                    //     // }
-                    //     // const resData = response[key].data();
-                    //     // responseData[key] = resData;
+                        // if (response[key].status !== 200 || response[key].error()) {
+                        //     this.logError(`${response[key].error()} (method ${reqPackage[key].method}: ${JSON.stringify(reqPackage[key].params)})`);
+                        //     continue;
+                        // }
+                        // const resData = response[key].data();
+                        // responseData[key] = resData;
                     }
                     resolve(responseData);
                 });
