@@ -174,14 +174,22 @@ class App {
                 // Обновляем товары
                 let batch = {};
                 for (let smart of smartsData) {
-                    batch[`${smart.entityTypeId}_${smart.entityId}`] = [
-                        "crm.item.update",
-                        {
+                    batch[`${smart.entityTypeId}_${smart.entityId}`] = {
+                        method: "crm.item.update",
+                        params: {
                             entityTypeId: smart.entityTypeId,
                             id: smart.entityId,
                             fields: smart
                         }
-                    ];
+                    }
+                    // batch[`${smart.entityTypeId}_${smart.entityId}`] = [
+                    //     "crm.item.update",
+                    //     {
+                    //         entityTypeId: smart.entityTypeId,
+                    //         id: smart.entityId,
+                    //         fields: smart
+                    //     }
+                    // ];
                 }
                 
                 console.log(batch);
