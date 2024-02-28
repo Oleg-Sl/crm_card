@@ -94,36 +94,23 @@ export default class Bitrix24 {
 
     async batchMethod(reqPackage) {
         try {
-            const result = await new Promise((resolve, reject) => {
+            let result = await new Promise((resolve, reject) => {
                 BX24.callBatch(reqPackage, response => {
                     const responseData = {};
                     
                     for (let key in response) {
-                        const result = response[key]
-                        console.log("response[key] = ", response[key]);
-
-                        console.log("status", response[key]?.status);
-                        console.log("data", response[key]?.data);
-                        console.log("error", response[key]?.error);
-                        console.log("data", response[key]?.data());
-                        console.log("error", response[key]?.error());
-
-
-                        if (result.status !== 200 || result.error()) {
-                            console.log("status !== 200 || error()", `${result.error()} (method ${reqPackage[key].method}: ${JSON.stringify(reqPackage[key].params)})`);
-                            this.logError(`${result.error()} (method ${reqPackage[key].method}: ${JSON.stringify(reqPackage[key].params)})`);
+                        const res = response[key]
+                        if (res.status !== 200 || res.error()) {
+                            console.log("status !== 200 || error()", `${res.error()} (method ${reqPackage[key].method}: ${JSON.stringify(reqPackage[key].params)})`);
+                            this.logError(`${res.error()} (method ${reqPackage[key].method}: ${JSON.stringify(reqPackage[key].params)})`);
                             continue;
                         }
-                        responseData[key] = result.data();
-                        console.log("responseData = ", responseData);
 
-                        // if (response[key].status !== 200 || response[key].error()) {
-                        //     this.logError(`${response[key].error()} (method ${reqPackage[key].method}: ${JSON.stringify(reqPackage[key].params)})`);
-                        //     continue;
-                        // }
-                        // const resData = response[key].data();
-                        // responseData[key] = resData;
+                        responseData[key] = res.data();
                     }
+
+                    console.log("responseData = ", responseData);
+
                     resolve(responseData);
                 });
             });
