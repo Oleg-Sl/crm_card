@@ -107,14 +107,13 @@ export class DataManager {
     }
 
     getChangedFieldsMap(changedFields) {
-        console.log("changedFields = ", changedFields);
         const changedFieldsMap = {};
 
         for (const key in changedFields) {
             if (Object.hasOwnProperty.call(changedFields, key)) {
-                if (changedFields[key].initialValue === true) {
+                if (changedFields[key].newValue === true) {
                     changedFieldsMap[key] = 'Y';
-                } else if (changedFields[key].initialValue === false) {
+                } else if (changedFields[key].newValue === false) {
                     changedFieldsMap[key] = 'N';
                 } else {
                     changedFieldsMap[key] = changedFields[key].newValue;
