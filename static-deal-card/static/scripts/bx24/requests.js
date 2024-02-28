@@ -102,6 +102,8 @@ export default class Bitrix24 {
                         console.log("response[key] = ", response[key]);
                         let { status, error, data } = response[key];
                         console.log("status", status);
+                        console.log("data", data);
+                        console.log("error", error);
                         console.log("data", data());
                         console.log("error", error());
 
