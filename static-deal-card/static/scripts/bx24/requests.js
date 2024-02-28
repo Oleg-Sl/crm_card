@@ -101,8 +101,8 @@ export default class Bitrix24 {
                         console.log("key = ", key);
                         const { status, error, data } = response[key];
                         console.log("status", status);
-                        console.log("error", error());
                         console.log("data", data());
+                        console.log("error", error());
 
                         if (status !== 200 || error()) {
                             console.log("status !== 200 || error()", `${error()} (method ${reqPackage[key].method}: ${JSON.stringify(reqPackage[key].params)})`);
