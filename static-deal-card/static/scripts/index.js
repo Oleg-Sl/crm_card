@@ -144,7 +144,7 @@ class App {
         await this.dealInvoices.init(dealData?.[FIELD_DEAL_INVOICES_ID], FIELD_DEAL_INVOICES_ID);
         await this.taskMenu.init(dealData, taskEstimate, taskCommercOffer, taskOrder, taskPayment, taskPrepayment);
 
-        await this.tasks.initReload();
+        // await this.tasks.initReload();
     }
 
     initHandlers() {

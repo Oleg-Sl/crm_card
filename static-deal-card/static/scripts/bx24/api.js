@@ -30,6 +30,32 @@ export default class BitrixService {
         this.domain = await this.bx24.getDomain();
     }
 
+    async callMethod(method, body) {
+        if (!method || !body || Object.keys(body).length === 0) {
+            return null;
+        }
+        try {
+            let data = await this.bx24.callMethod(method, body);
+            return data;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    async callBatchCmd(cmd) {
+        const result = await callMethod('batch', {
+            halt: 0,
+            cmd: cmd
+        });
+
+        return result?.result;
+    }
+
+    async callBatchJson(batch) {
+        let data = await this.bx24.batchMethod(batch);
+        return data;
+    }
+
     makeCall(phoneNumber) {
         this.bx24.makeCall(phoneNumber);
     }
@@ -45,4 +71,5 @@ export default class BitrixService {
     getUrlSendMessageFromDealId(dealId) {
         return `https://${this.domain}/bitrix/components/bitrix/crm.activity.planner/slider.php?context=deal-${dealId}&ajax_action=ACTIVITY_EDIT&activity_id=0&TYPE_ID=4&OWNER_ID=${dealId}&OWNER_TYPE=DEAL&OWNER_PSID=0&FROM_ACTIVITY_ID=0&MESSAGE_TYPE=&SUBJECT=&BODY=&=undefined&__post_data_hash=-1046067848&IFRAME=Y&IFRAME_TYPE=SIDE_SLIDER`;
     }
+
 }
