@@ -56,6 +56,8 @@ export default class TaskManager {
         this.dataManager.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);        
         this.dataManager.setData(data.groups, data.products, data.technologies);
 
+        this.update();
+
     }
 
     async update() {
