@@ -134,6 +134,7 @@ export class TaskOfferInterface {
     }
 
     updateTaskProduct(groupId, productId, newData) {
+        console.log("updateTaskProduct groupId = ", groupId, "productId = ", productId, "newData = ", newData);
         this.manager.updateProduct(groupId, productId, newData);
     }
 

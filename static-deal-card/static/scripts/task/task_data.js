@@ -92,7 +92,7 @@ export class TaskData {
     addProduct(productData) {
         let objProduct = new Product(productData); 
         for (let objGroup of this.groupsData) {
-            if (objGroup.id === objProduct.parentId) {
+            if (objGroup.id == objProduct.parentId) {
                 objGroup.addProduct(objProduct);
             }
         }
@@ -102,7 +102,7 @@ export class TaskData {
         let objTechnology = new Technology(technologyData);
         for (let objGroup of this.groupsData) {
             for (let objProduct of objGroup.products) {
-                if (objProduct.id === objTechnology.parentId) {
+                if (objProduct.id == objTechnology.parentId) {
                     objGroup.addTechnology(objTechnology);
                 }
             }
@@ -111,30 +111,35 @@ export class TaskData {
 
     updateGroup(groupId, newData) {
         console.log("updateGroup = ", groupId, newData);
-        const group = this.groupsData.find(group => group.id === groupId);
+        const group = this.groupsData.find(group => group.id == groupId);
+        console.log('group = ', group);
         if (group) {
             group.update(newData);
             this.notify();
+            console.log('group = ', group);
         }
     }
 
     updateProduct(groupId, productId, newData) {
-        const group = this.groupsData.find(group => group.id === groupId);
+        const group = this.groupsData.find(group => group.id == groupId);
         if (group) {
-            const product = group.products.find(product => product.id === productId);
+            const product = group.products.find(product => product.id == productId);
+            console.log('product = ', product);
+            
             if (product) {
                 product.update(newData);
                 this.notify();
+                console.log('product = ', product);
             }
         }
     }
 
     updateTechnology(groupId, productId, techId, newData) {
-        const group = this.groupsData.find(group => group.id === groupId);
+        const group = this.groupsData.find(group => group.id == groupId);
         if (group) {
-            const product = group.products.find(product => product.id === productId);
+            const product = group.products.find(product => product.id == productId);
             if (product) {
-                const technology = product.technologies.find(tech => tech.id === techId);
+                const technology = product.technologies.find(tech => tech.id == techId);
                 if (technology) {
                     technology.update(newData);
                     this.notify();
@@ -144,7 +149,7 @@ export class TaskData {
     }
 
     removeGroup(groupId) {
-        const index = this.groupsData.findIndex(group => group.id === groupId);
+        const index = this.groupsData.findIndex(group => group.id == groupId);
         if (index !== -1) {
             this.groupsData.splice(index, 1);
             this.notify();
@@ -152,9 +157,9 @@ export class TaskData {
     }
 
     removeProduct(groupId, productId) {
-        const group = this.groupsData.find(group => group.id === groupId);
+        const group = this.groupsData.find(group => group.id == groupId);
         if (group) {
-            const product = group.products.find(product => product.id === productId);
+            const product = group.products.find(product => product.id == productId);
             if (product) {
                 group.removeProduct(product);
                 this.notify();
@@ -163,11 +168,11 @@ export class TaskData {
     }
 
     removeTechnology(groupId, productId, techId) {
-        const group = this.groupsData.find(group => group.id === groupId);
+        const group = this.groupsData.find(group => group.id == groupId);
         if (group) {
-            const product = group.products.find(product => product.id === productId);
+            const product = group.products.find(product => product.id == productId);
             if (product) {
-                const technology = product.technologies.find(tech => tech.id === techId);
+                const technology = product.technologies.find(tech => tech.id == techId);
                 if (technology) {
                     product.removeTechnology(technology);
                     this.notify();
