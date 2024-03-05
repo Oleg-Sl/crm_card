@@ -190,7 +190,7 @@ export class TaskOrderInterface {
             widths: widths,
             laminations: laminations
         };
-        this.templates.setSmartFields(this.materials);
+        this.templates.setMaterialsData(this.materials);
     }
 
     update() {

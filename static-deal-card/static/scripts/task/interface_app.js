@@ -183,7 +183,7 @@ export class TaskAppInterface {
             laminations: laminations
         };
         console.log("setMaterialsData interface = ", this.materials);
-        this.templates.setSmartFields(this.materials);
+        this.templates.setMaterialsData(this.materials);
     }
 
     update() {
