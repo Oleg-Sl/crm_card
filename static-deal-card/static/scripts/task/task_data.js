@@ -105,11 +105,12 @@ export class TaskData {
     }
 
     addTechnology(technologyData) {
-        console.log('technologyData = ', technologyData);
         let objTechnology = new Technology(technologyData);
+        console.log('objTechnology = ', objTechnology);
         for (let objGroup of this.groupsData) {
             for (let objProduct of objGroup.products) {
                 if (objProduct.id == objTechnology.parentId) {
+                    console.log('objProduct = ', objProduct);
                     objGroup.addTechnology(objTechnology);
                     this.notify();
                 }

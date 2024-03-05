@@ -44,9 +44,9 @@ export class TaskAppInterface {
                 this.createProduct(target.dataset.groupId);
             }
 
-            if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-remove') && target.dataset.productId) {
-                console.log("remove target.dataset.productId = ", target.dataset.productId);
-                this.removeProduct(target.dataset.productId);
+            if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-remove') && target.dataset.groupId && target.dataset.productId) {
+                // console.log("remove target.dataset.productId = ", target.dataset.productId, target.dataset.groupId);
+                this.removeProduct(target.dataset.groupId, target.dataset.productId);
             }
         })
 
@@ -58,8 +58,8 @@ export class TaskAppInterface {
                 this.createTechnology(target.dataset.productId);
             }
 
-            if (target.tagName === 'I' && target.parentElement.classList.contains('task-container__item-technologies-technology-remove') && target.dataset.technologyId) {
-                this.removeTechnology(target.dataset.technologyId);
+            if (target.tagName === 'I' && target.parentElement.classList.contains('task-container__item-technologies-technology-remove') && target.dataset.groupId && target.dataset.productId && target.dataset.technologyId) {
+                this.removeTechnology(target.dataset.groupId, target.dataset.productId, target.dataset.technologyId);
             }
         })
 
@@ -213,23 +213,23 @@ export class TaskAppInterface {
         this.manager.createGroup();
     }
 
-    removeGroup(groupId) {
-        this.manager.removeGroup(groupId);
-    }
-
     createProduct(groupId) {
         this.manager.createProduct(groupId);
-    }
-
-    removeProduct(productId) {
-        this.manager.removeProduct(productId);
     }
 
     createTechnology(productId) {
         this.manager.createTechnology(productId);
     }
 
-    removeTechnology(technologyId) {
-        this.manager.removeTechnology(technologyId);
+    removeGroup(groupId) {
+        this.manager.removeGroup(groupId);
+    }
+
+    removeProduct(groupId, productId) {
+        this.manager.removeProduct(groupId, productId);
+    }
+
+    removeTechnology(groupId, productId, technologyId) {
+        this.manager.removeTechnology(groupId, productId, technologyId);
     }
 }
