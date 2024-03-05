@@ -38,15 +38,15 @@ export class TaskOfferInterface {
             const groupId = target.dataset.groupId;
             const groupField = target.dataset.groupField;
             console.log("groupId = ", groupId, "groupField = ", groupField);
-            if (target.tagName === 'INPUT' && target.dataset.groupType === 'text' && groupId && groupField) {
+            if (target.tagName === 'INPUT' && target.dataset.type === 'text' && groupId && groupField) {
                 this.updateTaskGroup(groupId, {[groupField]: target.value});
-            } else if (target.tagName === 'INPUT' && target.dataset.groupType === 'number' && groupId && groupField) {
+            } else if (target.tagName === 'INPUT' && target.dataset.type === 'number' && groupId && groupField) {
                 this.updateTaskGroup(groupId, {[groupField]: target.value});
-            } else if (target.tagName === 'INPUT' && target.dataset.groupType === 'checkbox' && groupId && groupField) {
+            } else if (target.tagName === 'INPUT' && target.dataset.type === 'checkbox' && groupId && groupField) {
                 this.updateTaskGroup(groupId, {[groupField]: target.checked});
-            } else if (target.tagName === 'SELECT' && target.dataset.groupType === 'select' && groupId && groupField) {
+            } else if (target.tagName === 'SELECT' && target.dataset.type === 'select' && groupId && groupField) {
                 this.updateTaskGroup(groupId, {[groupField]: target.value});
-            } else if (target.tagName === 'TEXTAREA' && target.dataset.groupType === 'textarea' && groupId && groupField) {
+            } else if (target.tagName === 'TEXTAREA' && target.dataset.type === 'textarea' && groupId && groupField) {
                 this.updateTaskGroup(groupId, {[groupField]: target.value});
             }
         });
@@ -59,19 +59,19 @@ export class TaskOfferInterface {
             const productId = target.dataset.productId;
             const productField = target.dataset.productField;
             console.log("groupId = ", groupId, "productId = ", productId, "productField = ", productField);
-            if (target.tagName === 'INPUT' && target.dataset.productType === 'text' && groupId && productId && productField) {
+            if (target.tagName === 'INPUT' && target.dataset.type === 'text' && groupId && productId && productField) {
                 this.updateTaskProduct(groupId, productId, {[productField]: target.value});
-            } else if (target.tagName === 'INPUT' && target.dataset.productType === 'number' && groupId && productId && productField) {
+            } else if (target.tagName === 'INPUT' && target.dataset.type === 'number' && groupId && productId && productField) {
                 this.updateTaskProduct(groupId, productId, {[productField]: target.value});
-            } else if (target.tagName === 'INPUT' && target.dataset.productType === 'date' && groupId && productId && productField) {
+            } else if (target.tagName === 'INPUT' && target.dataset.type === 'date' && groupId && productId && productField) {
                 this.updateTaskProduct(groupId, productId, {[productField]: target.value});
-            } else if (target.tagName === 'INPUT' && target.dataset.productType === 'checkbox' && groupId && productId && productField) {
+            } else if (target.tagName === 'INPUT' && target.dataset.type === 'checkbox' && groupId && productId && productField) {
                 this.updateTaskProduct(groupId, productId, {[productField]: target.checked});
-            } else if (target.tagName === 'INPUT' && target.dataset.productType === 'date' && groupId && productId && productField) {
+            } else if (target.tagName === 'INPUT' && target.dataset.type === 'date' && groupId && productId && productField) {
                 this.updateTaskProduct(groupId, productId, {[productField]: target.value});
-            } else if (target.tagName === 'TEXTAREA' && target.dataset.productType === 'textarea' && groupId && productId && productField) {
+            } else if (target.tagName === 'TEXTAREA' && target.dataset.type === 'textarea' && groupId && productId && productField) {
                 this.updateTaskProduct(groupId, productId, {[productField]: target.value});
-            } else if (target.tagName === 'SELECT' && target.dataset.productType === 'select' && groupId && productId && productField) {
+            } else if (target.tagName === 'SELECT' && target.dataset.type === 'select' && groupId && productId && productField) {
                 this.updateTaskProduct(groupId, productId, {[productField]: target.value});
             }
         });
@@ -85,13 +85,13 @@ export class TaskOfferInterface {
             const technologyId = target.dataset.technologyId;
             const technologyField = target.dataset.technologyField;
             
-            if (target.tagName === 'INPUT' && target.dataset.technologyType === 'number' && groupId && productId && technologyId && technologyField) {
+            if (target.tagName === 'INPUT' && target.dataset.type === 'number' && groupId && productId && technologyId && technologyField) {
                 this.updateTaskTechnology(groupId, productId, technologyId, {[technologyField]: target.value});
-            } else if (target.tagName === 'INPUT' && target.dataset.technologyType === 'text' && groupId && productId && technologyId && technologyField) {
+            } else if (target.tagName === 'INPUT' && target.dataset.type === 'text' && groupId && productId && technologyId && technologyField) {
                 this.updateTaskTechnology(groupId, productId, technologyId, {[technologyField]: target.value});
-            } else if (target.tagName === 'INPUT' && target.dataset.technologyType === 'checkbox' && groupId && productId && technologyId && technologyField) {
+            } else if (target.tagName === 'INPUT' && target.dataset.type === 'checkbox' && groupId && productId && technologyId && technologyField) {
                 this.updateTaskTechnology(groupId, productId, technologyId, {[technologyField]: target.checked});
-            } else if (target.tagName === 'SELECT' && target.dataset.technologyType === 'select' && groupId && productId && technologyId && technologyField) {
+            } else if (target.tagName === 'SELECT' && target.dataset.type === 'select' && groupId && productId && technologyId && technologyField) {
                 this.updateTaskTechnology(groupId, productId, technologyId, {[technologyField]: target.value});
             }
         });
