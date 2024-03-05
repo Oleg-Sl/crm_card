@@ -71,7 +71,6 @@ class App {
         const elemDealInvoices = document.querySelector('.deal-invoices');
         this.dealInvoices = new DealActs(elemDealInvoices, this.bx24, this.yaDisk, this.dealId, FIELD_DEAL_INVOICES_ID, 'invoices');
 
-        // const elemTasks = document.querySelector('#taskContainer');
         this.taskData = new TaskManager(this.bx24, this.dealId);
 
         const elemTaskMenu = document.querySelector('#taskMenu');
@@ -125,11 +124,11 @@ class App {
         const taskOrder         = resBatch?.taskOrder?.task;
         const taskPayment       = resBatch?.taskPayment?.task;
         const taskPrepayment    = resBatch?.taskPrepayment?.task;
-        console.log("taskEstimate = ", taskEstimate);
-        console.log("taskCommercOffer = ", taskCommercOffer);
-        console.log("taskOrder = ", taskOrder);
-        console.log("taskPayment = ", taskPayment);
-        console.log("taskPrepayment = ", taskPrepayment);
+        // console.log("taskEstimate = ", taskEstimate);
+        // console.log("taskCommercOffer = ", taskCommercOffer);
+        // console.log("taskOrder = ", taskOrder);
+        // console.log("taskPayment = ", taskPayment);
+        // console.log("taskPrepayment = ", taskPrepayment);
         this.userCurrent = userCurrent;
 
         await this.dealDesc.init(dealData, dealSources);
@@ -142,7 +141,7 @@ class App {
         await this.dealDocs.init(dealData);
         await this.dealActs.init(dealData?.[FIELD_DEAL_ACTS_ID], FIELD_DEAL_ACTS_ID);
         await this.dealInvoices.init(dealData?.[FIELD_DEAL_INVOICES_ID], FIELD_DEAL_INVOICES_ID);
-        await this.taskMenu.init(dealData, taskEstimate, taskCommercOffer, taskOrder, taskPayment, taskPrepayment);
+        await this.taskMenu.init(dealData, taskEstimate, taskCommercOffer, taskOrder, taskPayment, taskPrepayment, this.userCurrent?.ID);
 
         // await this.tasks.initReload();
     }
@@ -165,8 +164,8 @@ class App {
 
                 const dealData = {...dealDesc, ...dealWorkers, ...dealSources, ...dealDocs, ...dealActs, ...dealInvoices, ...dealFinance};
                 let smartsData = this.taskData.getChangedData();
-                console.log("dealData = ", dealData);
-                console.log("smartsData = ", smartsData);
+                // console.log("dealData = ", dealData);
+                // console.log("smartsData = ", smartsData);
                 
                 // Обновляем сделку
                 let res = await this.bx24.deal.update({
@@ -187,11 +186,11 @@ class App {
                         }
                     }
                 }
-                
-                console.log("batch = ", batch);
+
+                // console.log("batch = ", batch);
                 if (Object.keys(batch).length > 0) {
                     const resBatch = await this.bx24.batch.call(batch);
-                    console.log("resBatch = ", resBatch);
+                    // console.log("resBatch = ", resBatch);
                 }
 
                 spinner.classList.add('d-none');
@@ -242,7 +241,7 @@ class App {
         const targetNode = document.querySelector('#taskContainer');
         const observer = new MutationObserver((mutationsList, observer) => {
             BX24.fitWindow();
-            console.log('HTML был изменен в дочерних элементах');
+            // console.log('HTML был изменен в дочерних элементах');
         });
         const config = { childList: true, subtree: true };
         observer.observe(targetNode, config);

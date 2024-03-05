@@ -47,18 +47,18 @@ export class TaskMenu {
         this.initHandlers();
     }
 
-    init(dealData, taskEstimate, taskCommercOffer, taskOrder, taskPayment, taskPrepayment) {
+    init(dealData, taskEstimate, taskCommercOffer, taskOrder, taskPayment, taskPrepayment, currentUserId) {
         this.dealData = dealData;
         this.task.estimate = taskEstimate;
         this.task.commercOffer = taskCommercOffer;
         this.task.order = taskOrder;
         this.task.payment = taskPayment;
         this.task.prepayment = taskPrepayment;
+        this.currentUserId = currentUserId;
         this.displayTaskStates();
     }
 
     initHandlers() {
-        console.log('initHandlers');
         this.buttons.createEstimate.addEventListener('click', this.createTask.bind(this, FIELD_DEAL_TASK_ESTIMATE, new TaskEstimateBody(),  "estimate"));
         this.buttons.createCommercOffer.addEventListener('click', this.createTask.bind(this, FIELD_DEAL_TASK_COMMERC_OFFER, new TaskCommercOfferBody(), "commercOffer"));
         this.buttons.createOrder.addEventListener('click', this.createTask.bind(this, FIELD_DEAL_TASK_ORDER, new TaskOrderBody(), "order"));
@@ -68,6 +68,17 @@ export class TaskMenu {
         this.buttons.updateEstimate.addEventListener('click', this.updateTask.bind(this, FIELD_DEAL_TASK_ESTIMATE, new TaskEstimateBody(),  "estimate"));
         this.buttons.updateCommercOffer.addEventListener('click', this.updateTask.bind(this, FIELD_DEAL_TASK_COMMERC_OFFER, new TaskCommercOfferBody(), "commercOffer"));
         this.buttons.updateOrder.addEventListener('click', this.updateTask.bind(this, FIELD_DEAL_TASK_ORDER, new TaskOrderBody(), "order"));
+
+        document.querySelector('#nav-app-tab').addEventListener('click', this.displayTaskTitle.bind(this, this.task.estimate));
+        document.querySelector('#nav-commerc_offer-tab').addEventListener('click', this.displayTaskTitle.bind(this, this.task.commercOffer));
+        document.querySelector('#nav-order-tab').addEventListener('click', this.displayTaskTitle.bind(this, this.task.order));
+
+        container.querySelector('.task-container__menu-task-link i').addEventListener('click', (event) => {
+            const link = event.target.dataset.taskLink;
+            if (link) {
+                this.bx24.openPath(link);
+            }
+        });
     }
 
     async createTask(field, objTaskBody, taskType, event) {
@@ -85,6 +96,7 @@ export class TaskMenu {
                 fields: { [field]: taskId },
             });
             this.showCompletedCreating(container);
+            this.updateShowingTask();
         }
     }
 
@@ -98,6 +110,7 @@ export class TaskMenu {
             const result = await this.bx24.task.update(this.task[taskType].id, fields);
             this.task[taskType] = result?.task;
             this.showCompletedUpdating(container);
+            this.updateShowingTask();
         }
     }
 
@@ -169,6 +182,60 @@ export class TaskMenu {
             markerUpdate.style.display = 'none';
         }
     }
+
+    updateShowingTask() {
+        document.querySelectorAll('.task-container__menu-nav .nav-link');
+
+        navTabs.forEach(tab => {
+            if (tab.classList.contains('active')) {
+                const targetId = tab.getAttribute('data-bs-target');
+                if (targetId === '#nav-app') {
+                    this.displayTaskTitle(this.task.estimate);
+                } else if (targetId === '#nav-commerc_offer') {
+                    this.displayTaskTitle(this.task.commercOffer);
+                } else if (targetId === '#nav-order') {
+                    this.displayTaskTitle(this.task.order);
+                } else {
+                    this.displayTaskTitle({});
+                }
+            }
+        });
+        this.displayTaskTitle(this.task.prepayment);
+    }
+
+    displayTaskTitle(taskData) {
+        const container = target.closest('.task-container__menu-task-data');
+        const taskTitle = container.querySelector('.task-container__menu-task-title');
+        const taskLink = container.querySelector('.task-container__menu-task-link i');
+        const taskCreated = container.querySelector('.task-container__menu-task-createdate span');
+        const taskChanged = container.querySelector('.task-container__menu-task-changedate span');
+        if (taskData && taskData?.id) {
+            taskTitle.innerText = taskData.title;
+            taskLink.dataset.taskLink = `/company/personal/user/${this.this.currentUserId || 1}/tasks/task/view/${taskData.id}/`;
+            taskCreated.innerText = this.convertDateString(taskData.createdDate);
+            taskChanged.innerText = this.convertDateString(taskData.changedDate);
+        } else {
+            taskTitle.innerText = '';
+            taskLink.dataTaskLink = ``;
+            taskCreated.innerText = '';
+            taskChanged.innerText = '';
+        }
+
+    }
+
+    convertDateString(dateString) {
+        if (!dateString) {
+            return "";
+        }
+    
+        const date = new Date(dateString);
+        if (isNaN(date.getTime())) {
+            return "";
+        }
+    
+        const formattedDate = `${("0" + date.getDate()).slice(-2)}.${("0" + (date.getMonth() + 1)).slice(-2)}.${date.getFullYear()}г. в ${("0" + date.getHours()).slice(-2)}:${("0" + date.getMinutes()).slice(-2)} (МСК)`;
+        return formattedDate;
+    }
 }
 
 
@@ -219,8 +286,25 @@ export class TaskMenu {
         // if (this.dealData[FIELD_DEAL_TASK_ORDER]) {
         //     this.displayTaskCreated(this.btnCreateTaskOrder);
         //     this.displayTaskUpdated(this.btnUpdateTaskOrder);
-        // }
-        // if (this.dealData[FIELD_DEAL_TASK_PAYMENT]) {
+        // }convertDateString(dateString) {
+    // Проверяем, что строка не пуста
+    // if (!dateString) {
+//         return "";
+//     }
+
+//     // Создаем объект Date из строки
+//     const date = new Date(dateString);
+
+//     // Проверяем, что дата корректна
+//     if (isNaN(date.getTime())) {
+//         return "";
+//     }
+
+//     // Форматирование даты
+//     const formattedDate = `${("0" + date.getDate()).slice(-2)}.${("0" + (date.getMonth() + 1)).slice(-2)}.${date.getFullYear()}г. в ${("0" + date.getHours()).slice(-2)}:${("0" + date.getMinutes()).slice(-2)} (МСК)`;
+
+//     return formattedDate;
+// }LD_DEAL_TASK_PAYMENT]) {
         //     this.displayTaskCreated(this.btnCreateTaskPayment);
         // }
         // if (this.dealData[FIELD_DEAL_TASK_PREPAYMENT]) {
