@@ -66,6 +66,11 @@ export class Technology {
         }
     }
 
+    initFields() {
+        Object.keys(SP_GROUP_FIELDS).forEach(field => {
+            this.initialValues[SP_GROUP_FIELDS[field]] = this[field];
+        });
+    }
     updateField(field, value) {
         if (field in this) {
             this[field] = value;
