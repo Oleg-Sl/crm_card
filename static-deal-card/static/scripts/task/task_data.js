@@ -105,6 +105,7 @@ export class TaskData {
     }
 
     addTechnology(technologyData) {
+        console.log('technologyData = ', technologyData);
         let objTechnology = new Technology(technologyData);
         for (let objGroup of this.groupsData) {
             for (let objProduct of objGroup.products) {
@@ -219,7 +220,9 @@ export class TaskData {
             entityTypeId: SP_TECHOLOGY_ID,
             fields: {[`parentId${SP_PRODUCT_ID}`]: productId, parentId2: this.dealId}
         });
+        console.log("response create technology = ", response);
         if (response?.item) {
+            console.log("this.addTechnology = ", response?.item);
             this.addTechnology(response?.item);
         }
 
@@ -229,7 +232,7 @@ export class TaskData {
     getChangedData() {
         let changed = [];
 
-        for (const group of this.productGroups) {
+        for (const group of this.groupsData) {
             const changedGroupFields = group.getChangedFields();
             if (Object.keys(changedGroupFields).length !== 0) {
                 changed.push(changedGroupFields);

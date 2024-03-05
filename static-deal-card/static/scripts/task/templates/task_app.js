@@ -25,7 +25,6 @@ export class Templates {
 
     setMaterialsData(materials) {
         this.materials = materials;
-        console.log("setMaterialsData app = ", materials);
     }
 
     getGroupHTML(groupData, numberGroup = 1) {
@@ -359,12 +358,8 @@ export class Templates {
         let laminationsHTML = '<option value=""></option>';
         const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.film] == filmId) || {};
         const laminationIds = dependence?.[SP_DEPENDENCE_FIELDS.laminations] || [];
-        console.log("materials = ", this.materials);
-        console.log("laminationIds = ", laminationIds)
         const laminationsList = this.materials.laminations.filter(obj => laminationIds.includes(String(obj.id)));
-        console.log("laminationsList = ", laminationsList);
         for (let { id, title } of laminationsList) {
-            console.log("id = ", id, '    ,title = ', title);
             if (id == laminationId) {
                 laminationsHTML += `<option value="${id}" selected>${title}</option>`
             } else {
