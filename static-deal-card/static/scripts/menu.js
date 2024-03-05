@@ -213,7 +213,7 @@ export class TaskMenu {
         const taskChanged = container.querySelector('.task-container__menu-task-changedate span');
         if (taskData && taskData?.id) {
             taskTitle.innerText = taskData.title;
-            taskLink.dataset.taskLink = `/company/personal/user/${this.this.currentUserId || 1}/tasks/task/view/${taskData.id}/`;
+            taskLink.dataset.taskLink = `/company/personal/user/${this.currentUserId || 1}/tasks/task/view/${taskData.id}/`;
             taskCreated.innerText = this.convertDateString(taskData.createdDate);
             taskChanged.innerText = this.convertDateString(taskData.changedDate);
         } else {
