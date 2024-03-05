@@ -20,6 +20,7 @@ export class TaskAppInterface {
         };
 
         this.container = document.querySelector('#taskApplication');
+        
         this.manager.addObserver(this);
 
         this.templates = new Templates();
@@ -187,10 +188,14 @@ export class TaskAppInterface {
     }
 
     update() {
+        console.log("Обновление интерфейса = ", this.container);
         let contentHTML = '';
         for (const group of this.manager.groupsData) {
             contentHTML += this.templates.getGroupHTML(group);
         }
+        
+        console.log("contentHTML = ", contentHTML);
+
         this.container = contentHTML;            
     }
 

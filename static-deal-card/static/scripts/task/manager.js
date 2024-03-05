@@ -54,6 +54,7 @@ export default class TaskManager {
         
         this.dataManager.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
         this.dataManager.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);        
+        
         this.dataManager.setData(data.groups, data.products, data.technologies);
 
         this.update();

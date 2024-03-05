@@ -66,6 +66,8 @@ export class TaskData {
             this.addTechnology(technology);
         }
 
+        console.log(" this.groupsData = ", this.groupsData);
+        console.log(" this.observers = ", this.observers);
         this.notify();
     }
 
