@@ -204,7 +204,7 @@ export class TaskMenu {
     }
 
     displayTaskTitle(taskData) {
-        const container = target.closest('.task-container__menu-task-data');
+        const container = document.querySelector('.task-container__menu-task-data');
         const taskTitle = container.querySelector('.task-container__menu-task-title');
         const taskLink = container.querySelector('.task-container__menu-task-link i');
         const taskCreated = container.querySelector('.task-container__menu-task-createdate span');
