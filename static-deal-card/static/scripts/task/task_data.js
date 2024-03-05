@@ -67,7 +67,6 @@ export class TaskData {
         }
 
         console.log(" this.groupsData = ", this.groupsData);
-        console.log(" this.observers = ", this.observers);
         this.notify();
     }
 
@@ -111,6 +110,7 @@ export class TaskData {
     }
 
     updateGroup(groupId, newData) {
+        console.log("updateGroup = ", groupId, newData);
         const group = this.groupsData.find(group => group.id === groupId);
         if (group) {
             group.update(newData);

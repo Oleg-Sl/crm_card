@@ -57,7 +57,7 @@ export class Group {
 
     addTechnology(objTechnology) {
         for (const product of this.products) {
-            if (product.technologies.indexOf(objTechnology) === -1) {
+            if (product.id === objTechnology.parentId) {
                 product.addTechnology(objTechnology);
             }
         }

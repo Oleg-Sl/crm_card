@@ -187,28 +187,25 @@ export class TaskAppInterface {
     }
 
     update() {
-        console.log("Обновление интерфейса = ", this.container);
         let contentHTML = '';
         for (const group of this.manager.groupsData) {
             contentHTML += this.templates.getGroupHTML(group);
         }
         
-        console.log("contentHTML = ", contentHTML);
-
         this.container.innerHTML = contentHTML;            
     }
 
     // Методы для изменения данных и уведомления TaskManager
     updateTaskGroup(groupId, newData) {
-        this.manager.updateTaskGroup(groupId, newData);
+        this.manager.updateGroup(groupId, newData);
     }
 
     updateTaskProduct(groupId, productId, newData) {
-        this.manager.updateTaskProduct(groupId, productId, newData);
+        this.manager.updateProduct(groupId, productId, newData);
     }
 
     updateTaskTechnology(groupId, productId, techId, newData) {
-        this.manager.updateTaskTechnology(groupId, productId, techId, newData);
+        this.manager.updateTechnology(groupId, productId, techId, newData);
     }
 
     createGroup() {
