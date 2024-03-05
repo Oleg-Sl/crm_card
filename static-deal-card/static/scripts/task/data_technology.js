@@ -80,16 +80,13 @@ export class Technology {
     }
 
     getChangedFields() {
-        return this.changedFields;
-    }
-
-    getChangedFields() {
         if (Object.keys(this.changedFields).length !== 0) {
             let changed = this.getChangedFieldsMap(this.changedFields);
             changed.entityTypeId = SP_TECHOLOGY_ID;
             changed.entityId = this.id;
             return changed;
         }
+        return {};
     }
 
     getChangedFieldsMap(changedFields) {

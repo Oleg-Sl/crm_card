@@ -117,6 +117,7 @@ export class Product {
             changed.entityId = this.id;
             return changed;
         }
+        return {};
     }
 
     getChangedFieldsMap(changedFields) {

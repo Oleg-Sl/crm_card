@@ -106,11 +106,9 @@ export class TaskData {
 
     addTechnology(technologyData) {
         let objTechnology = new Technology(technologyData);
-        console.log('objTechnology = ', objTechnology);
         for (let objGroup of this.groupsData) {
             for (let objProduct of objGroup.products) {
                 if (objProduct.id == objTechnology.parentId) {
-                    console.log('objProduct = ', objProduct);
                     objGroup.addTechnology(objTechnology);
                     this.notify();
                 }
@@ -161,21 +159,26 @@ export class TaskData {
         }
     }
 
-    removeProduct(groupId, productId) {
-        console.log("removeProduct = ", groupId, productId);
+    async removeProduct(groupId, productId) {
         const group = this.groupsData.find(group => group.id == groupId);
-        console.log("group = ", group);
+        let cmd = { product: `crm.item.delete?entityTypeId=${SP_PRODUCT_ID}&id=${productId}` };
         if (group) {
             const product = group.products.find(product => product.id == productId);
-            console.log("product = ", product);
             if (product) {
                 group.removeProduct(product);
+                if (group.products.length == 0) {
+                    cmd.group = `crm.item.delete?entityTypeId=${SP_GROUP_ID}&id=${groupId}`
+                }
+                this.removeGroup(groupId);
                 this.notify();
             }
         }
+        console.log("cmd = ", cmd);
+        const response = await this.bx24.callBatchCmd(cmd);
+        return response;
     }
 
-    removeTechnology(groupId, productId, techId) {
+    async removeTechnology(groupId, productId, techId) {
         const group = this.groupsData.find(group => group.id == groupId);
         if (group) {
             const product = group.products.find(product => product.id == productId);
@@ -187,6 +190,11 @@ export class TaskData {
                 }
             }
         }
+        const response = await this.bx24.callMethod('crm.item.delete', {
+            entityTypeId: SP_TECHOLOGY_ID,
+            id: techId
+        });
+        return response;
     }
 
     async createGroup(groupData) {
@@ -194,7 +202,6 @@ export class TaskData {
             entityTypeId: SP_GROUP_ID,
             fields: { parentId2: this.dealId }
         });
-        console.log("response create group = ", response);
         if (response?.item) {
             this.addGroup(response?.item);
             await this.createProduct(response?.item?.id);
@@ -221,9 +228,7 @@ export class TaskData {
             entityTypeId: SP_TECHOLOGY_ID,
             fields: {[`parentId${SP_PRODUCT_ID}`]: productId, parentId2: this.dealId}
         });
-        console.log("response create technology = ", response);
         if (response?.item) {
-            console.log("this.addTechnology = ", response?.item);
             this.addTechnology(response?.item);
         }
 

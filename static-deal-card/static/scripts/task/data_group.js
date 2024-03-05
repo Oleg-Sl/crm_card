@@ -57,7 +57,7 @@ export class Group {
 
     addTechnology(objTechnology) {
         for (const product of this.products) {
-            if (product.id === objTechnology.parentId) {
+            if (product.id == objTechnology.parentId) {
                 product.addTechnology(objTechnology);
             }
         }
@@ -120,6 +120,7 @@ export class Group {
             changed.entityId = this.id;
             return changed;
         }
+        return {};
     }
 
     getChangedFieldsMap(changedFields) {
