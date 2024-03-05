@@ -1,4 +1,4 @@
-import { TaskData } from "./task_datatask_data.js";
+import { TaskData } from "./task_data.js";
 import { TaskAppInterface } from "./interface_app.js";
 import { TaskOfferInterface } from "./interface_offer.js";
 import {
