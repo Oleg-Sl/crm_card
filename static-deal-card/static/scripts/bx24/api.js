@@ -43,7 +43,7 @@ export default class BitrixService {
     }
 
     async callBatchCmd(cmd) {
-        const result = await callMethod('batch', {
+        const result = await this.bx24.callMethod('batch', {
             halt: 0,
             cmd: cmd
         });
