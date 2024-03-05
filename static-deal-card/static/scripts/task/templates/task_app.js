@@ -344,7 +344,7 @@ export class Templates {
 
     getFilmsOptionsHTML(filmId) {
         let filmsListHTML = '<option value=""></option>';
-        for (const {id, title} of this.materials.film) {
+        for (const {id, title} of this.materials.films) {
             if (id == filmId) {
                 filmsListHTML += `<option value="${id}" selected>${title}</option>`
             } else {
