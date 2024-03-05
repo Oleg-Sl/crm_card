@@ -2,6 +2,10 @@ import { Group } from './data_group.js';
 import { Product } from './data_product.js';
 import { Technology } from './data_technology.js';
 import {
+    SP_GROUP_ID,
+    SP_PRODUCT_ID,
+    SP_TECHOLOGY_ID,
+
     SP_GROUP_FIELDS,
     SP_PRODUCT_FIELDS,
     SP_TECHOLOGY_FIELDS,
@@ -87,6 +91,7 @@ export class TaskData {
     addGroup(groupData) {
         let objGroup = new Group(groupData);
         this.groupsData.push(objGroup);
+        this.notify();
     }
 
     addProduct(productData) {
@@ -94,6 +99,7 @@ export class TaskData {
         for (let objGroup of this.groupsData) {
             if (objGroup.id == objProduct.parentId) {
                 objGroup.addProduct(objProduct);
+                this.notify();
             }
         }
     }
@@ -104,6 +110,7 @@ export class TaskData {
             for (let objProduct of objGroup.products) {
                 if (objProduct.id == objTechnology.parentId) {
                     objGroup.addTechnology(objTechnology);
+                    this.notify();
                 }
             }
         }
@@ -144,6 +151,7 @@ export class TaskData {
     }
 
     removeGroup(groupId) {
+        console.log("removeGroup = ", groupId);
         const index = this.groupsData.findIndex(group => group.id == groupId);
         if (index !== -1) {
             this.groupsData.splice(index, 1);
@@ -152,9 +160,12 @@ export class TaskData {
     }
 
     removeProduct(groupId, productId) {
+        console.log("removeProduct = ", groupId, productId);
         const group = this.groupsData.find(group => group.id == groupId);
+        console.log("group = ", group);
         if (group) {
             const product = group.products.find(product => product.id == productId);
+            console.log("product = ", product);
             if (product) {
                 group.removeProduct(product);
                 this.notify();
@@ -174,6 +185,45 @@ export class TaskData {
                 }
             }
         }
+    }
+
+    async createGroup(groupData) {
+        let response = await this.bx24.callMethod('crm.item.add', {
+            entityTypeId: SP_GROUP_ID,
+            fields: { parentId2: this.dealId }
+        });
+        console.log("response create group = ", response);
+        if (response?.item) {
+            this.addGroup(response?.item);
+            await this.createProduct(response?.item?.id);
+        }
+
+        return response?.item;
+    }
+
+    async createProduct(groupId) {
+        let response = await this.bx24.callMethod('crm.item.add', {
+            entityTypeId: SP_PRODUCT_ID,
+            fields: {[`parentId${SP_GROUP_ID}`]: groupId, parentId2: this.dealId}
+        });
+
+        if (response?.item) {
+            this.addProduct(response?.item);
+        }
+
+        return response?.item;
+    }
+
+    async createTechnology(productId) {
+        let response = await this.bx24.callMethod('crm.item.add', {
+            entityTypeId: SP_TECHOLOGY_ID,
+            fields: {[`parentId${SP_PRODUCT_ID}`]: productId, parentId2: this.dealId}
+        });
+        if (response?.item) {
+            this.addTechnology(response?.item);
+        }
+
+        return response?.item;
     }
 
     getChangedData() {

@@ -164,7 +164,7 @@ class App {
                 const dealFinance = this.dealFinance.getChangedData();
 
                 const dealData = {...dealDesc, ...dealWorkers, ...dealSources, ...dealDocs, ...dealActs, ...dealInvoices, ...dealFinance};
-                let smartsData = this.tasks.getChangedData();
+                let smartsData = this.taskData.getChangedData();
                 console.log("dealData = ", dealData);
                 console.log("smartsData = ", smartsData);
                 
@@ -206,8 +206,7 @@ class App {
             if (button) {
                 const spinner = button.querySelector(`.spinner`);
                 spinner.classList.remove('d-none');
-                await this.tasks.dataManager.createProductGroup();
-                this.tasks.dataManager.updateHTML();
+                await this.taskData.createGroup();
                 spinner.classList.add('d-none');
             }
         })

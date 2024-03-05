@@ -153,4 +153,12 @@ export default class TaskManager {
             dependencesMaterial: dependenceMaterial,
         };
     }
+
+    getChangedData() {
+        return this.dataManager.getChangedData();
+    }
+
+    async createGroup() {
+        this.dataManager.createGroup();
+    }
 }
