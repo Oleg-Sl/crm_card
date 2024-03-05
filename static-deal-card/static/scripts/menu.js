@@ -73,7 +73,7 @@ export class TaskMenu {
         document.querySelector('#nav-commerc_offer-tab').addEventListener('click', this.displayTaskTitle.bind(this, this.task.commercOffer));
         document.querySelector('#nav-order-tab').addEventListener('click', this.displayTaskTitle.bind(this, this.task.order));
 
-        container.querySelector('.task-container__menu-task-link i').addEventListener('click', (event) => {
+        document.querySelector('.task-container__menu-task-data .task-container__menu-task-link i').addEventListener('click', (event) => {
             const link = event.target.dataset.taskLink;
             if (link) {
                 this.bx24.openPath(link);
