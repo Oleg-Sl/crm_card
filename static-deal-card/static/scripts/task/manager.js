@@ -34,6 +34,8 @@ export default class TaskManager {
         const containerApp = document.querySelector('#taskApplication');
         const containerOffer = document.querySelector('#taksOffer');
         const containerOrder = document.querySelector('#taksOrder');
+        console.log("containerApp = ", containerApp);
+        console.log("containerOffer = ", containerOffer);
         this.uiApp = new TaskAppInterface(containerApp, this.dataManager);
         this.uiOffer = new TaskOfferInterface(containerOffer, this.dataManager);
         // this.uiOrder = new TaskOfferInterface(containerOrder, this.dataManager);
