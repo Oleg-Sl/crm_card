@@ -71,8 +71,8 @@ class App {
         const elemDealInvoices = document.querySelector('.deal-invoices');
         this.dealInvoices = new DealActs(elemDealInvoices, this.bx24, this.yaDisk, this.dealId, FIELD_DEAL_INVOICES_ID, 'invoices');
 
-        const elemTasks = document.querySelector('#taskContainer');
-        this.taskData = new TaskManager(elemTasks, this.bx24, this.dealId);
+        // const elemTasks = document.querySelector('#taskContainer');
+        this.taskData = new TaskManager(this.bx24, this.dealId);
 
         const elemTaskMenu = document.querySelector('#taskMenu');
         this.taskMenu = new TaskMenu(elemTaskMenu, this.bx24, this.dealId, this);
