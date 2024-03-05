@@ -558,7 +558,7 @@ export class Templates {
         let laminationsHTML = '<option value=""></option>';
         const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.film] == filmId) || {};
         const laminationIds = dependence?.[SP_DEPENDENCE_FIELDS.laminations] || [];
-        const laminationsList = this.materials.laminations.filter(obj => laminationIds.includes(obj.id));
+        const laminationsList = this.materials.laminations.filter(obj => laminationIds.includes(String(obj.id)));
 
         for (let { id, title } of laminationsList) {
             if (id == laminationId) {
@@ -575,7 +575,7 @@ export class Templates {
         let widthsHTML = '<option value=""></option>';
         const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.film] == filmId) || {};
         const widthIds = dependence?.[SP_DEPENDENCE_FIELDS.widths] || [];
-        const widthsList = this.materials.widths.filter(obj => widthIds.includes(obj.id));
+        const widthsList = this.materials.widths.filter(obj => widthIds.includes(String(obj.id)));
 
         for (let { id, title } of widthsList) {
             if (id == widthId) {
