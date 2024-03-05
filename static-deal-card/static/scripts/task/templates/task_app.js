@@ -357,16 +357,13 @@ export class Templates {
 
     getLaminationsOptionsHTML(filmId, laminationId) {
         let laminationsHTML = '<option value=""></option>';
-        console.log("filmId = ", filmId);
-        console.log("laminationId = ", laminationId);
-        console.log("materials = ", this.materials);
         const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.film] == filmId) || {};
-        console.log("dependence = ", dependence)
         const laminationIds = dependence?.[SP_DEPENDENCE_FIELDS.laminations] || [];
         console.log("laminationIds = ", laminationIds)
         const laminationsList = this.materials.laminations.filter(obj => laminationIds.includes(obj.id));
-
+        console.log("laminationsList = ", laminationsList);
         for (let { id, title } of laminationsList) {
+            console.log("id = ", id, '    ,title = ', title);
             if (id == laminationId) {
                 laminationsHTML += `<option value="${id}" selected>${title}</option>`
             } else {
