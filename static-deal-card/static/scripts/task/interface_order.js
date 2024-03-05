@@ -1,7 +1,7 @@
 import { Templates } from './templates/task_order.js';
 
 
-class TaskOrderInterface {
+export class TaskOrderInterface {
     constructor(container, manager) {
         this.container = container;
         this.manager = manager;

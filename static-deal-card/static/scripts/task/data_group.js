@@ -13,7 +13,7 @@ import {
 } from '../parameters.js';
 
 
-class Group {
+export class Group {
     constructor(data) {
         this.data = data;
 

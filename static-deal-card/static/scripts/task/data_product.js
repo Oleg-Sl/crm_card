@@ -13,7 +13,7 @@ import {
 } from '../parameters.js';
 
 
-class Product {
+export class Product {
     constructor(data) {
         this.data = data;
         this.parentId = data?.[`parentId${SP_GROUP_ID}`];
