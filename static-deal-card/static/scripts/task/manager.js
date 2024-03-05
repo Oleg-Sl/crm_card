@@ -34,8 +34,6 @@ export default class TaskManager {
         const containerApp = document.querySelector('#taskApplication');
         const containerOffer = document.querySelector('#taskOffer');
         const containerOrder = document.querySelector('#taskOffer');
-        console.log("containerApp = ", containerApp);
-        console.log("containerOffer = ", containerOffer);
         this.uiApp = new TaskAppInterface(containerApp, this.dataManager);
         this.uiOffer = new TaskOfferInterface(containerOffer, this.dataManager);
         // this.uiOrder = new TaskOfferInterface(containerOrder, this.dataManager);
@@ -44,7 +42,6 @@ export default class TaskManager {
 
     async init() {
         const data = await this.getDataFromBx24();
-        console.log("task init data = ", data);
         
         this.uiApp.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
         this.uiOffer.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
@@ -58,9 +55,6 @@ export default class TaskManager {
         this.dataManager.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);        
         
         this.dataManager.setData(data.groups, data.products, data.technologies);
-
-        this.update();
-
     }
 
     async update() {
@@ -121,7 +115,6 @@ export default class TaskManager {
         // }
 
         const data = await this.bx24.callBatchCmd(cmd);
-        console.log("task data = ", data);
 
         const fieldGroup = data?.fieldGroup?.fields;
         const fieldProduct = data?.fieldProduct?.fields;

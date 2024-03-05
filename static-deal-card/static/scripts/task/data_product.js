@@ -74,7 +74,6 @@ export class Product {
             this.saveChanges(field, newData);
             this.updateField(field, newData[field]);
         });
-        console.log(this.changedFields);
     }
 
     saveChanges(field, newData) {

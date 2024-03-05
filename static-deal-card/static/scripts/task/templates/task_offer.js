@@ -24,7 +24,6 @@ export class Templates {
 
     setMaterialsData(materials) {
         this.materials = materials;
-        console.log("setMaterialsData app = ", materials);
     }
 
     getGroupHTML(groupData, numberGroup = 1) {

@@ -70,7 +70,6 @@ export class TaskData {
             this.addTechnology(technology);
         }
 
-        console.log(" this.groupsData = ", this.groupsData);
         this.notify();
     }
 
@@ -151,7 +150,6 @@ export class TaskData {
     }
 
     removeGroup(groupId) {
-        console.log("removeGroup = ", groupId);
         const index = this.groupsData.findIndex(group => group.id == groupId);
         if (index !== -1) {
             this.groupsData.splice(index, 1);
@@ -168,12 +166,11 @@ export class TaskData {
                 group.removeProduct(product);
                 if (group.products.length == 0) {
                     cmd.group = `crm.item.delete?entityTypeId=${SP_GROUP_ID}&id=${groupId}`
+                    this.removeGroup(groupId);
                 }
-                this.removeGroup(groupId);
                 this.notify();
             }
         }
-        console.log("cmd = ", cmd);
         const response = await this.bx24.callBatchCmd(cmd);
         return response;
     }

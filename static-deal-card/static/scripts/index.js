@@ -220,6 +220,7 @@ class App {
                 const spinner = button.querySelector(`.spinner`);
                 spinner.classList.remove('d-none');
                 await this.initData();
+                this.taskData.update();
                 spinner.classList.add('d-none');
             }
         })

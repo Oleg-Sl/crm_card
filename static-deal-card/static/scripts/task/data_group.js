@@ -77,7 +77,6 @@ export class Group {
             this.updateField(field, newData[field]);
         });
 
-        console.log(this.changedFields);
     }
 
     updateField(field, value) {
