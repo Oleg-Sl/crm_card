@@ -25,7 +25,7 @@ import DealSources from './interface/deal_sources.js';
 import DealDocs from './interface/deal_docs.js';
 import DealActs from './interface/deal_acts.js';
 
-import TaskManager from './tasks/task_manager.js';
+import { TaskManager } from './task/manager.js';
 
 import YaDisk from './storage/ya_disk.js';
 import BitrixService from './bx24/api.js';
@@ -72,7 +72,7 @@ class App {
         this.dealInvoices = new DealActs(elemDealInvoices, this.bx24, this.yaDisk, this.dealId, FIELD_DEAL_INVOICES_ID, 'invoices');
 
         const elemTasks = document.querySelector('#taskContainer');
-        this.tasks = new TaskManager(elemTasks, this.bx24, this.dealId);
+        this.taskData = new TaskManager(elemTasks, this.bx24, this.dealId);
 
         const elemTaskMenu = document.querySelector('#taskMenu');
         this.taskMenu = new TaskMenu(elemTaskMenu, this.bx24, this.dealId, this);
@@ -82,7 +82,7 @@ class App {
         await Promise.all([
             this.createFolderYaDisk(),
             this.initData(),
-            this.tasks.init(),
+            this.taskData.init(),
         ]);
         this.initHandlers();
         this.handleMutation();

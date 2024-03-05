@@ -171,7 +171,6 @@ export const SP_DEPENDENCE_FIELDS = {
     film: "ufCrm33_1709568884",             // Пленка
     laminations: "ufCrm33_1709222893",      // Список ID ламинаций
     widths: "ufCrm33_1709370111",           // Список ID ширин
-    
 };
 
 

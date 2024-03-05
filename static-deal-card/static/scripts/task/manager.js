@@ -1,4 +1,6 @@
-import { TaskData } from "./task_datatask_data";
+import { TaskData } from "./task_datatask_data.js";
+import { TaskAppInterface } from "./interface_app.js";
+import { TaskOfferInterface } from "./interface_offer.js";
 import {
     SP_GROUP_ID,
     SP_PRODUCT_ID,
@@ -28,11 +30,28 @@ export default class TaskManager {
         this.fieldTechnology = null;
 
         this.dataManager = new TaskData(this.bx24, this.dealId);
+
+        const containerApp = document.querySelector('#taskApplication');
+        const containerOffer = document.querySelector('#taksOffer');
+        const containerOrder = document.querySelector('#taksOrder');
+        this.uiApp = new TaskAppInterface(containerApp, this.dataManager);
+        this.uiOffer = new TaskOfferInterface(containerOffer, this.dataManager);
+        // this.uiOrder = new TaskOfferInterface(containerOrder, this.dataManager);
+
     }
 
     async init() {
         const data = await this.getDataFromBx24();
         console.log("task init data = ", data);
+        
+        this.uiApp.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
+        this.uiOffer.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
+        // this.uiOrder.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
+        
+        this.uiApp.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);        
+        this.uiOffer.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);        
+        // this.uiOrder.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);        
+        
         this.dataManager.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
         this.dataManager.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);        
         this.dataManager.setData(data.groups, data.products, data.technologies);
