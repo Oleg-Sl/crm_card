@@ -45,6 +45,7 @@ export class TaskAppInterface {
             }
 
             if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-remove') && target.dataset.productId) {
+                console.log("remove target.dataset.productId = ", target.dataset.productId);
                 this.removeProduct(target.dataset.productId);
             }
         })
