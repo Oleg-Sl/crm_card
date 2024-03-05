@@ -25,7 +25,7 @@ import DealSources from './interface/deal_sources.js';
 import DealDocs from './interface/deal_docs.js';
 import DealActs from './interface/deal_acts.js';
 
-import { TaskManager } from './task/manager.js';
+import TaskManager from './task/manager.js';
 
 import YaDisk from './storage/ya_disk.js';
 import BitrixService from './bx24/api.js';
