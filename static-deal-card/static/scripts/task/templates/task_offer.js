@@ -208,7 +208,7 @@ export class Templates {
                     <div class="task-container__item-design">
                         <div class="task-container__item-design-type">
                             <select name="" id="" data-product-field="design" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                                ${this.getOptionsHTML(this.fieldProduct?.[SP_PRODUCT_FIELDS.design]?.items, productData.design)}
+                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.design]?.items, productData.design)}
                             </select>
                         </div>
                         <div class="task-container__item-design-amount">
@@ -249,7 +249,7 @@ export class Templates {
                     <div class="task-container__item-deadlines">
                         <div class="task-container__item-deadlines-type">
                             <select name="" id="" data-product-field="terms" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                                ${this.getOptionsHTML(this.fieldProduct?.[SP_PRODUCT_FIELDS.terms]?.items, productData.terms)}
+                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.terms]?.items, productData.terms)}
                             </select>
                         </div>
                         <div class="task-container__item-deadlines-data">
@@ -264,7 +264,7 @@ export class Templates {
                         </div>
                         <div class="task-container__item-dismantling-difficulty-desc">
                             <select class="task-container_group-item-dismantling-top" name="" id="" data-product-field="dismantling" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                                ${this.getOptionsHTML(this.fieldProduct?.[SP_PRODUCT_FIELDS.dismantling]?.items, productData.dismantling)}
+                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantling]?.items, productData.dismantling)}
                             </select>    
                         </div>
                         <div class="task-container__item-dismantling-difficulty-price">
@@ -272,7 +272,7 @@ export class Templates {
                         </div>
                         <div class="task-container__item-dismantling-cost-desc">
                             <select class="task-container_group-item-dismantling-bottom" name="" id="" data-product-field="dismantlingDesc" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                                ${this.getOptionsHTML(this.fieldProduct?.[SP_PRODUCT_FIELDS.dismantlingDesc]?.items, productData.dismantlingDesc)}
+                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantlingDesc]?.items, productData.dismantlingDesc)}
                             </select>
                         </div>
                         <div class="task-container__item-dismantling-cost-price">
@@ -290,7 +290,7 @@ export class Templates {
                     <div class="task-container__item-business-trip">
                         <div class="task-container__item-business-trip-type" value="${this.customToString(productData.businessTrip)}">
                             <select class="task-container_group-item-dismantling-bottom" name="" id="" data-product-field="businessTrip" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                                ${this.getOptionsHTML(this.fieldProduct?.[SP_PRODUCT_FIELDS.businessTrip]?.items, productData.businessTrip)}
+                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.businessTrip]?.items, productData.businessTrip)}
                             </select>
                         </div>
                         <div class="task-container__item-business-trip-costprice">
@@ -496,7 +496,7 @@ export class Templates {
                     <div class="task-container__item-delivery-cp">
                         <div class="task-container__item-delivery-cp-method">
                             <select name="" id="" data-group-field="deliveryMethod" data-type="select" data-group-id="${groupData.id}">
-                                ${this.getOptionsHTML(this.fieldGroup?.[SP_GROUP_FIELDS.deliveryMethod]?.items, groupData.deliveryMethod)}
+                                ${this.getOptionsHTML(this.fields?.group?.[SP_GROUP_FIELDS.deliveryMethod]?.items, groupData.deliveryMethod)}
                             </select>
                         </div>
                         <div class="task-container__item-delivery-cp-address">
