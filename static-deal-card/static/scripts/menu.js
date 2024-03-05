@@ -186,22 +186,21 @@ export class TaskMenu {
 
     updateShowingTask() {
         const navTabs = document.querySelectorAll('.task-container__menu-nav .nav-link');
-
-        navTabs.forEach(tab => {
-            if (tab.classList.contains('active')) {
-                const targetId = tab.getAttribute('data-bs-target');
-                if (targetId === '#nav-app') {
-                    this.displayTaskTitle(this.task.estimate);
-                } else if (targetId === '#nav-commerc_offer') {
-                    this.displayTaskTitle(this.task.commercOffer);
-                } else if (targetId === '#nav-order') {
-                    this.displayTaskTitle(this.task.order);
-                } else {
-                    this.displayTaskTitle({});
-                }
+        for (let tab of navTabs) {
+            if (!tab.classList.contains('active')) {
+                continue;
             }
-        });
-        this.displayTaskTitle(this.task.prepayment);
+            const targetId = tab.getAttribute('data-bs-target');
+            if (targetId === '#nav-app') {
+                this.displayTaskTitle(this.task.estimate);
+            } else if (targetId === '#nav-commerc_offer') {
+                this.displayTaskTitle(this.task.commercOffer);
+            } else if (targetId === '#nav-order') {
+                this.displayTaskTitle(this.task.order);
+            } else {
+                this.displayTaskTitle({});
+            }
+        }
     }
 
     displayTaskTitle(taskData) {
@@ -218,7 +217,7 @@ export class TaskMenu {
             taskChanged.innerText = this.convertDateString(taskData.changedDate);
         } else {
             taskTitle.innerText = '';
-            taskLink.dataTaskLink = ``;
+            taskLink.dataset.taskLink = ``;
             taskCreated.innerText = '';
             taskChanged.innerText = '';
         }
