@@ -7,11 +7,13 @@ import DealMethods from './api_deal.js'
 import SmartProcessMethods from './api_smart_process.js'
 import TaskMethods from './api_task.js'
 import UserMethods from './api_user.js'
-import FilesMethods from './api_file.js'
+// import FilesMethods from './api_file.js'
+import FilesMethods from './api_file_webhook.js'
 
-
+const URL = 'url';
 export default class BitrixService {
     constructor() {
+        
         this.bx24 = new Bitrix24();
 
         this.batch = new BatchMethods(this.bx24);
@@ -21,13 +23,16 @@ export default class BitrixService {
         this.smartProcess = new SmartProcessMethods(this.bx24);
         this.task = new TaskMethods(this.bx24);
         this.user = new UserMethods(this.bx24);
-        this.files = new FilesMethods(this.bx24);
-
+        // this.files = new FilesMethods(this.bx24);
+        this.files = null;
         this.domain = null;
+        this.webhook = null;
     }
 
     async init() {
         this.domain = await this.bx24.getDomain();
+        this.api = await this.bx24.getAppOption(URL);
+        this.files = new FilesMethods(this.api);
     }
 
     async callMethod(method, body) {
@@ -70,6 +75,10 @@ export default class BitrixService {
 
     getUrlSendMessageFromDealId(dealId) {
         return `https://${this.domain}/bitrix/components/bitrix/crm.activity.planner/slider.php?context=deal-${dealId}&ajax_action=ACTIVITY_EDIT&activity_id=0&TYPE_ID=4&OWNER_ID=${dealId}&OWNER_TYPE=DEAL&OWNER_PSID=0&FROM_ACTIVITY_ID=0&MESSAGE_TYPE=&SUBJECT=&BODY=&=undefined&__post_data_hash=-1046067848&IFRAME=Y&IFRAME_TYPE=SIDE_SLIDER`;
+    }
+
+    async getAppOption(key) {
+        return await this.bx24.getAppOption(key);
     }
 
 }

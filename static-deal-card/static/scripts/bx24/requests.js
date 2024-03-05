@@ -13,6 +13,11 @@ export default class Bitrix24 {
         }
     }
 
+    async getAppOption(key) {
+        const result = await BX24.appOption.get(key);
+        return result;
+    }
+
     async callMethod(method, params = {}) {
         try {
             const result = await new Promise((resolve, reject) => {
