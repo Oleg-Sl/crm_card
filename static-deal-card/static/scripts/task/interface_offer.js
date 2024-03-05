@@ -59,6 +59,7 @@ export class TaskOfferInterface {
             const productId = target.dataset.productId;
             const productField = target.dataset.productField;
             console.log("groupId = ", groupId, "productId = ", productId, "productField = ", productField);
+            console.log('target.tagName = ', target.tagName, 'target.dataset.type = ', target.dataset.type)
             if (target.tagName === 'INPUT' && target.dataset.type === 'text' && groupId && productId && productField) {
                 this.updateTaskProduct(groupId, productId, {[productField]: target.value});
             } else if (target.tagName === 'INPUT' && target.dataset.type === 'number' && groupId && productId && productField) {
