@@ -70,9 +70,11 @@ export class TaskMenu {
         this.buttons.updateCommercOffer.addEventListener('click', this.updateTask.bind(this, FIELD_DEAL_TASK_COMMERC_OFFER, new TaskCommercOfferBody(), "commercOffer"));
         this.buttons.updateOrder.addEventListener('click', this.updateTask.bind(this, FIELD_DEAL_TASK_ORDER, new TaskOrderBody(), "order"));
 
+        document.querySelector('#nav-technical-tab').addEventListener('click', this.updateShowingTask.bind(this));
         document.querySelector('#nav-app-tab').addEventListener('click', this.updateShowingTask.bind(this));
         document.querySelector('#nav-commerc_offer-tab').addEventListener('click', this.updateShowingTask.bind(this));
         document.querySelector('#nav-order-tab').addEventListener('click', this.updateShowingTask.bind(this));
+        document.querySelector('#nav-products-tab').addEventListener('click', this.updateShowingTask.bind(this));
 
         document.querySelector('.task-container__menu-task-data .task-container__menu-task-link i').addEventListener('click', (event) => {
             const link = event.target.dataset.taskLink;
