@@ -37,7 +37,7 @@ export class TaskOfferInterface {
             const target = event.target;
             const groupId = target.dataset.groupId;
             const groupField = target.dataset.groupField;
-            console.log("groupId = ", groupId, "groupField = ", groupField);
+
             if (target.tagName === 'INPUT' && target.dataset.type === 'text' && groupId && groupField) {
                 this.updateTaskGroup(groupId, {[groupField]: target.value});
             } else if (target.tagName === 'INPUT' && target.dataset.type === 'number' && groupId && groupField) {
@@ -58,8 +58,7 @@ export class TaskOfferInterface {
             const groupId = target.dataset.groupId;
             const productId = target.dataset.productId;
             const productField = target.dataset.productField;
-            console.log("groupId = ", groupId, "productId = ", productId, "productField = ", productField);
-            console.log('target.tagName = ', target.tagName, 'target.dataset.type = ', target.dataset.type)
+
             if (target.tagName === 'INPUT' && target.dataset.type === 'text' && groupId && productId && productField) {
                 this.updateTaskProduct(groupId, productId, {[productField]: target.value});
             } else if (target.tagName === 'INPUT' && target.dataset.type === 'number' && groupId && productId && productField) {
@@ -129,12 +128,10 @@ export class TaskOfferInterface {
 
     // Методы для изменения данных и уведомления TaskManager
     updateTaskGroup(groupId, newData) {
-        console.log("updateTaskGroup groupId = ", groupId, "newData = ", newData);
         this.manager.updateGroup(groupId, newData);
     }
 
     updateTaskProduct(groupId, productId, newData) {
-        console.log("updateTaskProduct groupId = ", groupId, "productId = ", productId, "newData = ", newData);
         this.manager.updateProduct(groupId, productId, newData);
     }
 

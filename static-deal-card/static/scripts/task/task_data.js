@@ -110,13 +110,10 @@ export class TaskData {
     }
 
     updateGroup(groupId, newData) {
-        console.log("updateGroup = ", groupId, newData);
         const group = this.groupsData.find(group => group.id == groupId);
-        console.log('group = ', group);
         if (group) {
             group.update(newData);
             this.notify();
-            console.log('group = ', group);
         }
     }
 
@@ -124,12 +121,10 @@ export class TaskData {
         const group = this.groupsData.find(group => group.id == groupId);
         if (group) {
             const product = group.products.find(product => product.id == productId);
-            console.log('product = ', product);
             
             if (product) {
                 product.update(newData);
                 this.notify();
-                console.log('product = ', product);
             }
         }
     }
