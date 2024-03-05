@@ -19,7 +19,6 @@ export class TaskAppInterface {
             laminations: null
         };
 
-        this.container = document.querySelector('#taskApplication');
         
         this.manager.addObserver(this);
 
@@ -196,7 +195,7 @@ export class TaskAppInterface {
         
         console.log("contentHTML = ", contentHTML);
 
-        this.container = contentHTML;            
+        this.container.innerHTML = contentHTML;            
     }
 
     // Методы для изменения данных и уведомления TaskManager

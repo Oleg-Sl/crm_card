@@ -19,7 +19,6 @@ export class TaskOrderInterface {
             laminations: null
         };
 
-        this.container = document.querySelector('#taskApplication');
         this.manager.addObserver(this);
 
         this.templates = new Templates();
@@ -198,7 +197,7 @@ export class TaskOrderInterface {
         for (const group of this.manager.groupsData) {
             contentHTML += this.templates.getGroupHTML(group);
         }
-        this.container = contentHTML;            
+        this.container.innerHTML = contentHTML;            
     }
 
     // Методы для изменения данных и уведомления TaskManager
