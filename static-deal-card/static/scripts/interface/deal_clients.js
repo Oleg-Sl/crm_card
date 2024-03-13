@@ -14,8 +14,9 @@ export default class DealClients {
     }
 
     async init (companyData, companyContacts, contactsData) {
+        console.log("init clients = ", companyData, companyContacts, contactsData);
         let data = await this.getContactsData([...companyContacts, ...contactsData]);
-
+        console.log("data = ", data);
         this.companyData = companyData;
         this.companyContacts = companyContacts;
         this.contactsData = data?.result?.result || [];

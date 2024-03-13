@@ -321,12 +321,10 @@ export class Templates {
     getSourcesOptionsHTML(source) {
         let contentHTML = '<option value="" selected>-</option>';
         let isSelected = false;
-        console.log('source = ', source);
         const [nameSelected, urlSelected, previewSelected] = source.split(';');
         // "имя;размер;ссылка_главная;ссылка_превью;комментарий"
         for (const sourceData of this.sourceFilesData) {
             const [name, size, url, preview, comment] = sourceData.split(';');
-            // console.log('source = ', name, size, url, preview, comment);
             if (name == nameSelected && url == urlSelected) {
                 isSelected = true;
                 contentHTML += `<option value="${name};${url};${preview}" selected>${name}</option>`;
@@ -338,9 +336,6 @@ export class Templates {
         if (!isSelected && source) {
             contentHTML += `<option value="${nameSelected};${urlSelected};${previewSelected}" selected>${nameSelected}</option>`;
         }
-        // if (!isSelected) {
-        //     contentHTML += `<option value="" selected>-</option>`;
-        // }
 
         return contentHTML;
     }
