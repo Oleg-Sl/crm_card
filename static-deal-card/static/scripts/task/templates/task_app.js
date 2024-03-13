@@ -318,8 +318,9 @@ export class Templates {
     }
 
     getSourcesOptionsHTML(source) {
-        let contentHTML = '';
+        let contentHTML = '<option value="" selected>-</option>';
         let isSelected = false;
+        console.log('source = ', source);
         const [nameSelected, urlSelected, previewSelected] = source.split(';');
         // "имя;размер;ссылка_главная;ссылка_превью;комментарий"
         for (const sourceData of this.sourceFilesData) {
@@ -336,9 +337,9 @@ export class Templates {
         if (!isSelected && source) {
             contentHTML += `<option value="${nameSelected};${urlSelected};${previewSelected}" selected>${nameSelected}</option>`;
         }
-        if (!isSelected) {
-            contentHTML += `<option value="" selected>-</option>`;
-        }
+        // if (!isSelected) {
+        //     contentHTML += `<option value="" selected>-</option>`;
+        // }
 
         return contentHTML;
     }
