@@ -58,6 +58,7 @@ export default class TaskManager {
     }
 
     updateSources(sourceFilesData) {
+        console.log("TaskManager sourceFilesData = ", sourceFilesData);
         this.uiApp.setSourcesFilesData(sourceFilesData);
         this.dataManager.setSources(sourceFilesData);
     }
