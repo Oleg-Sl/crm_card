@@ -298,7 +298,7 @@ export class Templates {
 
     getSourcesHTML(sources, groupId, productId) {
         let contentHTML = '';
-        for (const source in sources) {
+        for (const source of sources) {
             contentHTML += `
                 <div class="task-container_group-item-sources-item">
                     <div class="task-container_group-item-sources-item-prev">🖼</div>
