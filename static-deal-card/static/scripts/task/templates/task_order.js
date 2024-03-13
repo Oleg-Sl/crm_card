@@ -134,7 +134,9 @@ export class Templates {
         if (!technologies.length) {
             technologies = [];
         }
-
+        if (!technologies.some(obj => obj.addedToOrder === true)) {
+            return '';
+        }
         return `
             <tr class="product-row" data-product-id="${productData.id}" data-group-id="${groupId}">
                 <td class="block-center">
@@ -259,6 +261,9 @@ export class Templates {
     getTechnologiesHTML(technologies, groupId, productId) {
         let contentHTML = '';
         for (let technology of technologies) {
+            if (!technology.addedToOrder) {
+                continue;
+            }
             contentHTML += `
                 <div class="task-container__item-technology technology-row" data-technology-id="${technology.id}">
                     <div class="task-container__item-technology-type">
@@ -286,6 +291,9 @@ export class Templates {
         let contentHTML = '';
     
         for (let technology of technologies) {
+            if (!technology.addedToOrder) {
+                continue;
+            }
             let checked = technology.MCHS ? 'checked' : '';
             contentHTML += `
                 <div class="task-container__item-technologies-technology-mchs" data-technology-id="${technology.id}">
@@ -304,6 +312,9 @@ export class Templates {
         let contentHTML = '';
     
         for (let technology of technologies) {
+            if (!technology.addedToOrder) {
+                continue;
+            }
             contentHTML += `
                 <div class="task-container__item-consumption-item technology-row" data-technology-id="${technology.id}">
                     <div class="task-container__item-consumption-item-img">🖼</div>
@@ -335,6 +346,9 @@ export class Templates {
         let contentHTML = '';
     
         for (let technology of technologies) {
+            if (!technology.addedToOrder) {
+                continue;
+            }
             contentHTML += `
                 <div class="task-container__item-area-mounting technology-item technology-row" data-technology-id="${technology.id}">
                     <input type="number" name="" id="" placeholder="Площадь монтажа" value="${this.customToString(technology.installArea)}" data-field="installArea" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" readonly>

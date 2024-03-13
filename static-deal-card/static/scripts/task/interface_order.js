@@ -52,8 +52,9 @@ export class TaskOrderInterface {
 
     update() {
         let contentHTML = '';
+        let number = 0;
         for (const group of this.manager.groupsData) {
-            contentHTML += this.templates.getGroupHTML(group);
+            contentHTML += this.templates.getGroupHTML(group, ++number);
         }
         this.container.innerHTML = contentHTML;            
     }
