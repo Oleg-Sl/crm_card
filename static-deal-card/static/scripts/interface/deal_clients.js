@@ -19,7 +19,7 @@ export default class DealClients {
         console.log("data = ", data);
         this.companyData = companyData;
         this.companyContacts = companyContacts;
-        this.contactsData = data?.result?.result || [];
+        this.contactsData = data?.result || [];
 
         this.render();
     }
