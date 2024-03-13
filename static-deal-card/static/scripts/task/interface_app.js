@@ -89,10 +89,11 @@ export class TaskAppInterface {
                 const productId = target.dataset.productId;
                 const productField = target.dataset.productField;
 
+                const selectElementsContainer = target.closest('.task-container_group-item-sources')
                 const row = target.closest('.task-container_group-item-sources-item');
                 row.remove();
-
-                const selectElements = target.closest('.task-container_group-item-sources').querySelectorAll('select');
+                
+                const selectElements = selectElementsContainer.querySelectorAll('select');
                 const sources = Array.from(selectElements).map(el => el.value);
                 this.updateTaskProduct(groupId, productId, {sourcesFiles: sources});
             }
@@ -108,6 +109,7 @@ export class TaskAppInterface {
 
                 const selectElements = target.closest('.task-container_group-item-sources').querySelectorAll('select');
                 const sources = Array.from(selectElements).map(el => el.value);
+                console.log('sources = ', sources);
                 this.updateTaskProduct(groupId, productId, {sourcesFiles: sources});
                 
                 // const containerProductRow = event.target.closest('.product-row');
