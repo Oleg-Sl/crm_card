@@ -78,6 +78,7 @@ class App {
     }
 
     async init() {
+        this.dealSources.addObserver(this.taskData);
         await Promise.all([
             this.createFolderYaDisk(),
             this.initData(),
@@ -85,7 +86,6 @@ class App {
         ]);
         this.initHandlers();
         this.handleMutation();
-        this.dealSources.addObserver(this.taskData);
         BX24.fitWindow();
 
     }

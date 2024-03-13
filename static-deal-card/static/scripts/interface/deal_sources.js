@@ -456,6 +456,7 @@ export default class DealSources {
         const files = dealData[FIELD_DEAL_SOURCE_FILES] || [];
         this.objLinks = new DealLinks(this.boxLinks, this.bx24, links, this.changeLink.bind(this));
         this.objFiles = new DealFiles(this.boxFiles, this.bx24, this.yaDisk, this.dealId, files, this.changeFile.bind(this));
+        this.notify();
     }
 
     addObserver(observer) {
@@ -468,6 +469,7 @@ export default class DealSources {
 
     notify() {
         const filesData = this.objFiles.getData()
+        console.log("filesData = ", filesData);
         this.observers.forEach(observer => observer.updateSources(filesData));
     }
 

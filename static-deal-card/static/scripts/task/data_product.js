@@ -15,6 +15,7 @@ import {
 
 export class Product {
     constructor(data) {
+        console.log('data = ', data);
         this.data = data;
         this.parentId = data?.[`parentId${SP_GROUP_ID}`];
 

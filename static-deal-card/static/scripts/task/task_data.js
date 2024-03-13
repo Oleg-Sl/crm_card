@@ -77,9 +77,8 @@ export class TaskData {
 
     setSources(sourceFilesData) {
         this.sourceFilesData = sourceFilesData;
-        notify();
+        this.notify();
     }
-
 
     addObserver(observer) {
         this.observers.push(observer);
