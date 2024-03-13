@@ -50,7 +50,7 @@ export class Product {
         this.businessTripPercent = data?.[SP_PRODUCT_FIELDS.businessTripPercent];           // Командировка - процент
         this.deliveryFrequency = data?.[SP_PRODUCT_FIELDS.deliveryFrequency];               // Доставка - сколько раз
         this.deliveryCostPerTime = data?.[SP_PRODUCT_FIELDS.deliveryCostPerTime];           // Доставка - себестоимость за раз
-        this.sourcesFiles = data?.[SP_PRODUCT_FIELDS.sourcesFiles];                         // Исходник - фото
+        this.sourcesFiles = data?.[SP_PRODUCT_FIELDS.sourcesFiles] || [];                   // Исходник - фото
 
         this.technologies = [];
         this.changedFields = {};

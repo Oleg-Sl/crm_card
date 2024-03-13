@@ -123,7 +123,7 @@ export const SP_PRODUCT_FIELDS = {
     businessTripPercent: "ufCrm29_1707121557",      // Командировка - процент
     deliveryFrequency: "ufCrm29_1707121587",        // Доставка - сколько раз
     deliveryCostPerTime: "ufCrm29_1707121613",      // Доставка - себестоимость за раз
-    sourcesFiles: "ufCrm29_1707121627",             // Исходник - фото
+    sourcesFiles: "ufCrm29_1710345391",             // Исходник - фото
 };
 
 // Смарт процесс - группы товаров

@@ -16,7 +16,7 @@ export class Templates {
     constructor() {
         this.fields = {};
         this.materials = {};
-
+        this.sourceFilesData = [];
     }
 
     setSmartFields(fields) {
@@ -27,8 +27,12 @@ export class Templates {
         this.materials = materials;
     }
 
-    getGroupHTML(groupData, sourceFilesData, numberGroup = 1) {
-        console.log('sourceFilesData = ', sourceFilesData)
+    setSourcesFilesData(sourceFilesData) {
+        this.sourceFilesData = sourceFilesData;
+        // console.log('sourceFilesData = ', sourceFilesData)
+    }
+
+    getGroupHTML(groupData, numberGroup = 1) {
         let products = groupData?.products || [];
         if (products.length === 0) {
             products = [];
@@ -173,7 +177,7 @@ export class Templates {
                 </td>
                 <td class="task-container_group-item-sources">
                     <div class="task-container_group-item-sources-list">
-                        ${this.getSourcesHTML(productData.sources || [{}])}
+                        ${this.getSourcesHTML(productData.sourcesFiles || [{}])}
                     </div>
                     <div class="task-container_group-item-sources-add">
                         <i class="bi bi-plus-square"></i>
@@ -296,16 +300,13 @@ export class Templates {
 
     getSourcesHTML(sources) {
         let contentHTML = '';
-
         for (const source in sources) {
             contentHTML += `
                 <div class="task-container_group-item-sources-item">
                     <div class="task-container_group-item-sources-item-prev">🖼</div>
                     <div class="task-container_group-item-sources-item-value" data-value="">
                         <select class="product-source-select" name="" id="">
-                            <option value="1">печать</option>
-                            <option value="2">печать + конт. резка</option>
-                            <option value="3">плотерка</option>
+                            ${this.getSourcesOptionsHTML(source || '')}
                         </select>
                     </div>
                     <div class="task-container_group-item-sources-remove">
@@ -313,6 +314,27 @@ export class Templates {
                     </div>
                 </div>
             `;
+        }
+
+        return contentHTML;
+    }
+
+    getSourcesOptionsHTML(source) {
+        let contentHTML = '';
+        let isSelected = false;
+        const [nameSelected, urlSelected, previewSelected] = source.split(';');
+        // "имя;размер;ссылка_главная;ссылка_превью;комментарий"
+        for (const [name, size, url, preview, comment] of this.sourceFilesData) {
+            if (name == nameSelected && url == urlSelected) {
+                isSelected = true;
+                contentHTML += `<option value="${name};${url};${preview}" selected>${name}</option>`;
+            } else {
+                contentHTML += `<option value="${name};${url};${preview}">${name}</option>`;
+            }
+        }
+
+        if (!isSelected) {
+            contentHTML += `<option value="${nameSelected};${urlSelected};${previewSelected}" selected>${nameSelected}</option>`;
         }
 
         return contentHTML;
