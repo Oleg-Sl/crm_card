@@ -1,0 +1,501 @@
+$group-title-font: 700 10px Roboto
+$header-font: 700 10px Roboto
+$body-font: 400 8px Roboto
+$input-height: 17px
+
+
+#taksOrder
+    .task-container__group-title
+        span
+            color: #464A4E
+            font: $group-title-font
+        input
+            background: none
+            border: 1px solid #00000000
+            font: $group-title-font
+    table
+        display: grid
+        grid-template-columns: 10px 1fr 25px 105px 110px 27px 75px 75px 80px 80px 110px 110px 65px 80px 80px
+        border-collapse: collapse
+        thead, tbody
+            display: contents
+            tr
+                display: contents
+                th, td
+                    padding: 2px
+                    font: $body-font
+                    border-right: 1px solid #97999B
+                    border-bottom: 1px solid #97999B
+                th
+                    font: $header-font
+                    border-right: 1px solid #97999B
+                    border-top: 1px solid #97999B
+                td:first-child, th:first-child
+                    border-left: 1px solid #97999B
+
+            // tr:first-child
+            //     td
+            //         border-top: 1px solid #97999B
+        .grid-row-zero
+            grid-row: span 0
+        .technology-item
+            height: calc($input-height * 2 + 2px)
+            display: flex
+            align-items: center
+        .block-center
+            display: flex
+            align-items: center
+        .shared
+            grid-row: span 2
+        select, input, textarea
+            font: $body-font
+            background: none
+            border: 1px solid #97999B33
+            border-radius: 0
+            width: 100%
+            box-sizing: border-box
+            height: $input-height
+        textarea
+            resize: vertical
+        .vertical-input
+            display: block
+            writing-mode: horizontal-tb !important
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]
+            -webkit-appearance: none
+            margin: 0
+        input[type="number"]
+            -moz-appearance: textfield
+        // .switch
+        //     position: relative
+        //     display: inline-block
+        //     width: 14px
+        //     height: 7px
+        // .switch input
+        //     display: none
+        thead
+            // display: grid
+            // grid-template-columns: 10px 1fr 20px 110px 120px 25px 80px 80px 80px 80px 80px 80px 80px 80px 80px
+            // gap: 4px
+            // font: $header-font
+            th
+                display: flex
+                justify-content: center
+                align-items: center
+                text-align: center
+            .task-container__group-header-consumption
+                display: flex
+                >div:first-child
+                    flex-grow: 1
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                >div:nth-child(n+2)
+                    display: flex
+                    flex-direction: column
+            .task-container__group-header-area-mounting
+                div
+                    display: flex
+                    flex-direction: column
+
+
+        tbody
+            .task-container__item-number
+            .task-container__item-info
+                display: flex
+                flex-direction: column
+                // justify-content: center
+                box-sizing: border-box
+                div
+                    margin-bottom: 3px
+                    width: 100%
+                    box-sizing: border-box
+                .task-container_item-title
+                .task-container_item-count
+                .task-container_item-desc
+            .task-container__item-technologies-technology-mchs
+                height: $input-height * 2
+                grid-area: A
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-items: center
+                >span
+                    width: fit-content
+                    writing-mode: vertical-lr
+                    transform: rotate(180deg)
+            .task-container__item-technologies
+                display: flex
+                flex-direction: column
+                box-sizing: border-box
+                gap: 2px
+                .task-container__item-technology
+                    display: grid
+                    gap: 2px
+                    grid-template-columns: $input-height 1fr
+                    grid-template-rows: $input-height $input-height
+                    grid-template-areas: "A B" "A C"
+                    .task-container__item-technology-type
+                        grid-area: A
+                        select
+                            writing-mode: vertical-lr
+                            transform: rotate(180deg)
+                            appearance: none
+                            width: 100%
+                            height: 100%
+                            line-height: 14px
+                            text-align: center
+                            option
+                                writing-mode: horizontal-tb
+                    .task-container__item-technology-material-1
+                        grid-area: B
+                    .task-container__item-technology-material-2
+                        grid-area: C
+            .task-container__item-consumption
+                display: flex
+                flex-direction: column
+                box-sizing: border-box
+                gap: 2px
+                font: $body-font
+                .task-container__item-consumption-item
+                    display: grid
+                    gap: 2px
+                    grid-template-columns: 17px 1fr 5px 1fr 20px
+                    grid-template-rows: $input-height $input-height
+                    grid-template-areas: "A B B B C" "D E F G H"
+                    width: 100%
+                    >div
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                    input
+                        width: 100%
+                        text-align: center
+                        -moz-appearance: textfield
+                        &::-webkit-inner-spin-button, &::-webkit-outer-spin-button 
+                            -webkit-appearance: none 
+                            // margin: 0
+                    .task-container__item-consumption-item-img
+                        grid-area: A
+                    .task-container__item-consumption-item-title
+                        grid-area: B
+                    .task-container__item-consumption-item-empty
+                        grid-area: C
+                    .task-container__item-consumption-item-m2
+                        grid-area: D
+                    .task-container__item-consumption-item-width
+                        grid-area: E
+                    .task-container__item-consumption-item-product
+                        grid-area: F
+                    .task-container__item-consumption-item-length
+                        grid-area: G
+                    .task-container__item-consumption-item-result
+                        grid-area: H
+            .task-container__item-area-mounting
+                input
+                    width: 100%
+                    text-align: center
+                    -moz-appearance: textfield
+                    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button 
+                        -webkit-appearance: none
+            .task-container__item-amounts
+                display: flex
+                flex-direction: column
+                box-sizing: border-box
+                gap: 2px
+                .task-container__item-amount
+                    display: grid
+                    gap: 2px
+                    grid-template-columns: 1fr 20px 1fr
+                    grid-template-rows: $input-height $input-height
+                    grid-template-areas: "A A A" "B C D"
+                    width: 100%
+                    .task-container__item-amount-costprice
+                        grid-area: A
+                    .task-container__item-amount-symbol-plus
+                        grid-area: B
+                        justify-content: flex-end
+                    .task-container__item-amount-value-percent
+                        grid-area: C
+                    .task-container__item-amount-symbol-percent
+                        grid-area: D
+                        justify-content: flex-start
+                    > div
+                        display: flex
+                        align-items: center
+                        justify-content: center 
+                    input
+                        width: 100%
+                        text-align: center
+                        -moz-appearance: textfield
+                        &::-webkit-inner-spin-button, &::-webkit-outer-spin-button 
+                            -webkit-appearance: none
+            .task-container__item-measure
+                display: grid
+                gap: 2px
+                grid-template-columns: 1fr
+                grid-template-rows: $input-height $input-height
+                grid-template-areas: "A" "B"
+                width: 100%
+                height: fit-content
+                > div
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                input
+                    text-align: center
+                .task-container__item-measure-status
+                    grid-area: A
+                .task-container__item-measure-address
+                    grid-area: B
+            .task-container__item-design
+                display: grid
+                gap: 2px
+                grid-template-columns: 1fr
+                grid-template-rows: $input-height
+                grid-template-areas: "A"
+                width: 100%
+                > div
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                .task-container__item-design-type
+                    grid-area: A
+            .task-container__item-mounting
+                display: grid
+                gap: 2px
+                grid-template-columns: 1fr
+                grid-template-rows: $input-height $input-height
+                grid-template-areas: "A" "D"
+                width: 100%
+                > div
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                input
+                    width: 100%
+                    text-align: center
+                    -moz-appearance: textfield
+                    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button 
+                        -webkit-appearance: none
+                .task-container__item-mounting-city
+                    grid-area: A
+                .task-container__item-mounting-type
+                    grid-area: D
+            .task-container__item-deadlines
+                display: grid
+                gap: 2px
+                grid-template-columns: 1fr
+                grid-template-rows: $input-height $input-height
+                grid-template-areas: "A" "B"
+                width: 100%
+                > div
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                .task-container__item-deadlines-type
+                    grid-area: A
+                .task-container__item-deadlines-data
+                    grid-area: B
+            .task-container__item-dismantling
+                display: grid
+                gap: 2px
+                grid-template-columns: $input-height 1fr 20px
+                grid-template-rows: $input-height $input-height
+                grid-template-areas: "A B C" "A D ."
+                width: 100%
+                > div
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                input
+                    width: 100%
+                    text-align: center
+                    -moz-appearance: textfield
+                    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button 
+                        -webkit-appearance: none
+                .task-container__item-dismantling-area
+                    grid-area: A
+                    position: relative
+                    input
+                        // writing-mode: vertical-lr
+                        transform: rotate(270deg)
+                        appearance: none
+                        width: 100%
+                        line-height: 14px
+                        text-align: center
+                        width: 36px
+                        height: 17px
+                        // position: relative
+                        position: absolute
+                        top: 9px
+                        left: -9px
+                        -moz-appearance: textfield
+                        &::-webkit-inner-spin-button, &::-webkit-outer-spin-button 
+                            -webkit-appearance: none 
+                            margin: 0
+                    input
+                        box-sizing: border-box
+                .task-container__item-dismantling-difficulty-desc
+                    grid-area: B
+                .task-container__item-dismantling-difficulty-price
+                    grid-area: C
+                .task-container__item-dismantling-cost-desc
+                    grid-area: D
+            .task-container__item-business-trip
+                display: grid
+                gap: 2px
+                grid-template-columns: 1fr
+                grid-template-rows: $input-height
+                grid-template-areas: "A"
+                width: 100%
+                > div
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                input
+                    width: 100%
+                    text-align: center
+                    -moz-appearance: textfield
+                    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button 
+                        -webkit-appearance: none
+                .task-container__item-business-trip-type
+                    grid-area: A
+            .task-container__item-delivery-container
+                display: flex
+                align-items: center
+                // flex-direction: column
+                // box-sizing: border-box
+                // gap: 2px
+                .task-container__item-delivery
+                    display: grid
+                    gap: 2px
+                    grid-template-columns: 1fr
+                    grid-template-rows: $input-height
+                    grid-template-areas: "A"
+                    width: 100%
+                    height: fit-content
+                    > div
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                    input
+                        width: 100%
+                        text-align: center
+                        -moz-appearance: textfield
+                        &::-webkit-inner-spin-button, &::-webkit-outer-spin-button 
+                            -webkit-appearance: none
+                    .task-container__item-delivery-count
+                        grid-area: A
+            .task-container__item-delivery-cp-container
+                display: flex
+                align-items: center
+                .task-container__item-delivery-cp
+                    display: grid
+                    gap: 2px
+                    grid-template-columns: 1fr
+                    grid-template-rows: $input-height auto
+                    grid-template-areas: "A" "B"
+                    width: 100%
+                    height: fit-content
+                    > div
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                        width: 100%
+                        text-align: center
+                        -moz-appearance: textfield
+                        &::-webkit-inner-spin-button, &::-webkit-outer-spin-button 
+                            -webkit-appearance: none
+                    textarea
+                        resize: vertical
+                    .task-container__item-delivery-cp-method
+                        grid-area: A
+                    .task-container__item-delivery-cp-address
+                        grid-area: B
+                    input
+                        width: 100%
+                        text-align: center
+                        -moz-appearance: textfield
+                        &::-webkit-inner-spin-button, &::-webkit-outer-spin-button 
+                            -webkit-appearance: none
+            .task-container__item-summary-percent
+                display: grid
+                gap: 2px
+                grid-template-columns: 7px 20px 7px
+                // grid-template-rows: $input-height
+                grid-template-areas: "A B C"
+                width: 100%
+                > div
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                input
+                    width: 100%
+                    text-align: center
+                    -moz-appearance: textfield
+                    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button 
+                        -webkit-appearance: none
+                .task-container__item-summary-percent-plus
+                    grid-area: A
+                .task-container__item-summary-percent-value
+                    grid-area: B
+                .task-container__item-summary-percent-percent
+                    grid-area: C
+            .task-container__item-summary-amount
+                display: flex
+                justify-content: flex-end !important
+            .task-container__item-added
+                input
+                    border-radius: 0
+                    margin-left: 0
+                    margin-right: 0
+            .task-container_group-item-right
+                display: flex
+                align-items: center
+                justify-content: space-around
+                .task-container_group-item-move
+                .task-container_group-item-add
+                    color: #00A185
+                .task-container_group-item-copy
+                .task-container_group-item-remove
+                    color: #FF000096
+        //     grid-column: 14 / span 2
+        // .offer-product
+        //     display: grid
+        //     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+
+        //     .grid-item
+        //         border: 1px solid #000
+        //         padding: 10px
+        // .offer-group
+        //   margin-bottom: 20px
+
+        // .grid-container
+        //     display: grid
+        //     grid-template-columns: repeat(18, 1fr)
+        //     // gap: 10px
+
+        // .grid-item
+        //     border: 1px solid #000
+        //     padding: 10px
+
+        // .shared
+        //     grid-column: 14 / span 2
+
+        //     .offer-group {
+        //   margin-bottom: 20px; /* Добавьте отступ между группами продуктов, если необходимо */
+        // }
+
+        // .grid-container {
+        //   display: grid;
+        //   grid-template-columns: repeat(18, 1fr); /* Замените на свои колонки */
+        //   gap: 10px; /* Замените на ваш интервал между элементами */
+        // }
+
+        // .grid-item {
+        //   border: 1px solid #000; /* Цвет и стиль границы */
+        //   padding: 10px; /* Добавьте отступ вокруг элементов, чтобы границы были видны */
+        // }
+

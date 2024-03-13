@@ -38,7 +38,6 @@ export default class TaskManager {
         this.uiApp = new TaskAppInterface(containerApp, this.dataManager);
         this.uiOffer = new TaskOfferInterface(containerOffer, this.dataManager);
         this.uiOrder = new TaskOrderInterface(containerOrder, this.dataManager);
-
     }
 
     async init() {
