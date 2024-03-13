@@ -231,11 +231,12 @@ class UIManager {
 }
 
 class DealFiles {
-    constructor(container, bx24, yaDisk, dealId, dataFiles) {
+    constructor(container, bx24, yaDisk, dealId, dataFiles, cbChangedFiles) {
         this.container = container;
         this.bx24 = bx24;
         this.yaDisk = yaDisk;
         this.dealId = dealId;
+        this.cbChangedFiles = cbChangedFiles;
 
         this.fileManager = new FileManager(bx24);
         this.yaDiskManager = new YandexDiskManager(yaDisk);
@@ -258,6 +259,7 @@ class DealFiles {
             const index = event.target.dataset.index;
             this.files.splice(index, 1);
             this.updateHTML();
+            this.cbChangedFiles();
         }
     }
     
@@ -291,6 +293,7 @@ class DealFiles {
             });
 
             this.updateHTML();
+            this.cbChangedFiles();
         } catch (error) {
             console.error('Error adding file:', error);
         }
@@ -339,9 +342,10 @@ class DealFiles {
 
 
 class DealLinks {
-    constructor(container, bx24, dataLinks) {
+    constructor(container, bx24, dataLinks, cbChangedLinks) {
         this.container = container;
         this.bx24 = bx24;
+        this.cbChangedLinks = cbChangedLinks;
 
         this.links = this.parseDataLinks(dataLinks);
 
@@ -361,10 +365,12 @@ class DealLinks {
     }
 
     initHadler() {
+        // добавление файла
         this.btnAdd.addEventListener('click', (event) => {
             this.addLink();
+            this.cbChangedLinks();
         })
-
+        // удаление файла
         this.boxList.addEventListener('click', (event) => {
             const target = event.target;
             if (target.closest('.deal-files__file-row-del')) {
@@ -372,8 +378,10 @@ class DealLinks {
                 this.links.splice(index, 1);
                 this.updateHTML();
             }
+            this.cbChangedLinks();
         })
 
+        // изменение описания файла
         this.boxList.addEventListener('change', (event) => {
             const target = event.target;
             if (target.classList.contains('links-desc')) {
@@ -439,13 +447,36 @@ export default class DealSources {
 
         this.objLinks = null;
         this.objFiles = null;
+
+        this.observers = [];
     }
 
     init(dealData) {
         const links = dealData[FIELD_DEAL_SOURCE_LINKS] || [];
         const files = dealData[FIELD_DEAL_SOURCE_FILES] || [];
-        this.objLinks = new DealLinks(this.boxLinks, this.bx24, links);
-        this.objFiles = new DealFiles(this.boxFiles, this.bx24, this.yaDisk, this.dealId, files);
+        this.objLinks = new DealLinks(this.boxLinks, this.bx24, links, changeLink.bind(this));
+        this.objFiles = new DealFiles(this.boxFiles, this.bx24, this.yaDisk, this.dealId, files, changeFile.bind(this));
+    }
+
+    addObserver(observer) {
+        this.observers.push(observer);
+    }
+
+    removeObserver(observer) {
+        this.observers = this.observers.filter(obs => obs !== observer);
+    }
+
+    notify() {
+        const filesData = this.objFiles.getData()
+        this.observers.forEach(observer => observer.updateSources(filesData));
+    }
+
+    changeLink() {
+        this.notify()
+    }
+
+    changeFile() {
+        this.notify()
     }
 
     getChangedData() {

@@ -27,15 +27,17 @@ export class Templates {
         this.materials = materials;
     }
 
-    getGroupHTML(groupData, numberGroup = 1) {
+    getGroupHTML(groupData, sourceFilesData, numberGroup = 1) {
+        console.log('sourceFilesData = ', sourceFilesData)
         let products = groupData?.products || [];
         if (products.length === 0) {
             products = [];
         }
-
+        
         let productsHTML = '';
         for (const index in products) {
             const productData = products[index];
+            console.log('productData.sourcesFiles = ', productData.sourcesFiles);
             productsHTML += this.getProductHTML(productData, +index + 1, groupData.id, groupData.delivery);
         }
 

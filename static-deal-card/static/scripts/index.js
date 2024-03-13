@@ -85,6 +85,7 @@ class App {
         ]);
         this.initHandlers();
         this.handleMutation();
+        this.dealSources.addObserver(this.taskData);
         BX24.fitWindow();
 
     }

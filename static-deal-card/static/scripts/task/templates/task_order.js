@@ -500,5 +500,3 @@ export class Templates {
         return `${year}-${month}-${day}`;
     }
 }
-
-

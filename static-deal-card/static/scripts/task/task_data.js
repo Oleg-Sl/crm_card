@@ -33,6 +33,8 @@ export class TaskData {
             laminations: null
         };
 
+        this.sourceFilesData = [];
+
         this.groupsData = [];
         this.observers = [];
     }
@@ -71,6 +73,11 @@ export class TaskData {
         }
 
         this.notify();
+    }
+
+    setSources(sourceFilesData) {
+        this.sourceFilesData = sourceFilesData;
+        notify();
     }
 
 
