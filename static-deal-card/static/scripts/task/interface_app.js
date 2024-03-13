@@ -73,8 +73,12 @@ export class TaskAppInterface {
                 const productId = target.dataset.productId;
                 const productField = target.dataset.productField;
 
-                const selectElements = target.closest('.task-container_group-item-sources').querySelectorAll('select');
+                const selectElementsContainer = target.closest('.task-container_group-item-sources')
+                console.log('selectElementsContainer = ', selectElementsContainer);
+                const selectElements = selectElementsContainer.querySelectorAll('select');
+                console.log('selectElements = ', selectElements);
                 const sources = selectElements.map(el => el.value);
+                console.log('sources = ', sources);
                 sources.unshift('');
                 this.updateTaskProduct(groupId, productId, {sourcesFiles: sources});
             }
