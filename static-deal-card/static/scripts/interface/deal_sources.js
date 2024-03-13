@@ -469,7 +469,6 @@ export default class DealSources {
 
     notify() {
         const filesData = this.objFiles.getData()
-        console.log("filesData = ", filesData);
         this.observers.forEach(observer => observer.updateSources(filesData));
     }
 

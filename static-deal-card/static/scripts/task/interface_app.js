@@ -63,36 +63,56 @@ export class TaskAppInterface {
             }
         })
 
-        // // добавление/удаление исходного файла
-        // this.container.addEventListener('click', event => {
-        //     const target = event.target;
+        // добавление/удаление исходного файла
+        this.container.addEventListener('click', event => {
+            const target = event.target;
 
-        //     if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-sources-add')) {
-        //         const sourceItemHTML = this.templatesTaskApp.getSourcesHTML([{}]);
-        //         target.parentElement.parentElement.querySelector('.task-container_group-item-sources-list').insertAdjacentHTML('beforeend', sourceItemHTML);
-        //     }
+            if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-sources-add')) {
+                const target = event.target;
+                const groupId = target.dataset.groupId;
+                const productId = target.dataset.productId;
+                const productField = target.dataset.productField;
 
-        //     if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-sources-remove')) {
-        //         const containerProductRow = target.closest('.product-row');
-        //         console.log("containerProductRow = ", containerProductRow);
-        //         const containerSourcesList = target.parentElement.parentElement.parentElement;
-        //         const groupId = containerProductRow.dataset.groupId;
-        //         const productId = containerProductRow.dataset.productId;
-        //         target.parentElement.parentElement.remove();
-        //         this.updateSources(containerSourcesList, groupId, productId);
-        //     }
-        // })
+                const selectElements = target.closest('.task-container_group-item-sources').querySelector('select');
+                const sources = selectElements.map(el => el.value);
+                sources.unshift('');
+                this.updateTaskProduct(groupId, productId, {sourcesFiles: sources});
+            }
 
-        // // Обновление исходных файлов
-        // this.container.addEventListener('change', event => {
-        //     if (event.target.tagName === 'SELECT' && event.target.classList.contains('product-source-select')) {
-        //         const containerProductRow = event.target.closest('.product-row');
-        //         const containerSourcesList = event.target.parentElement.parentElement.parentElement;
-        //         const groupId = containerProductRow.dataset.groupId;
-        //         const productId = containerProductRow.dataset.productId;
-        //         this.updateSources(containerSourcesList, groupId, productId);
-        //     }
-        // })
+            if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-sources-remove')) {
+                const target = event.target;
+                const groupId = target.dataset.groupId;
+                const productId = target.dataset.productId;
+                const productField = target.dataset.productField;
+
+                const row = target.closest('.task-container_group-item-sources-item');
+                row.remove();
+
+                const selectElements = target.closest('.task-container_group-item-sources').querySelector('select');
+                const sources = selectElements.map(el => el.value);
+                this.updateTaskProduct(groupId, productId, {sourcesFiles: sources});
+            }
+        })
+
+        // Обновление исходных файлов
+        this.container.addEventListener('change', event => {
+            if (event.target.tagName === 'SELECT' && event.target.classList.contains('product-source-select')) {
+                const target = event.target;
+                const groupId = target.dataset.groupId;
+                const productId = target.dataset.productId;
+                const productField = target.dataset.productField;
+
+                const selectElements = target.closest('.task-container_group-item-sources').querySelector('select');
+                const sources = selectElements.map(el => el.value);
+                this.updateTaskProduct(groupId, productId, {sourcesFiles: sources});
+                
+                // const containerProductRow = event.target.closest('.product-row');
+                // const containerSourcesList = event.target.parentElement.parentElement.parentElement;
+                // const groupId = containerProductRow.dataset.groupId;
+                // const productId = containerProductRow.dataset.productId;
+                // this.updateSources(containerSourcesList, groupId, productId);
+            }
+        })
 
         this.handlersGropupProducts();
         this.handlersProduct();

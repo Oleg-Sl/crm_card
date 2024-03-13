@@ -29,7 +29,6 @@ export class Templates {
 
     setSourcesFilesData(sourceFilesData) {
         this.sourceFilesData = sourceFilesData;
-        // console.log('sourceFilesData = ', sourceFilesData)
     }
 
     getGroupHTML(groupData, numberGroup = 1) {
@@ -37,11 +36,10 @@ export class Templates {
         if (products.length === 0) {
             products = [];
         }
-        
+
         let productsHTML = '';
         for (const index in products) {
             const productData = products[index];
-            console.log('productData.sourcesFiles = ', productData.sourcesFiles);
             productsHTML += this.getProductHTML(productData, +index + 1, groupData.id, groupData.delivery);
         }
 
@@ -177,10 +175,10 @@ export class Templates {
                 </td>
                 <td class="task-container_group-item-sources">
                     <div class="task-container_group-item-sources-list">
-                        ${this.getSourcesHTML(productData.sourcesFiles || [{}])}
+                        ${this.getSourcesHTML(productData.sourcesFiles || [{}], groupId, productData.id)}
                     </div>
                     <div class="task-container_group-item-sources-add">
-                        <i class="bi bi-plus-square"></i>
+                        <i class="bi bi-plus-square" data-group-id="${groupId}" data-product-id="${productData.id}"></i>
                     </div>
                 </td>
                 <td class="task-container_group-item-measurements">
@@ -298,19 +296,19 @@ export class Templates {
         return contentHTML;
     }
 
-    getSourcesHTML(sources) {
+    getSourcesHTML(sources, groupId, productId) {
         let contentHTML = '';
         for (const source in sources) {
             contentHTML += `
                 <div class="task-container_group-item-sources-item">
                     <div class="task-container_group-item-sources-item-prev">🖼</div>
                     <div class="task-container_group-item-sources-item-value" data-value="">
-                        <select class="product-source-select" name="" id="">
+                        <select class="product-source-select" name="" id="" data-group-id="${groupId}" data-product-id="${productId}">
                             ${this.getSourcesOptionsHTML(source || '')}
                         </select>
                     </div>
                     <div class="task-container_group-item-sources-remove">
-                        <i class="bi bi-dash-square"></i>
+                        <i class="bi bi-dash-square" data-group-id="${groupId}" data-product-id="${productId}"></i>
                     </div>
                 </div>
             `;
@@ -324,7 +322,8 @@ export class Templates {
         let isSelected = false;
         const [nameSelected, urlSelected, previewSelected] = source.split(';');
         // "имя;размер;ссылка_главная;ссылка_превью;комментарий"
-        for (const [name, size, url, preview, comment] of this.sourceFilesData) {
+        for (const sourceData of this.sourceFilesData) {
+            const [name, size, url, preview, comment] = sourceData.split(';');
             console.log('source = ', name, size, url, preview, comment);
             if (name == nameSelected && url == urlSelected) {
                 isSelected = true;
@@ -334,8 +333,11 @@ export class Templates {
             }
         }
 
-        if (!isSelected) {
+        if (!isSelected && source) {
             contentHTML += `<option value="${nameSelected};${urlSelected};${previewSelected}" selected>${nameSelected}</option>`;
+        }
+        if (!isSelected) {
+            contentHTML += `<option value="" selected>-</option>`;
         }
 
         return contentHTML;
