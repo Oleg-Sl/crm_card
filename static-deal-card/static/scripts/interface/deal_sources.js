@@ -454,8 +454,8 @@ export default class DealSources {
     init(dealData) {
         const links = dealData[FIELD_DEAL_SOURCE_LINKS] || [];
         const files = dealData[FIELD_DEAL_SOURCE_FILES] || [];
-        this.objLinks = new DealLinks(this.boxLinks, this.bx24, links, changeLink.bind(this));
-        this.objFiles = new DealFiles(this.boxFiles, this.bx24, this.yaDisk, this.dealId, files, changeFile.bind(this));
+        this.objLinks = new DealLinks(this.boxLinks, this.bx24, links, this.changeLink.bind(this));
+        this.objFiles = new DealFiles(this.boxFiles, this.bx24, this.yaDisk, this.dealId, files, this.changeFile.bind(this));
     }
 
     addObserver(observer) {
