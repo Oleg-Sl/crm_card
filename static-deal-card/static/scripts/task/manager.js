@@ -1,6 +1,7 @@
 import { TaskData } from "./task_data.js";
 import { TaskAppInterface } from "./interface_app.js";
 import { TaskOfferInterface } from "./interface_offer.js";
+import { TaskOrderInterface } from "./interface_order.js";
 import {
     SP_GROUP_ID,
     SP_PRODUCT_ID,
@@ -33,10 +34,10 @@ export default class TaskManager {
 
         const containerApp = document.querySelector('#taskApplication');
         const containerOffer = document.querySelector('#taskOffer');
-        const containerOrder = document.querySelector('#taskOffer');
+        const containerOrder = document.querySelector('#taksOrder');
         this.uiApp = new TaskAppInterface(containerApp, this.dataManager);
         this.uiOffer = new TaskOfferInterface(containerOffer, this.dataManager);
-        // this.uiOrder = new TaskOfferInterface(containerOrder, this.dataManager);
+        this.uiOrder = new TaskOrderInterface(containerOrder, this.dataManager);
 
     }
 
@@ -45,11 +46,11 @@ export default class TaskManager {
         
         this.uiApp.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
         this.uiOffer.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
-        // this.uiOrder.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
+        this.uiOrder.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
         
         this.uiApp.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);        
         this.uiOffer.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);        
-        // this.uiOrder.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);        
+        this.uiOrder.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);        
         
         this.dataManager.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
         this.dataManager.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);        
