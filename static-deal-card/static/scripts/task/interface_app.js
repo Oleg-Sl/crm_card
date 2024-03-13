@@ -73,7 +73,7 @@ export class TaskAppInterface {
                 const productId = target.dataset.productId;
                 const productField = target.dataset.productField;
 
-                const selectElements = target.closest('.task-container_group-item-sources').querySelector('select');
+                const selectElements = target.closest('.task-container_group-item-sources').querySelectorAll('select');
                 const sources = selectElements.map(el => el.value);
                 sources.unshift('');
                 this.updateTaskProduct(groupId, productId, {sourcesFiles: sources});
@@ -88,7 +88,7 @@ export class TaskAppInterface {
                 const row = target.closest('.task-container_group-item-sources-item');
                 row.remove();
 
-                const selectElements = target.closest('.task-container_group-item-sources').querySelector('select');
+                const selectElements = target.closest('.task-container_group-item-sources').querySelectorAll('select');
                 const sources = selectElements.map(el => el.value);
                 this.updateTaskProduct(groupId, productId, {sourcesFiles: sources});
             }
@@ -102,7 +102,7 @@ export class TaskAppInterface {
                 const productId = target.dataset.productId;
                 const productField = target.dataset.productField;
 
-                const selectElements = target.closest('.task-container_group-item-sources').querySelector('select');
+                const selectElements = target.closest('.task-container_group-item-sources').querySelectorAll('select');
                 const sources = selectElements.map(el => el.value);
                 this.updateTaskProduct(groupId, productId, {sourcesFiles: sources});
                 
