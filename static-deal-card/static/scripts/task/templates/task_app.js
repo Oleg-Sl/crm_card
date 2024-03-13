@@ -299,9 +299,10 @@ export class Templates {
     getSourcesHTML(sources, groupId, productId) {
         let contentHTML = '';
         for (const source of sources) {
+            const [nameSelected, urlSelected, previewSelected] = source.split(';');
             contentHTML += `
                 <div class="task-container_group-item-sources-item">
-                    <div class="task-container_group-item-sources-item-prev">🖼</div>
+                    <div class="task-container_group-item-sources-item-prev" data-link="${previewSelected}">🖼</div>
                     <div class="task-container_group-item-sources-item-value" data-value="">
                         <select class="product-source-select" name="" id="" data-group-id="${groupId}" data-product-id="${productId}">
                             ${this.getSourcesOptionsHTML(source || '')}

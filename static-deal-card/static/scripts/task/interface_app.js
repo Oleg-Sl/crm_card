@@ -79,7 +79,7 @@ export class TaskAppInterface {
                 console.log('selectElements = ', selectElements);
                 const sources = Array.from(selectElements).map(el => el.value);
                 console.log('sources = ', sources);
-                sources.unshift('');
+                sources.push('');
                 this.updateTaskProduct(groupId, productId, {sourcesFiles: sources});
             }
 
@@ -120,10 +120,55 @@ export class TaskAppInterface {
             }
         })
 
+        container.addEventListener('mouseenter', function(event) {
+            const target = event.target;
+            // Проверяем, что наведение произошло на элемент .task-container_group-item-sources-item-prev
+            if (target.classList.contains('task-container_group-item-sources-item-prev')) {
+              const link = target.getAttribute('data-link');
+              // Показываем картинку
+              if (link) {
+                // Ваш код для отображения картинки
+                this.handleFilePreviewShow(event);
+                console.log('Показываем картинку:', link);
+              }
+            }
+          });
+          
+          container.addEventListener('mouseleave', function(event) {
+            const target = event.target;
+            // Проверяем, что покидание произошло с элемента .task-container_group-item-sources-item-prev
+            if (target.classList.contains('task-container_group-item-sources-item-prev')) {
+              // Закрываем картинку
+              this.handleFilePreviewHide();
+              // Ваш код для закрытия картинки
+              console.log('Закрываем картинку');
+            }
+          });
+
         this.handlersGropupProducts();
         this.handlersProduct();
         this.handlersTechnology();
 
+    }
+
+    handleFilePreviewShow(event) {
+        const target = event.target;
+        if (target.dataset.link) {
+            const smile = target.textContent;
+            const previewLink = target.dataset.link;
+            const previewContainer = document.getElementById('tooltip');
+            previewContainer.innerHTML = `<div style="max-width: 250px;"><img src="${previewLink}" alt="${smile}" style="width: 100%;"></div>`;
+            previewContainer.style.visibility = 'visible';
+            previewContainer.style.left = event.pageX + 'px';
+            previewContainer.style.opacity = '1';
+            previewContainer.style.top = event.pageY + 'px';
+        }
+    }
+
+    handleFilePreviewHide() {
+        const previewContainer = document.getElementById('tooltip');
+        previewContainer.style.opacity = '0';
+        previewContainer.style.visibility = 'hidden';
     }
 
     handlersGropupProducts() {
