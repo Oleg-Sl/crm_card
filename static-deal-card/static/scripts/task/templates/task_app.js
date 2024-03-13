@@ -325,6 +325,7 @@ export class Templates {
         const [nameSelected, urlSelected, previewSelected] = source.split(';');
         // "имя;размер;ссылка_главная;ссылка_превью;комментарий"
         for (const [name, size, url, preview, comment] of this.sourceFilesData) {
+            console.log('source = ', name, size, url, preview, comment);
             if (name == nameSelected && url == urlSelected) {
                 isSelected = true;
                 contentHTML += `<option value="${name};${url};${preview}" selected>${name}</option>`;
