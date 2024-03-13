@@ -120,35 +120,49 @@ export class TaskAppInterface {
             }
         })
 
-        this.container.addEventListener('mouseenter', function(event) {
-            const target = event.target;
-            // Проверяем, что наведение произошло на элемент .task-container_group-item-sources-item-prev
-            if (target.classList.contains('task-container_group-item-sources-item-prev')) {
-              const link = target.getAttribute('data-link');
-              // Показываем картинку
-              if (link) {
-                // Ваш код для отображения картинки
-                this.handleFilePreviewShow(event);
-                console.log('Показываем картинку:', link);
-              }
-            }
-          });
+        // this.container.addEventListener('mouseenter', function(event) {
+        //     const target = event.target;
+        //     // Проверяем, что наведение произошло на элемент .task-container_group-item-sources-item-prev
+        //     if (target.classList.contains('task-container_group-item-sources-item-prev')) {
+        //       const link = target.getAttribute('data-link');
+        //       // Показываем картинку
+        //       if (link) {
+        //         // Ваш код для отображения картинки
+        //         this.handleFilePreviewShow(event);
+        //         console.log('Показываем картинку:', link);
+        //       }
+        //     }
+        //   });
           
-        this.container.addEventListener('mouseleave', function(event) {
-            const target = event.target;
-            // Проверяем, что покидание произошло с элемента .task-container_group-item-sources-item-prev
-            if (target.classList.contains('task-container_group-item-sources-item-prev')) {
-              // Закрываем картинку
-              this.handleFilePreviewHide();
-              // Ваш код для закрытия картинки
-              console.log('Закрываем картинку');
-            }
-          });
+        // this.container.addEventListener('mouseleave', function(event) {
+        //     const target = event.target;
+        //     // Проверяем, что покидание произошло с элемента .task-container_group-item-sources-item-prev
+        //     if (target.classList.contains('task-container_group-item-sources-item-prev')) {
+        //       // Закрываем картинку
+        //       this.handleFilePreviewHide();
+        //       // Ваш код для закрытия картинки
+        //       console.log('Закрываем картинку');
+        //     }
+        //   });
 
         this.handlersGropupProducts();
         this.handlersProduct();
         this.handlersTechnology();
 
+    }
+
+    addPreviewEventListeners() {
+        this.container.querySelectorAll('.task-container_group-item-sources-item-prev').forEach(item => {
+            item.addEventListener('mouseover', this.handleFilePreviewShow.bind(this));
+            item.addEventListener('mouseout', this.handleFilePreviewHide);
+        });
+    }
+
+    removePreviewEventListeners() {
+        this.container.querySelectorAll('.task-container_group-item-sources-item-prev').forEach(item => {
+            item.removeEventListener('mouseover', this.handleFilePreviewShow.bind(this));
+            item.removeEventListener('mouseout', this.handleFilePreviewHide);
+        });
     }
 
     handleFilePreviewShow(event) {
@@ -263,13 +277,15 @@ export class TaskAppInterface {
 
 
     update() {
+        this.removePreviewEventListeners();
         let contentHTML = '';
         let number = 0;
         for (const group of this.manager.groupsData) {
             contentHTML += this.templates.getGroupHTML(group, ++number);
         }
         
-        this.container.innerHTML = contentHTML;            
+        this.container.innerHTML = contentHTML;
+        this.addPreviewEventListeners();            
     }
 
     // Методы для изменения данных и уведомления TaskManager
