@@ -186,6 +186,11 @@ export class TaskAppInterface {
         this.templates.setMaterialsData(this.materials);
     }
 
+    setSourcesFilesData(sourceFilesData) {
+        this.templates.setSourcesFilesData(sourceFilesData);
+    }
+
+
     update() {
         let contentHTML = '';
         let number = 0;
