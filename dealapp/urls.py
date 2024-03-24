@@ -4,6 +4,8 @@ from rest_framework import routers
 from .views import (
     InstallApiView,
     IndexApiView,
+    TaskAppInstallApiView,
+    TaskAppIndexApiView,
     # GetImage
 )
 
