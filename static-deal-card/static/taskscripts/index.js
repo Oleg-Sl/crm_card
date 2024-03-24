@@ -56,6 +56,7 @@ class App {
 
     async init() {
         const taskData = await this.getTaskData();
+        console.log("taskData = ", taskData);
         this.dealId = this.extractNumberFromArray(taskData?.ufCrmTask);
         if (!this.dealId) {
             throw new Error("Deal id not found");
@@ -222,15 +223,15 @@ class App {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    // BX24.init(async function() {
-        const taskIdEstimate = 74117;
-        const taskIdCommercOffer = 74193;
+    BX24.init(async function() {
+        // const taskIdEstimate = 74117;
+        // const taskIdCommercOffer = 74193;
         const bx24 = new BitrixService();
         bx24.init();
         // const app = new App(taskIdEstimate, bx24);
-        const app = new App(taskIdCommercOffer, bx24);
+        const app = new App(taskId, bx24);
         app.init();
-    // });
+    });
 });
 
 
