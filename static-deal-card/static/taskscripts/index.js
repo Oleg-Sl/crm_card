@@ -56,7 +56,6 @@ class App {
 
     async init() {
         const taskData = await this.getTaskData();
-        console.log("taskData = ", taskData);
         this.dealId = this.extractNumberFromArray(taskData?.ufCrmTask);
         if (!this.dealId) {
             throw new Error("Deal id not found");
@@ -70,16 +69,18 @@ class App {
         const data = await this.getDealData();
 
         this.deal = data?.deal || {};
+        console.log("deal = ", this.deal);
+
         const taskEstimate = this.deal?.[FIELD_DEAL_TASK_ESTIMATE];
         const taskCommOffer = this.deal?.[FIELD_DEAL_TASK_COMMERC_OFFER];
+        console.log("taskEstimate = ", taskEstimate);
+        console.log("taskCommOffer = ", taskCommOffer);
+        console.log("taskId = ", this.taskId);
 
         if (this.taskId == taskEstimate) {
             this.uiTask = new TaskEstimateAppInterface(this.containerTask, this.dataManager, new TemplatesEstimateTask());
         } else if (this.taskId == taskCommOffer) {
             this.uiTask = new TaskOrderAppInterface(this.containerTask, this.dataManager, new TemplatesOrderTask());
-            // console.log("taskCommOffer = ", this.containerTask.querySelectorAll('input'));
-            // this.containerTask.classList.add('unmodified');
-            // this.containerTask.querySelectorAll('input').forEach(input => input.disabled = true);
         } else {
             throw new Error("Task not found");
         }
