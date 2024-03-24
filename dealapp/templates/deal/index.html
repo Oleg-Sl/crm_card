@@ -18,7 +18,27 @@
     <script>
         let dealId = {{ id }};
     </script>
-    <style>
+    <style>sudo systemctl status gunicorn_crmcard.service 
+        ● gunicorn_crmcard.service - gunicorn daemon
+             Loaded: loaded (/etc/systemd/system/gunicorn_crmcard.service; enabled; vendor preset: enabled)
+             Active: active (running) since Sun 2024-03-24 17:56:45 MSK; 3min 26s ago
+           Main PID: 327972 (gunicorn)
+              Tasks: 3 (limit: 1116)
+             Memory: 67.3M
+             CGroup: /system.slice/gunicorn_crmcard.service
+                     ├─327972 /home/devuser/projects/crm_card/venv/bin/python3 /home/devuser/projects/crm_card/venv/bin/gunicorn --access-logfile - --workers 2 --bind unix:/home/devuser/projects/crm_card/dealcard>
+                     ├─327985 /home/devuser/projects/crm_card/venv/bin/python3 /home/devuser/projects/crm_card/venv/bin/gunicorn --access-logfile - --workers 2 --bind unix:/home/devuser/projects/crm_card/dealcard>
+                     └─327986 /home/devuser/projects/crm_card/venv/bin/python3 /home/devuser/projects/crm_card/venv/bin/gunicorn --access-logfile - --workers 2 --bind unix:/home/devuser/projects/crm_card/dealcard>
+        
+        Mar 24 17:58:15 yivhvualne gunicorn[327985]:   File "/home/devuser/projects/crm_card/venv/lib/python3.8/site-packages/django/template/base.py", line 154, in __init__
+        Mar 24 17:58:15 yivhvualne gunicorn[327985]:     self.nodelist = self.compile_nodelist()
+        Mar 24 17:58:15 yivhvualne gunicorn[327985]:   File "/home/devuser/projects/crm_card/venv/lib/python3.8/site-packages/django/template/base.py", line 200, in compile_nodelist
+        Mar 24 17:58:15 yivhvualne gunicorn[327985]:     return parser.parse()
+        Mar 24 17:58:15 yivhvualne gunicorn[327985]:   File "/home/devuser/projects/crm_card/venv/lib/python3.8/site-packages/django/template/base.py", line 507, in parse
+        Mar 24 17:58:15 yivhvualne gunicorn[327985]:     self.invalid_block_tag(token, command, parse_until)
+        Mar 24 17:58:15 yivhvualne gunicorn[327985]:   File "/home/devuser/projects/crm_card/venv/lib/python3.8/site-packages/django/template/base.py", line 568, in invalid_block_tag
+        Mar 24 17:58:15 yivhvualne gunicorn[327985]:     raise self.error(
+        Mar 24 17:58:15 yivhvualne gunicorn[327985]: django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 7: 'static'. Did you forget to register or load this tag?
         .spinner {
             position: absolute;
             right: 2px;
