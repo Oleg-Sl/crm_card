@@ -42,18 +42,18 @@ export default class TaskManager {
 
     async init() {
         const data = await this.getDataFromBx24();
-        
+
         this.uiApp.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
         this.uiOffer.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
         this.uiOrder.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
-        
-        this.uiApp.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);        
-        this.uiOffer.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);        
-        this.uiOrder.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);        
-        
+
+        this.uiApp.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);
+        this.uiOffer.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);
+        this.uiOrder.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);
+
         this.dataManager.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
-        this.dataManager.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);        
-        
+        this.dataManager.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);
+
         this.dataManager.setData(data.groups, data.products, data.technologies);
     }
 

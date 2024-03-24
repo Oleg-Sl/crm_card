@@ -247,6 +247,15 @@ export class Templates {
                         </div>
                     </div>
                 </td>
+                <td class="block-center">
+                    <div class="task-container__item-delivery-container">
+                        <div class="task-container__item-delivery">
+                            <div class="task-container__item-delivery-count">
+                                <input type="number" name="" id="" placeholder="сколько раз" value="${this.customToString(productData.deliveryFrequency)}" data-product-field="deliveryFrequency" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            </div>
+                        </div>
+                    </div>
+                </td>
                 ${deliveryHTML}
                 <td class="task-container_group-item-right">
                     <div class="task-container_group-item-move"><i class="bi bi-list"></i></div>
@@ -360,16 +369,16 @@ export class Templates {
     }
 
     getDeliveryHTML(groupData, technologiesCount) {
+        // <td class="shared block-center" style="grid-row: span ${technologiesCount}">
+        //     <div class="task-container__item-delivery-container">
+        //         <div class="task-container__item-delivery">
+        //             <div class="task-container__item-delivery-count">
+        //                 <input type="number" name="" id="" placeholder="сколько раз" value="${this.customToString(groupData.deliveryCount)}" data-group-field="deliveryCount" data-type="number" data-group-id="${groupData.id}" readonly>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </td>
         return `
-            <td class="shared block-center" style="grid-row: span ${technologiesCount}">
-                <div class="task-container__item-delivery-container">
-                    <div class="task-container__item-delivery">
-                        <div class="task-container__item-delivery-count">
-                            <input type="number" name="" id="" placeholder="сколько раз" value="${this.customToString(groupData.deliveryCount)}" data-group-field="deliveryCount" data-type="number" data-group-id="${groupData.id}" readonly>
-                        </div>
-                    </div>
-                </div>
-            </td>
             <td class="shared block-center" style="grid-row: span ${technologiesCount}">
                 <div class="task-container__item-delivery-cp-container">
                     <div class="task-container__item-delivery-cp">

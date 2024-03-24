@@ -13,7 +13,6 @@ import FilesMethods from './api_file_webhook.js'
 const URL = 'url';
 export default class BitrixService {
     constructor() {
-        
         this.bx24 = new Bitrix24();
 
         this.batch = new BatchMethods(this.bx24);
