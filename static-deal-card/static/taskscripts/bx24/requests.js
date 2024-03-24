@@ -12,6 +12,7 @@ export default class Bitrix24 {
 
     setWebhook(webhook) {
         this.webhook = webhook;
+        console.log("this.webhook = ", this.webhook);
     }
 
     logError(message) {

@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // const taskIdEstimate = 74117;
         // const taskIdCommercOffer = 74193;
         const bx24 = new BitrixService();
-        bx24.init();
+        await bx24.init();
         // const app = new App(taskIdEstimate, bx24);
         const app = new App(taskId, bx24);
         app.init();
