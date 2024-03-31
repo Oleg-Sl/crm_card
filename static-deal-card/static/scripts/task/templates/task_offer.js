@@ -36,7 +36,7 @@ export class Templates {
         for (let index in products) {
             const productData = products[index];
             const deliveryHTML = (index == 0) ? this.getDeliveryHTML(groupData, products.length) : '';
-            productsHTML += this.getProductHTML(productData, +index + 1, groupData.id, deliveryHTML);
+            productsHTML += this.getProductHTML(productData, +index + 1, groupData.id, deliveryHTML, groupData);
         }
 
         return `
@@ -134,7 +134,7 @@ export class Templates {
         `;
     }
 
-    getProductHTML(productData, number, groupId, deliveryHTML) {
+    getProductHTML(productData, number, groupId, deliveryHTML, groupData) {
         let technologies = productData?.technologies || [];
         if (!technologies.length) {
             technologies = [];
@@ -323,7 +323,7 @@ export class Templates {
                 </td>
                 <td>
                     <div class="task-container__item-summary-amounts">
-                        ${this.getSummaryAmountHTML(technologies, groupId, productData.id)}
+                        ${this.getSummaryAmountHTML(technologies, groupData, productData)}
                     </div>
                 </td>
                 <td>
@@ -461,13 +461,39 @@ export class Templates {
         return contentHTML;
     }
 
-    getSummaryAmountHTML(technologies, groupId, productId) {
+    getSummaryAmountHTML(technologies, groupData, productData) {
         let contentHTML = '';
-    
+        // let amount = technologies.runningMeter ;
+        const designCost = +productData.designCost || 0;  // Дизайн - себестоимость
+        const installDays = +productData.installDays || 0;  // Монтаж - кол-во дней
+        const installCost = +productData.installCost || 0;  // Монтаж - себестоимость
+        const installPercentage = +productData.installPercentage || 0;  // Монтаж - процент себестоимости
+        const dismantlingCost = +productData.dismantlingCost || 0;  // Демонтаж - себестоимость
+        const dismantlingPercent = +productData.dismantlingPercent || 0;  // Демонтаж - процент себестоимости
+        const businessTripCost = +groupData.businessTripCost || 0;  // Командировка - себестоимость
+        const businessTripPercent = +groupData.businessTripPercent || 0;  // Командировка - процент себестоимости
+        const deliveryFrequency = +groupData.deliveryFrequency || 0;  // Доставка - сколько раз
+        const deliveryCostPerTime = +groupData.deliveryCostPerTime || 0;  // Доставка - стоимость за раз
+        
+        const deliveryCost = +groupData.deliveryCost || 0;  // ЦП - себестоимость
+        const deliveryPercentage = +groupData.deliveryPercentage || 0;  // ЦП - процент себестоимости
+        const countProducts = groupData.products.length || 1;
+        const priceWork = designCost + installDays * installCost * (1 + installPercentage / 100) 
+                        + dismantlingCost * (1 + dismantlingPercent / 100) 
+                        + businessTripCost * (1 + businessTripPercent / 100) 
+                        + deliveryFrequency * deliveryCostPerTime
+                        + deliveryCost * (1 + deliveryPercentage / 100) / countProducts;
         for (let technology of technologies) {
+            const width = +technology.width || 0;
+            const runningMeter = +technology.runningMeter || 0;
+            const price = +technology.price || 0;
+            const percent = +technology.totalPercent || 0;
+            const technologyInstallCost = +technology.installCost || 0;
+            const technologyInstallPercent = +technology.installPercent || 0;
+            let amount = (width * runningMeter * price + technologyInstallCost * (1 + technologyInstallPercent / 100) + priceWork) * percent / 100;
             contentHTML += `
                 <div class="task-container__item-summary-amount technology-item">
-                    <span class="task-container__item-summary-amount-value" data-technology-field="dismantling" data-type="number">${this.numberToStr(technology.amount)}</span> &nbsp; ₽
+                    <span class="task-container__item-summary-amount-value" data-technology-field="dismantling" data-type="number">${this.numberToStr(amount)}</span> &nbsp; ₽
                 </div>
             `;
         }
@@ -639,6 +665,13 @@ export class Templates {
         let month = (date.getMonth() + 1).toString().padStart(2, '0');
         let day = date.getDate().toString().padStart(2, '0');
         return `${year}-${month}-${day}`;
+    }
+
+    getAmountTechnology(technology) {
+        const priceMaterial = +technology[SP_TECHOLOGY_FIELDS.price];
+        const installCost = +technology[SP_TECHOLOGY_FIELDS.installCost];
+        const installPercent = +technology[SP_TECHOLOGY_FIELDS.installPercent];
+        
     }
 }
 
