@@ -483,6 +483,7 @@ export class Templates {
                         + businessTripCost * (1 + businessTripPercent / 100) 
                         + deliveryFrequency * deliveryCostPerTime
                         + deliveryCost * (1 + deliveryPercentage / 100) / countProducts;
+        console.log("priceWork = ", priceWork);
         for (let technology of technologies) {
             const width = +technology.width || 0;
             const runningMeter = +technology.runningMeter || 0;
@@ -490,7 +491,8 @@ export class Templates {
             const percent = +technology.totalPercent || 0;
             const technologyInstallCost = +technology.installCost || 0;
             const technologyInstallPercent = +technology.installPercent || 0;
-            let amount = (width * runningMeter * price + technologyInstallCost * (1 + technologyInstallPercent / 100) + priceWork) * percent / 100;
+            const amount = (width * runningMeter * price + technologyInstallCost * (1 + technologyInstallPercent / 100) + priceWork) * (1 + percent / 100);
+            console.log("amount = ", amount);
             contentHTML += `
                 <div class="task-container__item-summary-amount technology-item">
                     <span class="task-container__item-summary-amount-value" data-technology-field="dismantling" data-type="number">${this.numberToStr(amount)}</span> &nbsp; ₽
