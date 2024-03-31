@@ -356,7 +356,7 @@ export class Templates {
                         </select>
                     </div>
                     <div class="task-container__item-technology-price">
-                        <input class="vertical-input" type="number" name="" id="" placeholder="Цена" value="${this.customToString(technology.price)}" data-technology-field="price" data-technology-type="number">
+                        <input class="vertical-input" type="number" name="" id="" placeholder="Цена" value="${this.customToString(technology.price)}" data-technology-field="price" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
                     </div>
                 </div>
             `;
