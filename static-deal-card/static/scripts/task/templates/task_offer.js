@@ -465,6 +465,7 @@ export class Templates {
         let contentHTML = '';
         // let amount = technologies.runningMeter ;
         const designCost = +productData.designCost || 0;  // Дизайн - себестоимость
+        console.log("designCost = ", designCost);
         const installDays = +productData.installDays || 0;  // Монтаж - кол-во дней
         const installCost = +productData.installCost || 0;  // Монтаж - себестоимость
         const installPercentage = +productData.installPercentage || 0;  // Монтаж - процент себестоимости
@@ -472,13 +473,19 @@ export class Templates {
         const dismantlingPercent = +productData.dismantlingPercent || 0;  // Демонтаж - процент себестоимости
         const businessTripCost = +groupData.businessTripCost || 0;  // Командировка - себестоимость
         const businessTripPercent = +groupData.businessTripPercent || 0;  // Командировка - процент себестоимости
+        console.log("businessTripCost = ", businessTripCost, ", businessTripPercent = ", businessTripPercent);
         const deliveryFrequency = +groupData.deliveryFrequency || 0;  // Доставка - сколько раз
         const deliveryCostPerTime = +groupData.deliveryCostPerTime || 0;  // Доставка - стоимость за раз
-        
+        console.log("deliveryFrequency = ", deliveryFrequency, ", deliveryCostPerTime = ", deliveryCostPerTime);
+        const measurementCost = +groupData.measurementCost || 0;  // Измерение - себестоимость
+        const measurementPercent = +groupData.measurementPercent || 0;  // Измерение - процент себестоимости
+        console.log("measurementCost = ", measurementCost, ", measurementPercent = ", measurementPercent);
+
         const deliveryCost = +groupData.deliveryCost || 0;  // ЦП - себестоимость
         const deliveryPercentage = +groupData.deliveryPercentage || 0;  // ЦП - процент себестоимости
         const countProducts = groupData.products.length || 1;
-        const priceWork = designCost + installDays * installCost * (1 + installPercentage / 100) 
+        const priceWork = designCost + measurementCost * (1 + measurementPercent / 100)
+                        + installDays * installCost * (1 + installPercentage / 100) 
                         + dismantlingCost * (1 + dismantlingPercent / 100) 
                         + businessTripCost * (1 + businessTripPercent / 100) 
                         + deliveryFrequency * deliveryCostPerTime
@@ -488,6 +495,7 @@ export class Templates {
             const width = +technology.width || 0;
             const runningMeter = +technology.runningMeter || 0;
             const price = +technology.price || 0;
+            console.log("width = ", width, ", runningMeter = ", runningMeter, ", price = ", price);
             const percent = +technology.totalPercent || 0;
             const technologyInstallCost = +technology.installCost || 0;
             const technologyInstallPercent = +technology.installPercent || 0;
