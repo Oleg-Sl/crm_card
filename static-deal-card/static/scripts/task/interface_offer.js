@@ -124,6 +124,9 @@ export class TaskOfferInterface {
         for (const group of this.manager.groupsData) {
             contentHTML += this.templates.getGroupHTML(group, ++number);
         }
+
+        contentHTML += this.templates.getSummaryHTML(this.manager.groupsData);
+
         this.container.innerHTML = contentHTML;            
     }
 

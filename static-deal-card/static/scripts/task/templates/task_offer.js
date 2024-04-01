@@ -134,6 +134,45 @@ export class Templates {
         `;
     }
 
+    getSummaryHTML(groupsData) {
+        const productsCount = groupsData.products.reduce((acc, products) => {
+            return acc + products.length;
+        }, 0);
+
+        let areaMateria = 0;
+        for (const product of groupsData.products) {
+            for (const technology of product.technologies) {
+                const width = +technology.width || 0;
+                const runningMeter = +technology.runningMeter || 0;
+                const area = width * runningMeter;
+                areaMateria += area;
+            }
+        }
+        let areaInstall = 0;
+        for (const product of groupsData.products) {
+            for (const technology of product.technologies) {
+                const installArea = +technology.installArea || 0;
+                areaInstall += installArea;
+            }
+        }
+
+        return `
+            <div class="task-container__summary" style="
+                display: flex;
+                font-family: Roboto;
+                font-size: 10px;
+                font-weight: 400;
+                color: #464A4E;
+                gap: 20px;
+            ">
+                <div>Позиций: <span id="taskProductsPositions">${groupsData.length}</span></div>
+                <div>Кол-во: <span id="taskProductsCount">${productsCount}</span></div>
+                <div>М прод.: <span id="taskProductsAreaMaterial">${this.numberToStr(areaMateria)}</span></div>
+                <div>М монт.: <span id="taskProductsAreaInstall">${this.numberToStr(areaInstall)}</span></div>
+            </div>
+        `;
+    }
+
     getProductHTML(productData, number, groupId, deliveryHTML, groupData) {
         let technologies = productData?.technologies || [];
         if (!technologies.length) {
