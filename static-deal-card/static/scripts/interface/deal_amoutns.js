@@ -24,8 +24,8 @@ export default class DealAmounts {
     }
     
     init(dealData) {
-        this.dealAmount = dealData[FIELD_DEAL_AMOUNT];
-        this.payment = dealData[FIELD_DEAL_PAYMENT];
+        this.dealAmount = dealData[FIELD_DEAL_AMOUNT] || 0;
+        this.payment = dealData[FIELD_DEAL_PAYMENT] || 0;
 
         this.render();
     }
