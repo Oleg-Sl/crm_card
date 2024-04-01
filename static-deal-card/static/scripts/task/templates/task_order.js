@@ -130,9 +130,6 @@ export class Templates {
     }
 
     getSummaryHTML(groupsData) {
-        // const productsCount = groupsData.products.reduce((acc, products) => {
-        //     return acc + products.length;
-        // }, 0);
         let productsCount = 0;
         for (const group of groupsData) {
             for (const product of group.products) {
