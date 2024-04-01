@@ -137,9 +137,7 @@ export class Templates {
     getSummaryHTML(groupsData) {
         let productsCount = 0;
         for (const group of groupsData) {
-            for (const product of group.products) {
-                productsCount += product.length;
-            }
+            productsCount += group.products.length;
         }
 
         let areaMateria = 0;
