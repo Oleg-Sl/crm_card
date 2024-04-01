@@ -140,24 +140,31 @@ export class Templates {
     }
 
     getSummaryHTML(groupsData) {
-        const productsCount = groupsData.products.reduce((acc, products) => {
-            return acc + products.length;
-        }, 0);
+        let productsCount = 0;
+        for (const group of groupsData) {
+            for (const product of group.products) {
+                productsCount += product.length;
+            }
+        }
 
         let areaMateria = 0;
-        for (const product of groupsData.products) {
-            for (const technology of product.technologies) {
-                const width = +technology.width || 0;
-                const runningMeter = +technology.runningMeter || 0;
-                const area = width * runningMeter;
-                areaMateria += area;
+        for (const group of groupsData) {
+            for (const product of group.products) {
+                for (const technology of product.technologies) {
+                    const width = +technology.width || 0;
+                    const runningMeter = +technology.runningMeter || 0;
+                    const area = width * runningMeter;
+                    areaMateria += area;
+                }
             }
         }
         let areaInstall = 0;
-        for (const product of groupsData.products) {
-            for (const technology of product.technologies) {
-                const installArea = +technology.installArea || 0;
-                areaInstall += installArea;
+        for (const group of groupsData) {
+            for (const product of group.products) {
+                for (const technology of product.technologies) {
+                    const installArea = +technology.installArea || 0;
+                    areaInstall += installArea;
+                }
             }
         }
 
