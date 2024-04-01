@@ -111,9 +111,9 @@ class App {
         const resBatch = await this.bx24.batch.getData(cmd);
 
         const dealData          = resBatch?.deal;
-        const contactsData      = resBatch?.contacts;
-        const companyData       = resBatch?.company;
-        const companyContacts   = resBatch?.company_contacts;
+        const contactsData      = resBatch?.contacts || [];
+        const companyData       = resBatch?.company || {};
+        const companyContacts   = resBatch?.company_contacts || [];
         const stageHistory      = resBatch?.stage_history;
         const dealSources       = resBatch?.sources;
         const userCurrent       = resBatch?.user_current;
