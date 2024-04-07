@@ -319,7 +319,7 @@ export class Templates {
                             </select>
                         </div>
                         <div class="task-container__item-dismantling-cost-price">
-                            <input type="number" name="" id="" placeholder="себест. демонтожа" tile="${this.customToString(productData.dismantlingCost)}" value="${this.customToString(productData.dismantlingCost)}" data-product-field="dismantlingCost" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <input type="number" name="" id="" placeholder="себест. демонтожа" title="${this.customToString(productData.dismantlingCost)}" value="${this.customToString(productData.dismantlingCost)}" data-product-field="dismantlingCost" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                         <div class="task-container__item-dismantling-symbol-plus">+</div>
                         <div class="task-container__item-dismantling-value-percent">
