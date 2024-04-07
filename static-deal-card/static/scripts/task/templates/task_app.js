@@ -340,6 +340,7 @@ export class Templates {
     getSourcesHTML(sources, groupId, productId) {
         let contentHTML = '';
         for (const source of sources) {
+            console.log("source = ", source);
             const [nameSelected, urlSelected, previewSelected] = source.split(';');
             contentHTML += `
                 <div class="task-container_group-item-sources-item">
