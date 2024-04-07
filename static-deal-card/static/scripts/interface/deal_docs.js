@@ -199,7 +199,8 @@ class UIManager {
 
     handleEventPreviewShow(event) {
         const target = event.target;
-        if (target.tagName === 'DIV' && target.classList.contains('deal-docs__file-row-prev') && target.dataset.link) {
+        // if (target.tagName === 'DIV' && target.classList.contains('deal-docs__file-row-prev') && target.dataset.link) {
+        if (target.tagName === 'DIV' && target.classList.contains('file-row-prev') && target.dataset.link) {
             const smile = target.textContent;
             const previewLink = target.dataset.link;
             const previewContainer = document.getElementById('tooltip');
