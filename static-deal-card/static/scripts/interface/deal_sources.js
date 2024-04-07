@@ -163,7 +163,8 @@ class UIManager {
 
     handleFilePreviewShow(event) {
         const target = event.target;
-        if (target.tagName === 'DIV' && target.classList.contains('deal-files__file-row-prev') && target.dataset.link) {
+        // if (target.tagName === 'DIV' && target.classList.contains('deal-files__file-row-prev') && target.dataset.link) {
+        if (target.classList.contains('file-row-prev') && target.dataset.link) {
             const smile = target.textContent;
             const previewLink = target.dataset.link;
             const previewContainer = document.getElementById('tooltip');
@@ -190,7 +191,7 @@ class UIManager {
                     <div><div class="deal-files__file-row-numb">${index + 1}.</div></div>
                     <div><div class="deal-files__file-row-prev file-row-prev" data-link="${file.urlPrev}">🖼</div></div>
                     <div class="deal-files__file-row-url" data-link="${file.url}">
-                        <a href="${file.url}" target="_blank" title="${file.title} (${file.size})">
+                        <a class="file-row-prev" data-link="${file.urlPrev}" href="${file.url}" target="_blank" title="${file.title} (${file.size})">
                             ${file.title} (${file.size})
                         </a>
                     </div>
