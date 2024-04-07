@@ -275,6 +275,9 @@ export class TaskAppInterface {
         this.templates.setSourcesFilesData(sourceFilesData);
     }
 
+    setSourcesLinksData(sourceLinksData) {
+        this.templates.setSourcesLinksData(sourceLinksData);
+    }
 
     update() {
         this.removePreviewEventListeners();

@@ -17,6 +17,7 @@ export class Templates {
         this.fields = {};
         this.materials = {};
         this.sourceFilesData = [];
+        this.sourceLinksData = [];
     }
 
     setSmartFields(fields) {
@@ -29,6 +30,10 @@ export class Templates {
 
     setSourcesFilesData(sourceFilesData) {
         this.sourceFilesData = sourceFilesData;
+    }
+
+    setSourcesLinksData(sourceLinksData) {
+        this.sourceLinksData = sourceLinksData;
     }
 
     getGroupHTML(groupData, numberGroup = 1) {
@@ -372,6 +377,16 @@ export class Templates {
                 contentHTML += `<option value="${name};${url};${preview};${comment}" selected>${name} (${comment || ""})</option>`;
             } else {
                 contentHTML += `<option value="${name};${url};${preview};${comment}">${name} (${comment || ""})</option>`;
+            }
+        }
+
+        for (const sourceData of this.sourceLinksData) {
+            const [url, comment] = sourceData.split(';');
+            if (url == urlSelected) {
+                isSelected = true;
+                contentHTML += `<option value=";${url};;${comment}" selected>${url} (${comment || ""})</option>`;
+            } else {
+                contentHTML += `<option value=";${url};;${comment}">${url} (${comment || ""})</option>`;
             }
         }
 

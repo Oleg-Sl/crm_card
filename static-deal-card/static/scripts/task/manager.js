@@ -57,8 +57,9 @@ export default class TaskManager {
         this.dataManager.setData(data.groups, data.products, data.technologies);
     }
 
-    updateSources(sourceFilesData) {
+    updateSources(sourceFilesData, sourceLinksData) {
         this.uiApp.setSourcesFilesData(sourceFilesData);
+        this.uiApp.setSourcesLinksData(sourceLinksData);
         this.dataManager.setSources(sourceFilesData);
     }
 

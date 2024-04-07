@@ -469,8 +469,9 @@ export default class DealSources {
     }
 
     notify() {
+        const linksData = this.objLinks.getData()
         const filesData = this.objFiles.getData()
-        this.observers.forEach(observer => observer.updateSources(filesData));
+        this.observers.forEach(observer => observer.updateSources(filesData, linksData));
     }
 
     changeLink() {
