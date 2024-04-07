@@ -582,11 +582,11 @@ export class Templates {
                             <textarea name="" id="" rows="2" title="${this.customToString(groupData.deliveryAddress)}" data-group-field="deliveryAddress" data-data-group-id="${groupData.id}"type="textarea" data-group-id="${groupData.id}">${this.customToString(groupData.deliveryAddress)}</textarea>
                         </div>
                         <div class="task-container__item-delivery-cp-cost">
-                            <input type="number" name="" id="" placeholder="себес. курьер. ЦП" title=""${this.customToString(groupData.deliveryCost)}"" value="${this.customToString(groupData.deliveryCost)}" data-group-field="deliveryCost" data-type="number" data-group-id="${groupData.id}">
+                            <input type="number" name="" id="" placeholder="себес. курьер. ЦП" title="${this.customToString(groupData.deliveryCost)}" value="${this.customToString(groupData.deliveryCost)}" data-group-field="deliveryCost" data-type="number" data-group-id="${groupData.id}">
                         </div>
                         <div class="task-container__item-delivery-cp-symbol-plus">+</div>
                         <div class="task-container__item-delivery-cp-percent">
-                            <input type="number" name="" id="" title=""${this.customToString(groupData.deliveryPercentage)}"" value="${this.customToString(groupData.deliveryPercentage)}" data-group-field="deliveryPercentage" data-type="number" data-group-id="${groupData.id}">
+                            <input type="number" name="" id="" title="${this.customToString(groupData.deliveryPercentage)}" value="${this.customToString(groupData.deliveryPercentage)}" data-group-field="deliveryPercentage" data-type="number" data-group-id="${groupData.id}">
                         </div>
                         <div class="task-container__item-delivery-cp-symbol-percent">%</div>
                     </div>
