@@ -172,6 +172,7 @@ export default class DealDescription extends ChangeHistory {
     setValueByElementType(element, value) {
         if (element) {
             const elementType = element.tagName.toLowerCase();
+            element.title = value || '';
             switch (elementType) {
                 case 'input':
                 case 'textarea':

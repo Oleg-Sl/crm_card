@@ -182,7 +182,7 @@ class UsersList {
         let contentHTML = "";
         
         for (let user of this.users) {
-            contentHTML += `<div class="deal-workers__observers-user" data-user-id="${user.ID}">${user.LAST_NAME} ${user.NAME}</div>`;
+            contentHTML += `<div class="deal-workers__observers-user" data-user-id="${user.ID}" title="${user.LAST_NAME} ${user.NAME}">${user.LAST_NAME} ${user.NAME}</div>`;
         }
 
         this.usersContainer.innerHTML = contentHTML;
