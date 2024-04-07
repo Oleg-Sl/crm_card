@@ -230,7 +230,7 @@ export class Templates {
                         <select name="" id="" data-product-field="measurement" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.measurement]?.items, productData.measurement)}" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
                             ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.measurement]?.items, productData.measurement)}
                         </select>
-                        <select name="" id=""></select>
+                        <input type="text" name="" id="" placeholder="Адрес" value="${this.customToString(productData.measurementAddress)}" title="${this.customToString(productData.measurementAddress)}" data-product-field="measurementAddress" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
                     </div>
                 </td>
                 <td class="task-container_group-item-design">
@@ -369,14 +369,14 @@ export class Templates {
             const [name, size, url, preview, comment] = sourceData.split(';');
             if (name == nameSelected && url == urlSelected) {
                 isSelected = true;
-                contentHTML += `<option value="${name};${url};${preview};${comment}" selected>${name} (${comment})</option>`;
+                contentHTML += `<option value="${name};${url};${preview};${comment}" selected>${name} (${comment || ""})</option>`;
             } else {
-                contentHTML += `<option value="${name};${url};${preview};${comment}">${name} (${comment})</option>`;
+                contentHTML += `<option value="${name};${url};${preview};${comment}">${name} (${comment || ""})</option>`;
             }
         }
 
         if (!isSelected && source) {
-            contentHTML += `<option value="${nameSelected};${urlSelected};${previewSelected};${commentSelected}" selected>${nameSelected} (${commentSelected})</option>`;
+            contentHTML += `<option value="${nameSelected};${urlSelected};${previewSelected};${commentSelected}" selected>${nameSelected} (${commentSelected || ""})</option>`;
         }
 
         return contentHTML;
@@ -506,7 +506,7 @@ export class Templates {
 
     getTitleSources(source) {
         const [nameSelected, urlSelected, previewSelected, commentSelected] = source.split(';');
-        return `${nameSelected} (${commentSelected})`;
+        return `${nameSelected} (${commentSelected || ""})`;
     }
 }
 
