@@ -252,6 +252,7 @@ class DealFiles {
         if (event.target.classList.contains('files-desc')) {
             const index = event.target.dataset.index;
             this.files[index].desc = event.target.value;
+            this.cbChangedFiles();
         }
     }
 
@@ -388,6 +389,7 @@ class DealLinks {
             if (target.classList.contains('links-desc')) {
                 const index = target.dataset.index;
                 this.links[index].description = target.value;
+                this.cbChangedLinks();
             }
         })
     }
