@@ -363,20 +363,20 @@ export class Templates {
     getSourcesOptionsHTML(source) {
         let contentHTML = '<option value="" selected>-</option>';
         let isSelected = false;
-        const [nameSelected, urlSelected, previewSelected] = source.split(';');
+        const [nameSelected, urlSelected, previewSelected, commentSelected] = source.split(';');
         // "имя;размер;ссылка_главная;ссылка_превью;комментарий"
         for (const sourceData of this.sourceFilesData) {
             const [name, size, url, preview, comment] = sourceData.split(';');
             if (name == nameSelected && url == urlSelected) {
                 isSelected = true;
-                contentHTML += `<option value="${name};${url};${preview}" selected>${name}</option>`;
+                contentHTML += `<option value="${name};${url};${preview};${comment}" selected>${name} (${comment})</option>`;
             } else {
-                contentHTML += `<option value="${name};${url};${preview}">${name}</option>`;
+                contentHTML += `<option value="${name};${url};${preview};${comment}">${name} (${comment})</option>`;
             }
         }
 
         if (!isSelected && source) {
-            contentHTML += `<option value="${nameSelected};${urlSelected};${previewSelected}" selected>${nameSelected}</option>`;
+            contentHTML += `<option value="${nameSelected};${urlSelected};${previewSelected};${commentSelected}" selected>${nameSelected} (${commentSelected})</option>`;
         }
 
         return contentHTML;
@@ -505,8 +505,8 @@ export class Templates {
     }
 
     getTitleSources(source) {
-        const [nameSelected, urlSelected, previewSelected] = source.split(';');
-        return nameSelected;
+        const [nameSelected, urlSelected, previewSelected, commentSelected] = source.split(';');
+        return `${nameSelected} (${commentSelected})`;
     }
 }
 
