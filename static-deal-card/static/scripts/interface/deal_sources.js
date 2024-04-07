@@ -195,7 +195,7 @@ class UIManager {
                         </a>
                     </div>
                     <div class="deal-files__file-row-desc">
-                        <input class="files-desc" data-index="${index}" type="text" placeholder="описание файла (не обязательно)" value="${file.desc}">
+                        <input class="files-desc" title="${file.desc}" data-index="${index}" type="text" placeholder="описание файла (не обязательно)" value="${file.desc}">
                     </div>
                     <div class="deal-files__file-row-del">
                         <i class="bi bi-dash-square file-row-del" data-index="${index}"></i>
@@ -410,7 +410,7 @@ class DealLinks {
                     <div><div class="deal-files__file-row-numb">${i + 1}.</div></div>
                     <div><div class="deal-files__file-row-prev">🖼</div></div>
                     <div class="deal-files__file-row-url"><a href="${url}" target="_blank">${url}</a></div>
-                    <div class="deal-files__file-row-desc"><input type="text" data-index="${i}" class="links-desc" placeholder="описание ссылки (не обязательно)" value="${description}"></div>
+                    <div class="deal-files__file-row-desc"><input type="text" title="${description}" data-index="${i}" class="links-desc" placeholder="описание ссылки (не обязательно)" value="${description}"></div>
                     <div class="deal-files__file-row-del"><i class="bi bi-dash-square"></i></div>
                 </div>
             `;

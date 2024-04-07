@@ -1178,6 +1178,7 @@
   font: 700 10px Roboto;
 }
 .task-container__app .task-container__group-title input {
+  width: 75%;
   background: none;
   border: 1px solid rgba(0, 0, 0, 0);
   font: 700 10px Roboto;
@@ -1544,6 +1545,7 @@
   font: 700 10px Roboto;
 }
 .task-container__commerc-offer .task-container__group-title input, .task-container__offer .task-container__group-title input {
+  width: 75%;
   background: none;
   border: 1px solid rgba(0, 0, 0, 0);
   font: 700 10px Roboto;
@@ -2239,6 +2241,7 @@
   font: 700 10px Roboto;
 }
 #taksOrder .task-container__group-title input {
+  width: 75%;
   background: none;
   border: 1px solid rgba(0, 0, 0, 0);
   font: 700 10px Roboto;

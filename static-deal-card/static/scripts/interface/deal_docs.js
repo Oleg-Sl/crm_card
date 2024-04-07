@@ -171,7 +171,7 @@ class UIManager {
                         <div><div class="deal-docs__file-row-numb">${i + 1}.</div></div>
                         <div><div class="deal-docs__file-row-prev">🔗</div></div>
                         <div class="deal-docs__file-row-url" data-link="${url}"><a href="${url}" target="_blank" title="${url}">${url}</a></div>
-                        <div class="deal-docs__file-row-desc"><input class="files-desc" data-index="${i}" type="text" placeholder="описание файла (не обязательно)" value="${description || ''}"></div>
+                        <div class="deal-docs__file-row-desc"><input class="files-desc" title="${description}" data-index="${i}" type="text" placeholder="описание файла (не обязательно)" value="${description || ''}"></div>
                         <div class="deal-docs__file-row-del"><i class="bi bi-dash-square file-row-del" data-index="${i}"></i></div>
                         <div class="deal-docs__file-row-draganddrop"><i class="bi bi-list"></i></div>
                         <div class="deal-docs__file-row-update"><i class="bi bi-arrow-repeat"></i></div>
@@ -183,7 +183,7 @@ class UIManager {
                         <div><div class="deal-docs__file-row-numb">${i + 1}.</div></div>
                         <div><div class="deal-docs__file-row-prev file-row-prev" data-link="${urlPrev}">🗂</div></div>
                         <div class="deal-docs__file-row-url" data-link="${url}"><a href="${url}" target="_blank" title="${title} (${size})">${title} (${size})</a></div>
-                        <div class="deal-docs__file-row-desc"><input class="files-desc" data-index="${i}" type="text" placeholder="описание файла (не обязательно)" value="${description}"></div>
+                        <div class="deal-docs__file-row-desc"><input class="files-desc" title="${description}" data-index="${i}" type="text" placeholder="описание файла (не обязательно)" value="${description}"></div>
                         <div class="deal-docs__file-row-del"><i class="bi bi-dash-square file-row-del" data-index="${i}"></i></div>
                         <div class="deal-docs__file-row-draganddrop"><i class="bi bi-list"></i></div>
                         <div class="deal-docs__file-row-update"><i class="bi bi-arrow-repeat"></i></div>

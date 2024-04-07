@@ -190,13 +190,13 @@ export class Templates {
                     <div>
                         <div class="task-container__item-info">
                             <div class="task-container__item-title">
-                                <input type="text" name="" id="" placeholder="название" value="${this.customToString(productData.title)}" data-product-field="title" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
+                                <input type="text" name="" id="" placeholder="название" title="${this.customToString(productData.title)}" value="${this.customToString(productData.title)}" data-product-field="title" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
                             </div>
                             <div class="task-container__item-count">
-                                <input type="text" name="" id="" placeholder="количество" value="${this.customToString(productData.quantity)}" data-product-field="quantity" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
+                                <input type="number" step="1" name="" id="" placeholder="количество" value="${this.customToString(productData.quantity)}" data-product-field="quantity" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
                             </div>
                             <div class="task-container__item-desc">
-                                <textarea name="" id=""  rows="3" placeholder="описание" data-product-field="description" data-type="textarea" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>${this.customToString(productData.description)}</textarea>
+                                <textarea name="" id=""  rows="3" placeholder="описание" title="${this.customToString(productData.description)}" data-product-field="description" data-type="textarea" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>${this.customToString(productData.description)}</textarea>
                             </div>
                         </div>
                     </div>
@@ -224,17 +224,17 @@ export class Templates {
                 <td class="block-center">
                     <div class="task-container__item-measure">
                         <div class="task-container__item-measure-status">
-                            <input type="text" name="" id="" value="${this.customToString(productData.measurement)}" data-product-field="measurement" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
+                            <input type="text" name="" id="" title="${this.customToString(productData.measurement)}" value="${this.customToString(productData.measurement)}" data-product-field="measurement" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
                         </div>
                         <div class="task-container__item-measure-address">
-                            <input type="text" name="" id="" value="${this.customToString(productData.measurementAddress)}" data-product-field="measurementAddress" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
+                            <input type="text" name="" id="" title="${this.customToString(productData.measurementAddress)}" value="${this.customToString(productData.measurementAddress)}" data-product-field="measurementAddress" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
                         </div>
                     </div>
                 </td>
                 <td class="block-center">
                     <div class="task-container__item-design">
                         <div class="task-container__item-design-type">
-                            <select name="" id="" data-product-field="design" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <select name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.design]?.items, productData.design)}" data-product-field="design" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
                                 ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.design]?.items, productData.design)}
                             </select>
                         </div>
@@ -243,40 +243,40 @@ export class Templates {
                 <td class="block-center">
                     <div class="task-container__item-mounting">
                         <div class="task-container__item-mounting-city">
-                            <input type="text" name="" id="" value="${this.customToString(productData.installCity)}"  data-product-field="installCity" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
+                            <input type="text" name="" id="" title="${this.customToString(productData.installCity)}" value="${this.customToString(productData.installCity)}"  data-product-field="installCity" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
                         </div>
                         <div class="task-container__item-mounting-type">
-                            <input type="text" name="" id="" value="${this.customToString(productData.installPlace)}" data-product-field="installPlace" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
+                            <input type="text" name="" id="" title="${this.customToString(productData.installPlace)}" value="${this.customToString(productData.installPlace)}" data-product-field="installPlace" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
                         </div>
                     </div>
                 </td>
                 <td class="block-center">
                     <div class="task-container__item-deadlines">
                         <div class="task-container__item-deadlines-type">
-                            <select name="" id="" data-product-field="terms" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <select name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.terms]?.items, productData.terms)}" data-product-field="terms" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
                                 ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.terms]?.items, productData.terms)}
                             </select>
                         </div>
                         <div class="task-container__item-deadlines-data">
-                            <input type="date" name="" id="" value="${this.customToString(productData.termsDate)}" data-product-field="termsDate" data-type="date" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
+                            <input type="date" name="" id="" title="${this.customToString(productData.termsDate)}" value="${this.customToString(productData.termsDate)}" data-product-field="termsDate" data-type="date" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
                         </div>
                     </div>
                 </td>
                 <td class="block-center">
                     <div class="task-container__item-dismantling">
                         <div class="task-container__item-dismantling-area">
-                            <input type="number" name="" id="" value="${this.customToString(productData.dismantlingArea)}" data-product-field="dismantlingArea" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
+                            <input type="number" name="" id="" title="${this.customToString(productData.dismantlingArea)}" value="${this.customToString(productData.dismantlingArea)}" data-product-field="dismantlingArea" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
                         </div>
                         <div class="task-container__item-dismantling-difficulty-desc">
-                            <select class="task-container_group-item-dismantling-top" name="" id="" data-product-field="dismantling" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <select class="task-container_group-item-dismantling-top"  name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantling]?.items, productData.dismantling)}" data-product-field="dismantling" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
                                 ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantling]?.items, productData.dismantling)}
                             </select>    
                         </div>
                         <div class="task-container__item-dismantling-difficulty-price">
-                            <input type="number" name="" id="" placeholder="сложн. демонтожа" value="${this.customToString(productData.dismantlingComplexity)}" data-product-field="dismantlingComplexity" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
+                            <input type="number" name="" id="" placeholder="сложн. демонтожа" title="${this.customToString(productData.dismantlingComplexity)}" value="${this.customToString(productData.dismantlingComplexity)}" data-product-field="dismantlingComplexity" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" readonly>
                         </div>
                         <div class="task-container__item-dismantling-cost-desc">
-                            <select class="task-container_group-item-dismantling-bottom" name="" id="" data-product-field="dismantlingDesc" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <select class="task-container_group-item-dismantling-bottom" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantlingDesc]?.items, productData.dismantlingDesc)}" data-product-field="dismantlingDesc" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
                                 ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantlingDesc]?.items, productData.dismantlingDesc)}
                             </select>
                         </div>
@@ -285,7 +285,7 @@ export class Templates {
                 <td class="block-center">
                     <div class="task-container__item-business-trip">
                         <div class="task-container__item-business-trip-type" value="${this.customToString(productData.businessTrip)}">
-                            <select class="task-container_group-item-dismantling-bottom" name="" id="" data-product-field="businessTrip" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <select class="task-container_group-item-dismantling-bottom" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.businessTrip]?.items, productData.businessTrip)}" value="${this.customToString(productData.dismantlingArea)}" data-product-field="businessTrip" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
                                 ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.businessTrip]?.items, productData.businessTrip)}
                             </select>
                         </div>
@@ -295,7 +295,7 @@ export class Templates {
                     <div class="task-container__item-delivery-container">
                         <div class="task-container__item-delivery">
                             <div class="task-container__item-delivery-count">
-                                <input type="number" name="" id="" placeholder="сколько раз" value="${this.customToString(productData.deliveryFrequency)}" data-product-field="deliveryFrequency" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
+                                <input type="number" name="" id="" placeholder="сколько раз" title="${this.customToString(productData.deliveryFrequency)}" value="${this.customToString(productData.deliveryFrequency)}" data-product-field="deliveryFrequency" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
                             </div>
                         </div>
                     </div>
@@ -320,17 +320,17 @@ export class Templates {
             contentHTML += `
                 <div class="task-container__item-technology technology-row" data-technology-id="${technology.id}">
                     <div class="task-container__item-technology-type">
-                        <select name="" id="" data-technology-field="general" data-type="select" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
+                        <select name="" id="" title="${this.getTitleFromList(this.materials.technologiesTypes, technology.general)}" data-technology-field="general" data-type="select" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
                             ${this.getTechnologyTypeOptionsHTML(technology.general)}
                         </select>
                     </div>
                     <div class="task-container__item-technology-material-1">
-                        <select name="" id="" data-technology-field="film" data-type="select" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
+                        <select name="" id="" title="${this.getTitleFromList(this.materials.films, technology.film)}" data-technology-field="film" data-type="select" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
                             ${this.getFilmsOptionsHTML(technology.film)}
                         </select>
                     </div>
                     <div class="task-container__item-technology-material-2">
-                        <select name="" id="" data-technology-field="lamination" data-type="select" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
+                        <select name="" id="" title="${this.getTitleLaminations(technology.film, technology.lamination)}" data-technology-field="lamination" data-type="select" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
                             ${this.getLaminationsOptionsHTML(technology.film, technology.lamination)}
                         </select>
                     </div>
@@ -372,12 +372,12 @@ export class Templates {
                 <div class="task-container__item-consumption-item technology-row" data-technology-id="${technology.id}">
                     <div class="task-container__item-consumption-item-img">🖼</div>
                     <div class="task-container__item-consumption-item-title">
-                        <input type="text" name="" id="" placeholder="ЧПП" value="${this.customToString(technology.CHPP)}" data-technology-field="CHPP" data-type="text" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" readonly>
+                        <input type="text" name="" id="" placeholder="ЧПП" title="${this.customToString(technology.CHPP)}" value="${this.customToString(technology.CHPP)}" data-technology-field="CHPP" data-type="text" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" readonly>
                     </div>
                     <div class="task-container__item-consumption-item-empty"></div>
                     <div class="task-container__item-consumption-item-m2">м2</div>
                     <div class="task-container__item-consumption-item-width">
-                        <select name="" id="" data-technology-field="width" data-type="select" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
+                        <select name="" id="" title="${this.getTitleWidths(technology.film, technology.width)}" data-technology-field="width" data-type="select" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
                             ${this.getWidthsOptionsHTML(technology.film, technology.width)}
                         </select>
                     </div>
@@ -385,9 +385,9 @@ export class Templates {
                         <i class="bi bi-x"></i>
                     </div>
                     <div class="task-container__item-consumption-item-length">
-                        <input type="number" name="" id="" placeholder="п.м." value="${this.customToString(technology.runningMeter)}" data-technology-field="runningMeter" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" readonly>
+                        <input type="number" name="" id="" placeholder="п.м." title="${this.customToString(technology.runningMeter)}" value="${this.customToString(technology.runningMeter)}" data-technology-field="runningMeter" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" readonly>
                     </div>
-                    <div class="task-container__item-consumption-item-result">=${this.mulNumbmer(technology.width, technology.runningMeter)}</div>
+                    <div class="task-container__item-consumption-item-result" title="${this.mulNumbmer(technology.width, technology.runningMeter)}">=${this.mulNumbmer(technology.width, technology.runningMeter)}</div>
                 </div>
             `;
         }
@@ -404,7 +404,7 @@ export class Templates {
             }
             contentHTML += `
                 <div class="task-container__item-area-mounting technology-item technology-row" data-technology-id="${technology.id}">
-                    <input type="number" name="" id="" placeholder="Площадь монтажа" value="${this.customToString(technology.installArea)}" data-field="installArea" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" readonly>
+                    <input type="number" name="" id="" placeholder="Площадь монтажа" title="${this.customToString(technology.installArea)}" value="${this.customToString(technology.installArea)}" data-field="installArea" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" readonly>
                 </div>
             `;
         }
@@ -413,26 +413,17 @@ export class Templates {
     }
 
     getDeliveryHTML(groupData, technologiesCount) {
-        // <td class="shared block-center" style="grid-row: span ${technologiesCount}">
-        //     <div class="task-container__item-delivery-container">
-        //         <div class="task-container__item-delivery">
-        //             <div class="task-container__item-delivery-count">
-        //                 <input type="number" name="" id="" placeholder="сколько раз" value="${this.customToString(groupData.deliveryCount)}" data-group-field="deliveryCount" data-type="number" data-group-id="${groupData.id}" readonly>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </td>
         return `
             <td class="shared block-center" style="grid-row: span ${technologiesCount}">
                 <div class="task-container__item-delivery-cp-container">
                     <div class="task-container__item-delivery-cp">
                         <div class="task-container__item-delivery-cp-method">
-                            <select name="" id="" data-group-field="deliveryMethod" data-type="select" data-group-id="${groupData.id}">
+                            <select name="" id="" title="${this.getTitleFromEnums(this.fields?.group?.[SP_GROUP_FIELDS.deliveryMethod]?.items, groupData.deliveryMethod)}" data-group-field="deliveryMethod" data-type="select" data-group-id="${groupData.id}">
                                 ${this.getOptionsHTML(this.fields?.group?.[SP_GROUP_FIELDS.deliveryMethod]?.items, groupData.deliveryMethod)}
                             </select>
                         </div>
                         <div class="task-container__item-delivery-cp-address">
-                            <textarea name="" id="" rows="2" data-group-field="deliveryAddress" data-data-group-id="${groupData.id}"type="textarea" data-group-id="${groupData.id}">${this.customToString(groupData.deliveryAddress)}</textarea>
+                            <textarea name="" id="" rows="2" title="${this.customToString(groupData.deliveryAddress)}" data-group-field="deliveryAddress" data-data-group-id="${groupData.id}"type="textarea" data-group-id="${groupData.id}">${this.customToString(groupData.deliveryAddress)}</textarea>
                         </div>
                     </div>
                 </div>
@@ -551,5 +542,48 @@ export class Templates {
         let month = (date.getMonth() + 1).toString().padStart(2, '0');
         let day = date.getDate().toString().padStart(2, '0');
         return `${year}-${month}-${day}`;
+    }
+
+    getTitleFromList(items, ident) {
+        for (const {id, title} of items) {
+            if (id == ident) {
+                return title;
+            }
+        }
+
+        return "";
+    }
+
+    getTitleFromEnums(fields, ident) {
+        for (const {ID, VALUE} of fields) {
+            if (ID == ident) {
+                return VALUE;
+            }
+        }
+        return "";
+    }
+
+    getTitleLaminations(filmId, laminationId) {
+        const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.film] == filmId) || {};
+        const laminationIds = dependence?.[SP_DEPENDENCE_FIELDS.laminations] || [];
+        const laminationsList = this.materials.laminations.filter(obj => laminationIds.includes(String(obj.id)));
+        for (let { id, title } of laminationsList) {
+            if (id == laminationId) {
+                return title;
+            }
+        }
+        return "";
+    }
+
+    getTitleWidths(filmId, widthId) {
+        const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.film] == filmId) || {};
+        const widthIds = dependence?.[SP_DEPENDENCE_FIELDS.widths] || [];
+        const widthsList = this.materials.widths.filter(obj => widthIds.includes(String(obj.id)));
+        for (let { id, title } of widthsList) {
+            if (id == widthId) {
+                return title;
+            }
+        }
+        return "";
     }
 }
