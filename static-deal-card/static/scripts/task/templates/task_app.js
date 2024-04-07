@@ -188,7 +188,7 @@ export class Templates {
         if (!technologies.length) {
             technologies = [];
         }
-
+        const dismantlingDisabled = productData.dismantling == 8069 ? 'disabled' : '';
         return `
             <tr class="product-row" data-product-id="${productData.id}" data-group-id="${groupId}">
                 <td>
@@ -280,11 +280,11 @@ export class Templates {
                         <select class="task-container_group-item-dismantling-top" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantling]?.items, productData.dismantling)}" data-product-field="dismantling" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
                             ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantling]?.items, productData.dismantling)}
                         </select>
-                        <select class="task-container_group-item-dismantling-bottom" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantlingDesc]?.items, productData.dismantlingDesc)}" data-product-field="dismantlingDesc" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
+                        <select class="task-container_group-item-dismantling-bottom" ${dismantlingDisabled} name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantlingDesc]?.items, productData.dismantlingDesc)}" data-product-field="dismantlingDesc" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
                             ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantlingDesc]?.items, productData.dismantlingDesc)}
                         </select>
                         <div class="task-container_group-item-dismantling-right">
-                            <select class="" name="" id="" data-product-field="installComplexity" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.installComplexity]?.items, productData.installComplexity)}" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <select class="" ${dismantlingDisabled} name="" id="" data-product-field="installComplexity" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.installComplexity]?.items, productData.installComplexity)}" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
                                 ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.installComplexity]?.items, productData.installComplexity)}
                             </select>
                         </div>

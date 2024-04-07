@@ -183,7 +183,7 @@ export class Templates {
         if (!technologies.length) {
             technologies = [];
         }
-
+        const dismantlingDisabled = productData.dismantling == 8069 ? 'disabled' : '';
         return `
             <tr class="product-row" data-product-id="${productData.id}" data-group-id="${groupId}">
                 <td class="block-center">
@@ -303,7 +303,7 @@ export class Templates {
                 <td class="block-center">
                     <div class="task-container__item-dismantling">
                         <div class="task-container__item-dismantling-area">
-                            <input type="number" name="" id="" title="${this.customToString(productData.dismantlingArea)}" value="${this.customToString(productData.dismantlingArea)}" data-product-field="dismantlingArea" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <input type="number" ${dismantlingDisabled} name="" id="" title="${this.customToString(productData.dismantlingArea)}" value="${this.customToString(productData.dismantlingArea)}" data-product-field="dismantlingArea" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                         <div class="task-container__item-dismantling-difficulty-desc">
                             <select class="task-container_group-item-dismantling-top" name="" id="" title="${this.getTitleEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantling]?.items, productData.dismantling)}" data-product-field="dismantling" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
@@ -311,19 +311,19 @@ export class Templates {
                             </select>    
                         </div>
                         <div class="task-container__item-dismantling-difficulty-price">
-                            <input type="number" name="" id="" placeholder="сложн. демонтожа" title="${this.customToString(productData.dismantlingComplexity)}" value="${this.customToString(productData.dismantlingComplexity)}" data-product-field="dismantlingComplexity" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <input type="number" ${dismantlingDisabled} name="" id="" placeholder="сложн. демонтожа" title="${this.customToString(productData.dismantlingComplexity)}" value="${this.customToString(productData.dismantlingComplexity)}" data-product-field="dismantlingComplexity" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                         <div class="task-container__item-dismantling-cost-desc">
-                            <select class="task-container_group-item-dismantling-bottom" name="" id="" title="${this.getTitleEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantlingDesc]?.items, productData.dismantlingDesc)}" data-product-field="dismantlingDesc" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <select class="task-container_group-item-dismantling-bottom" ${dismantlingDisabled} name="" id="" title="${this.getTitleEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantlingDesc]?.items, productData.dismantlingDesc)}" data-product-field="dismantlingDesc" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
                                 ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantlingDesc]?.items, productData.dismantlingDesc)}
                             </select>
                         </div>
                         <div class="task-container__item-dismantling-cost-price">
-                            <input type="number" name="" id="" placeholder="себест. демонтожа" title="${this.customToString(productData.dismantlingCost)}" value="${this.customToString(productData.dismantlingCost)}" data-product-field="dismantlingCost" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <input type="number" ${dismantlingDisabled} name="" id="" placeholder="себест. демонтожа" title="${this.customToString(productData.dismantlingCost)}" value="${this.customToString(productData.dismantlingCost)}" data-product-field="dismantlingCost" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                         <div class="task-container__item-dismantling-symbol-plus">+</div>
                         <div class="task-container__item-dismantling-value-percent">
-                            <input type="number" name="" id="" title="${this.customToString(productData.dismantlingPercent)}" value="${this.customToString(productData.dismantlingPercent)}" data-product-field="dismantlingPercent" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <input type="number" ${dismantlingDisabled} name="" id="" title="${this.customToString(productData.dismantlingPercent)}" value="${this.customToString(productData.dismantlingPercent)}" data-product-field="dismantlingPercent" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                         <div class="task-container__item-dismantling-symbol-percent">%</div>
                         <div class="empty-1"></div>
