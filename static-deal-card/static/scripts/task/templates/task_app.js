@@ -264,9 +264,7 @@ export class Templates {
                         <select class="task-container_group-item-mounting-bottom" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.installPlace]?.items, productData.installPlace)}" data-product-field="installPlace" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
                             ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.installPlace]?.items, productData.installPlace)}
                         </select>
-                        <div class="task-container_group-item-mounting-right ">
-                            <input class="task-container_group-item-dismantling-area vertical-input" type="number" name="" id="" title="${this.customToString(productData.dismantlingArea)}" value="${productData.dismantlingArea || 0}" data-product-field="dismantlingArea" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
-                        </div>
+                        <input class="task-container_group-item-mounting-area vertical-input" type="number" name="" id="" title="${this.customToString(productData.dismantlingArea)}" value="${productData.dismantlingArea || 0}" data-product-field="dismantlingArea" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
                     </div>
                 </td>
                 <td class="task-container_group-item-deadlines">
@@ -285,9 +283,11 @@ export class Templates {
                         <select class="task-container_group-item-dismantling-bottom" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantlingDesc]?.items, productData.dismantlingDesc)}" data-product-field="dismantlingDesc" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
                             ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantlingDesc]?.items, productData.dismantlingDesc)}
                         </select>
-                        <select class="" name="" id="" data-product-field="installComplexity" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.installComplexity]?.items, productData.installComplexity)}" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                            ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.installComplexity]?.items, productData.installComplexity)}
-                        </select>
+                        <div class="task-container_group-item-dismantling-right">
+                            <select class="" name="" id="" data-product-field="installComplexity" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.installComplexity]?.items, productData.installComplexity)}" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
+                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.installComplexity]?.items, productData.installComplexity)}
+                            </select>
+                        </div>
                     </div>
                 </td>
                 <td class="task-container_group-item-right">
