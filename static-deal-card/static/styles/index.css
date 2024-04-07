@@ -1513,7 +1513,7 @@
   grid-area: B;
 }
 .task-container__app table tbody .task-container_group-item-dismantling .task-container_group-item-dismantling-right {
-  grid-area: D;
+  grid-area: C;
 }
 .task-container__app table tbody .task-container_group-item-dismantling .task-container_group-item-dismantling-right select {
   writing-mode: vertical-lr;
