@@ -24,7 +24,7 @@ export class Product {
         this.quantity = data?.[SP_PRODUCT_FIELDS.quantity];                                 // Количество
         this.description = data?.[SP_PRODUCT_FIELDS.description];                           // Описание
         this.measurement = data?.[SP_PRODUCT_FIELDS.measurement];                           // Замер
-        this.measurementAddress = data?.[SP_PRODUCT_FIELDS.address];                        // Адрес
+        this.measurementAddress = data?.[SP_PRODUCT_FIELDS.measurementAddress];             // Адрес замера
         this.measurementCost = data?.[SP_PRODUCT_FIELDS.measurementCost];                   // Себестоимость замера
         this.measurementPercent = data?.[SP_PRODUCT_FIELDS.measurementPercent];             // Процент замер
         this.design = data?.[SP_PRODUCT_FIELDS.design];                                     // Дизайн

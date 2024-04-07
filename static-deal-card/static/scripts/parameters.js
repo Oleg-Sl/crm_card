@@ -97,7 +97,7 @@ export const SP_PRODUCT_FIELDS = {
     quantity: "ufCrm29_1707120728",                 // Количество
     description: "ufCrm29_1707120767",              // Описание
     measurement: "ufCrm29_1707120790",              // Замер
-    address: "ufCrm29_1707120840",                  // Адрес
+    measurementAddress: "ufCrm29_1707120840",       // Адрес замера
     measurementCost: "ufCrm29_1707120852",          // Себестоимость замера
     measurementPercent: "ufCrm29_1707120872",       // Процент замер
     design: "ufCrm29_1707120895",                   // Дизайн
