@@ -177,6 +177,7 @@ export class TaskAppInterface {
             // Обновляем стиль grid-template-columns
             console.log(">>> ", this.templateColumns.join('px ') + 'px');
             // table.style.gridTemplateColumns = this.templateColumns.join('px ') + 'px';
+            const newTemplateColumns = this.templateColumns.
             table.style.gridTemplateColumns = this.templateColumns.map(column => parseInt(column)).join('px ') + 'px';
 
         });
@@ -403,7 +404,7 @@ export class TaskAppInterface {
         if (!this.newTemplateColumns) {
             const table = this.container.querySelector("table");
             const cells = table.querySelector('tr').querySelectorAll('th');
-            this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth));
+            this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
         } else {
             const table = this.container.querySelector("table");
             table.style.gridTemplateColumns = this.templateColumns.map(column => parseInt(column)).join('px ') + 'px';
