@@ -131,33 +131,72 @@ export class TaskAppInterface {
             }
         });
 
-
         document.addEventListener('mousemove', (e) => {
-
-            console.log("Mouse move = ", this.isResizing);
             if (!this.isResizing) {
                 return;
             }
-            console.log("Mouse move!!!");
-
+        
             const table = this.container.querySelector("table");
             const cells = table.querySelectorAll('th');
-
+        
             const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left;
             this.columnBeingResized.style.width = newWidth + 'px';
-        
+          
             const totalWidth = table.offsetWidth;
             const totalColumnsWidth = Array.from(cells).reduce((acc, cell) => acc + cell.offsetWidth, 0);
             const scale = (totalWidth - newWidth) / (totalWidth - totalColumnsWidth);
+          
+            let newTemplateColumns = "15px ";
         
             Array.from(cells).forEach((cell, index) => {
-            if (cell !== this.columnBeingResized) {
-                const originalWidth = parseFloat(window.getComputedStyle(cell).width);
-                const newCellWidth = originalWidth * scale;
-                cell.style.width = newCellWidth + 'px';
-            }
+                if (cell !== this.columnBeingResized) {
+                    const originalWidth = parseFloat(window.getComputedStyle(cell).width);
+                    const newCellWidth = originalWidth * scale;
+                    cell.style.width = newCellWidth + 'px';
+        
+                    // Обновляем ширину второго столбца
+                    if (index === 1) {
+                        newTemplateColumns += newCellWidth + "px ";
+                    } else {
+                        newTemplateColumns += cell.offsetWidth + 'px ';
+                    }
+                }
             });
+        
+            // Обновляем стиль grid-template-columns
+            table.style.gridTemplateColumns = newTemplateColumns;
         });
+        
+
+
+        // document.addEventListener('mousemove', (e) => {
+
+        //     // console.log("Mouse move = ", this.isResizing);
+        //     if (!this.isResizing) {
+        //         return;
+        //     }
+        //     console.log("Mouse move!!!");
+        //     // grid-template-columns: 15px 1fr 110px 120px 80px 80px 80px 110px 80px 90px 80px
+
+
+        //     const table = this.container.querySelector("table");
+        //     const cells = table.querySelectorAll('th');
+
+        //     const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left;
+        //     this.columnBeingResized.style.width = newWidth + 'px';
+        
+        //     const totalWidth = table.offsetWidth;
+        //     const totalColumnsWidth = Array.from(cells).reduce((acc, cell) => acc + cell.offsetWidth, 0);
+        //     const scale = (totalWidth - newWidth) / (totalWidth - totalColumnsWidth);
+        
+        //     Array.from(cells).forEach((cell, index) => {
+        //     if (cell !== this.columnBeingResized) {
+        //         const originalWidth = parseFloat(window.getComputedStyle(cell).width);
+        //         const newCellWidth = originalWidth * scale;
+        //         cell.style.width = newCellWidth + 'px';
+        //     }
+        //     });
+        // });
 
         document.addEventListener('mouseup', () => {
             this.isResizing = false;
