@@ -144,7 +144,7 @@ export class TaskAppInterface {
             const oldWidth = this.templateColumns[1];
             const totalWidth = table.offsetWidth;
 
-            const scale = (oldWidth) / (newWidth);
+            const scale = (newWidth) / (oldWidth);
             console.log("scale = ", scale);
             this.templateColumns = this.templateColumns.map(el => el * scale);
             this.templateColumns[1] = newWidth;
