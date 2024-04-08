@@ -59,7 +59,7 @@ export class Templates {
                             <th>
                                 <div class="task-container_group-header-add-group"><i class="bi bi-plus-circle-fill"></i></div>
                             </th>
-                            <th class="resizable">
+                            <th class="">
                                 <div style="width: 100%;">
                                     <div class="task-container_group-header-product-desc">о позиции</div>    
                                 </div>
