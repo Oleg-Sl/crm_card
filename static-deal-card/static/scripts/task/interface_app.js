@@ -133,7 +133,7 @@ export class TaskAppInterface {
         });
 
         document.addEventListener('mousemove', (e) => {
-            if (!this.isResizing) {
+            if (!this.isResizing || e.buttons !== 1) {
                 return;
             }
         
@@ -153,6 +153,7 @@ export class TaskAppInterface {
             this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
             this.templateColumns = this.templateColumns.map((el, index) => index < 2 ? el : el * scale);
             this.templateColumns[1] = newWidth;
+            console.log(this.templateColumns);
             // this.templateColumns[this.templateColumns.length - 1] = totalWidth - this.templateColumns.reduce((acc, cell) => acc + cell, 0) + this.templateColumns[this.templateColumns.length - 1];
 
             // console.log("this.templateColumns = ", this.templateColumns);
