@@ -24,6 +24,9 @@ export class TaskAppInterface {
 
         this.templates = new Templates();
 
+        this.isResizing = false;
+        this.columnBeingResized;
+
         this.initHandlers();
     }
 
@@ -119,6 +122,57 @@ export class TaskAppInterface {
                 // this.updateSources(containerSourcesList, groupId, productId);
             }
         })
+
+        this.container.addEventListener('mousedown', function(e) {
+            if (e.target.classList.contains('resizable')) {
+                this.isResizing = true;
+                this.columnBeingResized = e.target;
+            }
+        });
+
+
+        document.addEventListener('mousemove', function(e) {
+            if (!this.isResizing) {
+                return;
+            }
+
+
+            const table = this.container.querySelector("table");
+            const cells = table.querySelectorAll('th');
+
+            const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left;
+            this.columnBeingResized.style.width = newWidth + 'px';
+        
+            const totalWidth = table.offsetWidth;
+            const totalColumnsWidth = Array.from(cells).reduce((acc, cell) => acc + cell.offsetWidth, 0);
+            const scale = (totalWidth - newWidth) / (totalWidth - totalColumnsWidth);
+        
+            Array.from(cells).forEach((cell, index) => {
+            if (cell !== this.columnBeingResized) {
+                const originalWidth = parseFloat(window.getComputedStyle(cell).width);
+                const newCellWidth = originalWidth * scale;
+                cell.style.width = newCellWidth + 'px';
+            }
+            });
+        });
+
+        document.addEventListener('mouseup', () => {
+            this.isResizing = false;
+        });
+
+        // const tableContainer = document.getElementById('table-container');
+        // const cells = tableContainer.getElementsByClassName('cell');
+        // const resizableColumn = document.querySelector('.resizable');
+
+        // const resizer = document.createElement('div');
+        // resizer.className = 'resizer';
+        // resizableColumn.appendChild(resizer);
+
+
+
+
+
+
 
         // this.container.addEventListener('mouseenter', function(event) {
         //     const target = event.target;

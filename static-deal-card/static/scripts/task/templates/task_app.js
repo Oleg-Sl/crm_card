@@ -59,7 +59,7 @@ export class Templates {
                             <th>
                                 <div class="task-container_group-header-add-group"><i class="bi bi-plus-circle-fill"></i></div>
                             </th>
-                            <th>
+                            <th class="resizable">
                                 <div class="task-container_group-header-product-desc">о позиции</div>
                             </th>
                             <th>
@@ -202,13 +202,13 @@ export class Templates {
                 <td>
                     <div class="task-container__item-info">
                         <div class="task-container__item-info-title">
-                            <input type="text" name="" id="" placeholder="название" value="${this.customToString(productData.title)}" title="${this.customToString(productData.title)}" data-product-field="title" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <textarea name="" id="" placeholder="название" title="${this.customToString(productData.title)}" data-product-field="title" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">${this.customToString(productData.title)}</textarea>
                         </div>
                         <div class="task-container__item-info-count">
                             <input type="number" name="" id="" placeholder="количество" value="${this.customToString(productData.quantity)}" step="1" data-product-field="quantity" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                         <div class="task-container__item-info-desc">
-                            <textarea name="" id=""  rows="3" placeholder="описание" data-product-field="description" data-type="textarea" data-group-id="${groupId}" data-product-id="${productData.id}">${this.customToString(productData.description)}</textarea>
+                            <textarea name="" id=""  rows="3" placeholder="описание" title="${this.customToString(productData.description)}" data-product-field="description" data-type="textarea" data-group-id="${groupId}" data-product-id="${productData.id}">${this.customToString(productData.description)}</textarea>
                         </div>
                     </div>
                 </td>

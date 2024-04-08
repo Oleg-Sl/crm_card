@@ -193,13 +193,13 @@ export class Templates {
                     <div>
                         <div class="task-container__item-info">
                             <div class="task-container__item-title">
-                                <input type="text" name="" id="" placeholder="название" title="${this.customToString(productData.title)}" value="${this.customToString(productData.title)}" data-product-field="title" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
+                                <textarea name="" id="" placeholder="название" title="${this.customToString(productData.title)}" data-product-field="title" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">${this.customToString(productData.title)}</textarea>
                             </div>
                             <div class="task-container__item-count">
                                 <input type="number" name="" id="" step="1" placeholder="количество" value="${this.customToString(productData.quantity)}" data-product-field="quantity" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
                             </div>
                             <div class="task-container__item-desc">
-                                <textarea name="" id=""  rows="3" placeholder="описание" data-product-field="description" data-type="textarea" data-group-id="${groupId}" data-product-id="${productData.id}">${this.customToString(productData.description)}</textarea>
+                                <textarea name="" id=""  rows="3" placeholder="описание" title="${this.customToString(productData.description)}" data-product-field="description" data-type="textarea" data-group-id="${groupId}" data-product-id="${productData.id}">${this.customToString(productData.description)}</textarea>
                             </div>
                         </div>
                     </div>
