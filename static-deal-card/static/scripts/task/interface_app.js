@@ -146,6 +146,7 @@ export class TaskAppInterface {
             const oldWidth = this.templateColumns[1];
             const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left;
             const totalWidth = table.parentElement.offsetWidth;
+            console.log(e.clientX, this.columnBeingResized);
             console.log("newWidth = ", newWidth, "oldWidth = ", oldWidth, "totalWidth = ", totalWidth);
             // const oldRightWidth = this.templateColumns.reduce((acc, cell) => acc + cell, 0) - this.templateColumns[0] - oldWidth;
             // const newRightWidth = this.templateColumns.reduce((acc, cell) => acc + cell, 0) - this.templateColumns[0] - newWidth;
