@@ -128,7 +128,7 @@ export class TaskAppInterface {
             if (e.target.classList.contains('resizable')) {
                 this.isResizing = true;
                 // console.log("this.isResizing = ", this.isResizing);
-                this.columnBeingResized = e.target;
+                this.columnBeingResized = e.target.parentElement;
             }
         });
 
