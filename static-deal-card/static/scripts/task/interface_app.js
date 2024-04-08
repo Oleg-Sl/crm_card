@@ -144,7 +144,7 @@ export class TaskAppInterface {
             const cells = table.querySelector('tr').querySelectorAll('th');
         
             const oldWidth = this.templateColumns[1];
-            const newWidth = oldWidth + e.clientX - this.columnBeingResized.getBoundingClientRect().left;
+            const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left;
             const totalWidth = table.parentElement.offsetWidth;
             console.log("newWidth = ", newWidth, "oldWidth = ", oldWidth, "totalWidth = ", totalWidth);
             // const oldRightWidth = this.templateColumns.reduce((acc, cell) => acc + cell, 0) - this.templateColumns[0] - oldWidth;
