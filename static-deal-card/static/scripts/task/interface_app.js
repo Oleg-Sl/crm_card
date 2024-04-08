@@ -133,6 +133,8 @@ export class TaskAppInterface {
 
 
         document.addEventListener('mousemove', function(e) {
+
+            console.log("Mouse move = ", this.isResizing);
             if (!this.isResizing) {
                 return;
             }
