@@ -154,7 +154,7 @@ export class TaskAppInterface {
             const oldRightWidth = totalWidth - this.templateColumns[0] - oldWidth;
             
             const scale = newRightWidth / oldRightWidth;
-            console.log("scale = ", scale);
+            console.log("newRightWidth = ", newRightWidth, "oldRightWidth = ", oldRightWidth, "scale = ", scale);
             this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
             this.templateColumns = this.templateColumns.map((el, index) => index < 2 ? el : el * scale);
             this.templateColumns[1] = newWidth;
