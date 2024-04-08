@@ -126,6 +126,7 @@ export class TaskAppInterface {
         this.container.addEventListener('mousedown', function(e) {
             if (e.target.classList.contains('resizable')) {
                 this.isResizing = true;
+                console.log("this.isResizing = ", this.isResizing);
                 this.columnBeingResized = e.target;
             }
         });
@@ -135,7 +136,7 @@ export class TaskAppInterface {
             if (!this.isResizing) {
                 return;
             }
-
+            console.log("Mouse move!!!");
 
             const table = this.container.querySelector("table");
             const cells = table.querySelectorAll('th');
