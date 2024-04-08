@@ -25,7 +25,8 @@ export class TaskAppInterface {
         this.templates = new Templates();
 
         this.isResizing = false;
-        this.columnBeingResized;
+        this.columnBeingResized = null;
+        this.newTemplateColumns = null;
 
         this.initHandlers();
     }
@@ -126,7 +127,7 @@ export class TaskAppInterface {
         this.container.addEventListener('mousedown', (e) => {
             if (e.target.classList.contains('resizable')) {
                 this.isResizing = true;
-                console.log("this.isResizing = ", this.isResizing);
+                // console.log("this.isResizing = ", this.isResizing);
                 this.columnBeingResized = e.target;
             }
         });
@@ -137,14 +138,16 @@ export class TaskAppInterface {
             }
         
             const table = this.container.querySelector("table");
-            const cells = table.querySelectorAll('th');
+            const cells = table.querySelector('tr').querySelectorAll('th');
         
             const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left;
             this.columnBeingResized.style.width = newWidth + 'px';
-          
+            console.log("newWidth = ", newWidth);
             const totalWidth = table.offsetWidth;
+            console.log("totalWidth = ", totalWidth);
             const totalColumnsWidth = Array.from(cells).reduce((acc, cell) => acc + cell.offsetWidth, 0);
             const scale = (totalWidth - newWidth) / (totalWidth - totalColumnsWidth);
+            console.log("scale = ", scale);
           
             let newTemplateColumns = "15px ";
         
@@ -385,7 +388,14 @@ export class TaskAppInterface {
         contentHTML += this.templates.getSummaryHTML(this.manager.groupsData);
         
         this.container.innerHTML = contentHTML;
-        this.addPreviewEventListeners();            
+        this.addPreviewEventListeners();
+        if (!this.newTemplateColumns) {
+            const table = this.container.querySelector("table");
+            this.newTemplateColumns = table.style.gridTemplateColumns;
+        } else {
+            const table = this.container.querySelector("table");
+            table.style.gridTemplateColumns = this.newTemplateColumns;
+        }
     }
 
     // Методы для изменения данных и уведомления TaskManager
