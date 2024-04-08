@@ -133,15 +133,18 @@ export class TaskAppInterface {
         });
 
         document.addEventListener('mousemove', (e) => {
-            if (!this.isResizing || e.buttons !== 1) {
+            if (e.buttons !== 1) {
+                this.isResizing = false;
+            }
+            if (!this.isResizing) {
                 return;
             }
         
             const table = this.container.querySelector("table");
             const cells = table.querySelector('tr').querySelectorAll('th');
         
-            const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left;
             const oldWidth = this.templateColumns[1];
+            const newWidth = oldWidth + e.clientX - this.columnBeingResized.getBoundingClientRect().left;
             const totalWidth = table.parentElement.offsetWidth;
             console.log("newWidth = ", newWidth, "oldWidth = ", oldWidth, "totalWidth = ", totalWidth);
             // const oldRightWidth = this.templateColumns.reduce((acc, cell) => acc + cell, 0) - this.templateColumns[0] - oldWidth;
