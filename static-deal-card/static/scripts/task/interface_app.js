@@ -143,10 +143,11 @@ export class TaskAppInterface {
             const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left;
             const oldWidth = this.templateColumns[1];
             const totalWidth = table.offsetWidth;
-
-            const scale = (newWidth) / (oldWidth);
+            const rightWidth = this.templateColumns.slice(2).reduce((acc, cell) => acc + cell.offsetWidth, 0);
+            
+            const scale = rightWidth - (newWidth - oldWidth) / rightWidth;
             console.log("scale = ", scale);
-            this.templateColumns = this.templateColumns.map(el => el * scale);
+            this.templateColumns = this.templateColumns.map((el, index) => index < 2 ? el : el * scale);
             this.templateColumns[1] = newWidth;
             console.log("this.templateColumns = ", this.templateColumns);
             // this.columnBeingResized.style.width = newWidth + 'px';
