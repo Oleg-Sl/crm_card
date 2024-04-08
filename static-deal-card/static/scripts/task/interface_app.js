@@ -143,6 +143,7 @@ export class TaskAppInterface {
             const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left;
             const oldWidth = this.templateColumns[1];
             const totalWidth = table.offsetWidth;
+
             const scale = (oldWidth) / (newWidth);
             console.log("scale = ", scale);
             this.templateColumns.map(el => el * scale);
@@ -175,7 +176,9 @@ export class TaskAppInterface {
         
             // Обновляем стиль grid-template-columns
             console.log(">>> ", this.templateColumns.join('px ') + 'px');
-            table.style.gridTemplateColumns = this.templateColumns.join('px ') + 'px';
+            // table.style.gridTemplateColumns = this.templateColumns.join('px ') + 'px';
+            table.style.gridTemplateColumns = this.templateColumns.map(column => parseInt(column)).join('px ') + 'px';
+
         });
         
 
@@ -400,10 +403,10 @@ export class TaskAppInterface {
         if (!this.newTemplateColumns) {
             const table = this.container.querySelector("table");
             const cells = table.querySelector('tr').querySelectorAll('th');
-            this.templateColumns = Array.from(cells).map(cell => cell.offsetWidth);
+            this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth));
         } else {
             const table = this.container.querySelector("table");
-            table.style.gridTemplateColumns = this.templateColumns.join('px ');
+            table.style.gridTemplateColumns = this.templateColumns.map(column => parseInt(column)).join('px ') + 'px';
         }
     }
 
