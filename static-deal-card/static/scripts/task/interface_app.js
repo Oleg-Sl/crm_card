@@ -175,9 +175,10 @@ export class TaskAppInterface {
             // });
         
             // Обновляем стиль grid-template-columns
-            console.log(">>> ", this.templateColumns.join('px ') + 'px');
+            // console.log(">>> ", this.templateColumns.join('px ') + 'px');
             // table.style.gridTemplateColumns = this.templateColumns.join('px ') + 'px';
             const newTemplateColumns = this.templateColumns.map(column => Math.floor(column));
+            console.log("newTemplateColumns = ", newTemplateColumns);
             table.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
         });
         
