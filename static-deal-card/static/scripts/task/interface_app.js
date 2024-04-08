@@ -152,9 +152,9 @@ export class TaskAppInterface {
             console.log("scale = ", scale);
             this.templateColumns = this.templateColumns.map((el, index) => index < 2 ? el : el * scale);
             this.templateColumns[1] = newWidth;
-            this.templateColumns[this.templateColumns.length - 1] = totalWidth - this.templateColumns.reduce((acc, cell) => acc + cell, 0) + this.templateColumns[this.templateColumns.length - 1];
+            // this.templateColumns[this.templateColumns.length - 1] = totalWidth - this.templateColumns.reduce((acc, cell) => acc + cell, 0) + this.templateColumns[this.templateColumns.length - 1];
 
-            console.log("this.templateColumns = ", this.templateColumns);
+            // console.log("this.templateColumns = ", this.templateColumns);
             // this.columnBeingResized.style.width = newWidth + 'px';
             // console.log("newWidth = ", newWidth);
             // const totalWidth = table.offsetWidth;
@@ -184,7 +184,7 @@ export class TaskAppInterface {
             // console.log(">>> ", this.templateColumns.join('px ') + 'px');
             // table.style.gridTemplateColumns = this.templateColumns.join('px ') + 'px';
             const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
-            console.log("newTemplateColumns = ", newTemplateColumns);
+            // console.log("newTemplateColumns = ", newTemplateColumns);
             table.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
         });
         
