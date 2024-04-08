@@ -143,6 +143,7 @@ export class TaskAppInterface {
             const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left;
             const oldWidth = this.templateColumns[1];
             const totalWidth = table.parentElement.offsetWidth;
+            console.log("newWidth = ", newWidth, "oldWidth = ", oldWidth, "totalWidth = ", totalWidth);
             // const oldRightWidth = this.templateColumns.reduce((acc, cell) => acc + cell, 0) - this.templateColumns[0] - oldWidth;
             // const newRightWidth = this.templateColumns.reduce((acc, cell) => acc + cell, 0) - this.templateColumns[0] - newWidth;
             const newRightWidth = totalWidth - this.templateColumns[0] - newWidth;
@@ -153,7 +154,7 @@ export class TaskAppInterface {
             this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
             this.templateColumns = this.templateColumns.map((el, index) => index < 2 ? el : el * scale);
             this.templateColumns[1] = newWidth;
-            console.log(this.templateColumns);
+            // console.log(this.templateColumns);
             // this.templateColumns[this.templateColumns.length - 1] = totalWidth - this.templateColumns.reduce((acc, cell) => acc + cell, 0) + this.templateColumns[this.templateColumns.length - 1];
 
             // console.log("this.templateColumns = ", this.templateColumns);
