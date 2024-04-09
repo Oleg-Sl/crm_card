@@ -342,6 +342,7 @@ export class TaskAppInterface {
             const tables = this.container.querySelectorAll("table");
             const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
             const sum = newTemplateColumns.reduce((acc, column) => acc + column, 0);
+            const totalWidth = table[0].parentElement.offsetWidth;
             newTemplateColumns[newTemplateColumns.length - 1] += totalWidth - sum;
             for (const table of tables) {
                 table.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
