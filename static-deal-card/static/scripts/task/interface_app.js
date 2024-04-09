@@ -145,7 +145,7 @@ export class TaskAppInterface {
             const cells = table.querySelector('tr').querySelectorAll('th');
         
             const oldWidth = this.templateColumns[1];
-            const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left;
+            const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left - this.columnBeingResized.getBoundingClientRect().width;
             console.log("e.clientX = ", e.clientX, "this.columnBeingResized.getBoundingClientRect() = ", this.columnBeingResized.getBoundingClientRect());
             const totalWidth = table.parentElement.offsetWidth;
             // console.log(e.clientX, this.columnBeingResized);
@@ -157,7 +157,8 @@ export class TaskAppInterface {
             
             const scale = newRightWidth / oldRightWidth;
             console.log("newRightWidth = ", newRightWidth, "oldRightWidth = ", oldRightWidth, "scale = ", scale);
-            this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
+
+            // this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
             this.templateColumns = this.templateColumns.map((el, index) => index < 2 ? el : el * scale);
             this.templateColumns[1] = newWidth;
             // console.log(this.templateColumns);
