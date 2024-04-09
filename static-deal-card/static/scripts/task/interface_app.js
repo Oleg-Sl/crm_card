@@ -172,8 +172,9 @@ export class TaskAppInterface {
             const sum = newTemplateColumns.reduce((acc, column) => acc + column, 0);
             newTemplateColumns[newTemplateColumns.length - 1] += totalWidth - sum;
             console.log("newTemplateColumns = ", newTemplateColumns);
-
-            table.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
+            for (const t in this.container.querySelector("table")) {
+                t.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
+            }
             // this.isResizing = false;
         });
 
@@ -399,15 +400,14 @@ export class TaskAppInterface {
             const cells = table.querySelector('tr').querySelectorAll('th');
             this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
         } else {
-            const table = this.container.querySelector("table");
-            // const newTemplateColumns = this.templateColumns.map(column => Math.parseInt(column));
-            // table.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
-            
+            const tables = this.container.querySelectorAll("table");
+            console.log("Before update", this.templateColumns);
             const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
             const sum = newTemplateColumns.reduce((acc, column) => acc + column, 0);
             newTemplateColumns[newTemplateColumns.length - 1] += totalWidth - sum;
-            table.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
-            // table.style.gridTemplateColumns = this.templateColumns.map(column => parseInt(column)).join('px ') + 'px';
+            for (const table of tables) {
+                table.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
+            }
         }
     }
 
