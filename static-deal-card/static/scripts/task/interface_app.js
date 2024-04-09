@@ -147,7 +147,7 @@ export class TaskAppInterface {
             const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left;
             console.log("e.clientX = ", e.clientX, "this.columnBeingResized.getBoundingClientRect() = ", this.columnBeingResized.getBoundingClientRect());
             const totalWidth = table.parentElement.offsetWidth;
-            console.log(e.clientX, this.columnBeingResized);
+            // console.log(e.clientX, this.columnBeingResized);
             console.log("newWidth = ", newWidth, "oldWidth = ", oldWidth, "totalWidth = ", totalWidth);
             // const oldRightWidth = this.templateColumns.reduce((acc, cell) => acc + cell, 0) - this.templateColumns[0] - oldWidth;
             // const newRightWidth = this.templateColumns.reduce((acc, cell) => acc + cell, 0) - this.templateColumns[0] - newWidth;
@@ -161,39 +161,15 @@ export class TaskAppInterface {
             this.templateColumns[1] = newWidth;
             // console.log(this.templateColumns);
             // this.templateColumns[this.templateColumns.length - 1] = totalWidth - this.templateColumns.reduce((acc, cell) => acc + cell, 0) + this.templateColumns[this.templateColumns.length - 1];
-
-            // console.log("this.templateColumns = ", this.templateColumns);
-            // this.columnBeingResized.style.width = newWidth + 'px';
-            // console.log("newWidth = ", newWidth);
-            // const totalWidth = table.offsetWidth;
-            // console.log("totalWidth = ", totalWidth);
-            // const totalColumnsWidth = Array.from(cells).reduce((acc, cell) => acc + cell.offsetWidth, 0);
-            // const scale = (totalWidth - newWidth) / (totalWidth - totalColumnsWidth);
-            // console.log("scale = ", scale);
-          
-            // let newTemplateColumns = "15px ";
-        
-            // Array.from(cells).forEach((cell, index) => {
-            //     if (cell !== this.columnBeingResized) {
-            //         const originalWidth = parseFloat(window.getComputedStyle(cell).width);
-            //         const newCellWidth = originalWidth * scale;
-            //         cell.style.width = newCellWidth + 'px';
-        
-            //         // Обновляем ширину второго столбца
-            //         if (index === 1) {
-            //             newTemplateColumns += newCellWidth + "px ";
-            //         } else {
-            //             newTemplateColumns += cell.offsetWidth + 'px ';
-            //         }
-            //     }
-            // });
         
             // Обновляем стиль grid-template-columns
             // console.log(">>> ", this.templateColumns.join('px ') + 'px');
             // table.style.gridTemplateColumns = this.templateColumns.join('px ') + 'px';
             const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
-            // console.log("newTemplateColumns = ", newTemplateColumns);
+            console.log("newTemplateColumns = ", newTemplateColumns);
             table.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
+            this.isResizing = false;
+
         });
         
 
