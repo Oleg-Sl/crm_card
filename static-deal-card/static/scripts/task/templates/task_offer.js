@@ -47,21 +47,21 @@ export class Templates {
                 <table>
                     <thead>
                         <tr>
-                            <th class="">№</td>
+                            <th class="">№</th>
                             <th class="">
                                 <div style="width: 100%;">
                                     <div class="task-container_group-header-product-desc">о позиции</div>    
                                 </div>
                                 <div class="resizable" style="cursor: col-resize;"><i class="bi bi-grip-vertical resizable"></i></div>
-                            </td>
-                            <th class="">в КП</td>
+                            </th>
+                            <th class="">в КП</th>
                             <th class="">
                                 <label class="switch">
                                     <input type="checkbox" ${groupData.repeatTechnologies ? 'checked' : ''} data-group-field="repeatTechnologies" data-type="checkbox" data-group-id="${groupData.id}">
                                     <span class="slider round"></span>
                                 </label>
                                 <span>технология</span>
-                            </td>
+                            </th>
                             <th class="task-container__group-header-consumption">
                                 <div>
                                     <label class="switch">
@@ -74,60 +74,60 @@ export class Templates {
                                     <span>м2</span>
                                     <span>прод</span>
                                 </div>
-                            </td>
+                            </th>
                             <th class="task-container__group-header-area-mounting">
                                 <span>м2 монт</span>
-                            </td>
-                            <th class=""></td>
+                            </th>
+                            <th class=""></th>
                             <th class="">
                                 <label class="switch">
                                     <input type="checkbox" ${groupData.repeatMeasurement ? 'checked' : ''} data-group-field="repeatMeasurement" data-type="checkbox" data-group-id="${groupData.id}">
                                     <span class="slider round"></span>
                                 </label>
                                 <span>замер</span>
-                            </td>
+                            </th>
                             <th class="">
                                 <label class="switch">
                                     <input type="checkbox" ${groupData.repeatDesign ? 'checked' : ''} data-group-field="repeatDesign" data-type="checkbox" data-group-id="${groupData.id}">
                                     <span class="slider round"></span>
                                 </label>
                                 <span>дизайн</span>
-                            </td>
+                            </th>
                             <th class="">
                                 <label class="switch">
                                     <input type="checkbox" ${groupData.repeatMontage ? 'checked' : ''} data-group-field="repeatMontage" data-type="checkbox" data-group-id="${groupData.id}">
                                     <span class="slider round"></span>
                                 </label>
                                 <span>монтаж</span>
-                            </td>
+                            </th>
                             <th class="">
                                 <label class="switch">
                                     <input type="checkbox" ${groupData.repeatDeadline ? 'checked' : ''} data-group-field="repeatDeadline" data-type="checkbox" data-group-id="${groupData.id}">
                                     <span class="slider round"></span>
                                 </label>
                                 <span>сроки</span>
-                            </td>
+                            </th>
                             <th class="">
                                 <span>демонтаж(1ед.)</span>
-                            </td>
+                            </th>
                             <th class="">
                                 <span>командировка / выезд</span>
-                            </td>
+                            </th>
                             <th class="">
                                 <span>доставка</span>
-                            </td>
+                            </th>
                             <th class="">
                                 <label class="switch">
                                     <input type="checkbox" ${groupData.repeatDelivery ? 'checked' : ''} data-group-field="repeatDelivery" data-type="checkbox" data-group-id="${groupData.id}">
                                     <span class="slider round"></span>
                                 </label>
                                 <span>цп</span>
-                            </td>
-                            <th class=""></td>
-                            <th class=""></td>
+                            </th>
+                            <th class=""></th>
+                            <th class=""></th>
                             <th class="">
                                 <div>доб. в заказ</div>
-                            </td>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
