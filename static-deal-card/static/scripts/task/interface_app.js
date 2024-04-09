@@ -168,7 +168,7 @@ export class TaskAppInterface {
             const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
             console.log("newTemplateColumns = ", newTemplateColumns);
             table.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
-            this.isResizing = false;
+            // this.isResizing = false;
 
         });
         
