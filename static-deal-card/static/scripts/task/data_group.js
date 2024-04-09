@@ -73,10 +73,93 @@ export class Group {
 
     update(newData) {
         Object.keys(newData).forEach(field => {
+            this.updateRepeatCheck(field, newData);
             this.saveChanges(field, newData);
             this.updateField(field, newData[field]);
         });
 
+    }
+
+    updateRepeatCheck(field, newData) {
+        if (this.products.length <= 1 || this.products[0].technologies.length <= 1) {
+            return;
+        }
+        const value = newData[field];
+        const productEtalon = this.products[0];
+        const technologyEtalon = productEtalon.technologies[0];
+        if (!value) {
+            return;
+        }
+        switch (field) {
+            case "repeatTechnologies":
+                this.products.forEach(product => {
+                    product.updateTechnologies({
+                        general: technologyEtalon.general,
+                        inKP: technologyEtalon.inKP,
+                        MCHS: technologyEtalon.MCHS,
+                        film: technologyEtalon.film,
+                        lamination: technologyEtalon.lamination,
+                        price: productEtalon.price,
+                    });
+                })
+                break;
+            case "repeatSources":
+                this.products.forEach(product => {
+                    product.update({
+                        sourcesFiles: productEtalon.sourcesFiles,
+                    });
+                })
+                break;
+            case "repeatConsumption":
+                this.products.forEach(product => {
+                    product.updateTechnologies({
+                        CHPP: technologyEtalon.CHPP,
+                        width: technologyEtalon.width,
+                        runningMeter: technologyEtalon.runningMeter,
+                    });
+                })
+                break;
+            case "repeatMeasurement":
+                this.products.forEach(product => {
+                    product.update({
+                        measurement: productEtalon.measurement,
+                        measurementAddress: productEtalon.measurementAddress,
+                        measurementCost: productEtalon.measurementCost,
+                        measurementPercent: productEtalon.measurementPercent,
+                    });
+                })
+                break;
+            case "repeatDesign":
+                this.products.forEach(product => {
+                    product.update({
+                        design: productEtalon.design,
+                        designPayment: productEtalon.designPayment,
+                        designCost: productEtalon.designCost,
+                    });
+                })
+                break;
+            case "repeatMontage":
+                this.products.forEach(product => {
+                    product.update({
+                        installTime: productEtalon.installTime,
+                        installCity: productEtalon.installCity,
+                        installPlace: productEtalon.installPlace,
+                        installComplexity: productEtalon.installComplexity,
+                        installDays: productEtalon.installDays,
+                        installCost: productEtalon.installCost,
+                        installPercentage: productEtalon.installPercentage,
+                    });
+                })
+                break;
+            case "repeatDeadline":
+                this.products.forEach(product => {
+                    product.update({
+                        terms: productEtalon.terms,
+                        termsDate: productEtalon.termsDate,
+                    });
+                })
+                break;
+        }
     }
 
     updateField(field, value) {

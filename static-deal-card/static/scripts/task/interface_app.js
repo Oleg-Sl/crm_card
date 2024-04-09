@@ -169,31 +169,6 @@ export class TaskAppInterface {
             this.isResizing = false;
         });
 
-        // this.container.addEventListener('mouseenter', function(event) {
-        //     const target = event.target;
-        //     // Проверяем, что наведение произошло на элемент .task-container_group-item-sources-item-prev
-        //     if (target.classList.contains('task-container_group-item-sources-item-prev')) {
-        //       const link = target.getAttribute('data-link');
-        //       // Показываем картинку
-        //       if (link) {
-        //         // Ваш код для отображения картинки
-        //         this.handleFilePreviewShow(event);
-        //         console.log('Показываем картинку:', link);
-        //       }
-        //     }
-        //   });
-          
-        // this.container.addEventListener('mouseleave', function(event) {
-        //     const target = event.target;
-        //     // Проверяем, что покидание произошло с элемента .task-container_group-item-sources-item-prev
-        //     if (target.classList.contains('task-container_group-item-sources-item-prev')) {
-        //       // Закрываем картинку
-        //       this.handleFilePreviewHide();
-        //       // Ваш код для закрытия картинки
-        //       console.log('Закрываем картинку');
-        //     }
-        //   });
-
         this.handlersGropupProducts();
         this.handlersProduct();
         this.handlersTechnology();
@@ -356,6 +331,7 @@ export class TaskAppInterface {
             }
         }
     }
+
 
     // Методы для изменения данных и уведомления TaskManager
     updateTaskGroup(groupId, newData) {

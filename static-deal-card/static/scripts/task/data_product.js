@@ -15,7 +15,7 @@ import {
 
 export class Product {
     constructor(data) {
-        console.log('data = ', data);
+        // console.log('data = ', data);
         this.data = data;
         this.parentId = data?.[`parentId${SP_GROUP_ID}`];
 
@@ -24,12 +24,12 @@ export class Product {
         this.quantity = data?.[SP_PRODUCT_FIELDS.quantity];                                 // Количество
         this.description = data?.[SP_PRODUCT_FIELDS.description];                           // Описание
         this.measurement = data?.[SP_PRODUCT_FIELDS.measurement];                           // Замер
-        this.measurementAddress = data?.[SP_PRODUCT_FIELDS.measurementAddress];             // Адрес замера
-        this.measurementCost = data?.[SP_PRODUCT_FIELDS.measurementCost];                   // Себестоимость замера
-        this.measurementPercent = data?.[SP_PRODUCT_FIELDS.measurementPercent];             // Процент замер
+        this.measurementAddress = data?.[SP_PRODUCT_FIELDS.measurementAddress];             // Замер - Адрес замера
+        this.measurementCost = data?.[SP_PRODUCT_FIELDS.measurementCost];                   // Замер - Себестоимость замера
+        this.measurementPercent = data?.[SP_PRODUCT_FIELDS.measurementPercent];             // Замер - Процент замер
         this.design = data?.[SP_PRODUCT_FIELDS.design];                                     // Дизайн
-        this.designPayment = data?.[SP_PRODUCT_FIELDS.designPayment];                       // Оплата дизайна
-        this.designCost = parseAmount(data?.[SP_PRODUCT_FIELDS.designCost]);                // Стоимость дизайна
+        this.designPayment = data?.[SP_PRODUCT_FIELDS.designPayment];                       // Дизайн - Оплата дизайна
+        this.designCost = parseAmount(data?.[SP_PRODUCT_FIELDS.designCost]);                // Дизайн - Стоимость дизайна
         this.installTime = data?.[SP_PRODUCT_FIELDS.installTime];                           // Монтаж - время
         this.installCity = data?.[SP_PRODUCT_FIELDS.installCity];                           // Монтаж - город
         this.installPlace = data?.[SP_PRODUCT_FIELDS.installPlace];                         // Монтаж - место
@@ -74,6 +74,12 @@ export class Product {
         Object.keys(newData).forEach(field => {
             this.saveChanges(field, newData);
             this.updateField(field, newData[field]);
+        });
+    }
+
+    updateTechnologies(newData) {
+        this.technologies.forEach(technology => {
+            technology.update(newData);
         });
     }
 
