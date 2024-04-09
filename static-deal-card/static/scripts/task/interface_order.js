@@ -33,6 +33,11 @@ export class TaskOrderInterface {
     initHandlers() {
         this.container.addEventListener('mousedown', (e) => {
             if (e.target.classList.contains('resizable')) {
+                const table = this.container.querySelector("table");
+                if (!this.templateColumns && table.offsetWidth > 0 && table.offsetHeight > 0) {
+                    const cells = table.querySelector('tr').querySelectorAll('th');
+                    this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
+                }
                 this.isResizing = true;
                 this.columnBeingResized = e.target.closest('th');
             }
@@ -103,12 +108,15 @@ export class TaskOrderInterface {
         this.container.innerHTML = contentHTML;
         if (!this.templateColumns) {
             const table = this.container.querySelector("table");
-            const cells = table.querySelector('tr').querySelectorAll('th');
-            this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
+            if (table.offsetWidth > 0 && table.offsetHeight > 0) {
+                const cells = table.querySelector('tr').querySelectorAll('th');
+                this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
+            }
         } else {
             const tables = this.container.querySelectorAll("table");
             const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
             const sum = newTemplateColumns.reduce((acc, column) => acc + column, 0);
+            const totalWidth = tables[0].parentElement.offsetWidth;
             newTemplateColumns[newTemplateColumns.length - 1] += totalWidth - sum;
             for (const table of tables) {
                 table.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';

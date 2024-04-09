@@ -126,6 +126,11 @@ export class TaskAppInterface {
 
         this.container.addEventListener('mousedown', (e) => {
             if (e.target.classList.contains('resizable')) {
+                const table = this.container.querySelector("table");
+                if (!this.templateColumns && table.offsetWidth > 0 && table.offsetHeight > 0) {
+                    const cells = table.querySelector('tr').querySelectorAll('th');
+                    this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
+                }
                 this.isResizing = true;
                 this.columnBeingResized = e.target.closest('th');
             }
@@ -336,8 +341,10 @@ export class TaskAppInterface {
         this.addPreviewEventListeners();
         if (!this.templateColumns) {
             const table = this.container.querySelector("table");
-            const cells = table.querySelector('tr').querySelectorAll('th');
-            this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
+            if (table.offsetWidth > 0 && table.offsetHeight > 0) {
+                const cells = table.querySelector('tr').querySelectorAll('th');
+                this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
+            }
         } else {
             const tables = this.container.querySelectorAll("table");
             const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
