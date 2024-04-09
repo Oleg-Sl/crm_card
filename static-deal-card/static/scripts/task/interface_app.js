@@ -145,7 +145,8 @@ export class TaskAppInterface {
             const cells = table.querySelector('tr').querySelectorAll('th');
         
             const oldWidth = this.templateColumns[1];
-            const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left - this.columnBeingResized.getBoundingClientRect().width;
+            const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left;
+            //  - this.columnBeingResized.getBoundingClientRect().width;
             console.log("e.clientX = ", e.clientX, "this.columnBeingResized.getBoundingClientRect() = ", this.columnBeingResized.getBoundingClientRect());
             const totalWidth = table.parentElement.offsetWidth;
             // console.log(e.clientX, this.columnBeingResized);
@@ -170,11 +171,8 @@ export class TaskAppInterface {
             const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
             console.log("newTemplateColumns = ", newTemplateColumns);
             table.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
-            this.isResizing = false;
-
+            // this.isResizing = false;
         });
-        
-
 
         // document.addEventListener('mousemove', (e) => {
 
