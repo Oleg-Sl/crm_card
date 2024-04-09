@@ -127,8 +127,6 @@ export class TaskAppInterface {
         this.container.addEventListener('mousedown', (e) => {
             if (e.target.classList.contains('resizable')) {
                 this.isResizing = true;
-                // console.log("this.isResizing = ", this.isResizing);
-                // this.columnBeingResized = e.target.parentElement;
                 this.columnBeingResized = e.target.closest('th');
             }
         });
@@ -146,84 +144,25 @@ export class TaskAppInterface {
         
             const oldWidth = this.templateColumns[1];
             const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left;
-            //  - this.columnBeingResized.getBoundingClientRect().width;
-            console.log("e.clientX = ", e.clientX, "this.columnBeingResized.getBoundingClientRect() = ", this.columnBeingResized.getBoundingClientRect());
             const totalWidth = table.parentElement.offsetWidth;
-            // console.log(e.clientX, this.columnBeingResized);
-            console.log("newWidth = ", newWidth, "oldWidth = ", oldWidth, "totalWidth = ", totalWidth);
-            // const oldRightWidth = this.templateColumns.reduce((acc, cell) => acc + cell, 0) - this.templateColumns[0] - oldWidth;
-            // const newRightWidth = this.templateColumns.reduce((acc, cell) => acc + cell, 0) - this.templateColumns[0] - newWidth;
             const newRightWidth = totalWidth - this.templateColumns[0] - newWidth;
             const oldRightWidth = totalWidth - this.templateColumns[0] - oldWidth;
             
             const scale = newRightWidth / oldRightWidth;
-            console.log("newRightWidth = ", newRightWidth, "oldRightWidth = ", oldRightWidth, "scale = ", scale);
 
-            // this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
             this.templateColumns = this.templateColumns.map((el, index) => index < 2 ? el : el * scale);
             this.templateColumns[1] = newWidth;
-            // console.log(this.templateColumns);
-            // this.templateColumns[this.templateColumns.length - 1] = totalWidth - this.templateColumns.reduce((acc, cell) => acc + cell, 0) + this.templateColumns[this.templateColumns.length - 1];
-        
-            // Обновляем стиль grid-template-columns
-            // console.log(">>> ", this.templateColumns.join('px ') + 'px');
-            // table.style.gridTemplateColumns = this.templateColumns.join('px ') + 'px';
             const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
             const sum = newTemplateColumns.reduce((acc, column) => acc + column, 0);
             newTemplateColumns[newTemplateColumns.length - 1] += totalWidth - sum;
-            console.log("newTemplateColumns = ", newTemplateColumns);
             for (const t of this.container.querySelectorAll("table")) {
                 t.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
             }
-            // this.isResizing = false;
         });
-
-        // document.addEventListener('mousemove', (e) => {
-
-        //     // console.log("Mouse move = ", this.isResizing);
-        //     if (!this.isResizing) {
-        //         return;
-        //     }
-        //     console.log("Mouse move!!!");
-        //     // grid-template-columns: 15px 1fr 110px 120px 80px 80px 80px 110px 80px 90px 80px
-
-
-        //     const table = this.container.querySelector("table");
-        //     const cells = table.querySelectorAll('th');
-
-        //     const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left;
-        //     this.columnBeingResized.style.width = newWidth + 'px';
-        
-        //     const totalWidth = table.offsetWidth;
-        //     const totalColumnsWidth = Array.from(cells).reduce((acc, cell) => acc + cell.offsetWidth, 0);
-        //     const scale = (totalWidth - newWidth) / (totalWidth - totalColumnsWidth);
-        
-        //     Array.from(cells).forEach((cell, index) => {
-        //     if (cell !== this.columnBeingResized) {
-        //         const originalWidth = parseFloat(window.getComputedStyle(cell).width);
-        //         const newCellWidth = originalWidth * scale;
-        //         cell.style.width = newCellWidth + 'px';
-        //     }
-        //     });
-        // });
 
         document.addEventListener('mouseup', () => {
             this.isResizing = false;
         });
-
-        // const tableContainer = document.getElementById('table-container');
-        // const cells = tableContainer.getElementsByClassName('cell');
-        // const resizableColumn = document.querySelector('.resizable');
-
-        // const resizer = document.createElement('div');
-        // resizer.className = 'resizer';
-        // resizableColumn.appendChild(resizer);
-
-
-
-
-
-
 
         // this.container.addEventListener('mouseenter', function(event) {
         //     const target = event.target;
@@ -401,7 +340,6 @@ export class TaskAppInterface {
             this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
         } else {
             const tables = this.container.querySelectorAll("table");
-            console.log("Before update", this.templateColumns);
             const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
             const sum = newTemplateColumns.reduce((acc, column) => acc + column, 0);
             newTemplateColumns[newTemplateColumns.length - 1] += totalWidth - sum;

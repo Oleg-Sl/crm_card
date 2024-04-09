@@ -22,6 +22,10 @@ export class TaskOfferInterface {
         this.manager.addObserver(this);
 
         this.templates = new Templates();
+        
+        this.isResizing = false;
+        this.columnBeingResized = null;
+        this.newTemplateColumns = null;
 
         this.initHandlers();
     }
@@ -30,6 +34,47 @@ export class TaskOfferInterface {
         this.handlersGropupProducts();
         this.handlersProduct();
         this.handlersTechnology();
+
+
+        this.container.addEventListener('mousedown', (e) => {
+            if (e.target.classList.contains('resizable')) {
+                this.isResizing = true;
+                this.columnBeingResized = e.target.closest('th');
+            }
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (e.buttons !== 1) {
+                this.isResizing = false;
+            }
+            if (!this.isResizing) {
+                return;
+            }
+        
+            const table = this.container.querySelector("table");
+            const cells = table.querySelector('tr').querySelectorAll('th');
+        
+            const oldWidth = this.templateColumns[1];
+            const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left;
+            const totalWidth = table.parentElement.offsetWidth;
+            const newRightWidth = totalWidth - this.templateColumns[0] - newWidth;
+            const oldRightWidth = totalWidth - this.templateColumns[0] - oldWidth;
+            
+            const scale = newRightWidth / oldRightWidth;
+
+            this.templateColumns = this.templateColumns.map((el, index) => index < 2 ? el : el * scale);
+            this.templateColumns[1] = newWidth;
+            const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
+            const sum = newTemplateColumns.reduce((acc, column) => acc + column, 0);
+            newTemplateColumns[newTemplateColumns.length - 1] += totalWidth - sum;
+            for (const t of this.container.querySelectorAll("table")) {
+                t.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            this.isResizing = false;
+        });
     }
 
     handlersGropupProducts() {
@@ -127,7 +172,20 @@ export class TaskOfferInterface {
 
         contentHTML += this.templates.getSummaryHTML(this.manager.groupsData);
 
-        this.container.innerHTML = contentHTML;            
+        this.container.innerHTML = contentHTML;
+        if (!this.newTemplateColumns) {
+            const table = this.container.querySelector("table");
+            const cells = table.querySelector('tr').querySelectorAll('th');
+            this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
+        } else {
+            const tables = this.container.querySelectorAll("table");
+            const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
+            const sum = newTemplateColumns.reduce((acc, column) => acc + column, 0);
+            newTemplateColumns[newTemplateColumns.length - 1] += totalWidth - sum;
+            for (const table of tables) {
+                table.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
+            }
+        }  
     }
 
     // Методы для изменения данных и уведомления TaskManager
