@@ -400,7 +400,12 @@ export class TaskAppInterface {
             this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
         } else {
             const table = this.container.querySelector("table");
-            const newTemplateColumns = this.templateColumns.map(column => Math.parseInt(column));
+            // const newTemplateColumns = this.templateColumns.map(column => Math.parseInt(column));
+            // table.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
+            
+            const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
+            const sum = newTemplateColumns.reduce((acc, column) => acc + column, 0);
+            newTemplateColumns[newTemplateColumns.length - 1] += totalWidth - sum;
             table.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
             // table.style.gridTemplateColumns = this.templateColumns.map(column => parseInt(column)).join('px ') + 'px';
         }
