@@ -173,10 +173,12 @@ export class TaskOfferInterface {
         contentHTML += this.templates.getSummaryHTML(this.manager.groupsData);
 
         this.container.innerHTML = contentHTML;
+
         if (!this.newTemplateColumns) {
             const table = this.container.querySelector("table");
             const cells = table.querySelector('tr').querySelectorAll('th');
             this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
+            console.log("this.templateColumns = ", this.templateColumns);
         } else {
             const tables = this.container.querySelectorAll("table");
             const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
