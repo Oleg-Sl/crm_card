@@ -172,7 +172,7 @@ export class TaskAppInterface {
             const sum = newTemplateColumns.reduce((acc, column) => acc + column, 0);
             newTemplateColumns[newTemplateColumns.length - 1] += totalWidth - sum;
             console.log("newTemplateColumns = ", newTemplateColumns);
-            for (const t in this.container.querySelector("table")) {
+            for (const t in this.container.querySelectorAll("table")) {
                 t.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
             }
             // this.isResizing = false;
