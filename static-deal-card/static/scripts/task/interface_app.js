@@ -169,7 +169,10 @@ export class TaskAppInterface {
             // console.log(">>> ", this.templateColumns.join('px ') + 'px');
             // table.style.gridTemplateColumns = this.templateColumns.join('px ') + 'px';
             const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
+            const sum = newTemplateColumns.reduce((acc, column) => acc + column, 0);
+            newTemplateColumns[newTemplateColumns.length - 1] += totalWidth - sum;
             console.log("newTemplateColumns = ", newTemplateColumns);
+
             table.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
             // this.isResizing = false;
         });
