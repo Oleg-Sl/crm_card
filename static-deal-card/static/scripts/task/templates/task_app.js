@@ -63,7 +63,7 @@ export class Templates {
                                 <div style="width: 100%;">
                                     <div class="task-container_group-header-product-desc">о позиции</div>    
                                 </div>
-                                <div class="resizable" style="cursor: col-resize;"><i class="bi bi-grip-vertical"></i></div>
+                                <div class="resizable" style="cursor: col-resize;"><i class="bi bi-grip-vertical resizable"></i></div>
                             </th>
                             <th>
                                 <div class="task-container_group-header-technology">

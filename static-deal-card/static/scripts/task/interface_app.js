@@ -128,7 +128,8 @@ export class TaskAppInterface {
             if (e.target.classList.contains('resizable')) {
                 this.isResizing = true;
                 // console.log("this.isResizing = ", this.isResizing);
-                this.columnBeingResized = e.target.parentElement;
+                // this.columnBeingResized = e.target.parentElement;
+                this.columnBeingResized = e.target.closest('th');
             }
         });
 
@@ -168,7 +169,7 @@ export class TaskAppInterface {
             const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
             console.log("newTemplateColumns = ", newTemplateColumns);
             table.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
-            // this.isResizing = false;
+            this.isResizing = false;
 
         });
         
