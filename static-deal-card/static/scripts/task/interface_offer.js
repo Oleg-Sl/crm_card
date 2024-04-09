@@ -176,7 +176,10 @@ export class TaskOfferInterface {
 
         if (!this.newTemplateColumns) {
             const table = this.container.querySelector("table");
+            console.log("table = ", table);
+            console.log("table.querySelector('tr') = ", table.querySelector('tr'));
             const cells = table.querySelector('tr').querySelectorAll('th');
+            console.log("cells = ", cells);
             this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
             console.log("this.templateColumns = ", this.templateColumns);
         } else {
