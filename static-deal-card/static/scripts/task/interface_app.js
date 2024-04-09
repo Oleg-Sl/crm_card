@@ -26,7 +26,7 @@ export class TaskAppInterface {
 
         this.isResizing = false;
         this.columnBeingResized = null;
-        this.newTemplateColumns = null;
+        this.templateColumns = null;
 
         this.initHandlers();
     }
@@ -334,7 +334,7 @@ export class TaskAppInterface {
         
         this.container.innerHTML = contentHTML;
         this.addPreviewEventListeners();
-        if (!this.newTemplateColumns) {
+        if (!this.templateColumns) {
             const table = this.container.querySelector("table");
             const cells = table.querySelector('tr').querySelectorAll('th');
             this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));

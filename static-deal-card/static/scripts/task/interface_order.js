@@ -25,7 +25,7 @@ export class TaskOrderInterface {
 
         this.isResizing = false;
         this.columnBeingResized = null;
-        this.newTemplateColumns = null;
+        this.templateColumns = null;
 
         this.initHandlers();
     }
@@ -101,7 +101,7 @@ export class TaskOrderInterface {
         contentHTML += this.templates.getSummaryHTML(this.manager.groupsData);
 
         this.container.innerHTML = contentHTML;
-        if (!this.newTemplateColumns) {
+        if (!this.templateColumns) {
             const table = this.container.querySelector("table");
             const cells = table.querySelector('tr').querySelectorAll('th');
             this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));

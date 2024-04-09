@@ -25,7 +25,7 @@ export class TaskOfferInterface {
         
         this.isResizing = false;
         this.columnBeingResized = null;
-        this.newTemplateColumns = null;
+        this.templateColumns = null;
 
         this.initHandlers();
     }
@@ -38,6 +38,11 @@ export class TaskOfferInterface {
 
         this.container.addEventListener('mousedown', (e) => {
             if (e.target.classList.contains('resizable')) {
+                const table = this.container.querySelector("table");
+                if (!this.templateColumns && table.offsetWidth > 0 && table.offsetHeight > 0) {
+                    const cells = table.querySelector('tr').querySelectorAll('th');
+                    this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
+                }
                 this.isResizing = true;
                 this.columnBeingResized = e.target.closest('th');
             }
@@ -174,14 +179,12 @@ export class TaskOfferInterface {
 
         this.container.innerHTML = contentHTML;
 
-        if (!this.newTemplateColumns) {
+        if (!this.templateColumns) {
             const table = this.container.querySelector("table");
-            console.log("table = ", table);
-            console.log("table.querySelector('tr') = ", table.querySelector('tr'));
-            const cells = table.querySelector('tr').querySelectorAll('th');
-            console.log("cells = ", cells);
-            this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
-            console.log("this.templateColumns = ", this.templateColumns);
+            if (table.offsetWidth > 0 && table.offsetHeight > 0) {
+                const cells = table.querySelector('tr').querySelectorAll('th');
+                this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
+            }
         } else {
             const tables = this.container.querySelectorAll("table");
             const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
