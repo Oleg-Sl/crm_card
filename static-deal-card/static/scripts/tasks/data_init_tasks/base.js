@@ -14,30 +14,6 @@ import {
 
 
 export class TaskTemaplateBase {
-
-    // getFieldBody() {
-    //     const dealDesc = this.dataObject.dealDesc.getChangedData();
-    //     let fields = {
-    //         TITLE: `🎰 | ${dealDesc[FIELD_DEAL_ORDER_NUMBER] || ""} | ${dealDesc[FIELD_DEAL_TITLE] || ""} | Смета`,
-    //         CREATED_BY: this.dataObject.userCurrent.ID,
-    //         RESPONSIBLE_ID: RESPONSIBLE_ID,
-    //         DESCRIPTION: this.getTaskBody(),
-    //         UF_CRM_TASK: [`D_${this.dataObject.dealId}`]
-    //     };
-    //     return fields;
-    // }
-
-//     getFullTaskData(dataObject) {
-//         this.dataObject = dataObject;
-//         // const clients = this.dataObject.dealClients.getData();
-//         return `Описание Заказа (Что делаем, сколько, требования, особенности)
-// ${this.getDescriptionOrder(this.dataObject)}
-// ${this.getTaskData(this.dataObject)}
-// ${this.getSources(this.dataObject)}
-// ${this.getDocs(this.dataObject)}
-//         `;
-//     }
-
     getDealData(dataObject) {
         this.dataObject = dataObject;
         const clients = this.dataObject.dealClients.getData();

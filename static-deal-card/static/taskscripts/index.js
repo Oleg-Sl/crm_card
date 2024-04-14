@@ -1,42 +1,6 @@
 import BitrixService from "./bx24/api.js";
-import { TaskData } from "./task_data.js";
-import {
-    SP_GROUP_ID,
-    SP_PRODUCT_ID,
-    SP_TECHOLOGY_ID,
-    SP_TECHOLOGY_TYPE_ID,
-    SP_FILMS_ID,
-    SP_WIDTH_ID,
-    SP_LAMINATION_ID,
-    SP_DEPENDENCE_ID,
-
-    // SP_GROUP_FIELDS,
-    // SP_PRODUCT_FIELDS,
-    // SP_TECHOLOGY_FIELDS,
-
-    SP_WIDTH_FIELDS,
-    SP_DEPENDENCE_FIELDS,
-
-    // FIELD_DEAL_RESPONSIBLE_MOP,
-    // FIELD_DEAL_RESPONSIBLE_MOS,
-    // FIELD_DEAL_OBSERVERS,
-    // FIELD_DEAL_ACTS_ID,
-    // FIELD_DEAL_INVOICES_ID,
-
-    // FIELD_DEAL_TASK_ESTIMATE,
-    // FIELD_DEAL_TASK_COMMERC_OFFER,
-    // FIELD_DEAL_TASK_ORDER,
-    // FIELD_DEAL_TASK_PAYMENT,
-    // FIELD_DEAL_TASK_PREPAYMENT,
-
-    FIELD_DEAL_TASK_ESTIMATE,
-    FIELD_DEAL_TASK_COMMERC_OFFER,
-
-} from './parameters.js';
-import { TaskEstimateAppInterface } from './interface/estimate.js';
-import { TaskOrderAppInterface } from './interface/order.js';
-import { TemplatesOrderTask } from './templates/task_order.js';
-import { TemplatesEstimateTask } from './templates/task_estimate.js';
+import { TaskData } from "./data/task_data.js";
+import { TaskAppInterface } from './interface/task_interface.js';
 
 
 class App {
@@ -44,93 +8,88 @@ class App {
         this.taskId = taskId;
         this.bx24 = bx24;
 
-        this.dataManager = new TaskData(this.bx24, this.dealId);
-
         this.containerTask = document.querySelector('#taskContainer');
+        this.btnEdit = document.querySelector('#btnEditTaskChanges');
         this.btnSave = document.querySelector('#btnSaveTaskChanges');
         this.btnCancel = document.querySelector('#btnCancelTaskChanges');
-        this.uiTask = null;
-
-        this.dealId = null;
-    }
-
-    async init() {
-        const taskData = await this.getTaskData();
-        this.dealId = this.extractNumberFromArray(taskData?.ufCrmTask);
-        if (!this.dealId) {
-            throw new Error("Deal id not found");
-        }
         
-        this.initData();
+        this.dataManager = new TaskData(this.bx24, this.taskId);
+        this.uiTask = new TaskAppInterface(this.containerTask, this.dataManager);
+
         this.initHandlers();
     }
 
-    async initData() {
-        const data = await this.getDealData();
-
-        this.deal = data?.deal || {};
-        console.log("deal = ", this.deal);
-
-        const taskEstimate = this.deal?.[FIELD_DEAL_TASK_ESTIMATE];
-        const taskCommOffer = this.deal?.[FIELD_DEAL_TASK_COMMERC_OFFER];
-        console.log("taskEstimate = ", taskEstimate);
-        console.log("taskCommOffer = ", taskCommOffer);
-        console.log("taskId = ", this.taskId);
-
-        if (this.taskId == taskEstimate) {
-            this.uiTask = new TaskEstimateAppInterface(this.containerTask, this.dataManager, new TemplatesEstimateTask());
-        } else if (this.taskId == taskCommOffer) {
-            this.uiTask = new TaskOrderAppInterface(this.containerTask, this.dataManager, new TemplatesOrderTask());
-        } else {
+    async init() {
+        await this.dataManager.init();
+        if (this.taskId != this.dataManager.taskEstimate && this.taskId != this.dataManager.taskCommOffer) {
             throw new Error("Task not found");
         }
 
-        this.uiTask.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
-        this.uiTask.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);
+        this.uiTask.init();
+        this.uiTask.render(false);
+    }
 
-        this.dataManager.setSmartFields(data.fieldGroup, data.fieldProduct, data.fieldTechnology);
-        this.dataManager.setMaterialsData(data.dependencesMaterial, data.technologiesTypes, data.films, data.widths, data.laminations);
-        this.dataManager.setData(data.groups, data.products, data.technologies);
-        
-        // this.uiTask.setAtributInputs();
+    async update() {
+        await this.dataManager.init();
+        if (this.taskId != this.dataManager.taskEstimate && this.taskId != this.dataManager.taskCommOffer) {
+            throw new Error("Task not found");
+        }
+
+        this.uiTask.render(false);
     }
 
     initHandlers() {
-        // сохранение измененных данных
-        this.btnSave.addEventListener('click', async (event) => {
-            const target = event.target;
-            const spinner = target.parentNode.querySelector(`.spinner`);
-            spinner.classList.remove('d-none');
-            const smartsData = this.getChangedData();
-            // Обновляем товары
-            let batch = {};
-            for (let smart of smartsData) {
-                batch[`${smart.entityTypeId}_${smart.entityId}`] = {
-                    method: "crm.item.update",
-                    params: {
-                        entityTypeId: smart.entityTypeId,
-                        id: smart.entityId,
-                        fields: smart
-                    }
+        this.btnEdit.addEventListener('click', this.handleEditChanges.bind(this));
+        this.btnSave.addEventListener('click', this.handleSaveChanges.bind(this));
+        this.btnCancel.addEventListener('click', this.handleCancelChanges.bind(this));
+    }
+
+    async handleEditChanges(event) {
+        this.uiTask.render(true);
+        this.btnEdit.classList.add('d-none');
+        this.btnSave.classList.remove('d-none');
+    }
+
+    async handleSaveChanges(event) {
+        const target = event.target;
+        const spinner = target.parentNode.querySelector(`.spinner`);
+        spinner.classList.remove('d-none');
+        const smartsData = this.getChangedData();
+
+        let batch = {};
+        for (let smart of smartsData) {
+            batch[`${smart.entityTypeId}_${smart.entityId}`] = {
+                method: "crm.item.update",
+                params: {
+                    entityTypeId: smart.entityTypeId,
+                    id: smart.entityId,
+                    fields: smart
                 }
             }
+        }
 
-            if (Object.keys(batch).length > 0) {
-                const resBatch = await this.bx24.callBatchJson(batch);
-                console.log("resBatch = ", resBatch);
-            }
+        if (Object.keys(batch).length > 0) {
+            const resBatch = await this.bx24.callBatchJson(batch);
+            console.log("resBatch = ", resBatch);
+        }
 
-            spinner.classList.add('d-none');
-        })
+        spinner.classList.add('d-none');
+        this.btnSave.classList.add('d-none');
+        this.btnEdit.classList.remove('d-none');
+        this.uiTask.render(false);
+        
+    }
 
-        // отменить изменения
-        this.btnCancel.addEventListener('click', async (event) => {
-            const target = event.target;
-            // const spinner = target.parentNode.querySelector(`.spinner`);
-            // spinner.classList.remove('d-none');
-            await this.initData();
-            // spinner.classList.add('d-none');
-        })
+    async handleCancelChanges(event) {
+        const target = event.target;
+        const spinner = target.parentNode.querySelector(`.spinner`);
+        spinner.classList.remove('d-none');
+
+        await this.update();
+
+        spinner.classList.add('d-none');
+        this.btnSave.classList.add('d-none');
+        this.btnEdit.classList.remove('d-none');
     }
 
     updateSources(sourceFilesData) {
@@ -138,103 +97,17 @@ class App {
         this.dataManager.setSources(sourceFilesData);
     }
 
-    async getTaskData() {
-        const responseTask = await this.bx24.callMethod("tasks.task.get", {
-            taskId: this.taskId,
-            select: ['ID', 'TITLE', 'UF_CRM_TASK']
-        });
-        return responseTask?.result?.task;
-    }
-
-    async getDealData() {
-        const cmd = {
-            deal: `crm.deal.get?id=${this.dealId}`,
-
-            fieldGroup: `crm.item.fields?entityTypeId=${SP_GROUP_ID}`,
-            fieldProduct: `crm.item.fields?entityTypeId=${SP_PRODUCT_ID}`,
-            fieldTechnology: `crm.item.fields?entityTypeId=${SP_TECHOLOGY_ID}`,
-
-            [SP_GROUP_ID]: `crm.item.list?entityTypeId=${SP_GROUP_ID}&filter[parentId2]=${this.dealId}`,
-            [SP_PRODUCT_ID]: `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}`,
-            [SP_TECHOLOGY_ID]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}`,
-           
-            [SP_TECHOLOGY_TYPE_ID]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_TYPE_ID}&select[]=id&select[]=title`,
-            [SP_FILMS_ID]: `crm.item.list?entityTypeId=${SP_FILMS_ID}&select[]=id&select[]=title`,
-            [SP_WIDTH_ID]: `crm.item.list?entityTypeId=${SP_WIDTH_ID}&select[]=id&select[]=title&select[]=${SP_WIDTH_FIELDS.value}`,
-            [SP_LAMINATION_ID]: `crm.item.list?entityTypeId=${SP_LAMINATION_ID}&select[]=id&select[]=title`,
-            [SP_DEPENDENCE_ID]: `crm.item.list?entityTypeId=${SP_DEPENDENCE_ID}&select[]=id&select[]=title&select[]=${SP_DEPENDENCE_FIELDS.film}&select[]=${SP_DEPENDENCE_FIELDS.laminations}&select[]=${SP_DEPENDENCE_FIELDS.widths}`,
-        };
-        const response = await this.bx24.callMethod("batch.json", {
-            halt: 0,
-            cmd: cmd
-        });
-        const data = response?.result?.result;
-        
-        const deal = data?.deal;
-        const fieldGroup = data?.fieldGroup?.fields;
-        const fieldProduct = data?.fieldProduct?.fields;
-        const fieldTechnology = data?.fieldTechnology?.fields;
-
-        const groups = data?.[SP_GROUP_ID]?.items || [];
-        const products = data?.[SP_PRODUCT_ID]?.items || [];
-        const technologies = data?.[SP_TECHOLOGY_ID]?.items || [];
-
-        const technologiesType = data?.[SP_TECHOLOGY_TYPE_ID]?.items || [];
-        const films = data?.[SP_FILMS_ID]?.items || [];
-        const widths = data?.[SP_WIDTH_ID]?.items || [];
-        const laminations = data?.[SP_LAMINATION_ID]?.items || [];
-        const dependenceMaterial = data?.[SP_DEPENDENCE_ID]?.items || [];
-
-        return {
-            deal: deal,
-
-            fieldGroup: fieldGroup,
-            fieldProduct: fieldProduct,
-            fieldTechnology: fieldTechnology,
-
-            groups: groups,
-            products: products,
-            technologies: technologies,
-
-            technologiesTypes: technologiesType,
-            films: films,
-            widths: widths,
-            laminations: laminations,
-            dependencesMaterial: dependenceMaterial,
-        };
-    }
-
     getChangedData() {
         return this.dataManager.getChangedData();
     }
-
-    extractNumberFromArray(arr) {
-        for (let item of arr) {
-            if (item.startsWith('D_')) {
-                const number = parseInt(item.substring(2));
-                if (!isNaN(number)) {
-                    return number;
-                }
-            }
-        }
-        return null;
-    }
-
 };
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    BX24.init(async function() {
-        // const taskIdEstimate = 74117;
-        // const taskIdCommercOffer = 74193;
+document.addEventListener("DOMContentLoaded", async () => {
+    BX24.init(async () => {
         const bx24 = new BitrixService();
         await bx24.init();
-        // const app = new App(taskIdEstimate, bx24);
         const app = new App(taskId, bx24);
         app.init();
     });
 });
-
-
-
-

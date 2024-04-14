@@ -10,7 +10,6 @@ import {
     FIELD_DEAL_TASK_ORDER,
     FIELD_DEAL_TASK_PAYMENT,
     FIELD_DEAL_TASK_PREPAYMENT,
-
 } from './parameters.js';
 
 import { TaskMenu } from './menu.js';

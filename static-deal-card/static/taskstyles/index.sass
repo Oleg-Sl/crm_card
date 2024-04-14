@@ -12,8 +12,12 @@ $input-height: 17px
         cursor: pointer
     >div
         position: relative
-    .task-buttons-save
+    .task-buttons-save, .task-buttons-cancel
         padding-left: 17px
+    #btnEditTaskChanges
+        color: #35f33f
+        &:hover
+            color: #0aaf1d
     #btnSaveTaskChanges
         color: #056cda
         &:hover
@@ -21,13 +25,14 @@ $input-height: 17px
     #btnCancelTaskChanges
         color: #e63636
         &:hover
-            color: #ff0000
+            color: #8e0b0b
 .d-none
     display: none
 
 .spinner
     position: absolute
     left: 0px
+    bottom: 2px
     margin-left: 4px
     border: 3px solid rgba(0, 0, 0, 0.1)
     border-left-color: #7983ff
@@ -57,12 +62,19 @@ $input-height: 17px
     100%
         transform: rotate(360deg)
 
+.employee-dis
+    border: 3px solid #5FFFA9 !important
+
+.employee-mos
+    border: 3px solid #11A2E0 !important
+
 #taskContainer
     .task-container__group-title
         span
             color: #464A4E
             font: $group-title-font
         input
+            width: 75%
             background: none
             border: 1px solid #00000000
             font: $group-title-font

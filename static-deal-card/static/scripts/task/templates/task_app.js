@@ -205,7 +205,7 @@ export class Templates {
                 <td>
                     <div class="task-container__item-info">
                         <div class="task-container__item-info-title">
-                            <textarea name="" id="" placeholder="название" title="${this.customToString(productData.title)}" data-product-field="title" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">${this.customToString(productData.title)}</textarea>
+                            <textarea name="" id="" placeholder="название" title="${this.customToString(productData.title)}" data-product-field="title" data-type="textarea" data-group-id="${groupId}" data-product-id="${productData.id}">${this.customToString(productData.title)}</textarea>
                         </div>
                         <div class="task-container__item-info-count">
                             <input type="number" name="" id="" placeholder="количество" value="${this.customToString(productData.quantity)}" step="1" data-product-field="quantity" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">

@@ -12,10 +12,6 @@ import {
     SP_LAMINATION_ID,
     SP_DEPENDENCE_ID,
 
-    SP_GROUP_FIELDS,
-    SP_PRODUCT_FIELDS,
-    SP_TECHOLOGY_FIELDS,
-
     SP_WIDTH_FIELDS,
     SP_DEPENDENCE_FIELDS,
 } from '../parameters.js';

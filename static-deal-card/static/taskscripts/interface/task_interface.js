@@ -1,30 +1,19 @@
-// import { Templates } from '../templates/task_estimate.js';
+import { Template } from '../templates/task_template.js';
 
 
-export class TaskEstimateAppInterface {
-    constructor(container, manager, templates) {
+export class TaskAppInterface {
+    constructor(container, dataManager) {
         this.container = container;
-        this.manager = manager;
-        this.templates = templates;
-        // this.templates = new Templates();
+        this.dataManager = dataManager;
 
-        this.fields = {
-            group: null,
-            product: null,
-            technology: null
-        };
-        this.materials = {
-            dependences: null,
-            technologiesTypes: null,
-            films: null,
-            widths: null,
-            laminations: null
-        };
-
-        this.manager.addObserver(this);
-
-
+        this.templates = new Template();
+    }
+    
+    init() {
+        this.templates.setSmartFields(this.dataManager.fields);
+        this.templates.setMaterialsData(this.dataManager.materials);
         this.initHandlers();
+        this.dataManager.addObserver(this);
     }
 
     initHandlers() {
@@ -59,6 +48,10 @@ export class TaskEstimateAppInterface {
             const groupId = target.dataset.groupId;
             const productId = target.dataset.productId;
             const productField = target.dataset.productField;
+            console.log("target", target);
+            console.log("groupId", groupId);
+            console.log("productId", productId);
+            console.log("productField", productField);
 
             if (target.tagName === 'INPUT' && target.dataset.type === 'text' && groupId && productId && productField) {
                 this.updateTaskProduct(groupId, productId, {[productField]: target.value});
@@ -99,47 +92,46 @@ export class TaskEstimateAppInterface {
 
     }
 
-    setSmartFields(fieldGroup, fieldProduct, fieldTechnology) {
-        this.fields = {
-            group: fieldGroup,
-            product: fieldProduct,
-            technology: fieldTechnology
-        };
-        this.templates.setSmartFields(this.fields);
-    }
-
-    setMaterialsData(dependencesMaterial, technologiesTypes, films, widths, laminations) {
-        this.materials = {
-            dependences: dependencesMaterial,
-            technologiesTypes: technologiesTypes,
-            films: films,
-            widths: widths,
-            laminations: laminations
-        };
-        this.templates.setMaterialsData(this.materials);
-    }
-
-    update() {
+    render(editable = true) {
         let contentHTML = '';
         let number = 0;
-        for (const group of this.manager.groupsData) {
-            contentHTML += this.templates.getGroupHTML(group, ++number);
+        for (const group of this.dataManager.groupsData) {
+            contentHTML += this.templates.getGroupHTML(group, ++number, editable);
         }
+        contentHTML += this.templates.getSummaryHTML(this.dataManager.groupsData);
         this.container.innerHTML = contentHTML;            
     }
 
     // Методы для изменения данных и уведомления TaskManager
     updateTaskGroup(groupId, newData) {
-        this.manager.updateGroup(groupId, newData);
+        this.dataManager.updateGroup(groupId, newData);
     }
 
     updateTaskProduct(groupId, productId, newData) {
-        this.manager.updateProduct(groupId, productId, newData);
+        this.dataManager.updateProduct(groupId, productId, newData);
     }
 
     updateTaskTechnology(groupId, productId, techId, newData) {
-        this.manager.updateTechnology(groupId, productId, techId, newData);
+        this.dataManager.updateTechnology(groupId, productId, techId, newData);
     }
 
-    setAtributInputs() {}
+    // setSmartFields(fieldGroup, fieldProduct, fieldTechnology) {
+    //     this.fields = {
+    //         group: fieldGroup,
+    //         product: fieldProduct,
+    //         technology: fieldTechnology
+    //     };
+    //     this.templates.setSmartFields(this.fields);
+    // }
+
+    // setMaterialsData(dependencesMaterial, technologiesTypes, films, widths, laminations) {
+    //     this.materials = {
+    //         dependences: dependencesMaterial,
+    //         technologiesTypes: technologiesTypes,
+    //         films: films,
+    //         widths: widths,
+    //         laminations: laminations
+    //     };
+    //     this.templates.setMaterialsData(this.materials);
+    // }
 }

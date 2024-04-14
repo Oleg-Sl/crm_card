@@ -1,5 +1,3 @@
-
-
 // Парсит и возвращает число из строки типа "22|RUB"
 export function parseAmount(inputString) {
     try {

@@ -1,4 +1,4 @@
-import { parseAmount, convertYNToBoolean, parseDateFromDatetimeString } from './common.js';
+import { parseAmount, convertYNToBoolean, parseDateFromDatetimeString } from '../common/common.js';
 import {
     SP_GROUP_ID,
     SP_PRODUCT_ID,
@@ -10,12 +10,11 @@ import {
 
     SP_WIDTH_FIELDS,
     SP_DEPENDENCE_FIELDS,
-} from './parameters.js';
+} from '../parameters.js';
 
 
 export class Product {
     constructor(data) {
-        console.log('data = ', data);
         this.data = data;
         this.parentId = data?.[`parentId${SP_GROUP_ID}`];
 
@@ -57,16 +56,6 @@ export class Product {
         this.businessTripAccommodation = data?.[SP_PRODUCT_FIELDS.businessTripAccommodation] || []; // Командировка - проживание ночей
         this.businessTripNutritions = data?.[SP_PRODUCT_FIELDS.businessTripNutritions] || [];       // Командировка - питание дней
         this.businessTripMileages = data?.[SP_PRODUCT_FIELDS.businessTripMileages] || [];           // Командировка - пробег
-
-        // deliveryFrequency: "ufCrm29_1707121587",        // Доставка - сколько раз
-        // deliveryCostPerTime: "ufCrm29_1707121613",      // Доставка - себестоимость за раз
-        // sourcesFiles: "ufCrm29_1710345391",             // Исходник - фото
-    
-        // : "ufCrm29_1711268093",           // Командировка - сколько человек
-        // : "ufCrm29_1711268129",             // Командировка - сколько дней
-        // : "ufCrm29_1711268163",    // Командировка - проживание ночей
-        // : "ufCrm29_1711268191",       // Командировка - питание дней
-        // : "ufCrm29_1711268270",         // Командировка - пробег
 
         this.technologies = [];
         this.changedFields = {};
@@ -113,6 +102,7 @@ export class Product {
     }
 
     updateField(field, value) {
+        console.log("updateField", field, value);
         if (field in this) {
             this[field] = value;
         } else {

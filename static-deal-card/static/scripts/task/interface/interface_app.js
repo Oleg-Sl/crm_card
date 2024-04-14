@@ -1,4 +1,4 @@
-import { Templates } from './templates/task_app.js';
+import { Templates } from '../templates/task_app.js';
 
 
 export class TaskAppInterface {

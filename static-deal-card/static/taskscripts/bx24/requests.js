@@ -1,10 +1,7 @@
 
-const WEBHOOK = "https://007.bitrix24.ru/rest/255/y68dho0vjxn8pstg/";
-
-
 export default class Bitrix24 {
     constructor() {
-        // this.webhook = WEBHOOK;
+        this.webhook = null;
 
         this.debugMode = true;
         this.batchLength = 50;      // Максимальное количество запросов в пакете

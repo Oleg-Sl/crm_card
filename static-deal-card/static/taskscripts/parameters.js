@@ -1,19 +1,21 @@
 
 export const FOLDER_PREVIEW_ID = 947233;
-
 export const FIELD_DEAL_ASSIGNED_BY_ID = 'ASSIGNED_BY_ID';
 
 // ID задачи СМЕТА
 export const FIELD_DEAL_TASK_ESTIMATE = 'UF_CRM_1694710433';
+
 // ID задачи КП
 export const FIELD_DEAL_TASK_COMMERC_OFFER = 'UF_CRM_1709109026';
+
 // ID задачи  ЗАКАЗ
 export const FIELD_DEAL_TASK_ORDER = 'UF_CRM_1661089895';
+
 // ID задачи  СЧЕТ НА ОПЛАТУ
 export const FIELD_DEAL_TASK_PAYMENT = 'UF_CRM_1661089811';
+
 // ID задачи  СЧЕТ НА ПРЕДОПЛАТУ
 export const FIELD_DEAL_TASK_PREPAYMENT = 'UF_CRM_1661253202';
-
 
 // Поля блока - описание сделки
 export const FIELD_DEAL_TITLE = 'TITLE';
@@ -69,13 +71,8 @@ export const SP_TECHOLOGY_FIELDS = {
     id: "id",
     inKP: "ufCrm31_1707121933",           // Технология - в КП
     MCHS: "ufCrm31_1707121971",           // Технология - МЧС
-    // general: "ufCrm31_1707122029",        // Технология изготовления
-    // film: "ufCrm31_1707122264",           // Технология - Пленка
-    // lamination: "ufCrm31_1707121952",     // Технология - Ламинация
     price: "ufCrm31_1707122007",          // Технология - Цена
-    // photo: "ufCrm31_1707121761",          // Исходник - фото ----------------
     CHPP: "ufCrm31_1707121880",           // Расход - ЧПП
-    // width: "ufCrm31_1707121895",          // Расход - Ширина
     runningMeter: "ufCrm31_1707121857",   // Расход - Погонный метр
     installArea: "ufCrm31_1707121805",    // Площадь монтажа
     installCost: "ufCrm31_1707121910",    // Себестоимость монтажа
@@ -159,8 +156,10 @@ export const SP_GROUP_FIELDS = {
 
 // Смарт процесс - список названий (видов) технологий
 export const SP_TECHOLOGY_TYPE_ID = 188;
+
 // Смарт процесс - список названий (видов) пленок
 export const SP_FILMS_ID = 172;
+
 // Смарт процесс - список доступных ширин пленок 
 export const SP_WIDTH_ID = 157;
 export const SP_WIDTH_FIELDS = {
@@ -168,8 +167,10 @@ export const SP_WIDTH_FIELDS = {
     title: "title",                     // Название
     value: "ufCrm43_1709380138",        // Значение
 };
+
 // Смарт процесс - список доступных ламинаций
 export const SP_LAMINATION_ID = 131;
+
 // Смарт процесс - список зависимостей ламинаций и ширин от пленок
 export const SP_DEPENDENCE_ID = 189;
 export const SP_DEPENDENCE_FIELDS = {
@@ -179,15 +180,3 @@ export const SP_DEPENDENCE_FIELDS = {
     laminations: "ufCrm33_1709222893",      // Список ID ламинаций
     widths: "ufCrm33_1709370111",           // Список ID ширин
 };
-
-
-
-// // Смарт процесс - список пленок, ламинаций и ширин
-// export const SP_FILMS_ID = 189;
-// export const SP_FILMS_FIELDS = {
-//     id: "id",
-//     title: "title",  
-//     laminations: "ufCrm33_1707122194",  // Список ламинаций
-//     widths: "ufCrm33_1707122864",       // Список ширин пленок
-// };
-

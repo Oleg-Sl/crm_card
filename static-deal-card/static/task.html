@@ -10,6 +10,29 @@
     <!-- <script src="//api.bitrix24.com/api/v1/"></script> -->
     <script>
         // let dealId = {{ id }};
+        const taskId = 74117;
+        // const taskId = 74193;
+        class AppOption {
+            constructor() {
+                
+            }
+            get(key) {
+                return 'https://007.bitrix24.ru/rest/255/y68dho0vjxn8pstg/';
+            }
+        }
+        class Bx24 {
+            constructor() {
+                this.appOption = new AppOption();
+            }
+            init(callback) {
+                callback();
+            }
+            getDomain() {
+                return "https://crm.bitrix24.com";
+            };
+        };
+        const BX24 = new Bx24();
+
     </script>
     <title>Document</title>
 </head>
@@ -17,30 +40,20 @@
     <div class="task-buttons">
         <div class="task-buttons-save">
             <div class="spinner d-none"></div>
-            <div id="btnSaveTaskChanges">изменить</div>
+            <div id="btnEditTaskChanges">изменить</div>
+        </div>
+        <div class="task-buttons-change">
+            <div class="spinner d-none"></div>
+            <div id="btnSaveTaskChanges" class="d-none">сохранить</div>
         </div>
         <div>&nbsp;|&nbsp;</div>
         <div class="task-buttons-cancel">
+            <div class="spinner d-none"></div>
             <div id="btnCancelTaskChanges">отменить</div>
-            <!-- <div class="spinner"></div> -->
         </div>
     </div>
     <div id="taskContainer">
     </div>
-    <div class="task-container__summary" style="
-        display: flex;
-        font-family: Roboto;
-        font-size: 10px;
-        font-weight: 400;
-        color: #464A4E;
-        gap: 20px;
-    ">
-        <div>Позиций: <span id="taskProductsPositions">1</span></div>
-        <div>Кол-во: <span id="taskProductsCount">1</span></div>
-        <div>М прод.: <span id="taskProductsAreaMaterial">1</span></div>
-        <div>М монт.: <span id="taskProductsAreaInstall">1</span></div>
-    </div>
-
 
     <!-- <script type="module" src="{% static 'taskscripts/index.js' %}"></script> -->
     <script type="module" src="./taskscripts/index.js"></script>
