@@ -347,7 +347,7 @@ export class TaskAppInterface {
         this.manager.createProduct(groupId);
     }
 
-    copyProduct(groupId, productId) {
+    createCopyProduct(groupId, productId) {
         this.manager.createCopyProduct(groupId, productId);
     }
 
