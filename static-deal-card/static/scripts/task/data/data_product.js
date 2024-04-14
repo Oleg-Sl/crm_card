@@ -6,6 +6,8 @@ import {
 } from '../../parameters.js';
 
 
+const FIELDS_MONEY = ['designCost', 'installCost', 'dismantlingCost', 'businessTripCost', 'deliveryCostPerTime'];
+
 export class Product {
     constructor(data) {
         this.data = data;
@@ -141,7 +143,9 @@ export class Product {
         for (const key in SP_PRODUCT_FIELDS) {
             if (key !== 'id' && key in this) {
                 const fieldTitle = SP_PRODUCT_FIELDS[key];
-                if (this[key] === true) {
+                if (key in this.initialValues) {
+                    fieldsObject[fieldTitle] = `${fieldsObject[key]}|RUB"`;
+                } else if (this[key] === true) {
                     fieldsObject[fieldTitle] = 'Y';
                 } else if (this[key] === false) {
                     fieldsObject[fieldTitle] = 'N';
