@@ -143,10 +143,7 @@ export class Product {
         for (const key in SP_PRODUCT_FIELDS) {
             if (key !== 'id' && key in this) {
                 const fieldTitle = SP_PRODUCT_FIELDS[key];
-                console.log("key = ", key);
-                console.log("this[key] = ", this[key]);
-                console.log("FIELDS_MONEY = ", FIELDS_MONEY);
-                if (key in FIELDS_MONEY) {
+                if (FIELDS_MONEY.includes(key)) {
                     fieldsObject[fieldTitle] = `${this[key] || 0}|RUB"`;
                 } else if (this[key] === true) {
                     fieldsObject[fieldTitle] = 'Y';
