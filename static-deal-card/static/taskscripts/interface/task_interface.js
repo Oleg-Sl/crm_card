@@ -48,10 +48,6 @@ export class TaskAppInterface {
             const groupId = target.dataset.groupId;
             const productId = target.dataset.productId;
             const productField = target.dataset.productField;
-            console.log("target", target);
-            console.log("groupId", groupId);
-            console.log("productId", productId);
-            console.log("productField", productField);
 
             if (target.tagName === 'INPUT' && target.dataset.type === 'text' && groupId && productId && productField) {
                 this.updateTaskProduct(groupId, productId, {[productField]: target.value});
