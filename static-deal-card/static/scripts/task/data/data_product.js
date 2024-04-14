@@ -139,7 +139,7 @@ export class Product {
     getFieldsObject() {
         const fieldsObject = {};
         for (const key in SP_PRODUCT_FIELDS) {
-            if (key !== 'id' && Object.prototype.hasOwnProperty.call(SP_PRODUCT_FIELDS, key)) {
+            if (key !== 'id' && key in this) {
                 if (this[key] === true) {
                     fieldsObject[key] = 'Y';
                 } else if (this[key] === false) {

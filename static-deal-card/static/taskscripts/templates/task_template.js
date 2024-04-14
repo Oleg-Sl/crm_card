@@ -152,7 +152,7 @@ export class Template {
                                 <textarea name="" id="" placeholder="название" title="${this.customToString(productData.title)}" data-product-field="title" data-type="textarea" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>${this.customToString(productData.title)}</textarea>
                             </div>
                             <div class="task-container__item-count">
-                                <input type="text" name="" id="" placeholder="количество" title="${this.customToString(productData.quantity)}" value="${this.customToString(productData.quantity)}" data-product-field="quantity" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}ly>
+                                <input type="text" name="" id="" placeholder="количество" title="${this.customToString(productData.quantity)}" value="${this.customToString(productData.quantity)}" data-product-field="quantity" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                             </div>
                             <div class="task-container__item-desc">
                                 <textarea name="" id=""  rows="3" placeholder="описание" data-product-field="description" data-type="textarea" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'} title="${this.customToString(productData.description)}" >${this.customToString(productData.description)}</textarea>
@@ -183,13 +183,13 @@ export class Template {
                 <td class="block-center">
                     <div class="task-container__item-measure">
                         <div class="task-container__item-measure-status">
-                            <input type="text" name="" id="" title="${this.customToString(productData.measurement)}" value="${this.customToString(productData.measurement)}" data-product-field="measurement" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}ly>
+                            <input type="text" name="" id="" title="${this.customToString(productData.measurement)}" value="${this.customToString(productData.measurement)}" data-product-field="measurement" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                         </div>
                         <div class="task-container__item-measure-address">
-                            <input type="text" name="" id="" title="${this.customToString(productData.measurementAddress)}" value="${this.customToString(productData.measurementAddress)}" data-product-field="measurementAddress" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}ly>
+                            <input type="text" name="" id="" title="${this.customToString(productData.measurementAddress)}" value="${this.customToString(productData.measurementAddress)}" data-product-field="measurementAddress" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                         </div>
                         <div class="task-container__item-measure-costprice">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="себест. замера" title="${this.customToString(productData.measurementCost)}" value="${this.customToString(productData.measurementCost)}" data-product-field="measurementCost" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}ly>
+                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="себест. замера" title="${this.customToString(productData.measurementCost)}" value="${this.customToString(productData.measurementCost)}" data-product-field="measurementCost" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                         </div>
                     </div>
                 </td>
@@ -210,7 +210,7 @@ export class Template {
                             </select>
                         </div>
                         <div class="task-container__item-mounting-count-day">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сколько дней" title="${this.customToString(productData.installDays)}" value="${this.customToString(productData.installDays)}" data-product-field="installDays" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}ly>
+                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сколько дней" title="${this.customToString(productData.installDays)}" value="${this.customToString(productData.installDays)}" data-product-field="installDays" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                         </div>
                         <div class="task-container__item-mounting-symbol-mul">
                             <i class="bi bi-x"></i>
@@ -221,7 +221,7 @@ export class Template {
                             </select>
                         </div>
                         <div class="task-container__item-mounting-costprice">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="себ. аренды за день" title="${this.customToString(productData.installCost)}" value="${this.customToString(productData.installCost)}" data-product-field="installCost" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}ly>
+                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="себ. аренды за день" title="${this.customToString(productData.installCost)}" value="${this.customToString(productData.installCost)}" data-product-field="installCost" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                         </div>
                     </div>
                 </td>
@@ -233,14 +233,14 @@ export class Template {
                             </select>
                         </div>
                         <div class="task-container__item-deadlines-data">
-                            <input type="date" name="" id="" title="${this.customToString(productData.termsDate)}" value="${this.customToString(productData.termsDate)}" data-product-field="termsDate" data-type="date" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}ly>
+                            <input type="date" name="" id="" title="${this.customToString(productData.termsDate)}" value="${this.customToString(productData.termsDate)}" data-product-field="termsDate" data-type="date" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                         </div>
                     </div>
                 </td>
                 <td class="block-center">
                     <div class="task-container__item-dismantling">
                         <div class="task-container__item-dismantling-area">
-                            <input type="number" name="" id="" placeholder="площадь" title="${this.customToString(productData.dismantlingArea)}" value="${this.customToString(productData.dismantlingArea)}" data-product-field="dismantlingArea" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}ly>
+                            <input type="number" name="" id="" placeholder="площадь" title="${this.customToString(productData.dismantlingArea)}" value="${this.customToString(productData.dismantlingArea)}" data-product-field="dismantlingArea" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                         </div>
                         <div class="task-container__item-dismantling-difficulty-desc">
                             <select class="task-container_group-item-dismantling-top" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantling]?.items, productData.dismantling)}" data-product-field="dismantling" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
@@ -248,7 +248,7 @@ export class Template {
                             </select> 
                         </div>
                         <div class="task-container__item-dismantling-difficulty-price">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сложн. демонтожа" title="${this.customToString(productData.dismantlingComplexity)}" value="${this.customToString(productData.dismantlingComplexity)}" data-product-field="dismantlingComplexity" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}ly>
+                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сложн. демонтожа" title="${this.customToString(productData.dismantlingComplexity)}" value="${this.customToString(productData.dismantlingComplexity)}" data-product-field="dismantlingComplexity" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                         </div>
                         <div class="task-container__item-dismantling-cost-desc">
                             <select class="task-container_group-item-dismantling-bottom" ${dismantlingDisabled} name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantlingDesc]?.items, productData.dismantlingDesc)}" data-product-field="dismantlingDesc" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
@@ -256,7 +256,7 @@ export class Template {
                             </select>
                         </div>
                         <div class="task-container__item-dismantling-cost-price">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="себест. демонтожа" title="${this.customToString(productData.dismantlingCost)}" value="${this.customToString(productData.dismantlingCost)}" data-product-field="dismantlingCost" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}ly>
+                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="себест. демонтожа" title="${this.customToString(productData.dismantlingCost)}" value="${this.customToString(productData.dismantlingCost)}" data-product-field="dismantlingCost" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                         </div>
                     </div>
                 </td>
@@ -268,19 +268,19 @@ export class Template {
                             </select>
                         </div>
                         <div class="task-container__item-dismantling-count-workers">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сколько. человек" title="${this.customToString(productData.businessTripPeople)}" value="${this.customToString(productData.businessTripPeople)}" data-product-field="businessTripPeople" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}ly>
+                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сколько. человек" title="${this.customToString(productData.businessTripPeople)}" value="${this.customToString(productData.businessTripPeople)}" data-product-field="businessTripPeople" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                         </div>
                         <div class="task-container__item-dismantling-count-days">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сколько дней" title="${this.customToString(productData.businessTripDays)}" value="${this.customToString(productData.businessTripDays)}" data-product-field="businessTripDays" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}ly>
+                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сколько дней" title="${this.customToString(productData.businessTripDays)}" value="${this.customToString(productData.businessTripDays)}" data-product-field="businessTripDays" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                         </div>
                         <div class="task-container__item-dismantling-count-nights">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="проживание ночей" title="${this.customToString(productData.businessTripAccommodation)}" value="${this.customToString(productData.businessTripAccommodation)}" data-product-field="businessTripAccommodation" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}ly>
+                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="проживание ночей" title="${this.customToString(productData.businessTripAccommodation)}" value="${this.customToString(productData.businessTripAccommodation)}" data-product-field="businessTripAccommodation" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                         </div>
                         <div class="task-container__item-dismantling-count-eating-days">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="питание дней" title="${this.customToString(productData.businessTripNutritions)}" value="${this.customToString(productData.businessTripNutritions)}" data-product-field="businessTripNutritions" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}ly>
+                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="питание дней" title="${this.customToString(productData.businessTripNutritions)}" value="${this.customToString(productData.businessTripNutritions)}" data-product-field="businessTripNutritions" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                         </div>
                         <div class="task-container__item-dismantling-count-miles">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="пробег" title="${this.customToString(productData.businessTripMileages)}" value="${this.customToString(productData.businessTripMileages)}" data-product-field="businessTripMileages" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}ly>
+                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="пробег" title="${this.customToString(productData.businessTripMileages)}" value="${this.customToString(productData.businessTripMileages)}" data-product-field="businessTripMileages" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                         </div>
                     </div>
                 </td>
@@ -288,11 +288,11 @@ export class Template {
                     <div class="task-container__item-delivery-container">
                         <div class="task-container__item-delivery">
                             <div class="task-container__item-delivery-count">
-                                <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сколько раз" title="${this.customToString(productData.deliveryFrequency)}" value="${this.customToString(productData.deliveryFrequency)}" data-product-field="deliveryFrequency" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}ly>
+                                <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сколько раз" title="${this.customToString(productData.deliveryFrequency)}" value="${this.customToString(productData.deliveryFrequency)}" data-product-field="deliveryFrequency" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                             </div>
                             <div class="task-container__item-delivery-mul"><i class="bi bi-x"></i></div>
                             <div class="task-container__item-delivery-price">
-                                <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="себес. доставки за раз" title="${this.customToString(productData.deliveryCostPerTime)}" value="${this.customToString(productData.deliveryCostPerTime)}" data-product-field="deliveryCostPerTime" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}ly>
+                                <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="себес. доставки за раз" title="${this.customToString(productData.deliveryCostPerTime)}" value="${this.customToString(productData.deliveryCostPerTime)}" data-product-field="deliveryCostPerTime" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                             </div>
                         </div>
                     </div>
@@ -335,7 +335,7 @@ export class Template {
             let checked = technology.inKP ? 'checked' : '';
             contentHTML += `
                 <div class="task-container__item-is-offer technology-item technology-row" data-technology-id="${technology.id}">
-                    <input type="checkbox" name="" id="" ${checked} data-technology-field="inKP" data-type="checkbox" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" ${this.editable ? '' : 'readonly'}ly>
+                    <input type="checkbox" name="" id="" ${checked} data-technology-field="inKP" data-type="checkbox" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" ${this.editable ? '' : 'readonly'}>
                 </div>
             `;
         }
@@ -350,7 +350,7 @@ export class Template {
                 <div class="task-container__item-consumption-item technology-row" data-technology-id="${technology.id}">
                     <div class="task-container__item-consumption-item-img">🖼</div>
                     <div class="task-container__item-consumption-item-title">
-                        <input class="${this.editable ? 'employee-dis' : ''}" type="text" name="" id="" placeholder="ЧПП" title="${this.customToString(technology.CHPP)}" value="${this.customToString(technology.CHPP)}" data-technology-field="CHPP" data-type="text" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" ${this.editable ? '' : 'readonly'}ly>
+                        <input class="${this.editable ? 'employee-dis' : ''}" type="text" name="" id="" placeholder="ЧПП" title="${this.customToString(technology.CHPP)}" value="${this.customToString(technology.CHPP)}" data-technology-field="CHPP" data-type="text" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" ${this.editable ? '' : 'readonly'}>
                     </div>
                     <div class="task-container__item-consumption-item-empty"></div>
                     <div class="task-container__item-consumption-item-m2">м2</div>
@@ -363,7 +363,7 @@ export class Template {
                         <i class="bi bi-x"></i>
                     </div>
                     <div class="task-container__item-consumption-item-length">
-                        <input class="${this.editable ? 'employee-dis' : ''}" type="number" name="" id="" placeholder="п.м." title="${this.customToString(technology.runningMeter)}" value="${this.customToString(technology.runningMeter)}" data-technology-field="runningMeter" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" ${this.editable ? '' : 'readonly'}ly>
+                        <input class="${this.editable ? 'employee-dis' : ''}" type="number" name="" id="" placeholder="п.м." title="${this.customToString(technology.runningMeter)}" value="${this.customToString(technology.runningMeter)}" data-technology-field="runningMeter" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" ${this.editable ? '' : 'readonly'}>
                     </div>
                     <div class="task-container__item-consumption-item-result">=${this.mulNumbmer(technology.width, technology.runningMeter)}</div>
                 </div>
@@ -379,7 +379,7 @@ export class Template {
         for (let technology of technologies) {
             contentHTML += `
                 <div class="task-container__item-area-mounting technology-item technology-row " data-technology-id="${technology.id}">
-                    <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="Площадь монтажа" title="${this.customToString(technology.installArea)}" value="${this.customToString(technology.installArea)}" data-technology-field="installArea" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" ${this.editable ? '' : 'readonly'}ly>
+                    <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="Площадь монтажа" title="${this.customToString(technology.installArea)}" value="${this.customToString(technology.installArea)}" data-technology-field="installArea" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" ${this.editable ? '' : 'readonly'}>
                 </div>
             `;
         }
@@ -394,7 +394,7 @@ export class Template {
             contentHTML += `
                 <div class="task-container__item-amount technology-item technology-row" data-technology-id="${technology.id}">
                     <div class="task-container__item-amount-costprice">
-                        <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="себест. монт." title="${this.customToString(technology.installCost)}" value="${this.customToString(technology.installCost)}" data-technology-field="installCost" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" ${this.editable ? '' : 'readonly'}ly>
+                        <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="себест. монт." title="${this.customToString(technology.installCost)}" value="${this.customToString(technology.installCost)}" data-technology-field="installCost" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" ${this.editable ? '' : 'readonly'}>
                     </div>
                 </div>
             `;
@@ -411,7 +411,7 @@ export class Template {
                 <div class="task-container__item-summary-percent technology-item technology-row" data-technology-id="${technology.id}">
                     <div class="task-container__item-summary-percent-plus">+</div>
                     <div class="task-container__item-summary-percent-value">
-                        <input type="number" name="" id="" title="${this.customToString(technology.totalPercent)}" value="${this.customToString(technology.totalPercent)}" data-technology-field="totalPercent" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" ${this.editable ? '' : 'readonly'}ly>
+                        <input type="number" name="" id="" title="${this.customToString(technology.totalPercent)}" value="${this.customToString(technology.totalPercent)}" data-technology-field="totalPercent" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" ${this.editable ? '' : 'readonly'}>
                     </div>
                     <div class="task-container__item-summary-percent-percent">%</div>${this.editable ? 'employee-mos' : ''}
                 </div>
@@ -441,7 +441,7 @@ export class Template {
             let checked = technology.addedToOrder ? 'checked' : '';
             contentHTML += `
                 <div class="task-container__item-added technology-item technology-row" data-technology-id="${technology.id}">
-                    <input type="checkbox" name="" id="" ${checked} data-technology-field="addedToOrder" data-type="checkbox" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" ${this.editable ? '' : 'readonly'}ly>
+                    <input type="checkbox" name="" id="" ${checked} data-technology-field="addedToOrder" data-type="checkbox" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" ${this.editable ? '' : 'readonly'}>
                 </div>
             `;
         }
@@ -463,7 +463,7 @@ export class Template {
                             <textarea name="" id="" rows="2" placeholder="адрес" data-group-field="deliveryAddress" data-group-id="${groupData.id}" data-type="textarea" data-group-id="${groupData.id}" ${this.editable ? '' : 'readonly'} title="${this.customToString(groupData.deliveryAddress)}">${this.customToString(groupData.deliveryAddress)}</textarea>
                         </div>
                         <div class="task-container__item-delivery-cp-cost">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="себес. курьер. ЦП" title="${this.customToString(groupData.deliveryCost)}" value="${this.customToString(groupData.deliveryCost)}" data-group-field="deliveryCost" data-type="number" data-group-id="${groupData.id}" ${this.editable ? '' : 'readonly'}ly>
+                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="себес. курьер. ЦП" title="${this.customToString(groupData.deliveryCost)}" value="${this.customToString(groupData.deliveryCost)}" data-group-field="deliveryCost" data-type="number" data-group-id="${groupData.id}" ${this.editable ? '' : 'readonly'}>
                         </div>
                     </div>
                 </div>

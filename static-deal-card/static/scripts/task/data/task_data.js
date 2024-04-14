@@ -239,6 +239,7 @@ export class TaskData {
                 let fields = product.getFields();
                 fields[`parentId${SP_GROUP_ID}`] = groupId;
                 fields.parentId2 = this.dealId;
+                console.log("createCopyProduct fields = ", fields);
                 let response = await this.bx24.callMethod('crm.item.add', {
                     entityTypeId: SP_PRODUCT_ID,
                     fields: fields,
