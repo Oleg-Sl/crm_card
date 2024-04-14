@@ -144,7 +144,7 @@ export class Product {
             if (key !== 'id' && key in this) {
                 const fieldTitle = SP_PRODUCT_FIELDS[key];
                 if (FIELDS_MONEY.includes(key)) {
-                    fieldsObject[fieldTitle] = `${this[key] || 0}|RUB"`;
+                    fieldsObject[fieldTitle] = `${this[key] || 0}|RUB`;
                 } else if (this[key] === true) {
                     fieldsObject[fieldTitle] = 'Y';
                 } else if (this[key] === false) {
