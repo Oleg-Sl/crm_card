@@ -1,7 +1,7 @@
-import { TaskData } from "./task_data.js";
-import { TaskAppInterface } from "./interface_app.js";
-import { TaskOfferInterface } from "./interface_offer.js";
-import { TaskOrderInterface } from "./interface_order.js";
+import { TaskData } from "./data/task_data.js";
+import { TaskAppInterface } from "./interface/interface_app.js";
+import { TaskOfferInterface } from "./interface/interface_offer.js";
+import { TaskOrderInterface } from "./interface/interface_order.js";
 import {
     SP_GROUP_ID,
     SP_PRODUCT_ID,
