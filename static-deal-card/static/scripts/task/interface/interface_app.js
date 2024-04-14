@@ -48,6 +48,10 @@ export class TaskAppInterface {
                 this.createProduct(target.dataset.groupId);
             }
 
+            if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-copy') && target.dataset.productId) {
+                this.createCopyProduct(target.dataset.groupId, target.dataset.productId);
+            }
+
             if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-remove') && target.dataset.groupId && target.dataset.productId) {
                 this.removeProduct(target.dataset.groupId, target.dataset.productId);
             }
@@ -341,6 +345,10 @@ export class TaskAppInterface {
 
     createProduct(groupId) {
         this.manager.createProduct(groupId);
+    }
+
+    copyProduct(groupId, productId) {
+        this.manager.createCopyProduct(groupId, productId);
     }
 
     createTechnology(productId) {

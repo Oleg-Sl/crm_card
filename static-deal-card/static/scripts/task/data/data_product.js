@@ -135,4 +135,20 @@ export class Product {
     
         return changedFieldsMap;
     }
+
+    getFieldsObject() {
+        const fieldsObject = {};
+        for (const key in SP_PRODUCT_FIELDS) {
+            if (key !== 'id' && Object.prototype.hasOwnProperty.call(SP_PRODUCT_FIELDS, key)) {
+                if (this[key] === true) {
+                    fieldsObject[key] = 'Y';
+                } else if (this[key] === false) {
+                    fieldsObject[key] = 'N';
+                } else {
+                    fieldsObject[key] = this[key];
+                }
+            }
+        }
+        return fieldsObject;
+    }
 }

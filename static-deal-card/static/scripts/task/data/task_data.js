@@ -231,6 +231,26 @@ export class TaskData {
         return response?.item;
     }
 
+    async createCopyProduct(groupId, productId) {
+        const group = this.groupsData.find(group => group.id == groupId);
+        if (group) {
+            const product = group.products.find(product => product.id == productId);
+            if (product) {
+                let fields = product.getFields();
+                fields[`parentId${SP_GROUP_ID}`] = groupId;
+                fields.parentId2 = this.dealId;
+                let response = await this.bx24.callMethod('crm.item.add', {
+                    entityTypeId: SP_PRODUCT_ID,
+                    fields: fields,
+                });
+                console.log("createCopyProduct = ", response);
+                if (response?.item) {
+                    this.addProduct(response?.item);
+                }
+            }
+        }
+    }
+
     getChangedData() {
         let changed = [];
 
