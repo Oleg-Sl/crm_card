@@ -140,12 +140,13 @@ export class Product {
         const fieldsObject = {};
         for (const key in SP_PRODUCT_FIELDS) {
             if (key !== 'id' && key in this) {
+                const fieldTitle = SP_PRODUCT_FIELDS[key];
                 if (this[key] === true) {
-                    fieldsObject[key] = 'Y';
+                    fieldsObject[fieldTitle] = 'Y';
                 } else if (this[key] === false) {
-                    fieldsObject[key] = 'N';
+                    fieldsObject[fieldTitle] = 'N';
                 } else {
-                    fieldsObject[key] = this[key];
+                    fieldsObject[fieldTitle] = this[key];
                 }
             }
         }
