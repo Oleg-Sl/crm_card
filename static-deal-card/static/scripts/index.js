@@ -124,11 +124,6 @@ class App {
         const taskOrder         = resBatch?.taskOrder?.task;
         const taskPayment       = resBatch?.taskPayment?.task;
         const taskPrepayment    = resBatch?.taskPrepayment?.task;
-        // console.log("taskEstimate = ", taskEstimate);
-        // console.log("taskCommercOffer = ", taskCommercOffer);
-        // console.log("taskOrder = ", taskOrder);
-        // console.log("taskPayment = ", taskPayment);
-        // console.log("taskPrepayment = ", taskPrepayment);
         this.userCurrent = userCurrent;
 
         await this.dealDesc.init(dealData, dealSources);
@@ -164,8 +159,6 @@ class App {
 
                 const dealData = {...dealDesc, ...dealWorkers, ...dealSources, ...dealDocs, ...dealActs, ...dealInvoices, ...dealFinance};
                 let smartsData = this.taskData.getChangedData();
-                // console.log("dealData = ", dealData);
-                // console.log("smartsData = ", smartsData);
                 
                 // Обновляем сделку
                 let res = await this.bx24.deal.update({
@@ -187,10 +180,9 @@ class App {
                     }
                 }
 
-                // console.log("batch = ", batch);
                 if (Object.keys(batch).length > 0) {
                     const resBatch = await this.bx24.batch.call(batch);
-                    // console.log("resBatch = ", resBatch);
+                    console.log("resBatch = ", resBatch);
                 }
 
                 spinner.classList.add('d-none');
@@ -241,7 +233,6 @@ class App {
         const targetNode = document.querySelector('#taskContainer');
         const observer = new MutationObserver((mutationsList, observer) => {
             BX24.fitWindow();
-            // console.log('HTML был изменен в дочерних элементах');
         });
         const config = { childList: true, subtree: true };
         observer.observe(targetNode, config);

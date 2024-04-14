@@ -49,7 +49,6 @@ export class TaskAppInterface {
             }
 
             if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-remove') && target.dataset.groupId && target.dataset.productId) {
-                // console.log("remove target.dataset.productId = ", target.dataset.productId, target.dataset.groupId);
                 this.removeProduct(target.dataset.groupId, target.dataset.productId);
             }
         })
@@ -78,11 +77,8 @@ export class TaskAppInterface {
                 const productField = target.dataset.productField;
 
                 const selectElementsContainer = target.closest('.task-container_group-item-sources')
-                console.log('selectElementsContainer = ', selectElementsContainer);
                 const selectElements = selectElementsContainer.querySelectorAll('select');
-                console.log('selectElements = ', selectElements);
                 const sources = Array.from(selectElements).map(el => el.value);
-                console.log('sources = ', sources);
                 sources.push('');
                 this.updateTaskProduct(groupId, productId, {sourcesFiles: sources});
             }
@@ -113,14 +109,7 @@ export class TaskAppInterface {
 
                 const selectElements = target.closest('.task-container_group-item-sources').querySelectorAll('select');
                 const sources = Array.from(selectElements).map(el => el.value);
-                console.log('sources = ', sources);
                 this.updateTaskProduct(groupId, productId, {sourcesFiles: sources});
-                
-                // const containerProductRow = event.target.closest('.product-row');
-                // const containerSourcesList = event.target.parentElement.parentElement.parentElement;
-                // const groupId = containerProductRow.dataset.groupId;
-                // const productId = containerProductRow.dataset.productId;
-                // this.updateSources(containerSourcesList, groupId, productId);
             }
         })
 

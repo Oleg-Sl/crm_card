@@ -512,9 +512,7 @@ export class Templates {
 
     getSummaryAmountHTML(technologies, groupData, productData) {
         let contentHTML = '';
-        // let amount = technologies.runningMeter ;
         const designPayment = +productData.designPayment || 0;  // Дизайн - себестоимость
-        // console.log("designPayment = ", designPayment);
         const installDays = +productData.installDays || 0;  // Монтаж - кол-во дней
         const installCost = +productData.installCost || 0;  // Монтаж - себестоимость
         const installPercentage = +productData.installPercentage || 0;  // Монтаж - процент себестоимости
@@ -522,13 +520,10 @@ export class Templates {
         const dismantlingPercent = +productData.dismantlingPercent || 0;  // Демонтаж - процент себестоимости
         const businessTripCost = +productData.businessTripCost || 0;  // Командировка - себестоимость
         const businessTripPercent = +productData.businessTripPercent || 0;  // Командировка - процент себестоимости
-        // console.log("businessTripCost = ", businessTripCost, ", businessTripPercent = ", businessTripPercent);
         const deliveryFrequency = +productData.deliveryFrequency || 0;  // Доставка - сколько раз
         const deliveryCostPerTime = +productData.deliveryCostPerTime || 0;  // Доставка - стоимость за раз
-        // console.log("deliveryFrequency = ", deliveryFrequency, ", deliveryCostPerTime = ", deliveryCostPerTime);
         const measurementCost = +productData.measurementCost || 0;  // Измерение - себестоимость
         const measurementPercent = +productData.measurementPercent || 0;  // Измерение - процент себестоимости
-        // console.log("measurementCost = ", measurementCost, ", measurementPercent = ", measurementPercent);
 
         const deliveryCost = +groupData.deliveryCost || 0;  // ЦП - себестоимость
         const deliveryPercentage = +groupData.deliveryPercentage || 0;  // ЦП - процент себестоимости
@@ -539,17 +534,14 @@ export class Templates {
                         + businessTripCost * (1 + businessTripPercent / 100) 
                         + deliveryFrequency * deliveryCostPerTime
                         + deliveryCost * (1 + deliveryPercentage / 100) / countProducts;
-        // console.log("priceWork = ", priceWork);
         for (let technology of technologies) {
             const width = +technology.width || 0;
             const runningMeter = +technology.runningMeter || 0;
             const price = +technology.price || 0;
-            // console.log("width = ", width, ", runningMeter = ", runningMeter, ", price = ", price);
             const percent = +technology.totalPercent || 0;
             const technologyInstallCost = +technology.installCost || 0;
             const technologyInstallPercent = +technology.installPercent || 0;
             const amount = (width * runningMeter * price + technologyInstallCost * (1 + technologyInstallPercent / 100) + priceWork) * (1 + percent / 100);
-            // console.log("amount = ", amount);
             contentHTML += `
                 <div class="task-container__item-summary-amount technology-item">
                     <span class="task-container__item-summary-amount-value" title="${this.numberToStr(amount)}" data-technology-field="dismantling" data-type="number">${this.numberToStr(amount)}</span> &nbsp; ₽

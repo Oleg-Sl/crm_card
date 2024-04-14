@@ -300,9 +300,9 @@ export class Templates {
                 </td>
                 <td class="task-container_group-item-right">
                     <div class="task-container_group-item-move"><i class="bi bi-list" data-group-id="${groupId}" data-product-id="${productData.id}"></i></div>
-                    <div class="task-container_group-item-add"><i class="bi bi-plus-circle-fill" data-group-id="${groupId}" data-product-id="${productData.id}"></i></div>
-                    <div class="task-container_group-item-copy"><i class="bi bi-copy" data-group-id="${groupId}" data-product-id="${productData.id}"></i></div>
-                    <div class="task-container_group-item-remove"><i class="bi bi-x-square" data-group-id="${groupId}" data-product-id="${productData.id}"></i></div>
+                    <div class="task-container_group-item-add"><i class="bi bi-plus-circle-fill" placeholder="Создать продукт" data-group-id="${groupId}" data-product-id="${productData.id}"></i></div>
+                    <div class="task-container_group-item-copy"><i class="bi bi-copy" placeholder="Создать копию продукта" data-group-id="${groupId}" data-product-id="${productData.id}"></i></div>
+                    <div class="task-container_group-item-remove"><i class="bi bi-x-square" placeholder="Удалить продукт" data-group-id="${groupId}" data-product-id="${productData.id}"></i></div>
                 </td>
             </tr>
         `;
@@ -348,7 +348,6 @@ export class Templates {
     getSourcesHTML(sources, groupId, productId) {
         let contentHTML = '';
         for (const source of sources) {
-            console.log("source = ", source);
             const [nameSelected, urlSelected, previewSelected] = source.split(';');
             contentHTML += `
                 <div class="task-container_group-item-sources-item">

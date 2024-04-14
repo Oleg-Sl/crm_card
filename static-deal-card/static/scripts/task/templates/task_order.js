@@ -308,10 +308,10 @@ export class Templates {
                 </td>
                 ${deliveryHTML}
                 <td class="task-container_group-item-right">
-                    <div class="task-container_group-item-move"><i class="bi bi-list"></i></div>
-                    <div class="task-container_group-item-add"><i class="bi bi-plus-circle-fill"></i></div>
-                    <div class="task-container_group-item-copy"><i class="bi bi-copy"></i></div>
-                    <div class="task-container_group-item-remove"><i class="bi bi-x-square"></i></div>
+                    <div class="task-container_group-item-move"><i class="bi bi-list" data-group-id="${groupId}" data-product-id="${productData.id}"></i></div>
+                    <div class="task-container_group-item-add"><i class="bi bi-plus-circle-fill" placeholder="Создать продукт" data-group-id="${groupId}" data-product-id="${productData.id}"></i></div>
+                    <div class="task-container_group-item-copy"><i class="bi bi-copy" placeholder="Создать копию продукта" data-group-id="${groupId}" data-product-id="${productData.id}"></i></div>
+                    <div class="task-container_group-item-remove"><i class="bi bi-x-square" placeholder="Удалить продукт" data-group-id="${groupId}" data-product-id="${productData.id}"></i></div>
                 </td>
             </tr>
         `;
