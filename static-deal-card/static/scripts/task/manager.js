@@ -21,7 +21,7 @@ export default class TaskManager {
     constructor(bx24, dealId) {
         this.bx24 = bx24;
         this.dealId = dealId;
-        createTechnology
+
         this.fieldGroup = null;
         this.fieldProduct = null;
         this.fieldTechnology = null;
