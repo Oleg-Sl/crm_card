@@ -458,8 +458,6 @@ export class Template {
                             <select name="" id="" title="${this.getTitleFromEnums(this.fields?.group?.[SP_GROUP_FIELDS.deliveryMethod]?.items, groupData.deliveryMethod)}" data-group-field="deliveryMethod" data-type="select" data-group-id="${groupData.id}">
                                 ${this.getOptionsHTML(this.fields?.group?.[SP_GROUP_FIELDS.deliveryMethod]?.items, groupData.deliveryMethod)}
                             </select>
-                            <select name="" id="" title="${this.getTitleFromList(this.materials.technologiesTypes, technology.general)}" data-technology-field="general" data-type="select" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
-                            </select>
                         </div>
                         <div class="task-container__item-delivery-cp-address">
                             <textarea name="" id="" rows="2" placeholder="адрес" data-group-field="deliveryAddress" data-group-id="${groupData.id}" data-type="textarea" data-group-id="${groupData.id}" ${this.editable ? '' : 'readonly'} title="${this.customToString(groupData.deliveryAddress)}">${this.customToString(groupData.deliveryAddress)}</textarea>
