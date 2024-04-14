@@ -136,7 +136,7 @@ export class Product {
         return changedFieldsMap;
     }
 
-    getFieldsObject() {
+    getFields() {
         const fieldsObject = {};
         for (const key in SP_PRODUCT_FIELDS) {
             if (key !== 'id' && key in this) {
