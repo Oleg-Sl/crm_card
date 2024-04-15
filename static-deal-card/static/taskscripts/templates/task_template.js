@@ -50,7 +50,12 @@ export class Template {
                     <thead>
                         <tr>
                             <th class="">№</th>
-                            <th class="">о позиции</th>
+                            <th class="">
+                                <div style="width: 100%;">
+                                    <div class="task-container_group-header-product-desc">о позиции</div>    
+                                </div>
+                                <div class="resizable" style="cursor: col-resize;"><i class="bi bi-grip-vertical resizable"></i></div>
+                            </th>
                             <th class="">технология</th>
                             <th class="task-container__group-header-consumption">
                                 <div>расход (1 ед.)</div>

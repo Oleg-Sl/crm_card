@@ -31,6 +31,22 @@ export class TaskOrderInterface {
     }
 
     initHandlers() {
+        // добвление/удаление товара
+        this.container.addEventListener('click', async (event) => {
+            const target = event.target;
+            
+            if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-add') && target.dataset.groupId) {
+                this.createProduct(target.dataset.groupId);
+            }
+
+            if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-copy') && target.dataset.productId) {
+                this.createCopyProduct(target.dataset.groupId, target.dataset.productId);
+            }
+
+            if (target.tagName === 'I' && target.parentElement.classList.contains('task-container_group-item-remove') && target.dataset.groupId && target.dataset.productId) {
+                this.removeProduct(target.dataset.groupId, target.dataset.productId);
+            }
+        })
         this.container.addEventListener('mousedown', (e) => {
             if (e.target.classList.contains('resizable')) {
                 const table = this.container.querySelector("table");
@@ -135,5 +151,17 @@ export class TaskOrderInterface {
 
     updateTaskTechnology(groupId, productId, techId, newData) {
         this.manager.updateTaskTechnology(groupId, productId, techId, newData);
+    }
+
+    createProduct(groupId) {
+        this.manager.createProduct(groupId);
+    }
+
+    createCopyProduct(groupId, productId) {
+        this.manager.createCopyProduct(groupId, productId);
+    }
+
+    removeProduct(groupId, productId) {
+        this.manager.removeProduct(groupId, productId);
     }
 }

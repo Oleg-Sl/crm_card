@@ -26,7 +26,6 @@ export default class TaskManager {
         this.fieldProduct = null;
         this.fieldTechnology = null;
 
-        
         const containerApp = document.querySelector('#taskApplication');
         const containerOffer = document.querySelector('#taskOffer');
         const containerOrder = document.querySelector('#taksOrder');

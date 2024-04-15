@@ -48,7 +48,7 @@ $input-height: 17px
             align-items: center
         .shared
             grid-row: span 2
-        select, input, textarea
+        select, input
             font: $body-font
             background: none
             border: 1px solid #97999B33
@@ -58,6 +58,12 @@ $input-height: 17px
             height: $input-height
         textarea
             resize: vertical
+            font: $body-font
+            background: none
+            border: 1px solid #97999B33
+            border-radius: 0
+            width: 100%
+            box-sizing: border-box
         .vertical-input
             display: block
             writing-mode: horizontal-tb !important
@@ -99,7 +105,6 @@ $input-height: 17px
                 div
                     display: flex
                     flex-direction: column
-
 
         tbody
             .task-container__item-number

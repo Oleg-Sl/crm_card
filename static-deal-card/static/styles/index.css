@@ -2286,7 +2286,7 @@
 #taksOrder table .shared {
   grid-row: span 2;
 }
-#taksOrder table select, #taksOrder table input, #taksOrder table textarea {
+#taksOrder table select, #taksOrder table input {
   font: 400 8px Roboto;
   background: none;
   border: 1px solid rgba(151, 153, 155, 0.2);
@@ -2297,6 +2297,12 @@
 }
 #taksOrder table textarea {
   resize: vertical;
+  font: 400 8px Roboto;
+  background: none;
+  border: 1px solid rgba(151, 153, 155, 0.2);
+  border-radius: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 #taksOrder table .vertical-input {
   display: block;
