@@ -237,7 +237,7 @@ export class TaskData {
             const product = group.products.find(product => product.id == productId);
             if (product) {
                 // const techno
-                this.createCopyTechnology(groupId, productId);
+                await this.createCopyTechnology(groupId, productId);
                 
                 // let fields = product.getFields();
                 // fields[`parentId${SP_GROUP_ID}`] = groupId;
@@ -253,25 +253,26 @@ export class TaskData {
         }
     }
 
-    createCopyTechnology(groupId, productId) {
+    async createCopyTechnology(groupId, productId) {
         const group = this.groupsData.find(group => group.id == groupId);
         if (group) {
             const product = group.products.find(product => product.id == productId);
             if (product) {
+                let cmd = {};
                 const technologies = product.technologies;
-                for (const technology of technologies) {
+                for (const ind in technologies) {
+                    const technology = technologies[ind];
                     let fields = technology.getFields();
                     fields[`parentId${SP_PRODUCT_ID}`] = productId;
                     fields.parentId2 = this.dealId;
-                    console.log("createCopyTechnology fields", fields);
+                    cmd[ind + 1] = `crm.item.add?entityTypeId=${SP_TECHOLOGY_ID}&${this.objectToQueryString(fields)}`;
                 }
-                // let fields = product.getFields();
-                // fields[`parentId${SP_GROUP_ID}`] = groupId;
-                // fields.parentId2 = this.dealId;
-                // let response = await this.bx24.callMethod('crm.item.add', {
-                //     entityTypeId: SP_PRODUCT_ID,
-                //     fields: fields,
-                // });
+                console.log(cmd);
+                let response = await this.bx24.callMethod('batch', {
+                    halt: 0,
+                    cmd: cmd,
+                });
+                console.log(response);
                 // if (response?.item) {
                 //     this.addProduct(response?.item);
                 // }
@@ -302,6 +303,18 @@ export class TaskData {
         }
 
         return changed;
+    }
+
+    objectToQueryString(obj) {
+        const queryStringArray = [];
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                const encodedKey = encodeURIComponent(key);
+                const encodedValue = encodeURIComponent(obj[key]);
+                queryStringArray.push(`fields[${encodedKey}]=${encodedValue}`);
+            }
+        }
+        return queryStringArray.join('&');
     }
 }
 
