@@ -3419,7 +3419,7 @@ input:checked + .slider:before {
   display: none;
 }
 
-bodyblock_task_order {
+body {
   margin: 0;
   padding: 0;
   height: 100%;
