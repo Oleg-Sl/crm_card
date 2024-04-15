@@ -395,7 +395,7 @@ export class Templates {
                         </select>
                     </div>
                     <div class="task-container__item-technology-material-1">
-                        <select name="" id="" title="${this.getTitleFromList(this.materials.films, technology.film)}" data-technology-field="film" data-type="select" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
+                        <select name="" id="" title="${this.getTitleFromList(this.materials.dependences, technology.film)}" data-technology-field="film" data-type="select" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
                             ${this.getFilmsOptionsHTML(technology.film)}
                         </select>
                     </div>
@@ -619,7 +619,7 @@ export class Templates {
 
     getFilmsOptionsHTML(filmId) {
         let filmsListHTML = '<option value=""></option>';
-        for (const {id, title} of this.materials.films) {
+        for (const {id, title} of this.materials.dependences) {
             if (id == filmId) {
                 filmsListHTML += `<option value="${id}" selected>${title}</option>`
             } else {
@@ -632,7 +632,7 @@ export class Templates {
 
     getLaminationsOptionsHTML(filmId, laminationId) {
         let laminationsHTML = '<option value=""></option>';
-        const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.film] == filmId) || {};
+        const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.id] == filmId) || {};
         const laminationIds = dependence?.[SP_DEPENDENCE_FIELDS.laminations] || [];
         const laminationsList = this.materials.laminations.filter(obj => laminationIds.includes(String(obj.id)));
 
@@ -649,7 +649,7 @@ export class Templates {
 
     getWidthsOptionsHTML(filmId, widthId) {
         let widthsHTML = '<option value=""></option>';
-        const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.film] == filmId) || {};
+        const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.id] == filmId) || {};
         const widthIds = dependence?.[SP_DEPENDENCE_FIELDS.widths] || [];
         const widthsList = this.materials.widths.filter(obj => widthIds.includes(String(obj.id)));
 
@@ -732,7 +732,7 @@ export class Templates {
     }
 
     getTitleLaminations(filmId, laminationId) {
-        const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.film] == filmId) || {};
+        const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.id] == filmId) || {};
         const laminationIds = dependence?.[SP_DEPENDENCE_FIELDS.laminations] || [];
         const laminationsList = this.materials.laminations.filter(obj => laminationIds.includes(String(obj.id)));
         for (let { id, title } of laminationsList) {
@@ -744,7 +744,7 @@ export class Templates {
     }
 
     getTitleWidths(filmId, widthId) {
-        const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.film] == filmId) || {};
+        const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.id] == filmId) || {};
         const widthIds = dependence?.[SP_DEPENDENCE_FIELDS.widths] || [];
         const widthsList = this.materials.widths.filter(obj => widthIds.includes(String(obj.id)));
         for (let { id, title } of widthsList) {

@@ -163,7 +163,7 @@ export const SP_DEPENDENCE_ID = 189;
 export const SP_DEPENDENCE_FIELDS = {
     id: "id",
     title: "title",                         // Название
-    film: "ufCrm33_1709568884",             // Пленка
+    // film: "ufCrm33_1709568884",             // Пленка
     laminations: "ufCrm33_1709222893",      // Список ID ламинаций
     widths: "ufCrm33_1709370111",           // Список ID ширин
 };

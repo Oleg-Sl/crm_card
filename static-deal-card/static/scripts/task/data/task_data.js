@@ -350,7 +350,7 @@ export class TaskData {
         this.materials = {
             dependences: dependenceMaterial,
             technologiesTypes: technologiesType,
-            films: films,
+            // films: films,
             widths: widths,
             laminations: laminations
         };
