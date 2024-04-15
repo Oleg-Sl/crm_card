@@ -265,17 +265,19 @@ export class TaskData {
                     let fields = technology.getFields();
                     fields[`parentId${SP_PRODUCT_ID}`] = productId;
                     fields.parentId2 = this.dealId;
-                    cmd[ind + 1] = `crm.item.add?entityTypeId=${SP_TECHOLOGY_ID}&${this.objectToQueryString(fields)}`;
+                    cmd[ind] = `crm.item.add?entityTypeId=${SP_TECHOLOGY_ID}&${this.objectToQueryString(fields)}`;
                 }
-                console.log(cmd);
                 let response = await this.bx24.callMethod('batch', {
                     halt: 0,
                     cmd: cmd,
                 });
                 console.log(response);
-                // if (response?.item) {
-                //     this.addProduct(response?.item);
-                // }
+                for (const key in response?.result) {
+                    const technologyData = response?.result[key]?.item;
+                    console.log(technologyData);
+                    this.addTechnology(technologyData);
+                }
+\
             }
         }
     }
