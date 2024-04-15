@@ -164,13 +164,13 @@ export default class DealDescription extends ChangeHistory {
 
     renderKeyValueField(keyElement, valueElement, value) {
         if (keyElement && valueElement) {
-            this.setValueByElementType(keyElement, value && value[0]);
-            this.setValueByElementType(valueElement, value && value[1]);
+            this.setValueByElementType(keyElement, value[0]);
+            this.setValueByElementType(valueElement, value[1]);
         }
     }
 
     setValueByElementType(element, value) {
-        if (element) {
+        if (element && value) {
             const elementType = element.tagName.toLowerCase();
             element.title = value || '';
             switch (elementType) {
