@@ -113,16 +113,15 @@ export class TaskAppInterface {
             if (!this.isResizing) {
                 return;
             }
-
             const table = this.container.querySelector("table");
             const cells = table.querySelector('tr').querySelectorAll('th');
-        
+
             const oldWidth = this.templateColumns[1];
             const newWidth = e.clientX - this.columnBeingResized.getBoundingClientRect().left;
             const totalWidth = table.parentElement.offsetWidth;
             const newRightWidth = totalWidth - this.templateColumns[0] - newWidth;
             const oldRightWidth = totalWidth - this.templateColumns[0] - oldWidth;
-            
+
             const scale = newRightWidth / oldRightWidth;
 
             this.templateColumns = this.templateColumns.map((el, index) => index < 2 ? el : el * scale);
@@ -147,7 +146,16 @@ export class TaskAppInterface {
             contentHTML += this.templates.getGroupHTML(group, ++number, editable);
         }
         contentHTML += this.templates.getSummaryHTML(this.dataManager.groupsData);
-        this.container.innerHTML = contentHTML;            
+        this.container.innerHTML = contentHTML;
+
+        // this.templateColumns = this.templateColumns.map((el, index) => index < 2 ? el : el * scale);
+        // this.templateColumns[1] = newWidth;
+        const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
+        // const sum = newTemplateColumns.reduce((acc, column) => acc + column, 0);
+        // newTemplateColumns[newTemplateColumns.length - 1] += totalWidth - sum;
+        for (const t of this.container.querySelectorAll("table")) {
+            t.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
+        }      
     }
 
     // Методы для изменения данных и уведомления TaskManager
