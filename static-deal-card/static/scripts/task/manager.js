@@ -1,5 +1,5 @@
 import { TaskData } from "./data/task_data.js";
-import { TaskAppInterface } from './interface/TaskAppInterface.js';
+import { TaskAppInterface } from "./interface/interface_app.js";
 import { TaskOfferInterface } from "./interface/interface_offer.js";
 import { TaskOrderInterface } from "./interface/interface_order.js";
 import {
