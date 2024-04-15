@@ -26,11 +26,12 @@ export default class TaskManager {
         this.fieldProduct = null;
         this.fieldTechnology = null;
 
-        this.dataManager = new TaskData(this.bx24, this.dealId);
-
+        
         const containerApp = document.querySelector('#taskApplication');
         const containerOffer = document.querySelector('#taskOffer');
         const containerOrder = document.querySelector('#taksOrder');
+
+        this.dataManager = new TaskData(this.bx24, this.dealId);
         this.uiApp = new TaskAppInterface(containerApp, this.dataManager);
         this.uiOffer = new TaskOfferInterface(containerOffer, this.dataManager);
         this.uiOrder = new TaskOrderInterface(containerOrder, this.dataManager);

@@ -236,18 +236,45 @@ export class TaskData {
         if (group) {
             const product = group.products.find(product => product.id == productId);
             if (product) {
-                let fields = product.getFields();
-                fields[`parentId${SP_GROUP_ID}`] = groupId;
-                fields.parentId2 = this.dealId;
-                console.log("createCopyProduct fields = ", fields);
-                let response = await this.bx24.callMethod('crm.item.add', {
-                    entityTypeId: SP_PRODUCT_ID,
-                    fields: fields,
-                });
-                console.log("createCopyProduct = ", response);
-                if (response?.item) {
-                    this.addProduct(response?.item);
+                // const techno
+                createCopyTechnology(groupId, productId);
+                
+                // let fields = product.getFields();
+                // fields[`parentId${SP_GROUP_ID}`] = groupId;
+                // fields.parentId2 = this.dealId;
+                // let response = await this.bx24.callMethod('crm.item.add', {
+                //     entityTypeId: SP_PRODUCT_ID,
+                //     fields: fields,
+                // });
+                // if (response?.item) {
+                //     this.addProduct(response?.item);
+                // }
+            }
+        }
+    }
+
+    createCopyTechnology(groupId, productId) {
+        const group = this.groupsData.find(group => group.id == groupId);
+        if (group) {
+            const product = group.products.find(product => product.id == productId);
+            if (product) {
+                const technologies = product.technologies;
+                for (const technology of technologies) {
+                    let fields = technology.getFields();
+                    fields[`parentId${SP_PRODUCT_ID}`] = productId;
+                    fields.parentId2 = this.dealId;
+                    console.log("createCopyTechnology fields", fields);
                 }
+                // let fields = product.getFields();
+                // fields[`parentId${SP_GROUP_ID}`] = groupId;
+                // fields.parentId2 = this.dealId;
+                // let response = await this.bx24.callMethod('crm.item.add', {
+                //     entityTypeId: SP_PRODUCT_ID,
+                //     fields: fields,
+                // });
+                // if (response?.item) {
+                //     this.addProduct(response?.item);
+                // }
             }
         }
     }

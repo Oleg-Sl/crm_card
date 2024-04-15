@@ -7,6 +7,9 @@ import {
 } from '../../parameters.js';
 
 
+const FIELDS_MONEY = ['price'];
+
+
 export class Technology {
     constructor(data) {
         this.parentId = data?.[`parentId${SP_PRODUCT_ID}`];
@@ -18,7 +21,6 @@ export class Technology {
         this.film = data?.[SP_TECHOLOGY_FIELDS.film];                                       // Технология - Пленка
         this.lamination = data?.[SP_TECHOLOGY_FIELDS.lamination];                           // Технология - Ламинация
         this.price = parseAmount(data?.[SP_TECHOLOGY_FIELDS.price]);                        // Технология - Цена
-        // this.photo = data?.[SP_TECHOLOGY_FIELDS.photo];                                   // Исходник - фото
         this.CHPP = data?.[SP_TECHOLOGY_FIELDS.CHPP];                                       // Исходник - ЧПП
         this.width = data?.[SP_TECHOLOGY_FIELDS.width];                                     // Исходник - Ширина
         this.runningMeter = data?.[SP_TECHOLOGY_FIELDS.runningMeter];                       // Исходник - Погонный метр
@@ -98,5 +100,24 @@ export class Technology {
         }
     
         return changedFieldsMap;
+    }
+
+    getFields() {
+        const fieldsObject = {};
+        for (const key in SP_TECHOLOGY_FIELDS) {
+            if (key !== 'id' && key in this) {
+                const fieldTitle = SP_TECHOLOGY_FIELDS[key];
+                if (FIELDS_MONEY.includes(key)) {
+                    fieldsObject[fieldTitle] = `${this[key] || 0}|RUB`;
+                } else if (this[key] === true) {
+                    fieldsObject[fieldTitle] = 'Y';
+                } else if (this[key] === false) {
+                    fieldsObject[fieldTitle] = 'N';
+                } else {
+                    fieldsObject[fieldTitle] = this[key];
+                }
+            }
+        }
+        return fieldsObject;
     }
 }
