@@ -277,7 +277,6 @@ export class TaskData {
                     console.log(technologyData);
                     this.addTechnology(technologyData);
                 }
-\
             }
         }
     }
