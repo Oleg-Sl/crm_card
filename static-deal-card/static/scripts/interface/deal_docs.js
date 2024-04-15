@@ -393,9 +393,8 @@ export default class DealDocs {
     }
 
     getChangedData() {
-        const dataList = this.stringifyData(this.data);
         return {
-            [FIELD_DEAL_DOCS]: dataList.length > 0 ? dataList : ['']
+            [FIELD_DEAL_DOCS]: this.data.length > 0 ? this.stringifyData(this.data) : ['']
         };
     }
 

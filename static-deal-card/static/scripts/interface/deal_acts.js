@@ -243,10 +243,8 @@ export default class DealActs {
     }
 
     getChangedData() {
-        const files = this.stringifyData(this.files);
-        // console.log("files = ", files);
         return {
-            [this.field]: files > 0 ? files : [''],
+            [this.field]: this.files.length > 0 ? this.stringifyData(this.files) : [''],
         };
     }
 }
