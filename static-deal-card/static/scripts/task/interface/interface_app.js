@@ -316,22 +316,12 @@ export class TaskAppInterface {
         
         this.container.innerHTML = contentHTML;
         this.addPreviewEventListeners();
-        // if (!this.templateColumns) {
-        //     const table = this.container.querySelector("table");
-        //     if (table.offsetWidth > 0 && table.offsetHeight > 0) {
-        //         const cells = table.querySelector('tr').querySelectorAll('th');
-        //         this.templateColumns = Array.from(cells).map(cell => parseFloat(cell.offsetWidth.toFixed(2)));
-        //     }
-        // } else {
-        //     const tables = this.container.querySelectorAll("table");
-        //     const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
-        //     const sum = newTemplateColumns.reduce((acc, column) => acc + column, 0);
-        //     const totalWidth = tables[0].parentElement.offsetWidth;
-        //     newTemplateColumns[newTemplateColumns.length - 1] += totalWidth - sum;
-        //     for (const table of tables) {
-        //         table.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
-        //     }
-        // }
+        if (this.templateColumns && this.templateColumns.length > 0) {
+            const newTemplateColumns = this.templateColumns.map(column => parseInt(column));
+            for (const t of this.container.querySelectorAll("table")) {
+                t.style.gridTemplateColumns = newTemplateColumns.join('px ') + 'px';
+            }
+        }
     }
 
 
