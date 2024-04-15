@@ -1,10 +1,10 @@
 import {
     FIELD_DEAL_TITLE,
     FIELD_DEAL_ORDER_NUMBER,
-    FIELD_DEAL_ASSIGNED_BY_ID,
+    // FIELD_DEAL_ASSIGNED_BY_ID,
 
-    FIELD_DEAL_SOURCE_ID,
-    FIELD_DEAL_DESCRIPTIONS,
+    // FIELD_DEAL_SOURCE_ID,
+    // FIELD_DEAL_DESCRIPTIONS,
 
 } from '../../parameters.js';
 // import { ProductGroup } from '../product_group.js';

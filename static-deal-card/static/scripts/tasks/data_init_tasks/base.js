@@ -1,9 +1,9 @@
 import {
-    FIELD_DEAL_TITLE,
-    FIELD_DEAL_ORDER_NUMBER,
-    FIELD_DEAL_ASSIGNED_BY_ID,
+    // FIELD_DEAL_TITLE,
+    // FIELD_DEAL_ORDER_NUMBER,
+    // FIELD_DEAL_ASSIGNED_BY_ID,
 
-    FIELD_DEAL_SOURCE_ID,
+    // FIELD_DEAL_SOURCE_ID,
     FIELD_DEAL_DESCRIPTIONS,
 
 } from '../../parameters.js';
@@ -25,47 +25,6 @@ export class TaskTemaplateBase {
                     [TD]1.[/TD]
                     [TD][B]Как вас зовут[/B][/TD]
                     [TD]${this.getContacts_(contacts)}[/TD]
-                [/TR]
-                [TR]
-                    [TD]2.[/TD]
-                    [TD][B]Какой транспорт в каком количестве[/B][/TD]
-                    [TD]   [/TD]
-                [/TR]
-                [TR]
-                    [TD]3.[/TD]
-                    [TD][B]Есть ли у вас макет или исходники[/B][/TD]
-                    [TD]   [/TD]
-                [/TR]
-                [TR]
-                    [TD]3.[/TD]
-                    [TD][B]Есть ли замеры[/B][/TD]
-                    [TD]   [/TD]
-                [/TR]
-                [TR]
-                    [TD]3.[/TD]
-                    [TD][B]Есть ли демонтаж[/B][/TD]
-                    [TD]   [/TD]
-                [/TR]
-            
-                [TR]
-                    [TD]3.[/TD]
-                    [TD][B]С НДС[/B][/TD]
-                    [TD]   [/TD]
-                [/TR]
-                [TR]
-                    [TD]3.[/TD]
-                    [TD][B]В каие сроки нужна оклейка[/B][/TD]
-                    [TD]   [/TD]
-                [/TR]
-                [TR]
-                    [TD]3.[/TD]
-                    [TD][B]Компания[/B][/TD]
-                    [TD]   [/TD]
-                [/TR]
-                [TR]
-                    [TD]3.[/TD]
-                    [TD][B]Спсособ связи[/B][/TD]
-                    [TD]   [/TD]
                 [/TR]
             [/TABLE]
         `;
