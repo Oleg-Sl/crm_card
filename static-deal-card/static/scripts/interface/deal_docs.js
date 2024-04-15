@@ -395,7 +395,7 @@ export default class DealDocs {
     getChangedData() {
         const dataList = this.stringifyData(this.data);
         return {
-            [FIELD_DEAL_DOCS]: dataList.length ? dataList : ""
+            [FIELD_DEAL_DOCS]: dataList.length > 0 ? dataList : ['']
         };
     }
 

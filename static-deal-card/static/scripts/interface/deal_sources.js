@@ -485,9 +485,15 @@ export default class DealSources {
     }
 
     getChangedData() {
+        // const dataList = this.stringifyData(this.data);
+        // return {
+        //     [FIELD_DEAL_DOCS]: dataList.length > 0 ? dataList : ['']
+        // };
+        const objLinks = this.objLinks.getChangedData();
+        const objFiles = this.objFiles.getChangedData();
         return {
-            [FIELD_DEAL_SOURCE_LINKS]: this.objLinks.getData(),
-            [FIELD_DEAL_SOURCE_FILES]: this.objFiles.getData(),
+            [FIELD_DEAL_SOURCE_LINKS]: objLinks.length > 0 ? objLinks : [''],
+            [FIELD_DEAL_SOURCE_FILES]: objFiles.length > 0 ? objFiles : [''],
         }
     }
 

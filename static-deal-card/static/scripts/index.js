@@ -155,12 +155,9 @@ class App {
                 const dealInvoices = this.dealInvoices.getChangedData();
                 const dealFinance = this.dealFinance.getChangedData();
 
-                console.log("dealSources = ", dealSources);
-                console.log("dealDocs = ", dealDocs);
-                console.log("dealActs = ", dealActs);
                 const dealData = {...dealDesc, ...dealWorkers, ...dealSources, ...dealDocs, ...dealActs, ...dealInvoices, ...dealFinance};
                 let smartsData = this.taskData.getChangedData();
-                
+
                 // Обновляем сделку
                 let res = await this.bx24.deal.update({
                     id: this.dealId,
