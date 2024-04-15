@@ -499,8 +499,8 @@ export default class DealSources {
 
     getChangedData() {
         return {
-            [FIELD_DEAL_SOURCE_LINKS]: this.objLinks.getData(),
-            [FIELD_DEAL_SOURCE_FILES]: this.objFiles.getData(),
+            [FIELD_DEAL_SOURCE_LINKS]: this.objLinks.getData() > 0 ? this.objLinks.getData() : [''],
+            [FIELD_DEAL_SOURCE_FILES]: this.objFiles.getData() > 0 ? this.objFiles.getData() : [''],
         }
     }
 
