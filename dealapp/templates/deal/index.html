@@ -494,7 +494,6 @@
             } else {
                 container.classList.add(className);
             }
-            BX24.fitWindow();
         }
 
         document.addEventListener('click', (event) => {
@@ -513,6 +512,7 @@
 
         document.querySelector('.task-container__menu-activity').addEventListener('click', (event) => {
             document.querySelector('.task-container__activities').classList.toggle('expand-menu');
+            BX24.fitWindow();
         });
 
         document.addEventListener('click', (event) => {
