@@ -170,7 +170,7 @@ export default class DealDescription extends ChangeHistory {
     }
 
     setValueByElementType(element, value) {
-        if (element) {
+        if (element && value) {
             const elementType = element.tagName.toLowerCase();
             element.title = value || '';
             switch (elementType) {
