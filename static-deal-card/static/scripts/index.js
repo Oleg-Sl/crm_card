@@ -20,7 +20,7 @@ import DealState from './interface/deal_state.js';
 import DealAmounts from './interface/deal_amoutns.js';
 import DealWorkers from './interface/deal_workers.js';
 import DealFinance from './interface/deal_finance.js';
-import DealSources from './interface/deal_sources.js';
+import DealSources from './interface/deal_sources_new.js';
 import DealDocs from './interface/deal_docs.js';
 import DealActs from './interface/deal_acts.js';
 
@@ -137,8 +137,6 @@ class App {
         await this.dealActs.init(dealData?.[FIELD_DEAL_ACTS_ID], FIELD_DEAL_ACTS_ID);
         await this.dealInvoices.init(dealData?.[FIELD_DEAL_INVOICES_ID], FIELD_DEAL_INVOICES_ID);
         await this.taskMenu.init(dealData, taskEstimate, taskCommercOffer, taskOrder, taskPayment, taskPrepayment, this.userCurrent?.ID);
-
-        // await this.tasks.initReload();
     }
 
     initHandlers() {
