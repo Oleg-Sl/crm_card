@@ -6,14 +6,6 @@ import {
     SP_GROUP_ID,
     SP_PRODUCT_ID,
     SP_TECHOLOGY_ID,
-    SP_TECHOLOGY_TYPE_ID,
-    SP_FILMS_ID,
-    SP_WIDTH_ID,
-    SP_LAMINATION_ID,
-    SP_DEPENDENCE_ID,
-
-    SP_WIDTH_FIELDS,
-    SP_DEPENDENCE_FIELDS,
 } from '../parameters.js';
 
 
