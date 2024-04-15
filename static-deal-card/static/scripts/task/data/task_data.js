@@ -236,34 +236,32 @@ export class TaskData {
         if (group) {
             const product = group.products.find(product => product.id == productId);
             if (product) {
-                // const techno
-                await this.createCopyTechnology(groupId, productId);
-                
-                // let fields = product.getFields();
-                // fields[`parentId${SP_GROUP_ID}`] = groupId;
-                // fields.parentId2 = this.dealId;
-                // let response = await this.bx24.callMethod('crm.item.add', {
-                //     entityTypeId: SP_PRODUCT_ID,
-                //     fields: fields,
-                // });
-                // if (response?.item) {
-                //     this.addProduct(response?.item);
-                // }
+                let fields = product.getFields();
+                fields[`parentId${SP_GROUP_ID}`] = groupId;
+                fields.parentId2 = this.dealId;
+                let response = await this.bx24.callMethod('crm.item.add', {
+                    entityTypeId: SP_PRODUCT_ID,
+                    fields: fields,
+                });
+                if (response?.item) {
+                    this.addProduct(response?.item);
+                    await this.createCopyTechnology(groupId, productId, response?.item?.id);
+                }
             }
         }
     }
 
-    async createCopyTechnology(groupId, productId) {
+    async createCopyTechnology(groupId, productIdOld, productIdNew) {
         const group = this.groupsData.find(group => group.id == groupId);
         if (group) {
-            const product = group.products.find(product => product.id == productId);
+            const product = group.products.find(product => product.id == productIdOld);
             if (product) {
                 let cmd = {};
                 const technologies = product.technologies;
                 for (const ind in technologies) {
                     const technology = technologies[ind];
                     let fields = technology.getFields();
-                    fields[`parentId${SP_PRODUCT_ID}`] = productId;
+                    fields[`parentId${SP_PRODUCT_ID}`] = productIdNew;
                     fields.parentId2 = this.dealId;
                     cmd[ind] = `crm.item.add?entityTypeId=${SP_TECHOLOGY_ID}&${this.objectToQueryString(fields)}`;
                 }
