@@ -244,7 +244,7 @@ export default class DealActs {
 
     getChangedData() {
         const files = this.stringifyData(this.files);
-        console.log("files = ", files);
+        // console.log("files = ", files);
         return {
             [this.field]: files > 0 ? files : [''],
         };
