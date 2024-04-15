@@ -461,8 +461,8 @@ export default class DealSources {
 
         // this.objLinks = null;
         // this.objFiles = null;
-        this.objLinks = new DealLinks(this.boxLinks, this.bx24, this.changeLink.bind(this));
-        this.objFiles = new DealFiles(this.boxFiles, this.bx24, this.yaDisk, this.dealId, this.changeFile.bind(this));
+        this.objLinks = new DealLinks(this.boxLinks, this.bx24, this.notify.bind(this));
+        this.objFiles = new DealFiles(this.boxFiles, this.bx24, this.yaDisk, this.dealId, this.notify.bind(this));
         
 
         this.observers = [];
