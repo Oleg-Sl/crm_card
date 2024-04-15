@@ -394,7 +394,7 @@ export default class DealDocs {
 
     getChangedData() {
         return {
-            [FIELD_DEAL_DOCS]: this.stringifyData(this.data)
+            [FIELD_DEAL_DOCS]: this.stringifyData(this.data) || ""
         };
     }
 
