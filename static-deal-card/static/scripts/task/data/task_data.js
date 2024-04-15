@@ -46,24 +46,6 @@ export class TaskData {
 
     }
 
-    // setSmartFields(fieldGroup, fieldProduct, fieldTechnology) {
-    //     this.fields = {
-    //         group: fieldGroup,
-    //         product: fieldProduct,
-    //         technology: fieldTechnology
-    //     };
-    // }
-
-    // setMaterialsData(dependencesMaterial, technologiesTypes, films, widths, laminations) {
-    //     this.materials = {
-    //         dependences: dependencesMaterial,
-    //         technologiesTypes: technologiesTypes,
-    //         films: films,
-    //         widths: widths,
-    //         laminations: laminations
-    //     };
-    // }
-
     setData(groups, products, technologies) {
         this.groupsData = [];
 
@@ -98,7 +80,6 @@ export class TaskData {
     notify() {
         this.observers.forEach(observer => observer.update());
     }
-
 
     addGroup(groupData) {
         let objGroup = new Group(groupData);

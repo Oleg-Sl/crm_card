@@ -326,7 +326,7 @@ export class Templates {
                         </select>
                     </div>
                     <div class="task-container__item-technologies-technology-material-1">
-                        <select name="" id="" title="${this.getTitleFromList(this.materials.films, technology.film)}" data-technology-field="film" data-type="select" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
+                        <select name="" id="" title="${this.getTitleFromList(this.materials.dependences, technology.film)}" data-technology-field="film" data-type="select" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
                             ${this.getFilmsOptionsHTML(technology.film)}
                         </select>
                     </div>
@@ -426,7 +426,7 @@ export class Templates {
 
     getFilmsOptionsHTML(filmId) {
         let filmsListHTML = '<option value=""></option>';
-        for (const {id, title} of this.materials.films) {
+        for (const {id, title} of this.materials.dependences) {
             if (id == filmId) {
                 filmsListHTML += `<option value="${id}" selected>${title}</option>`
             } else {

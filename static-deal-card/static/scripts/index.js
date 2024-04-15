@@ -155,10 +155,6 @@ class App {
                 const dealInvoices = this.dealInvoices.getChangedData();
                 const dealFinance = this.dealFinance.getChangedData();
 
-                console.log("dealSources = ", dealSources);
-                console.log("dealDocs = ", dealDocs);
-                console.log("dealActs = ", dealActs);
-                console.log("dealInvoices = ", dealInvoices);
                 const dealData = {...dealDesc, ...dealWorkers, ...dealSources, ...dealDocs, ...dealActs, ...dealInvoices, ...dealFinance};
                 let smartsData = this.taskData.getChangedData();
 

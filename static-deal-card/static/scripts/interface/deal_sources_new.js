@@ -489,14 +489,6 @@ export default class DealSources {
         this.observers.forEach(observer => observer.updateSources(filesData, linksData));
     }
 
-    // changeLink() {
-    //     this.notify()
-    // }
-
-    // changeFile() {
-    //     this.notify()
-    // }
-
     getChangedData() {
         return {
             [FIELD_DEAL_SOURCE_LINKS]: this.objLinks.getData().length > 0 ? this.objLinks.getData() : [''],
