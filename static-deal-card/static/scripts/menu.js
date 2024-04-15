@@ -1,8 +1,8 @@
-import { TaskEstimateBody } from './tasks/data_init_tasks/estiimate.js';
-import { TaskCommercOfferBody } from './tasks/data_init_tasks/commercial_offer.js';
-import { TaskOrderBody } from './tasks/data_init_tasks/order.js';
-import { TaskPaymentBody } from './tasks/data_init_tasks/payment.js';
-import { TaskPrepaymentBody } from './tasks/data_init_tasks/prepayment.js';
+import { TaskEstimateBody } from './task/data_init_tasks/estiimate.js';
+import { TaskCommercOfferBody } from './task/data_init_tasks/commercial_offer.js';
+import { TaskOrderBody } from './task/data_init_tasks/order.js';
+import { TaskPaymentBody } from './task/data_init_tasks/payment.js';
+import { TaskPrepaymentBody } from './task/data_init_tasks/prepayment.js';
 import {
     FIELD_DEAL_TASK_ESTIMATE,
     FIELD_DEAL_TASK_COMMERC_OFFER,
