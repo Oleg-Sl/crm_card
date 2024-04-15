@@ -438,7 +438,7 @@ class DealLinks {
             const [url, description] = item.split(';');
             return { url, description };
         });
-    
+
         return dataArray;
     }
 
@@ -459,12 +459,9 @@ export default class DealSources {
         this.boxFiles = this.container.querySelector(`.${CLASS_CONTAINER_FILES}`);
         this.boxLinks = this.container.querySelector(`.${CLASS_CONTAINER_LINKS}`);
 
-        // this.objLinks = null;
-        // this.objFiles = null;
         this.objLinks = new DealLinks(this.boxLinks, this.bx24, this.notify.bind(this));
         this.objFiles = new DealFiles(this.boxFiles, this.bx24, this.yaDisk, this.dealId, this.notify.bind(this));
         
-
         this.observers = [];
     }
 
