@@ -237,7 +237,7 @@ export class TaskData {
             const product = group.products.find(product => product.id == productId);
             if (product) {
                 // const techno
-                createCopyTechnology(groupId, productId);
+                this.createCopyTechnology(groupId, productId);
                 
                 // let fields = product.getFields();
                 // fields[`parentId${SP_GROUP_ID}`] = groupId;
