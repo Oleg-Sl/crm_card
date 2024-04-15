@@ -73,15 +73,15 @@ export default class DealDescription extends ChangeHistory {
             [FIELD_DEAL_ORDER_NUMBER]: this.numberOrderElement.value,
             [FIELD_DEAL_TITLE]: this.titleElement.value,
             [FIELD_DEAL_SOURCE_ID]: this.sourceSelect.value,
-            [FIELD_DEAL_DESCRIPTIONS[0]]: [this.keyFieldElements[0].value, this.valueFieldElements[0].value],
-            [FIELD_DEAL_DESCRIPTIONS[1]]: [this.keyFieldElements[1].value, this.valueFieldElements[1].value],
-            [FIELD_DEAL_DESCRIPTIONS[2]]: [this.keyFieldElements[2].value, this.valueFieldElements[2].value],
-            [FIELD_DEAL_DESCRIPTIONS[3]]: [this.keyFieldElements[3].value, this.valueFieldElements[3].value],
-            [FIELD_DEAL_DESCRIPTIONS[4]]: [this.keyFieldElements[4].value, this.valueFieldElements[4].value],
-            [FIELD_DEAL_DESCRIPTIONS[5]]: [this.keyFieldElements[5].value, this.valueFieldElements[5].value],
-            [FIELD_DEAL_DESCRIPTIONS[6]]: [this.keyFieldElements[6].value, this.valueFieldElements[6].value],
-            [FIELD_DEAL_DESCRIPTIONS[7]]: [this.keyFieldElements[7].value, this.valueFieldElements[7].value],
-            [FIELD_DEAL_DESCRIPTIONS[8]]: [this.keyFieldElements[8].value, this.valueFieldElements[8].value],
+            [FIELD_DEAL_DESCRIPTIONS[0]]: [this.keyFieldElements[0].value || this.keyFieldElements[0].getAttribute('placeholder'), this.valueFieldElements[0].value],
+            [FIELD_DEAL_DESCRIPTIONS[1]]: [this.keyFieldElements[1].value || this.keyFieldElements[1].getAttribute('placeholder'), this.valueFieldElements[1].value],
+            [FIELD_DEAL_DESCRIPTIONS[2]]: [this.keyFieldElements[2].value || this.keyFieldElements[2].getAttribute('placeholder'), this.valueFieldElements[2].value],
+            [FIELD_DEAL_DESCRIPTIONS[3]]: [this.keyFieldElements[3].value || this.keyFieldElements[3].getAttribute('placeholder'), this.valueFieldElements[3].value],
+            [FIELD_DEAL_DESCRIPTIONS[4]]: [this.keyFieldElements[4].value || this.keyFieldElements[4].getAttribute('placeholder'), this.valueFieldElements[4].value],
+            [FIELD_DEAL_DESCRIPTIONS[5]]: [this.keyFieldElements[5].value || this.keyFieldElements[5].getAttribute('placeholder'), this.valueFieldElements[5].value],
+            [FIELD_DEAL_DESCRIPTIONS[6]]: [this.keyFieldElements[6].value || this.keyFieldElements[6].getAttribute('placeholder'), this.valueFieldElements[6].value],
+            [FIELD_DEAL_DESCRIPTIONS[7]]: [this.keyFieldElements[7].value || this.keyFieldElements[7].getAttribute('placeholder'), this.valueFieldElements[7].value],
+            [FIELD_DEAL_DESCRIPTIONS[8]]: [this.keyFieldElements[8].value || this.keyFieldElements[8].getAttribute('placeholder'), this.valueFieldElements[8].value],
         };
 
         // this.setData(newDealData)
@@ -164,13 +164,13 @@ export default class DealDescription extends ChangeHistory {
 
     renderKeyValueField(keyElement, valueElement, value) {
         if (keyElement && valueElement) {
-            this.setValueByElementType(keyElement, value[0]);
-            this.setValueByElementType(valueElement, value[1]);
+            this.setValueByElementType(keyElement, value && value[0]);
+            this.setValueByElementType(valueElement, value && value[1]);
         }
     }
 
     setValueByElementType(element, value) {
-        if (element && value) {
+        if (element) {
             const elementType = element.tagName.toLowerCase();
             element.title = value || '';
             switch (elementType) {
