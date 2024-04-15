@@ -19,7 +19,6 @@ export class TaskOfferInterface {
             laminations: null
         };
 
-        this.manager.addObserver(this);
 
         this.templates = new Templates();
         
@@ -27,6 +26,15 @@ export class TaskOfferInterface {
         this.columnBeingResized = null;
         this.templateColumns = null;
 
+    }
+
+    init() {
+        this.fields = this.manager.fields;
+        this.materials = this.manager.materials;
+        this.templates.setSmartFields(this.fields);
+        this.templates.setMaterialsData(this.materials);
+
+        this.manager.addObserver(this);
         this.initHandlers();
     }
 

@@ -5,6 +5,15 @@ import {
     SP_GROUP_ID,
     SP_PRODUCT_ID,
     SP_TECHOLOGY_ID,
+
+        SP_TECHOLOGY_TYPE_ID,
+    SP_FILMS_ID,
+    SP_WIDTH_ID,
+    SP_LAMINATION_ID,
+    SP_DEPENDENCE_ID,
+
+    SP_WIDTH_FIELDS,
+    SP_DEPENDENCE_FIELDS,
 } from '../../parameters.js';
 
 
@@ -32,23 +41,28 @@ export class TaskData {
         this.observers = [];
     }
 
-    setSmartFields(fieldGroup, fieldProduct, fieldTechnology) {
-        this.fields = {
-            group: fieldGroup,
-            product: fieldProduct,
-            technology: fieldTechnology
-        };
+    async init() {
+        await this.getDataFromBx24();
+
     }
 
-    setMaterialsData(dependencesMaterial, technologiesTypes, films, widths, laminations) {
-        this.materials = {
-            dependences: dependencesMaterial,
-            technologiesTypes: technologiesTypes,
-            films: films,
-            widths: widths,
-            laminations: laminations
-        };
-    }
+    // setSmartFields(fieldGroup, fieldProduct, fieldTechnology) {
+    //     this.fields = {
+    //         group: fieldGroup,
+    //         product: fieldProduct,
+    //         technology: fieldTechnology
+    //     };
+    // }
+
+    // setMaterialsData(dependencesMaterial, technologiesTypes, films, widths, laminations) {
+    //     this.materials = {
+    //         dependences: dependencesMaterial,
+    //         technologiesTypes: technologiesTypes,
+    //         films: films,
+    //         widths: widths,
+    //         laminations: laminations
+    //     };
+    // }
 
     setData(groups, products, technologies) {
         this.groupsData = [];
@@ -312,6 +326,54 @@ export class TaskData {
             }
         }
         return queryStringArray.join('&');
+    }
+
+    async getDataFromBx24() {
+        const cmd = {
+            fieldGroup: `crm.item.fields?entityTypeId=${SP_GROUP_ID}`,
+            fieldProduct: `crm.item.fields?entityTypeId=${SP_PRODUCT_ID}`,
+            fieldTechnology: `crm.item.fields?entityTypeId=${SP_TECHOLOGY_ID}`,
+
+            [SP_GROUP_ID]: `crm.item.list?entityTypeId=${SP_GROUP_ID}&filter[parentId2]=${this.dealId}`,
+            [SP_PRODUCT_ID]: `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}`,
+            [SP_TECHOLOGY_ID]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}`,
+           
+            [SP_TECHOLOGY_TYPE_ID]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_TYPE_ID}&select[]=id&select[]=title`,
+            [SP_FILMS_ID]: `crm.item.list?entityTypeId=${SP_FILMS_ID}&select[]=id&select[]=title`,
+            [SP_WIDTH_ID]: `crm.item.list?entityTypeId=${SP_WIDTH_ID}&select[]=id&select[]=title&select[]=${SP_WIDTH_FIELDS.value}`,
+            [SP_LAMINATION_ID]: `crm.item.list?entityTypeId=${SP_LAMINATION_ID}&select[]=id&select[]=title`,
+            [SP_DEPENDENCE_ID]: `crm.item.list?entityTypeId=${SP_DEPENDENCE_ID}&select[]=id&select[]=title&select[]=${SP_DEPENDENCE_FIELDS.film}&select[]=${SP_DEPENDENCE_FIELDS.laminations}&select[]=${SP_DEPENDENCE_FIELDS.widths}`,
+        };
+
+        const data = await this.bx24.callBatchCmd(cmd);
+
+        const fieldGroup = data?.fieldGroup?.fields;
+        const fieldProduct = data?.fieldProduct?.fields;
+        const fieldTechnology = data?.fieldTechnology?.fields;
+
+        const groups = data?.[SP_GROUP_ID]?.items || [];
+        const products = data?.[SP_PRODUCT_ID]?.items || [];
+        const technologies = data?.[SP_TECHOLOGY_ID]?.items || [];
+
+        const technologiesType = data?.[SP_TECHOLOGY_TYPE_ID]?.items || [];
+        const films = data?.[SP_FILMS_ID]?.items || [];
+        const widths = data?.[SP_WIDTH_ID]?.items || [];
+        const laminations = data?.[SP_LAMINATION_ID]?.items || [];
+        const dependenceMaterial = data?.[SP_DEPENDENCE_ID]?.items || [];
+
+        this.fields = {
+            group: fieldGroup,
+            product: fieldProduct,
+            technology: fieldTechnology
+        };
+        this.materials = {
+            dependences: dependenceMaterial,
+            technologiesTypes: technologiesType,
+            films: films,
+            widths: widths,
+            laminations: laminations
+        };
+        this.setData(groups, products, technologies);
     }
 }
 
