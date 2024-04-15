@@ -278,9 +278,12 @@ export default class DealDocs {
     }
 
     handleFileRemoval(event) {
+        console.log("handleFileRemoval");
         if (event.target.classList.contains('file-row-del')) {
             const index = event.target.dataset.index;
+            console.log("index = ", index);
             this.data.splice(index, 1);
+            console.log("this.data = ", this.data);
             this.updateHTML();
         }
     }
