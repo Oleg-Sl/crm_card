@@ -320,7 +320,7 @@ export class TaskData {
             [SP_TECHOLOGY_ID]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}`,
            
             [SP_TECHOLOGY_TYPE_ID]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_TYPE_ID}&select[]=id&select[]=title`,
-            [SP_FILMS_ID]: `crm.item.list?entityTypeId=${SP_FILMS_ID}&select[]=id&select[]=title`,
+            // [SP_FILMS_ID]: `crm.item.list?entityTypeId=${SP_FILMS_ID}&select[]=id&select[]=title`,
             [SP_WIDTH_ID]: `crm.item.list?entityTypeId=${SP_WIDTH_ID}&select[]=id&select[]=title&select[]=${SP_WIDTH_FIELDS.value}`,
             [SP_LAMINATION_ID]: `crm.item.list?entityTypeId=${SP_LAMINATION_ID}&select[]=id&select[]=title`,
             [SP_DEPENDENCE_ID]: `crm.item.list?entityTypeId=${SP_DEPENDENCE_ID}&select[]=id&select[]=title&select[]=${SP_DEPENDENCE_FIELDS.film}&select[]=${SP_DEPENDENCE_FIELDS.laminations}&select[]=${SP_DEPENDENCE_FIELDS.widths}`,
@@ -337,7 +337,7 @@ export class TaskData {
         const technologies = data?.[SP_TECHOLOGY_ID]?.items || [];
 
         const technologiesType = data?.[SP_TECHOLOGY_TYPE_ID]?.items || [];
-        const films = data?.[SP_FILMS_ID]?.items || [];
+        // const films = data?.[SP_FILMS_ID]?.items || [];
         const widths = data?.[SP_WIDTH_ID]?.items || [];
         const laminations = data?.[SP_LAMINATION_ID]?.items || [];
         const dependenceMaterial = data?.[SP_DEPENDENCE_ID]?.items || [];
