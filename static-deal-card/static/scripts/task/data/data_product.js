@@ -65,10 +65,12 @@ export class Product {
     }
 
     update(newData) {
+        console.log("Product data = ", newData);
         Object.keys(newData).forEach(field => {
             this.saveChanges(field, newData);
             this.updateField(field, newData[field]);
         });
+        console.log("Product changedFields = ", this.changedFields);
     }
 
     updateTechnologies(newData) {

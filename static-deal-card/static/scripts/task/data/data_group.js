@@ -64,12 +64,13 @@ export class Group {
     }
 
     update(newData) {
+        console.log("Group data = ", newData);
         Object.keys(newData).forEach(field => {
             this.updateRepeatCheck(field, newData);
             this.saveChanges(field, newData);
             this.updateField(field, newData[field]);
         });
-
+        console.log("Group changedFields = ", this.changedFields);
     }
 
     updateRepeatCheck(field, newData) {
