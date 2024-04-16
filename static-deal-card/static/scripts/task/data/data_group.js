@@ -84,8 +84,8 @@ export class Group {
         console.log("updateRepeatCheck", field, value);
         switch (field) {
             case "repeatTechnologies":
-                this.products.forEach(product => {
-                    product.slice(1).updateTechnologies({
+                this.products.slice(1).forEach(product => {
+                    product.updateTechnologies({
                         general: value ? technologyEtalon.general : null,
                         inKP: value ? technologyEtalon.inKP : null,
                         MCHS: value ? technologyEtalon.MCHS : null,
@@ -103,8 +103,8 @@ export class Group {
                 });
                 break;
             case "repeatConsumption":
-                this.products.forEach(product => {
-                    product.slice(1).updateTechnologies({
+                this.products.slice(1).forEach(product => {
+                    product.updateTechnologies({
                         CHPP: value ? technologyEtalon.CHPP : null,
                         width: value ? technologyEtalon.width : null,
                         runningMeter: value ? technologyEtalon.runningMeter : null,
