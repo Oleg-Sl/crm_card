@@ -80,9 +80,10 @@ export class Group {
         const value = newData[field];
         const productEtalon = this.products[0];
         const technologyEtalon = productEtalon.technologies[0];
-        if (!value) {
-            return;
-        }
+        // if (!value) {
+        //     return;
+        // }
+        console.log(field, value, productEtalon, technologyEtalon);
         switch (field) {
             case "repeatTechnologies":
                 this.products.forEach(product => {
