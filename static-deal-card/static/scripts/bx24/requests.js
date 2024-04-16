@@ -104,7 +104,7 @@ export default class Bitrix24 {
                     const responseData = {};
                     
                     for (let key in response) {
-                        const res = response[key]
+                        const res = response[key];
                         if (res.status !== 200 || res.error()) {
                             this.logError(`${res.error()} (method ${reqPackage[key].method}: ${JSON.stringify(reqPackage[key].params)})`);
                             continue;
