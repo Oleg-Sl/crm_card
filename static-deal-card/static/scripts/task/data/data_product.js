@@ -7,6 +7,8 @@ import {
 
 
 const FIELDS_MONEY = ['designCost', 'installCost', 'dismantlingCost', 'businessTripCost', 'deliveryCostPerTime'];
+const FIELDS_MONEY_BX24 = [SP_PRODUCT_FIELDS.designCost, SP_PRODUCT_FIELDSinstallCost, SP_PRODUCT_FIELDS.dismantlingCost, SP_PRODUCT_FIELDS.businessTripCost, SP_PRODUCT_FIELDS.deliveryCostPerTime];
+
 
 export class Product {
     constructor(data) {
@@ -127,7 +129,7 @@ export class Product {
 
         for (const key in changedFields) {
             if (Object.hasOwnProperty.call(changedFields, key)) {
-                if (FIELDS_MONEY.includes(key)) {
+                if (FIELDS_MONEY_BX24.includes(key)) {
                     changedFieldsMap[key] = `${changedFields[key].newValue || 0}|RUB`;
                 } else if (changedFields[key].newValue === true) {
                     changedFieldsMap[key] = 'Y';

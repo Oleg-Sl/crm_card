@@ -8,6 +8,7 @@ import {
 
 
 const FIELDS_MONEY = ['price'];
+const FIELDS_MONEY_BX24 = [SP_PRODUCT_FIELDS.price, ];
 
 
 export class Technology {
@@ -93,7 +94,7 @@ export class Technology {
 
         for (const key in changedFields) {
             if (Object.hasOwnProperty.call(changedFields, key)) {
-                if (FIELDS_MONEY.includes(key)) {
+                if (FIELDS_MONEY_BX24.includes(key)) {
                     changedFieldsMap[key] = `${changedFields[key].newValue || 0}|RUB`;
                 } else if (changedFields[key].newValue === true) {
                     changedFieldsMap[key] = 'Y';
