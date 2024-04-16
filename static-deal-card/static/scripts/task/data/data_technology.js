@@ -37,14 +37,12 @@ export class Technology {
         this.initFields();
     }
     update(newData) {
-        console.log("Technology data = ", newData);
-
+        // console.log("Technology data = ", newData);
         Object.keys(newData).forEach(field => {
             this.saveChanges(field, newData);
             this.updateField(field, newData[field]);
         });
-        console.log("Technology changedFields = ", this.changedFields);
-
+        // console.log("Technology changedFields = ", this.changedFields);
     }
 
     saveChanges(field, newData) {
