@@ -170,6 +170,7 @@ class App {
                 // Обновляем товары
                 let batch = {};
                 for (let smart of smartsData) {
+                    smart["adf;j"] = "";
                     batch[`${smart.entityTypeId}_${smart.entityId}`] = {
                         method: "crm.item.update",
                         params: {
@@ -188,7 +189,10 @@ class App {
                             cmd: batch
                         }
                     );
-                    console.log("resBatch = ", resBatch);
+                    if (resBatch?.result_error && resBatch?.result_error.length > 0) {
+                        alert(`При сохранении произошла ошибка: ${JSON.stringify(resBatch?.result_error)}`);
+                        // console.log("resBatch = ", resBatch?.result_error);
+                    }
                 }
 
                 spinner.classList.add('d-none');
