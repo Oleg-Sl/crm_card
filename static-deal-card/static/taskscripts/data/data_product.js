@@ -13,6 +13,9 @@ import {
 } from '../parameters.js';
 
 
+const FIELDS_MONEY_BX24 = [SP_PRODUCT_FIELDS.designCost, SP_PRODUCT_FIELDS.installCost, SP_PRODUCT_FIELDS.dismantlingCost, SP_PRODUCT_FIELDS.businessTripCost, SP_PRODUCT_FIELDS.deliveryCostPerTime];
+
+
 export class Product {
     constructor(data) {
         this.data = data;
@@ -130,7 +133,9 @@ export class Product {
 
         for (const key in changedFields) {
             if (Object.hasOwnProperty.call(changedFields, key)) {
-                if (changedFields[key].newValue === true) {
+                if (FIELDS_MONEY_BX24.includes(key)) {
+                    changedFieldsMap[key] = `${changedFields[key].newValue || 0}|RUB`;
+                } else if (changedFields[key].newValue === true) {
                     changedFieldsMap[key] = 'Y';
                 } else if (changedFields[key].newValue === false) {
                     changedFieldsMap[key] = 'N';

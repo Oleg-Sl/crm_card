@@ -13,6 +13,9 @@ import {
 } from '../parameters.js';
 
 
+const FIELDS_MONEY_BX24 = [SP_TECHOLOGY_FIELDS.price, ];
+
+
 export class Technology {
     constructor(data) {
         this.parentId = data?.[`parentId${SP_PRODUCT_ID}`];
@@ -93,7 +96,9 @@ export class Technology {
 
         for (const key in changedFields) {
             if (Object.hasOwnProperty.call(changedFields, key)) {
-                if (changedFields[key].newValue === true) {
+                if (FIELDS_MONEY_BX24.includes(key)) {
+                    changedFieldsMap[key] = `${changedFields[key].newValue || 0}|RUB`;
+                } else if (changedFields[key].newValue === true) {
                     changedFieldsMap[key] = 'Y';
                 } else if (changedFields[key].newValue === false) {
                     changedFieldsMap[key] = 'N';
@@ -102,7 +107,6 @@ export class Technology {
                 }
             }
         }
-    
         return changedFieldsMap;
     }
 }
