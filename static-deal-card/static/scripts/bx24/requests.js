@@ -124,6 +124,34 @@ export default class Bitrix24 {
         }
     }
 
+
+    async batchMethod2(reqPackage) {
+        try {
+            let result = await new Promise((resolve, reject) => {
+                BX24.callBatch(reqPackage, response => {
+                    // const responseData = {};
+                    
+                    // for (let key in response) {
+                    //     const res = response[key];
+                    //     if (res.status !== 200 || res.error()) {
+                    //         this.logError(`${res.error()} (method ${reqPackage[key].method}: ${JSON.stringify(reqPackage[key].params)})`);
+                    //         continue;
+                    //     }
+
+                    //     responseData[key] = res.data();
+                    // }
+                    resolve(response);
+                });
+            });
+
+            return result;
+        } catch (error) {
+            const errorMessage = `An error occurred in batchMethod: ${error}`;
+            this.logError(errorMessage);
+            return null;
+        }
+    }
+
     async callMethodForLong(method, params = {}) {
         try {
             const result = await new Promise((resolve, reject) => {
