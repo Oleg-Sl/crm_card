@@ -131,9 +131,9 @@ export class Product {
 
         for (const key in changedFields) {
             if (Object.hasOwnProperty.call(changedFields, key)) {
-                // if (FIELDS_MONEY_BX24.includes(key)) {
-                    // changedFieldsMap[key] = `${changedFields[key].newValue || 0}|RUB`;
-                // } else 
+                if (FIELDS_MONEY_BX24.includes(key)) {
+                    changedFieldsMap[key] = `${changedFields[key].newValue || 0}|RUB`;
+                } else 
                 if (changedFields[key].newValue === true) {
                     changedFieldsMap[key] = 'Y';
                 } else if (changedFields[key].newValue === false) {

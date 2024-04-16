@@ -184,12 +184,12 @@ class App {
                 if (Object.keys(batch).length > 0) {
                     // const resBatch = await this.bx24.batch.call(batch);
                     // console.log("resBatch = ", resBatch);
-                    const resBatch = await this.bx24.callBatchMethod(batch);
+                    const resBatch = await this.bx24.callBatchJson(batch);
                     console.log("resBatch = ", resBatch);
-                    if (resBatch?.result_error && resBatch?.result_error.length > 0) {
-                        alert(`При сохранении произошла ошибка: ${JSON.stringify(resBatch?.result_error)}`);
-                        // console.log("resBatch = ", resBatch?.result_error);
-                    }
+                    // if (resBatch?.result_error && resBatch?.result_error.length > 0) {
+                    //     alert(`При сохранении произошла ошибка: ${JSON.stringify(resBatch?.result_error)}`);
+                    //     // console.log("resBatch = ", resBatch?.result_error);
+                    // }
                 }
 
                 spinner.classList.add('d-none');
