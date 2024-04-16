@@ -171,11 +171,10 @@ class App {
                 let batch = {};
             
                 for (let smart of smartsData) {
-                    // smart["ufCrm29_1707120983"] = 1;
                     batch[`${smart.entityTypeId}_${smart.entityId}`] = {
                         method: "crm.item.update",
                         params: {
-                            // entityTypeId: smart.entityTypeId,
+                            entityTypeId: smart.entityTypeId,
                             id: smart.entityId,
                             fields: smart
                         }
