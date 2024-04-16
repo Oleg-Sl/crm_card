@@ -62,7 +62,7 @@ export default class BitrixService {
 
     async callBatchMethod(calls) {
         // let data = await this.bx24.batchMethod(calls);
-        const data = await BX24.callBatch(calls);
+        const data = await this.bx24.batchMethod2(calls);
         return data;
     }
 
