@@ -159,7 +159,8 @@ class App {
                 let smartsData = this.taskData.getChangedData();
 
                 // Обновляем сделку
-                let res = await this.bx24.deal.update({
+                // let res = await this.bx24.deal.update({
+                let res = await this.bx24.callMethod('crm.deal.update', {
                     id: this.dealId,
                     fields: dealData,
                     params: { "REGISTER_SONET_EVENT": "Y" }
@@ -180,7 +181,13 @@ class App {
                 }
 
                 if (Object.keys(batch).length > 0) {
-                    const resBatch = await this.bx24.batch.call(batch);
+                    const resBatch = await this.bx24.callMethod(
+                        'batch',
+                        {
+                            halt: 0,
+                            cmd: batch
+                        }
+                    );
                     console.log("resBatch = ", resBatch);
                 }
 
