@@ -27,6 +27,7 @@ class App {
 
         this.uiTask.init();
         this.uiTask.render(false);
+        BX24.fitWindow();
     }
 
     async update() {
