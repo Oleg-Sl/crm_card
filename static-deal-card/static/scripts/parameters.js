@@ -109,7 +109,7 @@ export const SP_PRODUCT_FIELDS = {
     termsDate: "ufCrm29_1707121323",                // Сроки - дата
     dismantling: "ufCrm29_1707121354",              // Демонтаж
     dismantlingDesc: "ufCrm29_1707121394",          // Демонтаж - описание
-    c: "ufCrm29_1707121429",          // Демонтаж - площадь
+    dismantlingArea: "ufCrm29_1707121429",          // Демонтаж - площадь
     dismantlingComplexity: "ufCrm29_1707121444",    // Демонтаж - сложность
     dismantlingCost: "ufCrm29_1707121461",          // Демонтаж - себестоимость
     dismantlingPercent: "ufCrm29_1707121476",       // Демонтаж - процент

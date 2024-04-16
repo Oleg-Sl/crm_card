@@ -171,7 +171,7 @@ class App {
                 let batch = {};
             
                 for (let smart of smartsData) {
-                    smart["asdf"] = "";
+                    smart["ufCrm29_1707120983"] = 1;
                     batch[`${smart.entityTypeId}_${smart.entityId}`] = {
                         method: "crm.item.update",
                         params: {
@@ -185,7 +185,6 @@ class App {
                 if (Object.keys(batch).length > 0) {
                     // const resBatch = await this.bx24.batch.call(batch);
                     // console.log("resBatch = ", resBatch);
-                    
                     const resBatch = await this.bx24.callBatchJson(batch);
                     if (resBatch?.result_error && resBatch?.result_error.length > 0) {
                         alert(`При сохранении произошла ошибка: ${JSON.stringify(resBatch?.result_error)}`);
