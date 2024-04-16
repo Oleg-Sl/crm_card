@@ -76,7 +76,7 @@ export class Group {
     updateRepeatCheck(field, newData) {
         console.log(field, newData, this.products);
 
-        if (this.products.length <= 1 || this.products[0].technologies.length <= 1) {
+        if (this.products.length == 0 || this.products[0].technologies.length == 0) {
             return;
         }
         const value = newData[field];
