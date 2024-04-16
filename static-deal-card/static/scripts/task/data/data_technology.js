@@ -93,7 +93,9 @@ export class Technology {
 
         for (const key in changedFields) {
             if (Object.hasOwnProperty.call(changedFields, key)) {
-                if (changedFields[key].newValue === true) {
+                if (FIELDS_MONEY.includes(key)) {
+                    changedFieldsMap[key] = `${changedFields[key].newValue || 0}|RUB`;
+                } else if (changedFields[key].newValue === true) {
                     changedFieldsMap[key] = 'Y';
                 } else if (changedFields[key].newValue === false) {
                     changedFieldsMap[key] = 'N';
