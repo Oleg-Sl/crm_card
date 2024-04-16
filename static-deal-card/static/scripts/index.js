@@ -164,6 +164,7 @@ class App {
                     fields: dealData,
                     params: { "REGISTER_SONET_EVENT": "Y" }
                 });
+                console.log("res = ", res);
 
                 // Обновляем товары
                 let batch = {};
