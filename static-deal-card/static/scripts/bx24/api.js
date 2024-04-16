@@ -60,6 +60,12 @@ export default class BitrixService {
         return data;
     }
 
+    async callBatchMethod(calls) {
+        let data = await this.bx24.batchMethod(calls);
+
+        return data;
+    }
+
     makeCall(phoneNumber) {
         this.bx24.makeCall(phoneNumber);
     }
