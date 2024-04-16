@@ -76,6 +76,8 @@ export class Product {
     }
 
     updateTechnologies(newData) {
+        console.log("Product data = ", newData);
+        console.log("Product technologies = ", this.technologies);
         this.technologies.forEach(technology => {
             technology.update(newData);
         });

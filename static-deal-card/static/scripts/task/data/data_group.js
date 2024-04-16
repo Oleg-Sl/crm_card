@@ -84,7 +84,7 @@ export class Group {
         console.log("updateRepeatCheck", field, value);
         switch (field) {
             case "repeatTechnologies":
-                this.products.slice(1).forEach(product => {
+                this.products.forEach(product => {
                     product.updateTechnologies({
                         general: value ? technologyEtalon.general : null,
                         inKP: value ? technologyEtalon.inKP : null,
@@ -96,14 +96,14 @@ export class Group {
                 });
                 break;
             case "repeatSources":
-                this.products.slice(1).forEach(product => {
+                this.products.forEach(product => {
                     product.update({
                         sourcesFiles: value ? productEtalon.sourcesFiles : null,
                     });
                 });
                 break;
             case "repeatConsumption":
-                this.products.slice(1).forEach(product => {
+                this.products.forEach(product => {
                     product.updateTechnologies({
                         CHPP: value ? technologyEtalon.CHPP : null,
                         width: value ? technologyEtalon.width : null,
@@ -112,7 +112,7 @@ export class Group {
                 });
                 break;
             case "repeatMeasurement":
-                this.products.slice(1).forEach(product => {
+                this.products.forEach(product => {
                     product.update({
                         measurement: value ? productEtalon.measurement : null,
                         measurementAddress: value ? productEtalon.measurementAddress : null,
@@ -122,7 +122,7 @@ export class Group {
                 })
                 break;
             case "repeatDesign":
-                this.products.slice(1).forEach(product => {
+                this.products.forEach(product => {
                     product.update({
                         design: value ? productEtalon.design : null,
                         designPayment: value ? productEtalon.designPayment : null,
@@ -131,12 +131,12 @@ export class Group {
                 });
                 break;
             case "repeatMontage":
-                this.products.slice(1).forEach(product => {
+                this.products.forEach(product => {
                     product.update({
                         installTime: value ?  productEtalon.installTime : null,
                         installCity: value ?  productEtalon.installCity : null,
                         installPlace: value ?  productEtalon.installPlace : null,
-                        installComplexity: value ?  productEtalon.installComplexity : null,
+                        dismantlingArea: value ?  productEtalon.dismantlingArea : null,
                         installDays: value ?  productEtalon.installDays : null,
                         installCost: value ?  productEtalon.installCost : null,
                         installPercentage: value ?  productEtalon.installPercentage : null,
@@ -144,7 +144,7 @@ export class Group {
                 });
                 break;
             case "repeatDeadline":
-                this.products.slice(1).forEach(product => {
+                this.products.forEach(product => {
                     product.update({
                         terms: value ? productEtalon.terms : null,
                         termsDate: value ? productEtalon.termsDate : null,
