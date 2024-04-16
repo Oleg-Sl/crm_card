@@ -81,7 +81,7 @@ export class Group {
         // if (!value) {
         //     return;
         // }
-
+        console.log("updateRepeatCheck", field, value);
         switch (field) {
             case "repeatTechnologies":
                 this.products.slice(1).forEach(product => {
