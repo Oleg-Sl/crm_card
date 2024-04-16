@@ -67,17 +67,13 @@ export class Product {
     }
 
     update(newData) {
-        // console.log("Product data = ", newData);
         Object.keys(newData).forEach(field => {
             this.saveChanges(field, newData);
             this.updateField(field, newData[field]);
         });
-        // console.log("Product changedFields = ", this.changedFields);
     }
 
     updateTechnologies(newData) {
-        // console.log("Product data = ", newData);
-        // console.log("Product technologies = ", this.technologies);
         this.technologies.forEach(technology => {
             technology.update(newData);
         });
@@ -133,8 +129,7 @@ export class Product {
             if (Object.hasOwnProperty.call(changedFields, key)) {
                 if (FIELDS_MONEY_BX24.includes(key)) {
                     changedFieldsMap[key] = `${changedFields[key].newValue || 0}|RUB`;
-                } else 
-                if (changedFields[key].newValue === true) {
+                } else if (changedFields[key].newValue === true) {
                     changedFieldsMap[key] = 'Y';
                 } else if (changedFields[key].newValue === false) {
                     changedFieldsMap[key] = 'N';

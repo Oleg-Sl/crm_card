@@ -86,12 +86,12 @@ export class Group {
             case "repeatTechnologies":
                 this.products.slice(1).forEach(product => {
                     product.updateTechnologies({
-                        general: value ? technologyEtalon.general : null,
-                        inKP: value ? technologyEtalon.inKP : null,
-                        MCHS: value ? technologyEtalon.MCHS : null,
-                        film: value ? technologyEtalon.film : null,
-                        lamination: value ? technologyEtalon.lamination : null,
-                        price: value ? technologyEtalon.price : null,
+                        general: value ? technologyEtalon.general : '',
+                        inKP: value ? technologyEtalon.inKP : false,
+                        MCHS: value ? technologyEtalon.MCHS : false,
+                        film: value ? technologyEtalon.film : '',
+                        lamination: value ? technologyEtalon.lamination : '',
+                        price: value ? technologyEtalon.price : 0,
                     });
                 });
                 break;
@@ -105,49 +105,49 @@ export class Group {
             case "repeatConsumption":
                 this.products.slice(1).forEach(product => {
                     product.updateTechnologies({
-                        CHPP: value ? technologyEtalon.CHPP : null,
-                        width: value ? technologyEtalon.width : null,
-                        runningMeter: value ? technologyEtalon.runningMeter : null,
+                        CHPP: value ? technologyEtalon.CHPP : '',
+                        width: value ? technologyEtalon.width : '',
+                        runningMeter: value ? technologyEtalon.runningMeter : '',
                     });
                 });
                 break;
             case "repeatMeasurement":
                 this.products.slice(1).forEach(product => {
                     product.update({
-                        measurement: value ? productEtalon.measurement : null,
-                        measurementAddress: value ? productEtalon.measurementAddress : null,
-                        measurementCost: value ? productEtalon.measurementCost : null,
-                        measurementPercent: value ? productEtalon.measurementPercent : null,
+                        measurement: value ? productEtalon.measurement : '',
+                        measurementAddress: value ? productEtalon.measurementAddress : '',
+                        measurementCost: value ? productEtalon.measurementCost : '',
+                        measurementPercent: value ? productEtalon.measurementPercent : '',
                     });
                 })
                 break;
             case "repeatDesign":
                 this.products.slice(1).forEach(product => {
                     product.update({
-                        design: value ? productEtalon.design : null,
-                        designPayment: value ? productEtalon.designPayment : null,
-                        designCost: value ? productEtalon.designCost : null,
+                        design: value ? productEtalon.design : '',
+                        designPayment: value ? productEtalon.designPayment : '',
+                        designCost: value ? productEtalon.designCost : 0,
                     });
                 });
                 break;
             case "repeatMontage":
                 this.products.slice(1).forEach(product => {
                     product.update({
-                        installTime: value ?  productEtalon.installTime : null,
-                        installCity: value ?  productEtalon.installCity : null,
-                        installPlace: value ?  productEtalon.installPlace : null,
-                        dismantlingArea: value ?  productEtalon.dismantlingArea : null,
-                        installDays: value ?  productEtalon.installDays : null,
-                        installCost: value ?  productEtalon.installCost : null,
-                        installPercentage: value ?  productEtalon.installPercentage : null,
+                        installTime: value ?  productEtalon.installTime : '',
+                        installCity: value ?  productEtalon.installCity : '',
+                        installPlace: value ?  productEtalon.installPlace : '',
+                        dismantlingArea: value ?  productEtalon.dismantlingArea : '',
+                        installDays: value ?  productEtalon.installDays : '',
+                        installCost: value ?  productEtalon.installCost : 0,
+                        installPercentage: value ?  productEtalon.installPercentage : '',
                     });
                 });
                 break;
             case "repeatDeadline":
                 this.products.slice(1).forEach(product => {
                     product.update({
-                        terms: value ? productEtalon.terms : null,
-                        termsDate: value ? productEtalon.termsDate : null,
+                        terms: value ? productEtalon.terms : '',
+                        termsDate: value ? productEtalon.termsDate : '',
                     });
                 });
                 break;
