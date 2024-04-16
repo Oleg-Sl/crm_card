@@ -64,19 +64,15 @@ export class Group {
     }
 
     update(newData) {
-        console.log("Group data = ", newData);
         Object.keys(newData).forEach(field => {
             this.updateRepeatCheck(field, newData);
             this.saveChanges(field, newData);
             this.updateField(field, newData[field]);
         });
-        console.log("Group changedFields = ", this.changedFields);
     }
 
     updateRepeatCheck(field, newData) {
-        console.log(field, newData, this.products);
-
-        if (this.products.length == 0 || this.products[0].technologies.length == 0) {
+        if (this.products.length === 0 || this.products[0].technologies.length === 0) {
             return;
         }
         const value = newData[field];
@@ -85,75 +81,75 @@ export class Group {
         // if (!value) {
         //     return;
         // }
-        console.log(field, value, productEtalon, technologyEtalon);
+
         switch (field) {
             case "repeatTechnologies":
-                this.products.forEach(product => {
+                this.products.slice(1).forEach(product => {
                     product.updateTechnologies({
-                        general: technologyEtalon.general,
-                        inKP: technologyEtalon.inKP,
-                        MCHS: technologyEtalon.MCHS,
-                        film: technologyEtalon.film,
-                        lamination: technologyEtalon.lamination,
-                        price: productEtalon.price,
+                        general: value ? technologyEtalon.general : null,
+                        inKP: value ? technologyEtalon.inKP : null,
+                        MCHS: value ? technologyEtalon.MCHS : null,
+                        film: value ? technologyEtalon.film : null,
+                        lamination: value ? technologyEtalon.lamination : null,
+                        price: value ? technologyEtalon.price : null,
                     });
-                })
+                });
                 break;
             case "repeatSources":
-                this.products.forEach(product => {
+                this.products.slice(1).forEach(product => {
                     product.update({
-                        sourcesFiles: productEtalon.sourcesFiles,
+                        sourcesFiles: value ? productEtalon.sourcesFiles : null,
                     });
-                })
+                });
                 break;
             case "repeatConsumption":
-                this.products.forEach(product => {
+                this.products.slice(1).forEach(product => {
                     product.updateTechnologies({
-                        CHPP: technologyEtalon.CHPP,
-                        width: technologyEtalon.width,
-                        runningMeter: technologyEtalon.runningMeter,
+                        CHPP: value ? technologyEtalon.CHPP : null,
+                        width: value ? technologyEtalon.width : null,
+                        runningMeter: value ? technologyEtalon.runningMeter : null,
                     });
-                })
+                });
                 break;
             case "repeatMeasurement":
-                this.products.forEach(product => {
+                this.products.slice(1).forEach(product => {
                     product.update({
-                        measurement: productEtalon.measurement,
-                        measurementAddress: productEtalon.measurementAddress,
-                        measurementCost: productEtalon.measurementCost,
-                        measurementPercent: productEtalon.measurementPercent,
+                        measurement: value ? productEtalon.measurement : null,
+                        measurementAddress: value ? productEtalon.measurementAddress : null,
+                        measurementCost: value ? productEtalon.measurementCost : null,
+                        measurementPercent: value ? productEtalon.measurementPercent : null,
                     });
                 })
                 break;
             case "repeatDesign":
-                this.products.forEach(product => {
+                this.products.slice(1).forEach(product => {
                     product.update({
-                        design: productEtalon.design,
-                        designPayment: productEtalon.designPayment,
-                        designCost: productEtalon.designCost,
+                        design: value ? productEtalon.design : null,
+                        designPayment: value ? productEtalon.designPayment : null,
+                        designCost: value ? productEtalon.designCost : null,
                     });
-                })
+                });
                 break;
             case "repeatMontage":
-                this.products.forEach(product => {
+                this.products.slice(1).forEach(product => {
                     product.update({
-                        installTime: productEtalon.installTime,
-                        installCity: productEtalon.installCity,
-                        installPlace: productEtalon.installPlace,
-                        installComplexity: productEtalon.installComplexity,
-                        installDays: productEtalon.installDays,
-                        installCost: productEtalon.installCost,
-                        installPercentage: productEtalon.installPercentage,
+                        installTime: value ?  productEtalon.installTime : null,
+                        installCity: value ?  productEtalon.installCity : null,
+                        installPlace: value ?  productEtalon.installPlace : null,
+                        installComplexity: value ?  productEtalon.installComplexity : null,
+                        installDays: value ?  productEtalon.installDays : null,
+                        installCost: value ?  productEtalon.installCost : null,
+                        installPercentage: value ?  productEtalon.installPercentage : null,
                     });
-                })
+                });
                 break;
             case "repeatDeadline":
-                this.products.forEach(product => {
+                this.products.slice(1).forEach(product => {
                     product.update({
-                        terms: productEtalon.terms,
-                        termsDate: productEtalon.termsDate,
+                        terms: value ? productEtalon.terms : null,
+                        termsDate: value ? productEtalon.termsDate : null,
                     });
-                })
+                });
                 break;
         }
     }
