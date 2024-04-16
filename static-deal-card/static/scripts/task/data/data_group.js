@@ -85,7 +85,7 @@ export class Group {
         switch (field) {
             case "repeatTechnologies":
                 this.products.forEach(product => {
-                    product.updateTechnologies({
+                    product.slice(1).updateTechnologies({
                         general: value ? technologyEtalon.general : null,
                         inKP: value ? technologyEtalon.inKP : null,
                         MCHS: value ? technologyEtalon.MCHS : null,
@@ -98,13 +98,13 @@ export class Group {
             case "repeatSources":
                 this.products.slice(1).forEach(product => {
                     product.update({
-                        sourcesFiles: value ? productEtalon.sourcesFiles : null,
+                        sourcesFiles: value ? productEtalon.sourcesFiles : [],
                     });
                 });
                 break;
             case "repeatConsumption":
                 this.products.forEach(product => {
-                    product.updateTechnologies({
+                    product.slice(1).updateTechnologies({
                         CHPP: value ? technologyEtalon.CHPP : null,
                         width: value ? technologyEtalon.width : null,
                         runningMeter: value ? technologyEtalon.runningMeter : null,
