@@ -112,7 +112,6 @@ export default class Bitrix24 {
 
                         responseData[key] = res.data();
                     }
-
                     resolve(responseData);
                 });
             });
