@@ -8,7 +8,7 @@ import {
 
 
 const FIELDS_MONEY = ['price'];
-const FIELDS_MONEY_BX24 = [SP_PRODUCT_FIELDS.price, ];
+const FIELDS_MONEY_BX24 = [SP_TECHOLOGY_FIELDS.price, ];
 
 
 export class Technology {
