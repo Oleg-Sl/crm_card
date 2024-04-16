@@ -96,7 +96,7 @@ export class Group {
                 });
                 break;
             case "repeatSources":
-                this.products.forEach(product => {
+                this.products.slice(1).forEach(product => {
                     product.update({
                         sourcesFiles: value ? productEtalon.sourcesFiles : null,
                     });
@@ -112,7 +112,7 @@ export class Group {
                 });
                 break;
             case "repeatMeasurement":
-                this.products.forEach(product => {
+                this.products.slice(1).forEach(product => {
                     product.update({
                         measurement: value ? productEtalon.measurement : null,
                         measurementAddress: value ? productEtalon.measurementAddress : null,
@@ -122,7 +122,7 @@ export class Group {
                 })
                 break;
             case "repeatDesign":
-                this.products.forEach(product => {
+                this.products.slice(1).forEach(product => {
                     product.update({
                         design: value ? productEtalon.design : null,
                         designPayment: value ? productEtalon.designPayment : null,
@@ -131,7 +131,7 @@ export class Group {
                 });
                 break;
             case "repeatMontage":
-                this.products.forEach(product => {
+                this.products.slice(1).forEach(product => {
                     product.update({
                         installTime: value ?  productEtalon.installTime : null,
                         installCity: value ?  productEtalon.installCity : null,
@@ -144,7 +144,7 @@ export class Group {
                 });
                 break;
             case "repeatDeadline":
-                this.products.forEach(product => {
+                this.products.slice(1).forEach(product => {
                     product.update({
                         terms: value ? productEtalon.terms : null,
                         termsDate: value ? productEtalon.termsDate : null,
