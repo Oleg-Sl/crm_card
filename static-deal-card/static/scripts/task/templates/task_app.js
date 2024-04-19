@@ -371,10 +371,10 @@ export class Templates {
 
     getSourcesOptionsHTML(source) {
         // let contentHTML = '<option value="" selected>-</option>';
+        // let contentHTML = !this.groupData.repeatSources || urlSelected ==='' || urlSelected === null || urlSelected === undefined || isNaN(urlSelected) ? '<option value=""></option>' : '<option value="" disabled></option>';
         let isSelected = false;
         const [nameSelected, urlSelected, previewSelected, commentSelected] = source.split(';');
         // "имя;размер;ссылка_главная;ссылка_превью;комментарий"
-        let contentHTML = !this.groupData.repeatSources || urlSelected ==='' || urlSelected === null || urlSelected === undefined || isNaN(urlSelected) ? '<option value=""></option>' : '<option value="" disabled></option>';
         for (const sourceData of this.sourceFilesData) {
             const [name, size, url, preview, comment] = sourceData.split(';');
             if (name == nameSelected && url == urlSelected) {
@@ -395,11 +395,14 @@ export class Templates {
             }
         }
 
+        let firstContentHTML = !this.groupData.repeatSources || !isSelected ? '<option value=""></option>' : '<option value="" disabled></option>';
         if (!isSelected && source) {
-            contentHTML += `<option value="${nameSelected};${urlSelected};${previewSelected};${commentSelected}" selected>${nameSelected} (${commentSelected || ""})</option>`;
+            firstContentHTML = !this.groupData.repeatSources || !isSelected ?
+                                `<option value="${nameSelected};${urlSelected};${previewSelected};${commentSelected}" selected>${nameSelected} (${commentSelected || ""})</option>` : 
+                                `<option value="${nameSelected};${urlSelected};${previewSelected};${commentSelected}" disabled>${nameSelected} (${commentSelected || ""})</option>`;
         }
 
-        return contentHTML;
+        return firstContentHTML + contentHTML;
     }
 
     getOptionsHTML(fields, value, isBlock = false) {
