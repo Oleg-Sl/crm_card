@@ -608,7 +608,7 @@ export class Templates {
 
     getTechnologyTypeOptionsHTML(techId) {
         // let technologyTypeListHTML = '<option value=""></option>';
-        let technologyTypeListHTML = this.groupData.repeatTechnologies  || techId ==='' || techId === null || techId === undefined || isNaN(techId) ? '<option value=""></option>' : '<option value="" disabled></option>';
+        let technologyTypeListHTML = !this.groupData.repeatTechnologies  || techId ==='' || techId === null || techId === undefined || isNaN(techId) ? '<option value=""></option>' : '<option value="" disabled></option>';
         for (const {id, title} of this.materials.technologiesTypes) {
             if (id == techId) {
                 technologyTypeListHTML += `<option value="${id}" selected>${title}</option>`
@@ -622,7 +622,7 @@ export class Templates {
 
     getFilmsOptionsHTML(filmId) {
         // let filmsListHTML = '<option value=""></option>';
-        let filmsListHTML = this.groupData.repeatTechnologies  || filmId ==='' || filmId === null || filmId === undefined || isNaN(filmId) ? '<option value=""></option>' : '<option value="" disabled></option>';
+        let filmsListHTML = !this.groupData.repeatTechnologies  || filmId ==='' || filmId === null || filmId === undefined || isNaN(filmId) ? '<option value=""></option>' : '<option value="" disabled></option>';
         for (const {id, title} of this.materials.dependences) {
             if (id == filmId) {
                 filmsListHTML += `<option value="${id}" selected>${title}</option>`
@@ -636,7 +636,7 @@ export class Templates {
 
     getLaminationsOptionsHTML(filmId, laminationId) {
         // let laminationsHTML = '<option value=""></option>';
-        let laminationsHTML = this.groupData.repeatTechnologies  || laminationId ==='' || laminationId === null || laminationId === undefined || isNaN(laminationId) ? '<option value=""></option>' : '<option value="" disabled></option>';
+        let laminationsHTML = !this.groupData.repeatTechnologies  || laminationId ==='' || laminationId === null || laminationId === undefined || isNaN(laminationId) ? '<option value=""></option>' : '<option value="" disabled></option>';
         const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.id] == filmId) || {};
         const laminationIds = dependence?.[SP_DEPENDENCE_FIELDS.laminations] || [];
         const laminationsList = this.materials.laminations.filter(obj => laminationIds.includes(String(obj.id)));
