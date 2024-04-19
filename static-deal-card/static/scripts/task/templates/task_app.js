@@ -372,6 +372,7 @@ export class Templates {
     getSourcesOptionsHTML(source) {
         // let contentHTML = '<option value="" selected>-</option>';
         // let contentHTML = !this.groupData.repeatSources || urlSelected ==='' || urlSelected === null || urlSelected === undefined || isNaN(urlSelected) ? '<option value=""></option>' : '<option value="" disabled></option>';
+        let contentHTML = "";
         let isSelected = false;
         const [nameSelected, urlSelected, previewSelected, commentSelected] = source.split(';');
         // "имя;размер;ссылка_главная;ссылка_превью;комментарий"
