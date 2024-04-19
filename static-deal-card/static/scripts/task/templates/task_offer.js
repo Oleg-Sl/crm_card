@@ -239,17 +239,17 @@ export class Templates {
                 <td class="block-center">
                     <div class="task-container__item-measure">
                         <div class="task-container__item-measure-status">
-                            <input type="text" name="" id="" title="${this.customToString(productData.measurement)}" value="${this.customToString(productData.measurement)}" data-product-field="measurement" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <input type="text" ${this.groupData.repeatMeasurement ? 'readonly' : ''} title="${this.customToString(productData.measurement)}" value="${this.customToString(productData.measurement)}" data-product-field="measurement" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                         <div class="task-container__item-measure-address">
-                            <input type="text" name="" id="" title="${this.customToString(productData.measurementAddress)}" value="${this.customToString(productData.measurementAddress)}" data-product-field="measurementAddress" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <input type="text" ${this.groupData.repeatMeasurement ? 'readonly' : ''} title="${this.customToString(productData.measurementAddress)}" value="${this.customToString(productData.measurementAddress)}" data-product-field="measurementAddress" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                         <div class="task-container__item-measure-costprice">
-                            <input type="number" name="" id="" title="${this.customToString(productData.measurementCost)}" placeholder="себест. замера" value="${this.customToString(productData.measurementCost)}" data-product-field="measurementCost" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <input type="number" ${this.groupData.repeatMeasurement ? 'readonly' : ''} title="${this.customToString(productData.measurementCost)}" placeholder="себест. замера" value="${this.customToString(productData.measurementCost)}" data-product-field="measurementCost" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                         <div class="task-container__item-measure-symbol-plus">+</div>
                         <div class="task-container__item-measure-value-persent">
-                            <input type="number" name="" id="" title="${this.customToString(productData.measurementPercent)}" value="${this.customToString(productData.measurementPercent)}" data-product-field="measurementPercent" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <input type="number" ${this.groupData.repeatMeasurement ? 'readonly' : ''} title="${this.customToString(productData.measurementPercent)}" value="${this.customToString(productData.measurementPercent)}" data-product-field="measurementPercent" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                         <div class="task-container__item-measure-symbol-percent">%</div>
                     </div>
@@ -258,11 +258,11 @@ export class Templates {
                     <div class="task-container__item-design">
                         <div class="task-container__item-design-type">
                             <select name="" id="" title="${this.getTitleEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.design]?.items, productData.design)}" data-product-field="design" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.design]?.items, productData.design)}
+                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.design]?.items, productData.design, this.groupData.repeatDesign)}
                             </select>
                         </div>
                         <div class="task-container__item-design-amount">
-                            <input type="number" name="" id="" title="${this.customToString(productData.designPayment)}" value="${this.customToString(productData.designPayment)}" data-product-field="designPayment" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <input type="number" ${this.groupData.repeatDesign ? 'readonly' : ''} title="${this.customToString(productData.designPayment)}" value="${this.customToString(productData.designPayment)}" data-product-field="designPayment" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                         <div class="task-container__item-design-symbol-rub">₽</div>
                     </div>
@@ -270,23 +270,23 @@ export class Templates {
                 <td class="block-center">
                     <div class="task-container__item-mounting">
                         <div class="task-container__item-mounting-city">
-                            <input type="text" name="" id="" title="${this.customToString(productData.installCity)}" value="${this.customToString(productData.installCity)}"  data-product-field="installCity" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <input type="text" ${this.groupData.repeatMontage ? 'readonly' : ''} title="${this.customToString(productData.installCity)}" value="${this.customToString(productData.installCity)}"  data-product-field="installCity" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                         <div class="task-container__item-mounting-count-day">
-                            <input type="number" name="" id="" placeholder="сколько дней" title="${this.customToString(productData.installDays)}" value="${this.customToString(productData.installDays)}" data-product-field="installDays" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <input type="number" ${this.groupData.repeatMontage ? 'readonly' : ''} placeholder="сколько дней" title="${this.customToString(productData.installDays)}" value="${this.customToString(productData.installDays)}" data-product-field="installDays" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                         <div class="task-container__item-mounting-symbol-mul">
                             <i class="bi bi-x"></i>
                         </div>
                         <div class="task-container__item-mounting-type">
-                            <input type="text" name="" id="" title="${this.customToString(productData.installPlace)}" value="${this.customToString(productData.installPlace)}" data-product-field="installPlace" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <input type="text" ${this.groupData.repeatMontage ? 'readonly' : ''} title="${this.customToString(productData.installPlace)}" value="${this.customToString(productData.installPlace)}" data-product-field="installPlace" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                         <div class="task-container__item-mounting-costprice">
-                            <input type="number" name="" id="" placeholder="себ. аренды за день" title="${this.customToString(productData.installCost)}" value="${this.customToString(productData.installCost)}" data-product-field="installCost" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <input type="number" ${this.groupData.repeatMontage ? 'readonly' : ''} placeholder="себ. аренды за день" title="${this.customToString(productData.installCost)}" value="${this.customToString(productData.installCost)}" data-product-field="installCost" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                         <div class="task-container__item-mounting-symbol-plus">+</div>
                         <div class="task-container__item-mounting-value-percent">
-                            <input type="number" name="" id="" title="${this.customToString(productData.installPercentage)}" value="${this.customToString(productData.installPercentage)}" data-product-field="installPercentage" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <input type="number" ${this.groupData.repeatMontage ? 'readonly' : ''} title="${this.customToString(productData.installPercentage)}" value="${this.customToString(productData.installPercentage)}" data-product-field="installPercentage" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                         <div class="task-container__item-mounting-symbol-percent">%</div>
                         <div class="empty-1"></div>
@@ -299,11 +299,11 @@ export class Templates {
                     <div class="task-container__item-deadlines">
                         <div class="task-container__item-deadlines-type">
                             <select name="" id="" title="${this.getTitleEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.terms]?.items, productData.terms)}" data-product-field="terms" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.terms]?.items, productData.terms)}
+                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.terms]?.items, productData.terms, this.groupData.repeatDeadline)}
                             </select>
                         </div>
                         <div class="task-container__item-deadlines-data">
-                            <input type="date" name="" id="" title="${this.customToString(productData.termsDate)}" value="${this.customToString(productData.termsDate)}" data-product-field="termsDate" data-type="date" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <input type="date" ${this.groupData.repeatDeadline ? 'readonly' : ''} title="${this.customToString(productData.termsDate)}" value="${this.customToString(productData.termsDate)}" data-product-field="termsDate" data-type="date" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                     </div>
                 </td>
@@ -594,13 +594,14 @@ export class Templates {
         `;
     }
 
-    getOptionsHTML(fields, value) {
-        let contentHTML = '<option value=""></option>';
+    getOptionsHTML(fields, value, isBlock = false) {
+        // let contentHTML = '<option value=""></option>';
+        let contentHTML = !isBlock || value ==='' || value === null || value === undefined || isNaN(value) ? '<option value=""></option>' : '<option value="" disabled></option>';
         for (const field of fields) {
             if (field.ID == value) {
                 contentHTML += `<option value="${field.ID}" selected>${field.VALUE}</option>`;
             } else {
-                contentHTML += `<option value="${field.ID}">${field.VALUE}</option>`;
+                contentHTML += `<option value="${field.ID}" ${isBlock ? 'disabled' : ''}>${field.VALUE}</option>`;
             }
         }
         return contentHTML;

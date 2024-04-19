@@ -265,16 +265,16 @@ export class Templates {
                     <div class="task-container_group-item-mounting-container">
                         <div class="task-container_group-item-mounting-left ">
                             <select class="" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.installTime]?.items, productData.installTime)}" data-product-field="installTime" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.installTime]?.items, productData.installTime, this.groupData.repeatDesign)}
+                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.installTime]?.items, productData.installTime, this.groupData.repeatMontage)}
                             </select>
                         </div>
                         <select class="task-container_group-item-mounting-top" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.installCity]?.items, productData.installCity)}" data-product-field="installCity" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                            ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.installCity]?.items, productData.installCity, this.groupData.repeatDesign)}
+                            ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.installCity]?.items, productData.installCity, this.groupData.repeatMontage)}
                         </select>
                         <select class="task-container_group-item-mounting-bottom" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.installPlace]?.items, productData.installPlace)}" data-product-field="installPlace" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                            ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.installPlace]?.items, productData.installPlace, this.groupData.repeatDesign)}
+                            ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.installPlace]?.items, productData.installPlace, this.groupData.repeatMontage)}
                         </select>
-                        <input class="task-container_group-item-mounting-area vertical-input" type="number" name="" id="" ${this.groupData.repeatDesign ? 'readonly' : ''} title="${this.customToString(productData.dismantlingArea)}" value="${productData.dismantlingArea || 0}" data-product-field="dismantlingArea" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
+                        <input class="task-container_group-item-mounting-area vertical-input" type="number" name="" id="" ${this.groupData.repeatMontage ? 'readonly' : ''} title="${this.customToString(productData.dismantlingArea)}" value="${productData.dismantlingArea || 0}" data-product-field="dismantlingArea" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
                     </div>
                 </td>
                 <td class="task-container_group-item-deadlines">
