@@ -265,24 +265,24 @@ export class Templates {
                     <div class="task-container_group-item-mounting-container">
                         <div class="task-container_group-item-mounting-left ">
                             <select class="" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.installTime]?.items, productData.installTime)}" data-product-field="installTime" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.installTime]?.items, productData.installTime)}
+                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.installTime]?.items, productData.installTime, this.groupData.repeatDesign)}
                             </select>
                         </div>
                         <select class="task-container_group-item-mounting-top" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.installCity]?.items, productData.installCity)}" data-product-field="installCity" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                            ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.installCity]?.items, productData.installCity)}
+                            ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.installCity]?.items, productData.installCity, this.groupData.repeatDesign)}
                         </select>
                         <select class="task-container_group-item-mounting-bottom" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.installPlace]?.items, productData.installPlace)}" data-product-field="installPlace" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                            ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.installPlace]?.items, productData.installPlace)}
+                            ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.installPlace]?.items, productData.installPlace, this.groupData.repeatDesign)}
                         </select>
-                        <input class="task-container_group-item-mounting-area vertical-input" type="number" name="" id="" title="${this.customToString(productData.dismantlingArea)}" value="${productData.dismantlingArea || 0}" data-product-field="dismantlingArea" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
+                        <input class="task-container_group-item-mounting-area vertical-input" type="number" name="" id="" ${this.groupData.repeatDesign ? 'readonly' : ''} title="${this.customToString(productData.dismantlingArea)}" value="${productData.dismantlingArea || 0}" data-product-field="dismantlingArea" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
                     </div>
                 </td>
                 <td class="task-container_group-item-deadlines">
                     <div class="task-container_group-item-deadlines-list">
                         <select name="" id="" data-product-field="terms" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.terms]?.items, productData.terms)}" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                            ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.terms]?.items, productData.terms)}
+                            ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.terms]?.items, productData.terms, this.groupData.repeatDeadline)}
                         </select>
-                        <input type="date" title="${this.customToString(productData.termsDate)}" value="${this.customToString(productData.termsDate)}" data-product-field="termsDate" data-type="date" data-group-id="${groupId}" data-product-id="${productData.id}">
+                        <input type="date" ${this.groupData.repeatDeadline ? 'readonly' : ''} title="${this.customToString(productData.termsDate)}" value="${this.customToString(productData.termsDate)}" data-product-field="termsDate" data-type="date" data-group-id="${groupId}" data-product-id="${productData.id}">
                     </div>
                 </td>
                 <td class="task-container_group-item-dismantling">
@@ -371,10 +371,10 @@ export class Templates {
 
     getSourcesOptionsHTML(source) {
         // let contentHTML = '<option value="" selected>-</option>';
-        let contentHTML = !this.groupData.repeatSources  || source ==='' || source === null || source === undefined || isNaN(source) ? '<option value=""></option>' : '<option value="" disabled></option>';
         let isSelected = false;
         const [nameSelected, urlSelected, previewSelected, commentSelected] = source.split(';');
         // "имя;размер;ссылка_главная;ссылка_превью;комментарий"
+        let contentHTML = !this.groupData.repeatSources || urlSelected ==='' || urlSelected === null || urlSelected === undefined || isNaN(urlSelected) ? '<option value=""></option>' : '<option value="" disabled></option>';
         for (const sourceData of this.sourceFilesData) {
             const [name, size, url, preview, comment] = sourceData.split(';');
             if (name == nameSelected && url == urlSelected) {
