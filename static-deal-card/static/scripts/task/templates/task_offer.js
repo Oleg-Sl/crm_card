@@ -407,7 +407,7 @@ export class Templates {
                         </select>
                     </div>
                     <div class="task-container__item-technology-price">
-                        <input class="vertical-input" type="number" name="" id="" placeholder="Цена" title="${this.customToString(technology.price)}" value="${this.customToString(technology.price)}" data-technology-field="price" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
+                        <input class="vertical-input" type="number" name="" id="" ${this.groupData.repeatTechnologies ? 'readonly' : ''} placeholder="Цена" title="${this.customToString(technology.price)}" value="${this.customToString(technology.price)}" data-technology-field="price" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
                     </div>
                 </div>
             `;
@@ -437,7 +437,7 @@ export class Templates {
                 <div class="task-container__item-consumption-item technology-row" data-technology-id="${technology.id}">
                     <div class="task-container__item-consumption-item-img">🖼</div>
                     <div class="task-container__item-consumption-item-title">
-                        <input type="text" name="" id="" title="${this.customToString(technology.CHPP)}" placeholder="ЧПП" value="${this.customToString(technology.CHPP)}" data-technology-field="CHPP" data-type="text" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
+                        <input type="text" name="" id="" ${this.groupData.repeatConsumption ? 'readonly' : ''} title="${this.customToString(technology.CHPP)}" placeholder="ЧПП" value="${this.customToString(technology.CHPP)}" data-technology-field="CHPP" data-type="text" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
                     </div>
                     <div class="task-container__item-consumption-item-empty"></div>
                     <div class="task-container__item-consumption-item-m2">м2</div>
@@ -450,7 +450,7 @@ export class Templates {
                         <i class="bi bi-x"></i>
                     </div>
                     <div class="task-container__item-consumption-item-length">
-                        <input type="number" name="" id="" placeholder="п.м." title="${this.customToString(technology.runningMeter)}" value="${this.customToString(technology.runningMeter)}" data-technology-field="runningMeter" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
+                        <input type="number" name="" id="" ${this.groupData.repeatConsumption ? 'readonly' : ''} placeholder="п.м." title="${this.customToString(technology.runningMeter)}" value="${this.customToString(technology.runningMeter)}" data-technology-field="runningMeter" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
                     </div>
                     <div class="task-container__item-consumption-item-result" title="${this.mulNumbmer(technology.width, technology.runningMeter)}">=${this.mulNumbmer(technology.width, technology.runningMeter)}</div>
                 </div>
@@ -653,7 +653,8 @@ export class Templates {
     }
 
     getWidthsOptionsHTML(filmId, widthId) {
-        let widthsHTML = '<option value=""></option>';
+        // let widthsHTML = '<option value=""></option>';
+        let widthsHTML = !this.groupData.repeatTechnologies  || widthId ==='' || widthId === null || widthId === undefined || isNaN(widthId) ? '<option value=""></option>' : '<option value="" disabled></option>';
         const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.id] == filmId) || {};
         const widthIds = dependence?.[SP_DEPENDENCE_FIELDS.widths] || [];
         const widthsList = this.materials.widths.filter(obj => widthIds.includes(String(obj.id)));
@@ -662,7 +663,7 @@ export class Templates {
             if (id == widthId) {
                 widthsHTML += `<option value="${id}" selected>${title}</option>`
             } else {
-                widthsHTML += `<option value="${id}">${title}</option>`
+                widthsHTML += `<option value="${id}" ${this.groupData.repeatConsumption ? 'disabled' : ''}>${title}</option>`
             }
         }
 

@@ -318,12 +318,12 @@ export class Templates {
                     <div class="task-container__item-technologies-technology-mchs">
                         <span>МЧС</span>
                         <label class="switch">
-                            <input type="checkbox" ${technology.MCHS ? 'checked' : ''} data-technology-field="MCHS" data-type="checkbox" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
+                            <input type="checkbox" ${this.groupData.repeatTechnologies ? 'readonly' : ''} ${technology.MCHS ? 'checked' : ''} data-technology-field="MCHS" data-type="checkbox" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
                             <span class="slider round"></span>
                         </label>
                     </div>
                     <div class="task-container__item-technologies-technology-type">
-                        <select name="" id="" title="${this.getTitleFromList(this.materials.technologiesTypes, technology.general)}" data-technology-field="general" data-type="select" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
+                        <select name="" id="" title="${this.getTitleFromList(this.materials.repeatSources, technology.general)}" data-technology-field="general" data-type="select" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
                             ${this.getTechnologyTypeOptionsHTML(technology.general)}
                         </select>
                     </div>
@@ -370,7 +370,8 @@ export class Templates {
     }
 
     getSourcesOptionsHTML(source) {
-        let contentHTML = '<option value="" selected>-</option>';
+        // let contentHTML = '<option value="" selected>-</option>';
+        let contentHTML = !this.groupData.repeatSources  || source ==='' || source === null || source === undefined || isNaN(source) ? '<option value=""></option>' : '<option value="" disabled></option>';
         let isSelected = false;
         const [nameSelected, urlSelected, previewSelected, commentSelected] = source.split(';');
         // "имя;размер;ссылка_главная;ссылка_превью;комментарий"
@@ -380,7 +381,7 @@ export class Templates {
                 isSelected = true;
                 contentHTML += `<option value="${name};${url};${preview};${comment}" selected>${name} (${comment || ""})</option>`;
             } else {
-                contentHTML += `<option value="${name};${url};${preview};${comment}">${name} (${comment || ""})</option>`;
+                contentHTML += `<option value="${name};${url};${preview};${comment}" ${this.groupData.repeatSources ? 'disabled' : ''}>${name} (${comment || ""})</option>`;
             }
         }
 
@@ -390,7 +391,7 @@ export class Templates {
                 isSelected = true;
                 contentHTML += `<option value=";${url};;${comment}" selected>${url} (${comment || ""})</option>`;
             } else {
-                contentHTML += `<option value=";${url};;${comment}">${url} (${comment || ""})</option>`;
+                contentHTML += `<option value=";${url};;${comment}" ${this.groupData.repeatSources ? 'disabled' : ''}>${url} (${comment || ""})</option>`;
             }
         }
 
