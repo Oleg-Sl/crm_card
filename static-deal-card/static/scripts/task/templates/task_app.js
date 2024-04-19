@@ -18,6 +18,7 @@ export class Templates {
         this.materials = {};
         this.sourceFilesData = [];
         this.sourceLinksData = [];
+        this.groupData = null;
     }
 
     setSmartFields(fields) {
@@ -37,6 +38,7 @@ export class Templates {
     }
 
     getGroupHTML(groupData, numberGroup = 1) {
+        this.groupData = groupData;
         let products = groupData?.products || [];
         if (products.length === 0) {
             products = [];
@@ -205,13 +207,13 @@ export class Templates {
                 <td>
                     <div class="task-container__item-info">
                         <div class="task-container__item-info-title">
-                            <textarea name="" id="" placeholder="название" title="${this.customToString(productData.title)}" data-product-field="title" data-type="textarea" data-group-id="${groupId}" data-product-id="${productData.id}">${this.customToString(productData.title)}</textarea>
+                            <textarea name="" id="" placeholder="название" title="${this.customToString(productData.title)}" ${this.groupData.repeatTechnologies ? '' : 'readonly'} data-product-field="title" data-type="textarea" data-group-id="${groupId}" data-product-id="${productData.id}">${this.customToString(productData.title)}</textarea>
                         </div>
                         <div class="task-container__item-info-count">
-                            <input type="number" name="" id="" placeholder="количество" value="${this.customToString(productData.quantity)}" step="1" data-product-field="quantity" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
+                            <input type="number" name="" id="" placeholder="количество" ${this.groupData.repeatTechnologies ? '' : 'readonly'} value="${this.customToString(productData.quantity)}" step="1" data-product-field="quantity" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
                         </div>
                         <div class="task-container__item-info-desc">
-                            <textarea name="" id=""  rows="3" placeholder="описание" title="${this.customToString(productData.description)}" data-product-field="description" data-type="textarea" data-group-id="${groupId}" data-product-id="${productData.id}">${this.customToString(productData.description)}</textarea>
+                            <textarea name="" id=""  rows="3" placeholder="описание" ${this.groupData.repeatTechnologies ? '' : 'readonly'} title="${this.customToString(productData.description)}" data-product-field="description" data-type="textarea" data-group-id="${groupId}" data-product-id="${productData.id}">${this.customToString(productData.description)}</textarea>
                         </div>
                     </div>
                 </td>
@@ -412,12 +414,13 @@ export class Templates {
     }
 
     getTechnologyTypeOptionsHTML(techId) {
-        let technologyTypeListHTML = '<option value=""></option>';
+        // let technologyTypeListHTML = '<option value=""></option>';
+        let technologyTypeListHTML = this.groupData.repeatTechnologies  || techId ==='' || techId === null || techId === undefined || isNaN(techId) ? '<option value=""></option>' : '<option value="" disabled></option>';
         for (const {id, title} of this.materials.technologiesTypes) {
             if (id == techId) {
                 technologyTypeListHTML += `<option value="${id}" selected>${title}</option>`
             } else {
-                technologyTypeListHTML += `<option value="${id}">${title}</option>`
+                technologyTypeListHTML += `<option value="${id}" ${this.groupData.repeatTechnologies ? 'disabled' : ''}>${title}</option>`
             }
         }
 
@@ -425,12 +428,13 @@ export class Templates {
     }
 
     getFilmsOptionsHTML(filmId) {
-        let filmsListHTML = '<option value=""></option>';
+        // let filmsListHTML = '<option value=""></option>';
+        let filmsListHTML = this.groupData.repeatTechnologies  || filmId ==='' || filmId === null || filmId === undefined || isNaN(filmId) ? '<option value=""></option>' : '<option value="" disabled></option>';
         for (const {id, title} of this.materials.dependences) {
             if (id == filmId) {
                 filmsListHTML += `<option value="${id}" selected>${title}</option>`
             } else {
-                filmsListHTML += `<option value="${id}">${title}</option>`
+                filmsListHTML += `<option value="${id}" ${this.groupData.repeatTechnologies ? 'disabled' : ''}>${title}</option>`
             }
         }
 
@@ -438,7 +442,8 @@ export class Templates {
     }
 
     getLaminationsOptionsHTML(filmId, laminationId) {
-        let laminationsHTML = '<option value=""></option>';
+        // let laminationsHTML = '<option value=""></option>';
+        let laminationsHTML = this.groupData.repeatTechnologies  || laminationId ==='' || laminationId === null || laminationId === undefined || isNaN(laminationId) ? '<option value=""></option>' : '<option value="" disabled></option>';
         const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.id] == filmId) || {};
         const laminationIds = dependence?.[SP_DEPENDENCE_FIELDS.laminations] || [];
         const laminationsList = this.materials.laminations.filter(obj => laminationIds.includes(String(obj.id)));
@@ -446,7 +451,7 @@ export class Templates {
             if (id == laminationId) {
                 laminationsHTML += `<option value="${id}" selected>${title}</option>`
             } else {
-                laminationsHTML += `<option value="${id}">${title}</option>`
+                laminationsHTML += `<option value="${id}" ${this.groupData.repeatTechnologies ? 'disabled' : ''}>${title}</option>`
             }
         }
 

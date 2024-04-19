@@ -16,6 +16,7 @@ export class Templates {
     constructor() {
         this.fields = {};
         this.materials = {};
+        this.groupData = null;
     }
 
     setSmartFields(fields) {
@@ -27,6 +28,7 @@ export class Templates {
     }
 
     getGroupHTML(groupData, numberGroup = 1) {
+        this.groupData = groupData;
         let products = groupData?.products || [];
         if (products.length === 0) {
             products = [];
@@ -605,12 +607,13 @@ export class Templates {
     }
 
     getTechnologyTypeOptionsHTML(techId) {
-        let technologyTypeListHTML = '<option value=""></option>';
+        // let technologyTypeListHTML = '<option value=""></option>';
+        let technologyTypeListHTML = this.groupData.repeatTechnologies  || techId ==='' || techId === null || techId === undefined || isNaN(techId) ? '<option value=""></option>' : '<option value="" disabled></option>';
         for (const {id, title} of this.materials.technologiesTypes) {
             if (id == techId) {
                 technologyTypeListHTML += `<option value="${id}" selected>${title}</option>`
             } else {
-                technologyTypeListHTML += `<option value="${id}">${title}</option>`
+                technologyTypeListHTML += `<option value="${id}" ${this.groupData.repeatTechnologies ? 'disabled' : ''}>${title}</option>`
             }
         }
 
@@ -618,12 +621,13 @@ export class Templates {
     }
 
     getFilmsOptionsHTML(filmId) {
-        let filmsListHTML = '<option value=""></option>';
+        // let filmsListHTML = '<option value=""></option>';
+        let filmsListHTML = this.groupData.repeatTechnologies  || filmId ==='' || filmId === null || filmId === undefined || isNaN(filmId) ? '<option value=""></option>' : '<option value="" disabled></option>';
         for (const {id, title} of this.materials.dependences) {
             if (id == filmId) {
                 filmsListHTML += `<option value="${id}" selected>${title}</option>`
             } else {
-                filmsListHTML += `<option value="${id}">${title}</option>`
+                filmsListHTML += `<option value="${id}" ${this.groupData.repeatTechnologies ? 'disabled' : ''}>${title}</option>`
             }
         }
 
@@ -631,7 +635,8 @@ export class Templates {
     }
 
     getLaminationsOptionsHTML(filmId, laminationId) {
-        let laminationsHTML = '<option value=""></option>';
+        // let laminationsHTML = '<option value=""></option>';
+        let laminationsHTML = this.groupData.repeatTechnologies  || laminationId ==='' || laminationId === null || laminationId === undefined || isNaN(laminationId) ? '<option value=""></option>' : '<option value="" disabled></option>';
         const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.id] == filmId) || {};
         const laminationIds = dependence?.[SP_DEPENDENCE_FIELDS.laminations] || [];
         const laminationsList = this.materials.laminations.filter(obj => laminationIds.includes(String(obj.id)));
@@ -640,7 +645,7 @@ export class Templates {
             if (id == laminationId) {
                 laminationsHTML += `<option value="${id}" selected>${title}</option>`
             } else {
-                laminationsHTML += `<option value="${id}">${title}</option>`
+                laminationsHTML += `<option value="${id}" ${this.groupData.repeatTechnologies ? 'disabled' : ''}>${title}</option>`
             }
         }
 

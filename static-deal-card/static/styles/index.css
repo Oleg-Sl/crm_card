@@ -11,7 +11,7 @@
 }
 .deal-desc__container label {
   width: 100%;
-  font: 400 10px Roboto;
+  font: 400 10px "Open Sans", sans-serif;
   overflow: hidden;
   letter-spacing: 0em;
   color: #97999B;
@@ -32,7 +32,7 @@
   box-sizing: border-box;
   background-color: #fff;
   border: 2px solid #EEF2F4;
-  font: 400 12px Roboto;
+  font: 400 12px "Open Sans", sans-serif;
   color: #000000;
   line-height: 12px;
   letter-spacing: 0em;
@@ -50,7 +50,7 @@
 .deal-desc__container .deal-desc__row-two .cell {
   display: flex;
   align-items: center;
-  font: 400 10px Inter;
+  font: 400 10px "Open Sans", sans-serif;
   border: 2px solid #EEF2F4;
   border-radius: 0;
   height: 17px;
@@ -65,7 +65,7 @@
   border-radius: 0;
   border: none;
   box-sizing: border-box;
-  font: 400 10px Inter;
+  font: 400 10px "Open Sans", sans-serif;
 }
 .deal-desc__container .deal-desc__row-two .cell input:focus {
   border: 1px solid #6dacff;
@@ -99,7 +99,7 @@
 }
 .deal-clients__container .deal-clients__row-container label {
   width: 100%;
-  font: 400 10px Roboto;
+  font: 400 10px "Open Sans", sans-serif;
   overflow: hidden;
   letter-spacing: 0em;
   color: #97999B;
@@ -137,7 +137,7 @@
   box-sizing: border-box;
   background-color: #fff;
   border: 2px solid #EEF2F4;
-  font: 400 12px Roboto;
+  font: 400 12px "Open Sans", sans-serif;
   color: #464A4E;
   line-height: 12px;
 }
@@ -155,14 +155,14 @@
   border: 2px solid #EEF2F4;
 }
 .deal-clients__container .deal-clients__row-container .deal-clients__row .deal-clients__name .deal-clients__title {
-  font: 700 12px Roboto;
+  font: 700 12px "Open Sans", sans-serif;
 }
 .deal-clients__container .deal-clients__row-container .deal-clients__row .deal-clients__name .deal-clients__title:hover {
   cursor: pointer;
   text-decoration: underline;
 }
 .deal-clients__container .deal-clients__row-container .deal-clients__row .deal-clients__name .deal-clients__title-info {
-  font: 400 10px Roboto;
+  font: 400 10px "Open Sans", sans-serif;
   color: #97999B;
 }
 .deal-clients__container .deal-clients__row-container .deal-clients__row .deal-clients__phone, .deal-clients__container .deal-clients__row-container .deal-clients__row .deal-clients__email, .deal-clients__container .deal-clients__row-container .deal-clients__row .deal-clients__whatsapp, .deal-clients__container .deal-clients__row-container .deal-clients__row .deal-clients__thelegram {
@@ -241,11 +241,11 @@
   text-overflow: ellipsis;
 }
 .deal-state__container .deal-state__row .deal-state__row-key {
-  font: 400 8px Roboto;
+  font: 400 8px "Open Sans", sans-serif;
   text-align: right;
 }
 .deal-state__container .deal-state__row .deal-state__row-val {
-  font: 400 8px Roboto;
+  font: 400 8px "Open Sans", sans-serif;
 }
 
 .deal-amounts__container {
@@ -265,15 +265,15 @@
   grid-template-columns: auto 100px;
 }
 .deal-amounts__container .deal-amounts__row .deal-amounts__title {
-  font: 100 15px Roboto;
+  font: 100 15px "Open Sans", sans-serif;
   text-align: right;
 }
 .deal-amounts__container .deal-amounts__row .deal-amounts__value {
-  font: 100 16px Roboto;
+  font: 100 16px "Open Sans", sans-serif;
   text-align: right;
 }
 .deal-amounts__container .deal-amounts__profit .deal-amounts__value span {
-  font: 700 22px Roboto;
+  font: 700 22px "Open Sans", sans-serif;
   color: #00AA44;
 }
 
@@ -289,7 +289,7 @@
 }
 .deal-workers__container label {
   width: 100%;
-  font: 400 10px Roboto;
+  font: 400 10px "Open Sans", sans-serif;
   overflow: hidden;
   letter-spacing: 0em;
   color: #97999B;
@@ -334,7 +334,7 @@
 .deal-workers__container .deal-workers__user .deal-workers__user-container .deal-workers__user-name {
   display: flex;
   align-items: center;
-  font: 900 12px Roboto;
+  font: 900 12px "Open Sans", sans-serif;
   color: #464A4E;
   cursor: pointer;
 }
@@ -360,7 +360,7 @@
   overflow-x: hidden;
 }
 .deal-workers__container .deal-workers__observers .deal-workers__observers-container .deal-workers__observers-userslist .deal-workers__observers-user {
-  font: 400 12px Roboto;
+  font: 400 12px "Open Sans", sans-serif;
   color: #464A4E;
   cursor: pointer;
   white-space: nowrap;
@@ -414,7 +414,7 @@
   border: 2px solid #5896f9;
 }
 .deal-files__container label {
-  font: 400 10px Roboto;
+  font: 400 10px "Open Sans", sans-serif;
   overflow-y: hidden;
   letter-spacing: 0em;
   color: #97999B;
@@ -476,7 +476,7 @@
   display: grid;
   grid-template-columns: 10px 14px 140px 1fr 14px;
   gap: 4px;
-  font: 400 10px Roboto;
+  font: 400 10px "Open Sans", sans-serif;
   white-space: nowrap;
   overflow-y: hidden;
   text-overflow: ellipsis;
@@ -575,7 +575,7 @@
   border: 2px solid #5896f9;
 }
 .deal-docs__container label {
-  font: 400 10px Roboto;
+  font: 400 10px "Open Sans", sans-serif;
   overflow-y: hidden;
   letter-spacing: 0em;
   color: #97999B;
@@ -644,7 +644,7 @@
   display: grid;
   grid-template-columns: 10px 14px 140px 1fr 14px 14px 14px;
   gap: 4px;
-  font: 400 10px Roboto;
+  font: 400 10px "Open Sans", sans-serif;
   white-space: nowrap;
   overflow-y: hidden;
   text-overflow: ellipsis;
@@ -743,7 +743,7 @@
   border: 2px solid #5896f9;
 }
 .deal-accounts__container label {
-  font: 400 10px Roboto;
+  font: 400 10px "Open Sans", sans-serif;
   overflow-y: hidden;
   letter-spacing: 0em;
   color: #97999B;
@@ -804,7 +804,7 @@
   display: grid;
   grid-template-columns: 10px 14px 1fr 14px;
   gap: 4px;
-  font: 400 10px Roboto;
+  font: 400 10px "Open Sans", sans-serif;
   white-space: nowrap;
   overflow-y: hidden;
   text-overflow: ellipsis;
@@ -877,7 +877,7 @@
   border: 2px solid #5896f9;
 }
 .deal-acts__container label {
-  font: 400 10px Roboto;
+  font: 400 10px "Open Sans", sans-serif;
   overflow-y: hidden;
   letter-spacing: 0em;
   color: #97999B;
@@ -940,7 +940,7 @@
   display: grid;
   grid-template-columns: 10px 14px 1fr 14px;
   gap: 4px;
-  font: 400 10px Roboto;
+  font: 400 10px "Open Sans", sans-serif;
   white-space: nowrap;
   overflow-y: hidden;
   text-overflow: ellipsis;
@@ -1014,7 +1014,7 @@
 }
 .deal-finance__container label {
   width: 100%;
-  font: 400 10px Roboto;
+  font: 400 10px "Open Sans", sans-serif;
   overflow: hidden;
   letter-spacing: 0em;
   color: #97999B;
@@ -1028,7 +1028,7 @@
   box-sizing: border-box;
   background-color: #fff;
   border: 2px solid #EEF2F4;
-  font: 400 12px Roboto;
+  font: 400 12px "Open Sans", sans-serif;
   color: #000000;
   line-height: 12px;
   letter-spacing: 0em;
@@ -1052,7 +1052,7 @@
   border: 2px solid #5896f9;
 }
 .deal-invoices .deal-files-container label, .deal-acts .deal-files-container label {
-  font: 400 10px Roboto;
+  font: 400 10px "Open Sans", sans-serif;
   overflow-y: hidden;
   letter-spacing: 0em;
   color: #97999B;
@@ -1115,7 +1115,7 @@
   display: grid;
   grid-template-columns: 10px 14px 1fr 14px;
   gap: 4px;
-  font: 400 10px Roboto;
+  font: 400 10px "Open Sans", sans-serif;
   white-space: nowrap;
   overflow-y: hidden;
   text-overflow: ellipsis;
@@ -1175,18 +1175,20 @@
 
 .task-container__app .task-container__group-title span {
   color: #464A4E;
-  font: 700 10px Roboto;
+  font: 700 10px "Open Sans", sans-serif;
 }
 .task-container__app .task-container__group-title input {
   width: 75%;
   background: none;
   border: 1px solid rgba(0, 0, 0, 0);
-  font: 700 10px Roboto;
+  font: 700 10px "Open Sans", sans-serif;
 }
 .task-container__app table {
   display: grid;
   grid-template-columns: 15px 1fr 110px 120px 80px 80px 80px 110px 80px 90px 80px;
   border-collapse: collapse;
+  overflow-x: auto;
+  min-width: 100%;
 }
 .task-container__app table thead, .task-container__app table tbody {
   display: contents;
@@ -1196,12 +1198,12 @@
 }
 .task-container__app table thead tr th, .task-container__app table thead tr td, .task-container__app table tbody tr th, .task-container__app table tbody tr td {
   padding: 2px;
-  font: 400 8px Roboto;
+  font: 400 8px "Open Sans", sans-serif;
   border-right: 1px solid #97999B;
   border-bottom: 1px solid #97999B;
 }
 .task-container__app table thead tr th, .task-container__app table tbody tr th {
-  font: 700 10px Roboto;
+  font: 700 10px "Open Sans", sans-serif;
   border-right: 1px solid #97999B;
   border-top: 1px solid #97999B;
 }
@@ -1237,7 +1239,7 @@
   -moz-appearance: textfield;
 }
 .task-container__app table select, .task-container__app table input, .task-container__app table textarea {
-  font: 400 8px Roboto;
+  font: 400 8px "Open Sans", sans-serif;
   background: none;
   border: 1px solid rgba(151, 153, 155, 0.2);
   border-radius: 0;
@@ -1255,7 +1257,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  font: 700 10px Roboto;
+  font: 700 10px "Open Sans", sans-serif;
 }
 .task-container__app table thead .task-container_group-header-add-group {
   color: #fff200;
@@ -1542,18 +1544,20 @@
 }
 .task-container__commerc-offer .task-container__group-title span, .task-container__offer .task-container__group-title span {
   color: #464A4E;
-  font: 700 10px Roboto;
+  font: 700 10px "Open Sans", sans-serif;
 }
 .task-container__commerc-offer .task-container__group-title input, .task-container__offer .task-container__group-title input {
   width: 75%;
   background: none;
   border: 1px solid rgba(0, 0, 0, 0);
-  font: 700 10px Roboto;
+  font: 700 10px "Open Sans", sans-serif;
 }
 .task-container__commerc-offer table, .task-container__offer table {
   display: grid;
   grid-template-columns: 10px 1fr 25px 105px 110px 27px 45px 65px 60px 80px 75px 110px 75px 40px 55px 42px 45px 25px;
   border-collapse: collapse;
+  overflow-x: auto;
+  min-width: 100%;
 }
 .task-container__commerc-offer table thead, .task-container__commerc-offer table tbody, .task-container__offer table thead, .task-container__offer table tbody {
   display: contents;
@@ -1563,12 +1567,12 @@
 }
 .task-container__commerc-offer table thead tr th, .task-container__commerc-offer table thead tr td, .task-container__commerc-offer table tbody tr th, .task-container__commerc-offer table tbody tr td, .task-container__offer table thead tr th, .task-container__offer table thead tr td, .task-container__offer table tbody tr th, .task-container__offer table tbody tr td {
   padding: 2px;
-  font: 400 8px Roboto;
+  font: 400 8px "Open Sans", sans-serif;
   border-right: 1px solid #97999B;
   border-bottom: 1px solid #97999B;
 }
 .task-container__commerc-offer table thead tr th, .task-container__commerc-offer table tbody tr th, .task-container__offer table thead tr th, .task-container__offer table tbody tr th {
-  font: 700 10px Roboto;
+  font: 700 10px "Open Sans", sans-serif;
   border-right: 1px solid #97999B;
   border-top: 1px solid #97999B;
 }
@@ -1591,7 +1595,7 @@
   grid-row: span 2;
 }
 .task-container__commerc-offer table select, .task-container__commerc-offer table input, .task-container__commerc-offer table textarea, .task-container__offer table select, .task-container__offer table input, .task-container__offer table textarea {
-  font: 400 8px Roboto;
+  font: 400 8px "Open Sans", sans-serif;
   background: none;
   border: 1px solid rgba(151, 153, 155, 0.2);
   border-radius: 0;
@@ -1726,14 +1730,14 @@
   left: 6.5px;
   transform: rotate(270deg);
   color: #555;
-  font: 400 8px Roboto;
+  font: 400 8px "Open Sans", sans-serif;
 }
 .task-container__commerc-offer table tbody .task-container__item-consumption, .task-container__offer table tbody .task-container__item-consumption {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   gap: 2px;
-  font: 400 8px Roboto;
+  font: 400 8px "Open Sans", sans-serif;
 }
 .task-container__commerc-offer table tbody .task-container__item-consumption .task-container__item-consumption-item, .task-container__offer table tbody .task-container__item-consumption .task-container__item-consumption-item {
   display: grid;
@@ -2238,18 +2242,20 @@
 
 #taksOrder .task-container__group-title span {
   color: #464A4E;
-  font: 700 10px Roboto;
+  font: 700 10px "Open Sans", sans-serif;
 }
 #taksOrder .task-container__group-title input {
   width: 75%;
   background: none;
   border: 1px solid rgba(0, 0, 0, 0);
-  font: 700 10px Roboto;
+  font: 700 10px "Open Sans", sans-serif;
 }
 #taksOrder table {
   display: grid;
   grid-template-columns: 10px 1fr 25px 105px 110px 27px 75px 75px 80px 80px 110px 110px 65px 80px 80px;
   border-collapse: collapse;
+  overflow-x: auto;
+  min-width: 100%;
 }
 #taksOrder table thead, #taksOrder table tbody {
   display: contents;
@@ -2259,12 +2265,12 @@
 }
 #taksOrder table thead tr th, #taksOrder table thead tr td, #taksOrder table tbody tr th, #taksOrder table tbody tr td {
   padding: 2px;
-  font: 400 8px Roboto;
+  font: 400 8px "Open Sans", sans-serif;
   border-right: 1px solid #97999B;
   border-bottom: 1px solid #97999B;
 }
 #taksOrder table thead tr th, #taksOrder table tbody tr th {
-  font: 700 10px Roboto;
+  font: 700 10px "Open Sans", sans-serif;
   border-right: 1px solid #97999B;
   border-top: 1px solid #97999B;
 }
@@ -2287,7 +2293,7 @@
   grid-row: span 2;
 }
 #taksOrder table select, #taksOrder table input {
-  font: 400 8px Roboto;
+  font: 400 8px "Open Sans", sans-serif;
   background: none;
   border: 1px solid rgba(151, 153, 155, 0.2);
   border-radius: 0;
@@ -2297,7 +2303,7 @@
 }
 #taksOrder table textarea {
   resize: vertical;
-  font: 400 8px Roboto;
+  font: 400 8px "Open Sans", sans-serif;
   background: none;
   border: 1px solid rgba(151, 153, 155, 0.2);
   border-radius: 0;
@@ -2405,7 +2411,7 @@
   flex-direction: column;
   box-sizing: border-box;
   gap: 2px;
-  font: 400 8px Roboto;
+  font: 400 8px "Open Sans", sans-serif;
 }
 #taksOrder table tbody .task-container__item-consumption .task-container__item-consumption-item {
   display: grid;
@@ -2799,7 +2805,7 @@
   margin: 0;
 }
 .task-container__menu .task-container__menu-nav button {
-  font: 900 10px Roboto;
+  font: 900 10px "Open Sans", sans-serif;
   color: #999999;
   background: none;
   border: 2px solid rgba(0, 0, 0, 0);
@@ -2817,7 +2823,7 @@
   gap: 10px;
 }
 .task-container__menu .task-container__menu-task-data .task-container__menu-task-title {
-  font: 300 10px Roboto;
+  font: 300 10px "Open Sans", sans-serif;
 }
 .task-container__menu .task-container__menu-task-data .task-container__menu-task-link {
   color: #80868E;
@@ -2828,7 +2834,7 @@
   color: #5a5c5e;
 }
 .task-container__menu .task-container__menu-task-data .task-container__menu-task-date {
-  font: 400 8px Roboto;
+  font: 400 8px "Open Sans", sans-serif;
   color: #97999B;
 }
 .task-container__menu .task-container__menu-buttons {
@@ -2836,7 +2842,7 @@
   grid-template-columns: auto auto auto auto auto;
   gap: 10px;
   position: relative;
-  font: 900 14px Roboto;
+  font: 900 14px "Open Sans", sans-serif;
 }
 .task-container__menu .task-container__menu-buttons button {
   display: flex;
@@ -2913,7 +2919,7 @@
   width: 300px;
   padding: 15px;
   background-color: #fff;
-  font: 400 15px Roboto;
+  font: 400 15px "Open Sans", sans-serif;
   color: #464A4E;
   position: absolute;
   top: 40px;
@@ -3137,7 +3143,7 @@ input:checked + .slider:before {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font: bold 13px/29px "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font: bold 13px/29px "Open Sans", sans-serif;
 }
 .window-searchcontact .window-searchcontact-container .container-data .container-data-block .user-item .user-item-remove {
   margin: auto;
@@ -3173,7 +3179,7 @@ input:checked + .slider:before {
   background: #fff;
   color: #555;
   font-size: 13px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   display: inline-block;
   vertical-align: middle;
   position: relative;
@@ -3241,7 +3247,7 @@ input:checked + .slider:before {
 }
 .window-searchcontact .container-data-depart .ui-selector-item-titles .ui-selector-item-supertitle, .window-searchcontact .container-data-user .ui-selector-item-titles .ui-selector-item-supertitle {
   font-size: 9px;
-  font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
   color: #b1b6bb;
   white-space: nowrap;
@@ -3340,7 +3346,7 @@ input:checked + .slider:before {
   width: 100%;
 }
 .window-searchcontact .window-searchcontact-container .container-data .container-data-invite .container-data-invite-header {
-  font-family: "OpenSans-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 18px;
   color: #333;
   letter-spacing: 0;
@@ -3425,6 +3431,7 @@ body {
   height: 100%;
   background-color: #EEF2F4;
   overflow: hidden;
+  font-family: "Open Sans", sans-serif;
 }
 
 .deal-container > div {
