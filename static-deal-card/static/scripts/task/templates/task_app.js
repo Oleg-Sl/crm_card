@@ -238,7 +238,7 @@ export class Templates {
                 <td class="task-container_group-item-measurements">
                     <div class="task-container_group-item-measurements-list" data-value="${this.customToString(productData.measurement)}">
                         <select name="" id="" data-product-field="measurement" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.measurement]?.items, productData.measurement)}" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                            ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.measurement]?.items, productData.measurement)}
+                            ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.measurement]?.items, productData.measurement, this.groupData.repeatMeasurement)}
                         </select>
                         <input type="text" name="" id="" placeholder="Адрес" value="${this.customToString(productData.measurementAddress)}" title="${this.customToString(productData.measurementAddress)}" data-product-field="measurementAddress" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
                     </div>
@@ -246,10 +246,10 @@ export class Templates {
                 <td class="task-container_group-item-design">
                     <div class="task-container_group-item-design-list">
                         <select name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.design]?.items, productData.design)}" data-product-field="design" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                            ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.design]?.items, productData.design)}
+                            ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.design]?.items, productData.design, this.groupData.repeatDesign)}
                         </select>
                         <select name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.designPayment]?.items, productData.designPayment)}" data-product-field="designPayment" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                            ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.designPayment]?.items, productData.designPayment)}
+                            ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.designPayment]?.items, productData.designPayment, this.groupData.repeatDesign)}
                         </select>
                     </div>
                 </td>
@@ -323,7 +323,7 @@ export class Templates {
                         </label>
                     </div>
                     <div class="task-container__item-technologies-technology-type">
-                        <select name="" id="" title="${this.getTitleFromList(this.materials.repeatSources, technology.general)}" data-technology-field="general" data-type="select" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
+                        <select name="" id="" title="${this.getTitleFromList(this.materials.technologiesTypes, technology.general)}" data-technology-field="general" data-type="select" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
                             ${this.getTechnologyTypeOptionsHTML(technology.general)}
                         </select>
                     </div>
@@ -402,13 +402,14 @@ export class Templates {
         return contentHTML;
     }
 
-    getOptionsHTML(fields, value) {
-        let contentHTML = '<option value=""></option>';
+    getOptionsHTML(fields, value, isBlock = false) {
+        // let contentHTML = '<option value=""></option>';
+        let contentHTML = !isBlock || value ==='' || value === null || value === undefined || isNaN(value) ? '<option value=""></option>' : '<option value="" disabled></option>';
         for (const field of fields) {
             if (field.ID == value) {
                 contentHTML += `<option value="${field.ID}" selected>${field.VALUE}</option>`;
             } else {
-                contentHTML += `<option value="${field.ID}">${field.VALUE}</option>`;
+                contentHTML += `<option value="${field.ID}" ${isBlock ? 'disabled' : ''}>${field.VALUE}</option>`;
             }
         }
         return contentHTML;
@@ -459,22 +460,22 @@ export class Templates {
         return laminationsHTML;
     }
 
-    getFilmsWidthsOptionsHTML(filmId, widthId) {
-        let widthsHTML = '<option value=""></option>';
-        const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.id] == filmId) || {};
-        const widthIds = dependence?.[SP_DEPENDENCE_FIELDS.widths] || [];
-        const widthsList = this.materials.widths.filter(obj => widthIds.includes(String(obj.id)));
+    // getFilmsWidthsOptionsHTML(filmId, widthId) {
+    //     let widthsHTML = '<option value=""></option>';
+    //     const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.id] == filmId) || {};
+    //     const widthIds = dependence?.[SP_DEPENDENCE_FIELDS.widths] || [];
+    //     const widthsList = this.materials.widths.filter(obj => widthIds.includes(String(obj.id)));
 
-        for (let { id, title } of widthsList) {
-            if (id == widthId) {
-                widthsHTML += `<option value="${id}" selected>${title}</option>`
-            } else {
-                widthsHTML += `<option value="${id}">${title}</option>`
-            }
-        }
+    //     for (let { id, title } of widthsList) {
+    //         if (id == widthId) {
+    //             widthsHTML += `<option value="${id}" selected>${title}</option>`
+    //         } else {
+    //             widthsHTML += `<option value="${id}">${title}</option>`
+    //         }
+    //     }
 
-        return widthsHTML;
-    }
+    //     return widthsHTML;
+    // }
 
     customToString(value) {
         if (value === 0) {
