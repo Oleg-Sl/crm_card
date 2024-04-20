@@ -1,6 +1,6 @@
-$group-title-font: 700 10px 'Open Sans', sans-serif
-$header-font: 700 10px 'Open Sans', sans-serif
-$body-font: 400 8px 'Open Sans', sans-serif
+$group-title-font: 700 12px 'Open Sans', sans-serif
+$header-font: 700 12px 'Open Sans', sans-serif
+$body-font: 400 10px 'Open Sans', sans-serif
 $input-height: 17px
 
 
@@ -16,7 +16,11 @@ $input-height: 17px
             font: $group-title-font
     table
         display: grid
-        grid-template-columns: 10px 1fr 25px 105px 110px 27px 75px 75px 80px 80px 110px 110px 65px 80px 80px
+        // grid-template-columns: 10px 1fr 25px 105px 110px 27px 75px 75px 80px 80px 110px 110px 65px 80px 80px
+        // grid-template-columns: 10px   1fr          25px         105px                110px         27px 75px 75px 80px 80px 110px 110px 65px 80px 80px
+        grid-template-columns: 10px minmax(auto, 1fr) 25px  minmax(105px, 135px) minmax(110px, 135px) 27px minmax(75px, 90px) minmax(75px, 90px) minmax(80px, 100px) minmax(80px, 100px) minmax(110px, 135px) minmax(110px, 135px) 65px minmax(80px, 100px) 35px
+        // grid-template-columns: 10px minmax(auto, 450px) 25px minmax(105px, 110px) minmax(110px, 110px) 27px minmax(75px, 80px) minmax(75px, 80px) minmax(80px, 110px) minmax(80px, 110px) minmax(110px, 110px) minmax(110px, 110px) 65px minmax(80px, 90px) minmax(80px, 100px)
+
         border-collapse: collapse
         overflow-x: auto
         min-width: 100%
@@ -461,6 +465,7 @@ $input-height: 17px
                     margin-right: 0
             .task-container_group-item-right
                 display: flex
+                flex-direction: column
                 align-items: center
                 justify-content: space-around
                 .task-container_group-item-move

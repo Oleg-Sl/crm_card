@@ -240,7 +240,7 @@ export class Templates {
                         <select name="" id="" data-product-field="measurement" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.measurement]?.items, productData.measurement)}" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
                             ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.measurement]?.items, productData.measurement, this.groupData.repeatMeasurement)}
                         </select>
-                        <input type="text" name="" id="" placeholder="Адрес" value="${this.customToString(productData.measurementAddress)}" title="${this.customToString(productData.measurementAddress)}" data-product-field="measurementAddress" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
+                        <input type="text" ${this.groupData.repeatMeasurement ? '' : 'readonly'} placeholder="Адрес" value="${this.customToString(productData.measurementAddress)}" title="${this.customToString(productData.measurementAddress)}" data-product-field="measurementAddress" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
                     </div>
                 </td>
                 <td class="task-container_group-item-design">

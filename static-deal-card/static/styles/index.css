@@ -1175,13 +1175,13 @@
 
 .task-container__app .task-container__group-title span {
   color: #464A4E;
-  font: 700 10px "Open Sans", sans-serif;
+  font: 700 12px "Open Sans", sans-serif;
 }
 .task-container__app .task-container__group-title input {
   width: 75%;
   background: none;
   border: 1px solid rgba(0, 0, 0, 0);
-  font: 700 10px "Open Sans", sans-serif;
+  font: 700 12px "Open Sans", sans-serif;
 }
 .task-container__app table {
   display: grid;
@@ -1198,12 +1198,12 @@
 }
 .task-container__app table thead tr th, .task-container__app table thead tr td, .task-container__app table tbody tr th, .task-container__app table tbody tr td {
   padding: 2px;
-  font: 400 8px "Open Sans", sans-serif;
+  font: 400 10px "Open Sans", sans-serif;
   border-right: 1px solid #97999B;
   border-bottom: 1px solid #97999B;
 }
 .task-container__app table thead tr th, .task-container__app table tbody tr th {
-  font: 700 10px "Open Sans", sans-serif;
+  font: 700 12px "Open Sans", sans-serif;
   border-right: 1px solid #97999B;
   border-top: 1px solid #97999B;
 }
@@ -1214,7 +1214,7 @@
   grid-row: span 0;
 }
 .task-container__app table .technology-item {
-  height: 36px;
+  height: 38px;
   display: flex;
   align-items: center;
 }
@@ -1239,7 +1239,7 @@
   -moz-appearance: textfield;
 }
 .task-container__app table select, .task-container__app table input, .task-container__app table textarea {
-  font: 400 8px "Open Sans", sans-serif;
+  font: 400 10px "Open Sans", sans-serif;
   background: none;
   border: 1px solid rgba(151, 153, 155, 0.2);
   border-radius: 0;
@@ -1247,7 +1247,7 @@
   box-sizing: border-box;
 }
 .task-container__app table select, .task-container__app table input {
-  height: 17px;
+  height: 18px;
 }
 .task-container__app table textarea {
   resize: vertical;
@@ -1257,7 +1257,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  font: 700 10px "Open Sans", sans-serif;
+  font: 700 12px "Open Sans", sans-serif;
 }
 .task-container__app table thead .task-container_group-header-add-group {
   color: #fff200;
@@ -1325,8 +1325,8 @@
 .task-container__app table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology {
   display: grid;
   gap: 2px;
-  grid-template-columns: 15px 17px 1fr 11px;
-  grid-template-rows: 17px 17px;
+  grid-template-columns: 15px 18px 1fr 11px;
+  grid-template-rows: 18px 18px;
   grid-template-areas: "A B C E" "A B D E";
 }
 .task-container__app table tbody .task-container__item-technologies .task-container__item-technologies-list-container .task-container__item-technologies-technology .task-container__item-technologies-technology-mchs {
@@ -1544,13 +1544,13 @@
 }
 .task-container__commerc-offer .task-container__group-title span, .task-container__offer .task-container__group-title span {
   color: #464A4E;
-  font: 700 10px "Open Sans", sans-serif;
+  font: 700 12px "Open Sans", sans-serif;
 }
 .task-container__commerc-offer .task-container__group-title input, .task-container__offer .task-container__group-title input {
   width: 75%;
   background: none;
   border: 1px solid rgba(0, 0, 0, 0);
-  font: 700 10px "Open Sans", sans-serif;
+  font: 700 12px "Open Sans", sans-serif;
 }
 .task-container__commerc-offer table, .task-container__offer table {
   display: grid;
@@ -1567,12 +1567,12 @@
 }
 .task-container__commerc-offer table thead tr th, .task-container__commerc-offer table thead tr td, .task-container__commerc-offer table tbody tr th, .task-container__commerc-offer table tbody tr td, .task-container__offer table thead tr th, .task-container__offer table thead tr td, .task-container__offer table tbody tr th, .task-container__offer table tbody tr td {
   padding: 2px;
-  font: 400 8px "Open Sans", sans-serif;
+  font: 400 10px "Open Sans", sans-serif;
   border-right: 1px solid #97999B;
   border-bottom: 1px solid #97999B;
 }
 .task-container__commerc-offer table thead tr th, .task-container__commerc-offer table tbody tr th, .task-container__offer table thead tr th, .task-container__offer table tbody tr th {
-  font: 700 10px "Open Sans", sans-serif;
+  font: 700 12px "Open Sans", sans-serif;
   border-right: 1px solid #97999B;
   border-top: 1px solid #97999B;
 }
@@ -1595,7 +1595,7 @@
   grid-row: span 2;
 }
 .task-container__commerc-offer table select, .task-container__commerc-offer table input, .task-container__commerc-offer table textarea, .task-container__offer table select, .task-container__offer table input, .task-container__offer table textarea {
-  font: 400 8px "Open Sans", sans-serif;
+  font: 400 10px "Open Sans", sans-serif;
   background: none;
   border: 1px solid rgba(151, 153, 155, 0.2);
   border-radius: 0;
@@ -1730,14 +1730,14 @@
   left: 6.5px;
   transform: rotate(270deg);
   color: #555;
-  font: 400 8px "Open Sans", sans-serif;
+  font: 400 10px "Open Sans", sans-serif;
 }
 .task-container__commerc-offer table tbody .task-container__item-consumption, .task-container__offer table tbody .task-container__item-consumption {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   gap: 2px;
-  font: 400 8px "Open Sans", sans-serif;
+  font: 400 10px "Open Sans", sans-serif;
 }
 .task-container__commerc-offer table tbody .task-container__item-consumption .task-container__item-consumption-item, .task-container__offer table tbody .task-container__item-consumption .task-container__item-consumption-item {
   display: grid;
@@ -2242,17 +2242,17 @@
 
 #taksOrder .task-container__group-title span {
   color: #464A4E;
-  font: 700 10px "Open Sans", sans-serif;
+  font: 700 12px "Open Sans", sans-serif;
 }
 #taksOrder .task-container__group-title input {
   width: 75%;
   background: none;
   border: 1px solid rgba(0, 0, 0, 0);
-  font: 700 10px "Open Sans", sans-serif;
+  font: 700 12px "Open Sans", sans-serif;
 }
 #taksOrder table {
   display: grid;
-  grid-template-columns: 10px 1fr 25px 105px 110px 27px 75px 75px 80px 80px 110px 110px 65px 80px 80px;
+  grid-template-columns: 10px minmax(auto, 1fr) 25px minmax(105px, 135px) minmax(110px, 135px) 27px minmax(75px, 90px) minmax(75px, 90px) minmax(80px, 100px) minmax(80px, 100px) minmax(110px, 135px) minmax(110px, 135px) 65px minmax(80px, 100px) 35px;
   border-collapse: collapse;
   overflow-x: auto;
   min-width: 100%;
@@ -2265,12 +2265,12 @@
 }
 #taksOrder table thead tr th, #taksOrder table thead tr td, #taksOrder table tbody tr th, #taksOrder table tbody tr td {
   padding: 2px;
-  font: 400 8px "Open Sans", sans-serif;
+  font: 400 10px "Open Sans", sans-serif;
   border-right: 1px solid #97999B;
   border-bottom: 1px solid #97999B;
 }
 #taksOrder table thead tr th, #taksOrder table tbody tr th {
-  font: 700 10px "Open Sans", sans-serif;
+  font: 700 12px "Open Sans", sans-serif;
   border-right: 1px solid #97999B;
   border-top: 1px solid #97999B;
 }
@@ -2293,7 +2293,7 @@
   grid-row: span 2;
 }
 #taksOrder table select, #taksOrder table input {
-  font: 400 8px "Open Sans", sans-serif;
+  font: 400 10px "Open Sans", sans-serif;
   background: none;
   border: 1px solid rgba(151, 153, 155, 0.2);
   border-radius: 0;
@@ -2303,7 +2303,7 @@
 }
 #taksOrder table textarea {
   resize: vertical;
-  font: 400 8px "Open Sans", sans-serif;
+  font: 400 10px "Open Sans", sans-serif;
   background: none;
   border: 1px solid rgba(151, 153, 155, 0.2);
   border-radius: 0;
@@ -2411,7 +2411,7 @@
   flex-direction: column;
   box-sizing: border-box;
   gap: 2px;
-  font: 400 8px "Open Sans", sans-serif;
+  font: 400 10px "Open Sans", sans-serif;
 }
 #taksOrder table tbody .task-container__item-consumption .task-container__item-consumption-item {
   display: grid;
@@ -2785,6 +2785,7 @@
 }
 #taksOrder table tbody .task-container_group-item-right {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
 }
