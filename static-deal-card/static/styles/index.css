@@ -2788,6 +2788,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  font-size: 17px;
 }
 #taksOrder table tbody .task-container_group-item-right .task-container_group-item-add {
   color: #00A185;
