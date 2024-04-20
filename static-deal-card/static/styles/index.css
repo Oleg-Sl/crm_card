@@ -2252,7 +2252,7 @@
 }
 #taksOrder table {
   display: grid;
-  grid-template-columns: 10px 1fr 25px 105px 110px 27px 75px 75px 80px 80px 110px 110px 65px 80px 80px;
+  grid-template-columns: 10px minmax(auto, 1fr) 27px minmax(110px, 145px) minmax(110x, 145px) minmax(29px, 35px) minmax(80px, 95px) minmax(80px, 95px) minmax(85px, 100px) minmax(85px, 100px) minmax(110px, 145px) minmax(110px, 135px) minmax(70px, 95px) minmax(85px, 115px) 30px;
   border-collapse: collapse;
   overflow-x: auto;
   min-width: 100%;
