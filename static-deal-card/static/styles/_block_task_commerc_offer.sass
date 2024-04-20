@@ -16,7 +16,9 @@ $input-height: 17px
             font: $group-title-font
     table
         display: grid
-        grid-template-columns: 10px 1fr 25px 105px 110px 27px 45px 65px 60px 80px 75px 110px 75px 40px 55px 42px 45px 25px
+        // grid-template-columns: 10px 1fr 25px 105px 110px 27px 45px 65px 60px 80px 75px 110px 75px 40px 55px 42px 45px 25px
+        // grid-template-columns: 10px     1fr        25px        105px                110px                27px               45px               65px               60px               80px                75px                110px                75px                40px               55px               42px               45px        25px
+        grid-template-columns: 10px minmax(auto, 1fr) 30px minmax(120px, 135px) minmax(115px, 145px) minmax(30px, 40px) minmax(50px, 60px) minmax(65px, 80px) minmax(60px, 80px) minmax(90px, 110px) minmax(80px, 100px) minmax(115px, 155px) minmax(80px, 100px) minmax(45px, 55px) minmax(55px, 75px) minmax(45px, 55px) minmax(55px, 75px) 38px
         border-collapse: collapse
         overflow-x: auto
         min-width: 100%
