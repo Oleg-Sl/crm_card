@@ -1185,7 +1185,7 @@
 }
 .task-container__app table {
   display: grid;
-  grid-template-columns: 15px 1fr 110px 120px 80px 80px 80px 110px 80px 90px 80px;
+  grid-template-columns: 15px minmax(auto, 1fr) minmax(110px, 150px) minmax(110px, 150px) minmax(90px, 110px) minmax(80px, 110px) minmax(80px, 110px) minmax(110px, 150px) minmax(80px, 110px) minmax(90px, 125px) 35px;
   border-collapse: collapse;
   overflow-x: auto;
   min-width: 100%;
@@ -1533,8 +1533,10 @@
 }
 .task-container__app table tbody .task-container_group-item-right {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  font-size: 17px;
 }
 .task-container__app table tbody .task-container_group-item-right .task-container_group-item-add {
   color: #00A185;
@@ -2252,7 +2254,7 @@
 }
 #taksOrder table {
   display: grid;
-  grid-template-columns: 10px minmax(auto, 1fr) 27px minmax(110px, 145px) minmax(110x, 145px) minmax(29px, 35px) minmax(80px, 95px) minmax(80px, 95px) minmax(85px, 100px) minmax(85px, 100px) minmax(110px, 145px) minmax(110px, 135px) minmax(70px, 95px) minmax(85px, 115px) 30px;
+  grid-template-columns: 10px minmax(auto, 1fr) 27px minmax(110px, 145px) minmax(110px, 145px) minmax(29px, 35px) minmax(80px, 95px) minmax(80px, 95px) minmax(85px, 100px) minmax(85px, 100px) minmax(110px, 145px) minmax(110px, 135px) minmax(70px, 95px) minmax(85px, 115px) 30px;
   border-collapse: collapse;
   overflow-x: auto;
   min-width: 100%;

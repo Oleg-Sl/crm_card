@@ -17,7 +17,9 @@ $body-font: 400 10px 'Open Sans', sans-serif
 
     table
         display: grid
-        grid-template-columns: 15px 1fr 110px 120px 80px 80px 80px 110px 80px 90px 80px
+        // grid-template-columns: 15px 1fr 110px 120px 80px 80px 80px 110px 80px 90px 80px
+        // grid-template-columns: 15px 1fr 152px 166px 110px 110px 110px 152px 110px 124px 35px
+        grid-template-columns: 15px minmax(auto, 1fr) minmax(110px, 150px) minmax(110px, 150px) minmax(90px, 110px) minmax(80px, 110px) minmax(80px, 110px) minmax(110px, 150px) minmax(80px, 110px) minmax(90px, 125px) 35px
         border-collapse: collapse
         overflow-x: auto
         min-width: 100%
@@ -344,8 +346,10 @@ $body-font: 400 10px 'Open Sans', sans-serif
                 //     left: -9px
             .task-container_group-item-right
                 display: flex
+                flex-direction: column
                 align-items: center
                 justify-content: space-around
+                font-size: 17px
                 .task-container_group-item-move
                 .task-container_group-item-add
                     color: #00A185
