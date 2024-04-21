@@ -247,8 +247,8 @@ export class TaskData {
                 return;
             }
 
-            console.log("cmd = ", cmd);
-            return
+            // console.log("cmd = ", cmd);
+            // return
             const response = await this.bx24.callMethod('batch', {
                 halt: 0,
                 cmd: cmd,
