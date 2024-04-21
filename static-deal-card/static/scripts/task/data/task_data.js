@@ -370,8 +370,11 @@ export class TaskData {
             cmd: cmd,
         });
 
-        let {products, technologies, laminations, widths} = await this.getAllTechnologyData(response?.result_total);
-
+        // let {products, technologies, laminations, widths} = await this.getAllTechnologyData(response?.result_total);
+        let products = [];
+        let technologies = [];
+        let laminations = [];
+        let widths = []
         const data = response?.result;
         const fieldGroup = data?.fieldGroup?.fields;
         const fieldProduct = data?.fieldProduct?.fields;
