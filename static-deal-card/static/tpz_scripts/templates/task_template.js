@@ -269,7 +269,7 @@ export class Template {
                     <div class="task-container__item-business-trip">
                         <div class="task-container__item-business-trip-type" value="${this.customToString(productData.businessTrip)}">
                             <select class="task-container_group-item-dismantling-bottom ${this.editable ? 'employee-mos' : ''}" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.businessTrip]?.items, productData.businessTrip)}" data-product-field="businessTrip" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.businessTrip]?.items, productData.businessTrip)}
+                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.businessTrip]?.items, productData.businessTrip, true)}
                             </select>
                         </div>
                         <div class="task-container__item-dismantling-count-workers">
@@ -476,17 +476,18 @@ export class Template {
         `;
     }
 
-    getOptionsHTML(fields, value) {
-        let contentHTML = value ==='' || value === null || value === undefined || isNaN(value) ? '<option value=""></option>' : '<option value="" disabled></option>';
+    getOptionsHTML(fields, value, editable = false) {
+        let contentHTML = editable && (value ==='' || value === null || value === undefined || isNaN(value)) ? '<option value=""></option>' : '<option value="" disabled></option>';
         for (const field of fields) {
             if (field.ID == value) {
                 contentHTML += `<option value="${field.ID}" selected>${field.VALUE}</option>`;
             } else {
-                contentHTML += `<option value="${field.ID}" ${this.editable ? 'disabled' : 'disabled'}>${field.VALUE}</option>`;
+                contentHTML += `<option value="${field.ID}" ${editable ? '' : 'disabled'}>${field.VALUE}</option>`;
             }
         }
         return contentHTML;
     }
+    
 
     getTechnologyTypeOptionsHTML(techId) {
         let technologyTypeListHTML = '<option value="" disabled></option>';
