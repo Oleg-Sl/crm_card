@@ -24,6 +24,9 @@ class App {
     async init() {
         if (this.taskId) {
             await this.dataManager.initFromTask(this.taskId);
+            console.log("this.taskId = ", this.taskId);
+            console.log("this.taskEstimate = ", this.dataManager.taskEstimate);
+            console.log("this.taskCommOffer = ", this.dataManager.taskCommOffer);
             if (this.taskId != this.dataManager.taskEstimate && this.taskId != this.dataManager.taskCommOffer) {
                 throw new Error("Task not found");
             }
