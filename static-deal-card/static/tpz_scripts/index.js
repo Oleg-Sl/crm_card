@@ -41,7 +41,7 @@ class App {
 
     async update() {
         await this.dataManager.init();
-        if (this.taskId != this.dataManager.taskEstimate && this.taskId != this.dataManager.taskCommOffer) {
+        if (this.taskId && this.taskId != this.dataManager.taskEstimate && this.taskId != this.dataManager.taskCommOffer) {
             throw new Error("Task not found");
         }
 
