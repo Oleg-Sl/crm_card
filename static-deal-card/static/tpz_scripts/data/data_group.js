@@ -29,6 +29,18 @@ export class Group {
         this.repeatDeadline = convertYNToBoolean(data?.[SP_GROUP_FIELDS.repeatDeadline]);           // Повторить - сроки
         this.repeatDelivery = convertYNToBoolean(data?.[SP_GROUP_FIELDS.repeatDelivery]);           // Повторить - доставка
 
+        this.businessTrip = data?.[SP_GROUP_FIELDS.businessTrip];                               // Командировка - тип
+        this.businessTripCost = data?.[SP_GROUP_FIELDS.businessTripCost];                       // Командировка - себестоимость
+        this.businessTripPercent = data?.[SP_GROUP_FIELDS.businessTripPercent];                 // Командировка - процент
+        this.businessTripPeople = data?.[SP_GROUP_FIELDS.businessTripPeople];                   // Командировка -  сколько человек
+        this.businessTripDays = data?.[SP_GROUP_FIELDS.businessTripDays];                       // Командировка - сколько дней
+        this.businessTripAccommodation = data?.[SP_GROUP_FIELDS.businessTripAccommodation];     // Командировка - проживание ночей
+        this.businessTripNutritions = data?.[SP_GROUP_FIELDS.businessTripNutritions];           // Командировка -  питание дней
+        this.businessTripMileages = data?.[SP_GROUP_FIELDS.businessTripMileages];               // Командировка - пробег
+        this.businessTripTypeDeparture = data?.[SP_GROUP_FIELDS.businessTripTypeDeparture];     // Командировка - тип выезда
+        this.businessTripCount = data?.[SP_GROUP_FIELDS.businessTripCount];                     // Командировка - сколько раз
+        this.businessTripCostOne = data?.[SP_GROUP_FIELDS.businessTripCostOne];                 // Командировка - себестоимость за круг
+
         this.products = [];
         this.changedFields = {};
         this.initialValues = {};
