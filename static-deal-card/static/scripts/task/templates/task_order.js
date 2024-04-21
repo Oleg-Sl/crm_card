@@ -412,7 +412,7 @@ export class Templates {
             <td class="shared block-center" style="grid-row: span ${technologiesCount}">
                 <div class="task-container__item-business-trip">
                     <div class="task-container__item-business-trip-type" value="${this.customToString(groupData.businessTrip)}">
-                        <select class="task-container_group-item-dismantling-bottom" name="" id="" title="${this.getTitleFromEnums(this.fields?.group?.[SP_GROUP_FIELDS.businessTrip]?.items, groupData.businessTrip)}" value="${this.customToString(productData.dismantlingArea)}" data-product-field="businessTrip" data-type="select" data-group-id="${groupId}">
+                        <select class="task-container_group-item-dismantling-bottom" name="" id="" title="${this.getTitleFromEnums(this.fields?.group?.[SP_GROUP_FIELDS.businessTrip]?.items, groupData.businessTrip)}" value="${this.customToString(groupData.dismantlingArea)}" data-product-field="businessTrip" data-type="select" data-group-id="${groupData.id}">
                             ${this.getOptionsHTML(this.fields?.group?.[SP_GROUP_FIELDS.businessTrip]?.items, groupData.businessTrip)}
                         </select>
                     </div>
