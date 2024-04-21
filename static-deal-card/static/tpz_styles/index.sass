@@ -517,7 +517,33 @@ body
                     grid-area: E
                 .task-container__item-dismantling-count-miles
                     grid-area: F
-
+            .task-container__item-business-trip-departure
+                display: grid
+                gap: 2px
+                grid-template-columns: repeat(6 1fr)
+                grid-template-rows: $input-height $input-height $input-height $input-height 
+                grid-template-areas: "A A" "B B" "C D" "E E"
+                width: 100%
+                > div
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                input
+                    width: 100%
+                    text-align: center
+                    -moz-appearance: textfield
+                    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button 
+                        -webkit-appearance: none
+                .task-container__item-business-trip-type
+                    grid-area: A                
+                .task-container__item-business-trip-type-departure
+                    grid-area: B
+                .task-container__item-business-trip-count-workers
+                    grid-area: C
+                .task-container__item-business-trip-count
+                    grid-area: D
+                .task-container__item-business-trip-cost-one
+                    grid-area: E
             .task-container__item-delivery-container
                 display: flex
                 align-items: center

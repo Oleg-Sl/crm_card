@@ -546,6 +546,42 @@ body {
 #taskContainer table tbody .task-container__item-business-trip .task-container__item-dismantling-count-miles {
   grid-area: F;
 }
+#taskContainer table tbody .task-container__item-business-trip-departure {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: repeat(6 1fr);
+  grid-template-rows: 17px 17px 17px 17px;
+  grid-template-areas: "A A" "B B" "C D" "E E";
+  width: 100%;
+}
+#taskContainer table tbody .task-container__item-business-trip-departure > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#taskContainer table tbody .task-container__item-business-trip-departure input {
+  width: 100%;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+#taskContainer table tbody .task-container__item-business-trip-departure input::-webkit-inner-spin-button, #taskContainer table tbody .task-container__item-business-trip-departure input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+#taskContainer table tbody .task-container__item-business-trip-departure .task-container__item-business-trip-type {
+  grid-area: A;
+}
+#taskContainer table tbody .task-container__item-business-trip-departure .task-container__item-business-trip-type-departure {
+  grid-area: B;
+}
+#taskContainer table tbody .task-container__item-business-trip-departure .task-container__item-business-trip-count-workers {
+  grid-area: C;
+}
+#taskContainer table tbody .task-container__item-business-trip-departure .task-container__item-business-trip-count {
+  grid-area: D;
+}
+#taskContainer table tbody .task-container__item-business-trip-departure .task-container__item-business-trip-cost-one {
+  grid-area: E;
+}
 #taskContainer table tbody .task-container__item-delivery-container {
   display: flex;
   align-items: center;
