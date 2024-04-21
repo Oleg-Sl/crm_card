@@ -310,13 +310,18 @@ export class TaskData {
         const fieldTechnology = data?.fieldTechnology?.fields;
 
         const groups = data?.[SP_GROUP_ID]?.items || [];
-        const products = data?.[SP_PRODUCT_ID]?.items || [];
-        const technologies = data?.[SP_TECHOLOGY_ID]?.items || [];
+        let products = data?.[SP_PRODUCT_ID]?.items || [];
+        products = products.concat(productsRemain);
+        let technologies = data?.[SP_TECHOLOGY_ID]?.items || [];
+        technologies = technologies.concat(technologiesRemain);
+
 
         const technologiesType = data?.[SP_TECHOLOGY_TYPE_ID]?.items || [];
         // const films = data?.[SP_FILMS_ID]?.items || [];
-        const widths = data?.[SP_WIDTH_ID]?.items || [];
-        const laminations = data?.[SP_LAMINATION_ID]?.items || [];
+        let widths = data?.[SP_WIDTH_ID]?.items || [];
+        widths = widths.concat(widthsRemain);
+        let laminations = data?.[SP_LAMINATION_ID]?.items || [];
+        laminations = laminations.concat(laminationsRemain);
         const dependenceMaterial = data?.[SP_DEPENDENCE_ID]?.items || [];
 
         return {
@@ -371,18 +376,18 @@ export class TaskData {
             cmd: cmd,
         });
 
-        for (const key in response?.result) {
+        for (const key in response?.result?.result) {
             if (key.startsWith(SP_PRODUCT_ID)) {
-                const productData = response?.result[key]?.items;
+                const productData = response?.result?.result[key]?.items;
                 products = products.concat(productData);
             } else if (key.startsWith(SP_TECHOLOGY_ID)) {
-                const technologyData = response?.result[key]?.items;
+                const technologyData = response?.result?.result[key]?.items;
                 technologies = technologies.concat(technologyData);
             } else if (key.startsWith(SP_WIDTH_ID)) {
-                const widthData = response?.result[key]?.items;
+                const widthData = response?.result?.result[key]?.items;
                 widths = widths.concat(widthData);
             } else if (key.startsWith(SP_LAMINATION_ID)) {
-                const laminationsData = response?.result[key]?.items;
+                const laminationsData = response?.result?.result[key]?.items;
                 laminations = laminations.concat(laminationsData);
             }
         }
