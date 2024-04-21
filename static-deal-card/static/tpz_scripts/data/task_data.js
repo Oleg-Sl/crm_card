@@ -297,6 +297,10 @@ export class TaskData {
             halt: 0,
             cmd: cmd
         });
+        console.log('response', response);
+        let {productsRemain, technologiesRemain, laminationsRemain, widthsRemain} = await this.getAllTechnologyData(response?.result?.result_total);
+        console.log('productsRemain, technologiesRemain, laminationsRemain, widthsRemain', productsRemain, technologiesRemain, laminationsRemain, widthsRemain);
+
         const data = response?.result?.result;
         
         const deal = data?.deal;
@@ -334,6 +338,62 @@ export class TaskData {
             dependencesMaterial: dependenceMaterial,
         };
     }
+
+    async getAllTechnologyData(totals) {
+        let cmd = {};
+        let products = [];
+        let technologies =[];
+        let laminations = [];
+        let widths = [];
+        if (SP_PRODUCT_ID in totals) {
+            for (let i = 50; i < totals[SP_PRODUCT_ID]; i += 50) {
+                cmd[`${SP_PRODUCT_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}&start=${i}`;
+            }
+        }
+        if (SP_TECHOLOGY_ID in totals) {
+            for (let i = 50; i < totals[SP_TECHOLOGY_ID]; i += 50) {
+                cmd[`${SP_TECHOLOGY_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}&start=${i}`;
+            }
+        }
+        if (SP_WIDTH_ID in totals) {
+            for (let i = 50; i < totals[SP_WIDTH_ID]; i += 50) {
+                cmd[`${SP_WIDTH_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_WIDTH_ID}&select[]=id&select[]=title&select[]=${SP_WIDTH_FIELDS.value}&start=${i}`;
+            }
+        }
+        if (SP_LAMINATION_ID in totals) {
+            for (let i = 50; i < totals[SP_LAMINATION_ID]; i += 50) {
+                cmd[`${SP_LAMINATION_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_LAMINATION_ID}&select[]=id&select[]=title&start=${i}`;
+            }
+        }
+
+        const response = await this.bx24.callMethod('batch', {
+            halt: 0,
+            cmd: cmd,
+        });
+
+        for (const key in response?.result) {
+            if (key.startsWith(SP_PRODUCT_ID)) {
+                const productData = response?.result[key]?.items;
+                products = products.concat(productData);
+            } else if (key.startsWith(SP_TECHOLOGY_ID)) {
+                const technologyData = response?.result[key]?.items;
+                technologies = technologies.concat(technologyData);
+            } else if (key.startsWith(SP_WIDTH_ID)) {
+                const widthData = response?.result[key]?.items;
+                widths = widths.concat(widthData);
+            } else if (key.startsWith(SP_LAMINATION_ID)) {
+                const laminationsData = response?.result[key]?.items;
+                laminations = laminations.concat(laminationsData);
+            }
+        }
+        return {
+            productsRemain: products,
+            technologiesRemain: technologies,
+            laminationsRemain: laminations,
+            widthsRemain: widths
+        };
+    }
+    
 
     setData(groups, products, technologies) {
         this.groupsData = [];

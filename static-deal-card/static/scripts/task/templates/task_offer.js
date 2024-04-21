@@ -446,7 +446,7 @@ export class Templates {
         for (let technology of technologies) {
             contentHTML += `
                 <div class="task-container__item-area-mounting technology-item technology-row" data-technology-id="${technology.id}">
-                    <input type="number" name="" id="" placeholder="Площадь монтажа" title="${this.customToString(technology.installArea)}" value="${this.customToString(technology.installArea)}" data-field="installArea" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
+                    <input type="number" name="" id="" placeholder="Площадь монтажа" title="${this.customToString(technology.installArea)}" value="${this.customToString(technology.installArea)}" data-technology-field="installArea" data-type="number" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}">
                 </div>
             `;
         }
