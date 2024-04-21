@@ -47,9 +47,9 @@ export class TaskData {
     }
 
     setData(groups, products, technologies) {
-        console.log("groups = ", groups);
-        console.log("products = ", products);
-        console.log("technologies = ", technologies);
+        // console.log("groups = ", groups);
+        // console.log("products = ", products);
+        // console.log("technologies = ", technologies);
         this.groupsData = [];
 
         for (let group of groups) {
@@ -390,7 +390,10 @@ export class TaskData {
         laminations = laminations.concat(data?.[SP_LAMINATION_ID]?.items || []);
         const dependenceMaterial = data?.[SP_DEPENDENCE_ID]?.items || [];
 
-
+        console.log("products = ", products);
+        console.log("technologies = ", technologies);
+        console.log("laminations = ", laminations);
+        console.log("widths = ", widths);
 
         this.fields = {
             group: fieldGroup,
