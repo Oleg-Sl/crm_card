@@ -49,7 +49,6 @@ export class TaskData {
 
     async init() {
         await this.initFromDeal(this.dealId);
-        await this.updateTaskSettings();
     }
 
     async initFromTask(taskId) {
@@ -65,6 +64,7 @@ export class TaskData {
             throw new Error("Deal id not found");
         }
         await this.initData();
+        await this.updateTaskSettings();
     }
 
     setSources(sourceFilesData) {
