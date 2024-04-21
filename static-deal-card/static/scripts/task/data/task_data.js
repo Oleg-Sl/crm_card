@@ -368,7 +368,7 @@ export class TaskData {
             cmd: cmd,
         });
 
-        let {products, technologies, laminations, widths} = await this.getAllTechnologyData(response?.result_total);
+        let {productsRemain, technologiesRemain, laminationsRemain, widthsRemain} = await this.getAllTechnologyData(response?.result_total);
 
         const data = response?.result;
         const fieldGroup = data?.fieldGroup?.fields;
@@ -376,12 +376,12 @@ export class TaskData {
         const fieldTechnology = data?.fieldTechnology?.fields;
 
         const groups = data?.[SP_GROUP_ID]?.items || [];
-        products = products.concat(data?.[SP_PRODUCT_ID]?.items || []);
-        technologies = technologies.concat(data?.[SP_TECHOLOGY_ID]?.items || []);
+        const products = data?.[SP_PRODUCT_ID]?.items || [] + productsRemain;
+        const technologies = data?.[SP_TECHOLOGY_ID]?.items || [] + technologiesRemain;
 
         const technologiesType = data?.[SP_TECHOLOGY_TYPE_ID]?.items || [];
-        widths = widths.concat(data?.[SP_WIDTH_ID]?.items || []);
-        laminations = laminations.concat(data?.[SP_LAMINATION_ID]?.items || []);
+        const widths = data?.[SP_WIDTH_ID]?.items || [] + widthsRemain;
+        const laminations = data?.[SP_LAMINATION_ID]?.items || [] + laminationsRemain;
         const dependenceMaterial = data?.[SP_DEPENDENCE_ID]?.items || [];
 
         this.fields = {
