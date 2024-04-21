@@ -351,8 +351,12 @@ export class TaskData {
             fieldTechnology: `crm.item.fields?entityTypeId=${SP_TECHOLOGY_ID}`,
 
             [SP_GROUP_ID]: `crm.item.list?entityTypeId=${SP_GROUP_ID}&filter[parentId2]=${this.dealId}`,
-            [SP_PRODUCT_ID]: `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}`,
-            [SP_TECHOLOGY_ID]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}`,
+            // [`${SP_GROUP_ID}_1`]: `crm.item.list?entityTypeId=${SP_GROUP_ID}&filter[parentId2]=${this.dealId}&start=50`,
+            [`${SP_PRODUCT_ID}`]: `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}`,
+            // [`${SP_PRODUCT_ID}_2`]: `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}&start=50`,
+            [`${SP_TECHOLOGY_ID}`]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}`,
+            // [`${SP_TECHOLOGY_ID}_2`]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}&start=50`,
+            // [`${SP_TECHOLOGY_ID}_3`]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}&start=100`,
            
             [SP_TECHOLOGY_TYPE_ID]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_TYPE_ID}&select[]=id&select[]=title`,
             // [SP_FILMS_ID]: `crm.item.list?entityTypeId=${SP_FILMS_ID}&select[]=id&select[]=title`,
@@ -361,8 +365,12 @@ export class TaskData {
             [SP_DEPENDENCE_ID]: `crm.item.list?entityTypeId=${SP_DEPENDENCE_ID}&select[]=id&select[]=title&select[]=${SP_DEPENDENCE_FIELDS.film}&select[]=${SP_DEPENDENCE_FIELDS.laminations}&select[]=${SP_DEPENDENCE_FIELDS.widths}`,
         };
 
-        const data = await this.bx24.callBatchCmd(cmd);
-
+        const data = await this.bx24.callMethod('batch', {
+            halt: 0,
+            cmd: cmd,
+        });
+        console.log("data = ", data);
+        return;
         const fieldGroup = data?.fieldGroup?.fields;
         const fieldProduct = data?.fieldProduct?.fields;
         const fieldTechnology = data?.fieldTechnology?.fields;
