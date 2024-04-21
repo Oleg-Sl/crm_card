@@ -164,6 +164,9 @@ export class TaskData {
             const product = group.products.find(product => product.id == productId);
             if (product) {
                 group.removeProduct(product);
+                product.technologies.forEach(technology => {
+                    cmd[technology.id] = `crm.item.delete?entityTypeId=${SP_TECHOLOGY_ID}&id=${technology.id}`
+                })
                 if (group.products.length == 0) {
                     cmd.group = `crm.item.delete?entityTypeId=${SP_GROUP_ID}&id=${groupId}`
                     this.removeGroup(groupId);
