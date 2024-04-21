@@ -34,7 +34,9 @@ export class TaskAppInterface {
         this.templates.setMaterialsData(this.materials);
 
         this.manager.addObserver(this);
+        this.update();
         this.initHandlers();
+
     }
 
     initHandlers() {

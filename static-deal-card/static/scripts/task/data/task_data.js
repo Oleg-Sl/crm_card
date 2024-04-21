@@ -397,6 +397,7 @@ export class TaskData {
             laminations: laminations
         };
         this.setData(groups, products, technologies);
+        console.log("Getted all data from bx24: ", groups, products, technologies);
     }
 
     async getActualDataFromBx24() {
