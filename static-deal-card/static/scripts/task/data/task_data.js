@@ -416,23 +416,23 @@ export class TaskData {
         let laminations = [];
         let widths = [];
         if (SP_PRODUCT_ID in totals) {
-            for (let i = 50; i < totals[SP_PRODUCT_ID]; ++i) {
-                cmd[`${SP_PRODUCT_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}`;
+            for (let i = 50; i < totals[SP_PRODUCT_ID]; i += 50) {
+                cmd[`${SP_PRODUCT_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}&start=${i}`;
             }
         }
         if (SP_TECHOLOGY_ID in totals) {
-            for (let i = 50; i < totals[SP_TECHOLOGY_ID]; ++i) {
-                cmd[`${SP_TECHOLOGY_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}`;
+            for (let i = 50; i < totals[SP_TECHOLOGY_ID]; i += 50) {
+                cmd[`${SP_TECHOLOGY_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}&start=${i}`;
             }
         }
         if (SP_WIDTH_ID in totals) {
-            for (let i = 50; i < totals[SP_WIDTH_ID]; ++i) {
-                cmd[`${SP_WIDTH_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_WIDTH_ID}&select[]=id&select[]=title&select[]=${SP_WIDTH_FIELDS.value}`;
+            for (let i = 50; i < totals[SP_WIDTH_ID]; i += 50) {
+                cmd[`${SP_WIDTH_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_WIDTH_ID}&select[]=id&select[]=title&select[]=${SP_WIDTH_FIELDS.value}&start=${i}`;
             }
         }
         if (SP_LAMINATION_ID in totals) {
-            for (let i = 50; i < totals[SP_LAMINATION_ID]; ++i) {
-                cmd[`${SP_LAMINATION_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_LAMINATION_ID}&select[]=id&select[]=title`;
+            for (let i = 50; i < totals[SP_LAMINATION_ID]; i += 50) {
+                cmd[`${SP_LAMINATION_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_LAMINATION_ID}&select[]=id&select[]=title&start=${i}`;
             }
         }
         console.log("cmd = ", cmd);
