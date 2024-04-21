@@ -6,6 +6,8 @@ from django.views.decorators.clickjacking import xframe_options_exempt
 import logging
 
 
+logging.basicConfig( filename='dealapp.log')
+
 class InstallApiView(views.APIView):
     @xframe_options_exempt
     def post(self, request):
