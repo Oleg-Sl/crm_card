@@ -49,6 +49,7 @@ export class TaskData {
 
     async init() {
         await this.initFromDeal(this.dealId);
+        await this.updateTaskSettings();
     }
 
     async initFromTask(taskId) {
