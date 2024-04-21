@@ -246,6 +246,9 @@ export class TaskData {
             if (Object.keys(cmd).length === 0) {
                 return;
             }
+
+            console.log("cmd = ", cmd);
+            return
             const response = await this.bx24.callMethod('batch', {
                 halt: 0,
                 cmd: cmd,
