@@ -85,13 +85,7 @@ export default class Bitrix24 {
         try {
             const result = await new Promise((resolve, reject) => {
                 BX24.appOption.set(key, value, response => {
-                    if (response.status !== 200 || response.error()) {
-                        const errorMessage = `${response.error()} (setSettingsAppByKey ${key}: ${value})`;
-                        this.logError(errorMessage);
-                        reject(new Error(errorMessage));
-                    } else {
-                        resolve(response.data());
-                    }
+                    resolve(response.data());
                 });
             });
 
