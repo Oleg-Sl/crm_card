@@ -55,7 +55,7 @@ class App {
     }
 
     initSettings() {
-        if (!ALLOWED_USERS.includes(this.currentUser.ID)) {
+        if (!ALLOWED_USERS.includes(this.dataManager.currentUser.ID)) {
             this.btnTaskSettings.remove();
             return;
         }
