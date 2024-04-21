@@ -240,9 +240,6 @@ export class TaskData {
             for (let product of group.products.slice(1)) {
                 const count = product.technologies.length;
                 for (let i = 0; i < countTechnologyEtalon - count; ++i) {
-                    // let fields = technology.getFields();
-                    // fields[`parentId${SP_PRODUCT_ID}`] = productIdNew;
-                    // fields.parentId2 = this.dealId;
                     cmd[i] = `crm.item.add?entityTypeId=${SP_TECHOLOGY_ID}&fields[parentId${SP_PRODUCT_ID}]=${product.id}&fields[parentId2]=${this.dealId}`;
                 }
             }
@@ -250,8 +247,6 @@ export class TaskData {
                 return;
             }
 
-            // console.log("cmd = ", cmd);
-            // return
             const response = await this.bx24.callMethod('batch', {
                 halt: 0,
                 cmd: cmd,
@@ -371,11 +366,7 @@ export class TaskData {
         });
 
         let {products, technologies, laminations, widths} = await this.getAllTechnologyData(response?.result_total);
-        // await this.getAllTechnologyData(response?.result_total);
-        // let products = [];
-        // let technologies = [];
-        // let laminations = [];
-        // let widths = []
+
         const data = response?.result;
         const fieldGroup = data?.fieldGroup?.fields;
         const fieldProduct = data?.fieldProduct?.fields;
@@ -389,11 +380,6 @@ export class TaskData {
         widths = widths.concat(data?.[SP_WIDTH_ID]?.items || []);
         laminations = laminations.concat(data?.[SP_LAMINATION_ID]?.items || []);
         const dependenceMaterial = data?.[SP_DEPENDENCE_ID]?.items || [];
-
-        console.log("products = ", products);
-        console.log("technologies = ", technologies);
-        console.log("laminations = ", laminations);
-        console.log("widths = ", widths);
 
         this.fields = {
             group: fieldGroup,
@@ -410,10 +396,6 @@ export class TaskData {
     }
 
     async getAllTechnologyData(totals) {
-        // [`${SP_PRODUCT_ID}`]: `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}`,
-        // [`${SP_TECHOLOGY_ID}`]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}`,
-        // [SP_WIDTH_ID]: `crm.item.list?entityTypeId=${SP_WIDTH_ID}&select[]=id&select[]=title&select[]=${SP_WIDTH_FIELDS.value}`,
-        // [SP_LAMINATION_ID]: `crm.item.list?entityTypeId=${SP_LAMINATION_ID}&select[]=id&select[]=title`,
         let cmd = {};
         let products = [];
         let technologies =[];
@@ -439,14 +421,12 @@ export class TaskData {
                 cmd[`${SP_LAMINATION_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_LAMINATION_ID}&select[]=id&select[]=title&start=${i}`;
             }
         }
-        console.log("totals = ", totals);
-        console.log("cmd = ", cmd);
-        // return;
+
         const response = await this.bx24.callMethod('batch', {
             halt: 0,
             cmd: cmd,
         });
-        console.log("response = ", response);
+
         for (const key in response?.result) {
             if (key.startsWith(SP_PRODUCT_ID)) {
                 const productData = response?.result[key]?.items;
