@@ -476,13 +476,13 @@ export class Template {
         `;
     }
 
-    getOptionsHTML(fields, value, editable = false) {
-        let contentHTML = editable && (value ==='' || value === null || value === undefined || isNaN(value)) ? '<option value=""></option>' : '<option value="" disabled></option>';
+    getOptionsHTML(fields, value, isEdit = false) {
+        let contentHTML = this.editable && isEdit && (value ==='' || value === null || value === undefined || isNaN(value)) ? '<option value=""></option>' : '<option value="" disabled></option>';
         for (const field of fields) {
             if (field.ID == value) {
                 contentHTML += `<option value="${field.ID}" selected>${field.VALUE}</option>`;
             } else {
-                contentHTML += `<option value="${field.ID}" ${editable ? '' : 'disabled'}>${field.VALUE}</option>`;
+                contentHTML += `<option value="${field.ID}" ${this.editable && isEdit ? '' : 'disabled'}>${field.VALUE}</option>`;
             }
         }
         return contentHTML;
