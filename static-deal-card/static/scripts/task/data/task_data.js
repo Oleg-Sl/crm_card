@@ -109,11 +109,11 @@ export class TaskData {
         }
     }
 
-    updateGroup(groupId, newData) {
+    async updateGroup(groupId, newData) {
         const group = this.groupsData.find(group => group.id == groupId);
         if (group) {
             if (newData?.repeatTechnologies) {
-                this.alignmentQuantityTechnologiesForGroup(group);
+                await this.alignmentQuantityTechnologiesForGroup(group);
             }
             group.update(newData);
             this.notify();
@@ -236,9 +236,9 @@ export class TaskData {
             for (let product of group.products.slice(1)) {
                 const count = product.technologies.length;
                 for (const i = 0; i < countTechnologyEtalon - count; ++i) {
-                    let fields = technology.getFields();
-                    fields[`parentId${SP_PRODUCT_ID}`] = productIdNew;
-                    fields.parentId2 = this.dealId;
+                    // let fields = technology.getFields();
+                    // fields[`parentId${SP_PRODUCT_ID}`] = productIdNew;
+                    // fields.parentId2 = this.dealId;
                     cmd[ind] = `crm.item.add?entityTypeId=${SP_TECHOLOGY_ID}&parentId${SP_PRODUCT_ID}=${product.id}`;
                 }
             }
