@@ -55,14 +55,19 @@ export default class BitrixService {
         return result?.result;
     }
 
-    async callBatchJson(batch) {
-        let data = await this.bx24.batchMethod(batch);
+    async callBatchJson(cmd) {
+        let data = await this.bx24.batchMethod(cmd);
         return data;
     }
 
-    async callBatchMethod(calls) {
-        // let data = await this.bx24.batchMethod(calls);
-        const data = await this.bx24.batchMethod2(calls);
+    async callBatchMethod(cmd) {
+        // let data = await this.bx24.batchMethod(cmd);
+        const data = await this.bx24.batchMethod2(cmd);
+        return data;
+    }
+
+    async longBatchMethod(cmd) {
+        let data = await this.bx24.longBatchMethod(cmd);
         return data;
     }
 

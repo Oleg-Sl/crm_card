@@ -351,13 +351,10 @@ export class TaskData {
             fieldTechnology: `crm.item.fields?entityTypeId=${SP_TECHOLOGY_ID}`,
 
             [SP_GROUP_ID]: `crm.item.list?entityTypeId=${SP_GROUP_ID}&filter[parentId2]=${this.dealId}`,
-            // [`${SP_GROUP_ID}_1`]: `crm.item.list?entityTypeId=${SP_GROUP_ID}&filter[parentId2]=${this.dealId}&start=50`,
             [`${SP_PRODUCT_ID}`]: `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}`,
-            // [`${SP_PRODUCT_ID}_2`]: `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}&start=50`,
             [`${SP_TECHOLOGY_ID}`]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}`,
-            // [`${SP_TECHOLOGY_ID}_2`]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}&start=50`,
             // [`${SP_TECHOLOGY_ID}_3`]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}&start=100`,
-           
+
             [SP_TECHOLOGY_TYPE_ID]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_TYPE_ID}&select[]=id&select[]=title`,
             // [SP_FILMS_ID]: `crm.item.list?entityTypeId=${SP_FILMS_ID}&select[]=id&select[]=title`,
             [SP_WIDTH_ID]: `crm.item.list?entityTypeId=${SP_WIDTH_ID}&select[]=id&select[]=title&select[]=${SP_WIDTH_FIELDS.value}`,
@@ -365,25 +362,28 @@ export class TaskData {
             [SP_DEPENDENCE_ID]: `crm.item.list?entityTypeId=${SP_DEPENDENCE_ID}&select[]=id&select[]=title&select[]=${SP_DEPENDENCE_FIELDS.film}&select[]=${SP_DEPENDENCE_FIELDS.laminations}&select[]=${SP_DEPENDENCE_FIELDS.widths}`,
         };
 
-        const data = await this.bx24.callMethod('batch', {
+        const response = await this.bx24.callMethod('batch', {
             halt: 0,
             cmd: cmd,
         });
-        console.log("data = ", data);
-        return;
+
+        let {products, technologies, laminations, widths} = await this.getAllTechnologyData(response?.result_total);
+
+        const data = response?.result;
         const fieldGroup = data?.fieldGroup?.fields;
         const fieldProduct = data?.fieldProduct?.fields;
         const fieldTechnology = data?.fieldTechnology?.fields;
 
         const groups = data?.[SP_GROUP_ID]?.items || [];
-        const products = data?.[SP_PRODUCT_ID]?.items || [];
-        const technologies = data?.[SP_TECHOLOGY_ID]?.items || [];
+        products = products.concat(data?.[SP_PRODUCT_ID]?.items || []);
+        technologies = technologies.concat(data?.[SP_TECHOLOGY_ID]?.items || []);
 
         const technologiesType = data?.[SP_TECHOLOGY_TYPE_ID]?.items || [];
-        // const films = data?.[SP_FILMS_ID]?.items || [];
-        const widths = data?.[SP_WIDTH_ID]?.items || [];
-        const laminations = data?.[SP_LAMINATION_ID]?.items || [];
+        widths = widths.concat(data?.[SP_WIDTH_ID]?.items || []);
+        laminations = laminations.concat(data?.[SP_LAMINATION_ID]?.items || []);
         const dependenceMaterial = data?.[SP_DEPENDENCE_ID]?.items || [];
+
+
 
         this.fields = {
             group: fieldGroup,
@@ -393,11 +393,65 @@ export class TaskData {
         this.materials = {
             dependences: dependenceMaterial,
             technologiesTypes: technologiesType,
-            // films: films,
             widths: widths,
             laminations: laminations
         };
         this.setData(groups, products, technologies);
     }
+
+    async getAllTechnologyData(totals) {
+        // [`${SP_PRODUCT_ID}`]: `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}`,
+        // [`${SP_TECHOLOGY_ID}`]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}`,
+        // [SP_WIDTH_ID]: `crm.item.list?entityTypeId=${SP_WIDTH_ID}&select[]=id&select[]=title&select[]=${SP_WIDTH_FIELDS.value}`,
+        // [SP_LAMINATION_ID]: `crm.item.list?entityTypeId=${SP_LAMINATION_ID}&select[]=id&select[]=title`,
+        let cmd = {};
+        let products = [];
+        let technologies =[];
+        let laminations = [];
+        let widths = [];
+        if (SP_PRODUCT_ID in totals) {
+            for (let i = 50; i < totals[SP_PRODUCT_ID]; ++i) {
+                cmd[`${SP_PRODUCT_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}`;
+            }
+        }
+        if (SP_TECHOLOGY_ID in totals) {
+            for (let i = 50; i < totals[SP_TECHOLOGY_ID]; ++i) {
+                cmd[`${SP_TECHOLOGY_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}`;
+            }
+        }
+        if (SP_WIDTH_ID in totals) {
+            for (let i = 50; i < totals[SP_WIDTH_ID]; ++i) {
+                cmd[`${SP_WIDTH_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_WIDTH_ID}&select[]=id&select[]=title&select[]=${SP_WIDTH_FIELDS.value}`;
+            }
+        }
+        if (SP_LAMINATION_ID in totals) {
+            for (let i = 50; i < totals[SP_LAMINATION_ID]; ++i) {
+                cmd[`${SP_LAMINATION_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_LAMINATION_ID}&select[]=id&select[]=title`;
+            }
+        }
+        console.log("cmd = ", cmd);
+        const response = await this.bx24.callMethod('batch', {
+            halt: 0,
+            cmd: cmd,
+        });
+        for (const key in response?.result) {
+            if (key.startsWith(SP_PRODUCT_ID)) {
+                const productData = response?.result[key]?.items;
+                products = products.concat(productData);
+            } else if (key.startsWith(SP_TECHOLOGY_ID)) {
+                const technologyData = response?.result[key]?.items;
+                technologies = technologies.concat(technologyData);
+            } else if (key.startsWith(SP_WIDTH_ID)) {
+                const widthData = response?.result[key]?.items;
+                widths = widths.concat(widthData);
+            } else if (key.startsWith(SP_LAMINATION_ID)) {
+                const laminationsData = response?.result[key]?.items;
+                laminations = laminations.concat(laminationsData);
+            }
+        }
+        return {products, technologies, laminations, widths}
+    }
+
+    
 }
 

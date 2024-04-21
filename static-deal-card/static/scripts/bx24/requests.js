@@ -129,17 +129,6 @@ export default class Bitrix24 {
         try {
             let result = await new Promise((resolve, reject) => {
                 BX24.callBatch(reqPackage, response => {
-                    // const responseData = {};
-                    
-                    // for (let key in response) {
-                    //     const res = response[key];
-                    //     if (res.status !== 200 || res.error()) {
-                    //         this.logError(`${res.error()} (method ${reqPackage[key].method}: ${JSON.stringify(reqPackage[key].params)})`);
-                    //         continue;
-                    //     }
-
-                    //     responseData[key] = res.data();
-                    // }
                     resolve(response);
                 });
             });
@@ -179,7 +168,6 @@ export default class Bitrix24 {
             let result = response.result;
             let next = response.next;
             let total = response.total;
-
             if (next) {
                 const requestsList = this.generatingRequests(method, params, next, total);
                 const batchList = this.splittingListRequests(requestsList);
@@ -193,7 +181,6 @@ export default class Bitrix24 {
                 }
                 const infoMessage = `Executed ${countBatch} requests out of ${countBatch}`;
             }
-
             return result;
         } catch (error) {
             const errorMessage = `An error occurred in longBatchMethod: ${error}`
