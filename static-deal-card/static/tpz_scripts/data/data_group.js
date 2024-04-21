@@ -86,13 +86,13 @@ export class Group {
     updateTripCost(costOfFood, costOfLiving, costOfTravel) {
         // {ID: '10369', VALUE: 'Командировка'}
         // {ID: '10371', VALUE: 'Выезд'}
+        let businessTripCost = 0;
         if (this.businessTrip == '10369') {
-            this.businessTripCost = +this.businessTripPeople * ( +this.businessTripAccommodation * +costOfLiving + +this.businessTripNutritions * +costOfFood + +this.businessTripMileages * +costOfTravel);
+            businessTripCost = +this.businessTripPeople * ( +this.businessTripAccommodation * +costOfLiving + +this.businessTripNutritions * +costOfFood + +this.businessTripMileages * +costOfTravel);
         } else if (this.businessTrip == '10371') {
-            this.businessTripCost = +this.businessTripPeople * +this.businessTripCount * +this.businessTripCostOne;
-        } else {
-            this.businessTripCost = 0;
+            businessTripCost = +this.businessTripPeople * +this.businessTripCount * +this.businessTripCostOne;
         }
+        this.updateField('businessTripCost', businessTripCost);
     }
 
     updateField(field, value) {
