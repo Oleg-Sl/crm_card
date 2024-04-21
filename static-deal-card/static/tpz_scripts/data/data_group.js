@@ -92,6 +92,7 @@ export class Group {
         } else if (this.businessTrip == '10371') {
             businessTripCost = +this.businessTripPeople * +this.businessTripCount * +this.businessTripCostOne;
         }
+        this.saveChanges('businessTripCost', businessTripCost);
         this.updateField('businessTripCost', businessTripCost);
     }
 
