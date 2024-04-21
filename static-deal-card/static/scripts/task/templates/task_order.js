@@ -421,9 +421,6 @@ export class Templates {
         `;
     }
 
-
-
-
     getDeliveryHTML(groupData, technologiesCount) {
         return `
             <td class="shared block-center" style="grid-row: span ${technologiesCount}">
