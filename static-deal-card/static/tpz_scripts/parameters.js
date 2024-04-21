@@ -152,6 +152,18 @@ export const SP_GROUP_FIELDS = {
     repeatMontage: "ufCrm27_1707120622",      // Повторить - монтаж
     repeatDeadline: "ufCrm27_1707120645",     // Повторить - сроки
     repeatDelivery: "ufCrm27_1707120665",     // Повторить - доставка
+
+    businessTrip: "ufCrm27_1713716049",                 // Командировка - тип
+    businessTripCost: "ufCrm27_1713716159",             // Командировка - себестоимость
+    businessTripPercent: "ufCrm27_1713716186",          // Командировка - процент
+    businessTripPeople: "ufCrm27_1713716224",           // Командировка - сколько человек
+    businessTripDays: "ufCrm27_1713716251",             // Командировка - сколько дней
+    businessTripAccommodation: "ufCrm27_1713716251",    // Командировка - проживание ночей
+    businessTripNutritions: "ufCrm27_1713716310",       // Командировка - питание дней
+    businessTripMileages: "ufCrm27_1713716337",         // Командировка - пробег
+    businessTripTypeDeparture: "ufCrm27_1713716398",    // Командировка - тип выезда
+    businessTripCount: "ufCrm27_1713716453",            // Командировка - сколько раз
+    businessTripCostOne: "ufCrm27_1713716481",          // Командировка - себестоимость за круг
 };
 
 // Смарт процесс - список названий (видов) технологий

@@ -38,6 +38,7 @@ export class Template {
         for (let index in products) {
             const productData = products[index];
             const deliveryHTML = (index == 0) ? this.getDeliveryHTML(groupData, products.length) : '';
+            const businessTripHTML = (index == 0) ? this.getBusinessTripHTML(groupData, products.length) : '';
             productsHTML += this.getProductHTML(productData, +index + 1, groupData.id, deliveryHTML);
         }
 
@@ -137,7 +138,7 @@ export class Template {
         `;
     }
 
-    getProductHTML(productData, number, groupId, deliveryHTML) {
+    getProductHTML(productData, number, groupId, deliveryHTML, businessTripHTML) {
         let technologies = productData?.technologies || [];
         if (!technologies.length) {
             technologies = [];
@@ -265,30 +266,7 @@ export class Template {
                         </div>
                     </div>
                 </td>
-                <td class="block-center">
-                    <div class="task-container__item-business-trip">
-                        <div class="task-container__item-business-trip-type" value="${this.customToString(productData.businessTrip)}">
-                            <select class="task-container_group-item-dismantling-bottom ${this.editable ? 'employee-mos' : ''}" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.businessTrip]?.items, productData.businessTrip)}" data-product-field="businessTrip" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.businessTrip]?.items, productData.businessTrip, true)}
-                            </select>
-                        </div>
-                        <div class="task-container__item-dismantling-count-workers">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сколько. человек" title="${this.customToString(productData.businessTripPeople)}" value="${this.customToString(productData.businessTripPeople)}" data-product-field="businessTripPeople" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
-                        </div>
-                        <div class="task-container__item-dismantling-count-days">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сколько дней" title="${this.customToString(productData.businessTripDays)}" value="${this.customToString(productData.businessTripDays)}" data-product-field="businessTripDays" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
-                        </div>
-                        <div class="task-container__item-dismantling-count-nights">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="проживание ночей" title="${this.customToString(productData.businessTripAccommodation)}" value="${this.customToString(productData.businessTripAccommodation)}" data-product-field="businessTripAccommodation" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
-                        </div>
-                        <div class="task-container__item-dismantling-count-eating-days">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="питание дней" title="${this.customToString(productData.businessTripNutritions)}" value="${this.customToString(productData.businessTripNutritions)}" data-product-field="businessTripNutritions" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
-                        </div>
-                        <div class="task-container__item-dismantling-count-miles">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="пробег" title="${this.customToString(productData.businessTripMileages)}" value="${this.customToString(productData.businessTripMileages)}" data-product-field="businessTripMileages" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
-                        </div>
-                    </div>
-                </td>
+                ${businessTripHTML}
                 <td class="block-center">
                     <div class="task-container__item-delivery-container">
                         <div class="task-container__item-delivery">
@@ -305,6 +283,30 @@ export class Template {
                 ${deliveryHTML}
             </tr>
         `;
+        // <td class="block-center">
+        //     <div class="task-container__item-business-trip">
+        //         <div class="task-container__item-business-trip-type" value="${this.customToString(productData.businessTrip)}">
+        //             <select class="task-container_group-item-dismantling-bottom ${this.editable ? 'employee-mos' : ''}" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.businessTrip]?.items, productData.businessTrip)}" data-product-field="businessTrip" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
+        //                 ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.businessTrip]?.items, productData.businessTrip, true)}
+        //             </select>
+        //         </div>
+        //         <div class="task-container__item-dismantling-count-workers">
+        //             <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сколько. человек" title="${this.customToString(productData.businessTripPeople)}" value="${this.customToString(productData.businessTripPeople)}" data-product-field="businessTripPeople" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
+        //         </div>
+        //         <div class="task-container__item-dismantling-count-days">
+        //             <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сколько дней" title="${this.customToString(productData.businessTripDays)}" value="${this.customToString(productData.businessTripDays)}" data-product-field="businessTripDays" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
+        //         </div>
+        //         <div class="task-container__item-dismantling-count-nights">
+        //             <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="проживание ночей" title="${this.customToString(productData.businessTripAccommodation)}" value="${this.customToString(productData.businessTripAccommodation)}" data-product-field="businessTripAccommodation" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
+        //         </div>
+        //         <div class="task-container__item-dismantling-count-eating-days">
+        //             <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="питание дней" title="${this.customToString(productData.businessTripNutritions)}" value="${this.customToString(productData.businessTripNutritions)}" data-product-field="businessTripNutritions" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
+        //         </div>
+        //         <div class="task-container__item-dismantling-count-miles">
+        //             <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="пробег" title="${this.customToString(productData.businessTripMileages)}" value="${this.customToString(productData.businessTripMileages)}" data-product-field="businessTripMileages" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
+        //         </div>
+        //     </div>
+        // </td>
     }
 
     getTechnologiesHTML(technologies, groupId, productId) {
@@ -452,6 +454,47 @@ export class Template {
         }
 
         return contentHTML;
+    }
+
+    getBusinessTripHTML(groupData, technologiesCount) {
+        // businessTrip: "ufCrm27_1713716049",                 // Командировка - тип
+        // businessTripCost: "ufCrm27_1713716159",             // Командировка - себестоимость
+        // businessTripPercent: "ufCrm27_1713716186",          // Командировка - процент
+        // businessTripPeople: "ufCrm27_1713716224",           // Командировка - сколько человек
+        // businessTripDays: "ufCrm27_1713716251",             // Командировка - сколько дней
+        // businessTripAccommodation: "ufCrm27_1713716251",    // Командировка - проживание ночей
+        // businessTripNutritions: "ufCrm27_1713716310",       // Командировка - питание дней
+        // businessTripMileages: "ufCrm27_1713716337",         // Командировка - пробег
+        // businessTripTypeDeparture: "ufCrm27_1713716398",    // Командировка - тип выезда
+        // businessTripCount: "ufCrm27_1713716453",            // Командировка - сколько раз
+        // businessTripCostOne: "ufCrm27_1713716481",          // Командировка - себестоимость за круг
+        console.log("groupData = ", this.fields?.group?.[SP_GROUP_FIELDS.businessTrip]);
+        return `
+            <td class="shared block-center" style="grid-row: span ${technologiesCount}">
+                <div class="task-container__item-business-trip">
+                    <div class="task-container__item-business-trip-type">
+                        <select class="task-container_group-item-dismantling-bottom ${this.editable ? 'employee-mos' : ''}" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.businessTrip]?.items, groupData.businessTrip)}" data-product-field="businessTrip" data-type="select" data-group-id="${groupData.id}">
+                            ${this.getOptionsHTML(this.fields?.group?.[SP_GROUP_FIELDS.businessTrip]?.items, groupData.businessTrip, true)}
+                        </select>
+                    </div>
+                    <div class="task-container__item-dismantling-count-workers">
+                        <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сколько. человек" title="${this.customToString(groupData.businessTripPeople)}" value="${this.customToString(groupData.businessTripPeople)}" data-product-field="businessTripPeople" data-type="number" data-group-id="${groupData.id}" ${this.editable ? '' : 'readonly'}>
+                    </div>
+                    <div class="task-container__item-dismantling-count-days">
+                        <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сколько дней" title="${this.customToString(groupData.businessTripDays)}" value="${this.customToString(groupData.businessTripDays)}" data-product-field="businessTripDays" data-type="number" data-group-id="${groupData.id}" ${this.editable ? '' : 'readonly'}>
+                    </div>
+                    <div class="task-container__item-dismantling-count-nights">
+                        <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="проживание ночей" title="${this.customToString(groupData.businessTripAccommodation)}" value="${this.customToString(groupData.businessTripAccommodation)}" data-product-field="businessTripAccommodation" data-type="number" data-group-id="${groupData.id}" ${this.editable ? '' : 'readonly'}>
+                    </div>
+                    <div class="task-container__item-dismantling-count-eating-days">
+                        <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="питание дней" title="${this.customToString(groupData.businessTripNutritions)}" value="${this.customToString(groupData.businessTripNutritions)}" data-product-field="businessTripNutritions" data-type="number" data-group-id="${groupData.id}" ${this.editable ? '' : 'readonly'}>
+                    </div>
+                    <div class="task-container__item-dismantling-count-miles">
+                        <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="пробег" title="${this.customToString(groupData.businessTripMileages)}" value="${this.customToString(groupData.businessTripMileages)}" data-product-field="businessTripMileages" data-type="number" data-group-id="${groupData.id}" ${this.editable ? '' : 'readonly'}>
+                    </div>
+                </div>
+            </td>
+        `;
     }
 
     getDeliveryHTML(groupData, technologiesCount) {

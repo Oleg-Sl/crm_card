@@ -17,7 +17,6 @@ class App {
         this.btnCancel = document.querySelector('#btnCancelTaskChanges');
         this.btnTaskSettings = document.querySelector('#btnTaskSettings');
         
-        // this.dataManager = new TaskData(this.bx24, this.taskId);
         this.dataManager = new TaskData(this.bx24);
         this.uiTask = new TaskAppInterface(this.containerTask, this.dataManager);
 
