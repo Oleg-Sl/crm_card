@@ -65,7 +65,8 @@ export default class TaskManager {
         const groups = data?.[SP_GROUP_ID]?.items || [];
         const products = data?.[SP_PRODUCT_ID]?.items || [] + productsRemain;
         const technologies = data?.[SP_TECHOLOGY_ID]?.items || [] + technologiesRemain;
-
+        console.log("products = ", products);
+        console.log("technologies = ", technologies);
         return {
             groups: groups,
             products: products,

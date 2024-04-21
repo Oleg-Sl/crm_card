@@ -383,6 +383,8 @@ export class TaskData {
         const widths = data?.[SP_WIDTH_ID]?.items || [] + widthsRemain;
         const laminations = data?.[SP_LAMINATION_ID]?.items || [] + laminationsRemain;
         const dependenceMaterial = data?.[SP_DEPENDENCE_ID]?.items || [];
+        console.log("products = ", products);
+        console.log("technologies = ", technologies);
 
         this.fields = {
             group: fieldGroup,
