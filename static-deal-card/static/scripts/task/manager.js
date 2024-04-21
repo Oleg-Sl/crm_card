@@ -54,9 +54,14 @@ export default class TaskManager {
             [SP_TECHOLOGY_ID]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}`,
         };
 
-        const data = await this.bx24.callBatchCmd(cmd);
+        // const data = await this.bx24.callBatchCmd(cmd);
+        const response = await this.bx24.callMethod('batch', {
+            halt: 0,
+            cmd: cmd,
+        });
         let {productsRemain, technologiesRemain} = await this.getAllTechnologyData(response?.result_total);
-
+        
+        const data = response?.result;
         const groups = data?.[SP_GROUP_ID]?.items || [];
         const products = data?.[SP_PRODUCT_ID]?.items || [] + productsRemain;
         const technologies = data?.[SP_TECHOLOGY_ID]?.items || [] + technologiesRemain;
