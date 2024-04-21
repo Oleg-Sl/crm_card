@@ -371,6 +371,7 @@ export class TaskData {
         });
 
         // let {products, technologies, laminations, widths} = await this.getAllTechnologyData(response?.result_total);
+        await this.getAllTechnologyData(response?.result_total);
         let products = [];
         let technologies = [];
         let laminations = [];
@@ -435,11 +436,14 @@ export class TaskData {
                 cmd[`${SP_LAMINATION_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_LAMINATION_ID}&select[]=id&select[]=title&start=${i}`;
             }
         }
+        console.log("totals = ", totals);
         console.log("cmd = ", cmd);
+        return;
         const response = await this.bx24.callMethod('batch', {
             halt: 0,
             cmd: cmd,
         });
+        console.log("response = ", response);
         for (const key in response?.result) {
             if (key.startsWith(SP_PRODUCT_ID)) {
                 const productData = response?.result[key]?.items;
