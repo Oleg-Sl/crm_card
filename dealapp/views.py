@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.clickjacking import xframe_options_exempt
 import logging
+import json
 
 
 logging.basicConfig( filename='dealapp.log')
@@ -18,7 +19,7 @@ class IndexApiView(views.APIView):
     @xframe_options_exempt
     def post(self, request):
         r = request.data.get("PLACEMENT_OPTIONS", [])
-        logging.info(request.data)
+        logging.info(json.dumps(request.data))
 
         try:
             match = re.search(r'\d+', r)
@@ -39,7 +40,7 @@ class TaskAppIndexApiView(views.APIView):
     @xframe_options_exempt
     def post(self, request):
         r = request.data.get("PLACEMENT_OPTIONS", [])
-        logging.info(request.data)
+        logging.info(json.dumps(request.data))
         try:
             match = re.search(r'\d+', r)
             id_task = match.group(0) if match else None
