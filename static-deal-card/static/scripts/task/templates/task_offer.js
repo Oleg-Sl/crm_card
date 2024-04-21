@@ -33,7 +33,8 @@ export class Templates {
         for (let index in products) {
             const productData = products[index];
             const deliveryHTML = (index == 0) ? this.getDeliveryHTML(groupData, products.length) : '';
-            productsHTML += this.getProductHTML(productData, +index + 1, groupData.id, deliveryHTML, groupData);
+            const businessTripHTML = (index == 0) ? this.getBusinessTripHTML(groupData, products.length) : '';
+            productsHTML += this.getProductHTML(productData, +index + 1, groupData.id, deliveryHTML, businessTripHTML, groupData);
         }
 
         return `
@@ -180,7 +181,7 @@ export class Templates {
         `;
     }
 
-    getProductHTML(productData, number, groupId, deliveryHTML, groupData) {
+    getProductHTML(productData, number, groupId, deliveryHTML, businessTripHTML, groupData) {
         let technologies = productData?.technologies || [];
         if (!technologies.length) {
             technologies = [];
@@ -331,23 +332,7 @@ export class Templates {
                         <div class="empty-1"></div>
                     </div>
                 </td>
-                <td class="block-center">
-                    <div class="task-container__item-business-trip">
-                        <div class="task-container__item-business-trip-type" value="${this.customToString(productData.businessTrip)}">
-                            <select class="task-container_group-item-dismantling-bottom" name="" id="" title="${this.getTitleEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.businessTrip]?.items, productData.businessTrip)}" data-product-field="businessTrip" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.businessTrip]?.items, productData.businessTrip)}
-                            </select>
-                        </div>
-                        <div class="task-container__item-business-trip-costprice">
-                            <input type="number" name="" id="" placeholder="себест. командировки" title="${this.customToString(productData.businessTripCost)}" value="${this.customToString(productData.businessTripCost)}" data-product-field="businessTripCost" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
-                        </div>
-                        <div class="task-container__item-business-trip-symbol-plus">+</div>
-                        <div class="task-container__item-business-trip-value-percent">
-                            <input type="number" name="" id="" title="${this.customToString(productData.businessTripPercent)}" value="${this.customToString(productData.businessTripPercent)}" data-product-field="businessTripPercent" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}">
-                        </div>
-                        <div class="task-container__item-business-trip-symbol-percent">%</div>
-                    </div>
-                </td>
+                ${businessTripHTML}
                 <td class="block-center">
                     <div class="task-container__item-delivery-container">
                         <div class="task-container__item-delivery">
@@ -560,6 +545,28 @@ export class Templates {
             `;
         }
         return contentHTML;
+    }
+
+    getDeliveryHTML(groupData, technologiesCount) {
+        return `
+            <td class="shared block-center" style="grid-row: span ${technologiesCount}">
+                <div class="task-container__item-business-trip">
+                    <div class="task-container__item-business-trip-type" value="${this.customToString(groupData.businessTrip)}">
+                        <select class="task-container_group-item-dismantling-bottom" name="" id="" title="${this.getTitleEnums(this.fields?.group?.[SP_GROUP_FIELDS.businessTrip]?.items, groupData.businessTrip)}" data-group-field="businessTrip" data-type="select" data-group-id="${groupData.id}">
+                            ${this.getOptionsHTML(this.fields?.group?.[SP_GROUP_FIELDS.businessTrip]?.items, groupData.businessTrip)}
+                        </select>
+                    </div>
+                    <div class="task-container__item-business-trip-costprice">
+                        <input type="number" name="" id="" placeholder="себест. командировки" title="${this.customToString(groupData.businessTripCost)}" value="${this.customToString(groupData.businessTripCost)}" data-group-field="businessTripCost" data-type="number" data-group-id="${groupData.id}">
+                    </div>
+                    <div class="task-container__item-business-trip-symbol-plus">+</div>
+                    <div class="task-container__item-business-trip-value-percent">
+                        <input type="number" name="" id="" title="${this.customToString(groupData.businessTripPercent)}" value="${this.customToString(groupData.businessTripPercent)}" data-group-field="businessTripPercent" data-type="number" data-group-id="${groupData.id}">
+                    </div>
+                    <div class="task-container__item-business-trip-symbol-percent">%</div>
+                </div>
+            </td>
+        `;
     }
 
     getDeliveryHTML(groupData, technologiesCount) {

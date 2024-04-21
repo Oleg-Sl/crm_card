@@ -30,7 +30,8 @@ export class Templates {
         for (let index in products) {
             const productData = products[index];
             const deliveryHTML = (index == 0) ? this.getDeliveryHTML(groupData, products.length) : '';
-            productsHTML += this.getProductHTML(productData, +index + 1, groupData.id, deliveryHTML);
+            const businessTripHTML = (index == 0) ? this.getBusinessTripHTML(groupData, products.length) : '';
+            productsHTML += this.getProductHTML(productData, +index + 1, groupData.id, deliveryHTML, businessTripHTML);
         }
 
         return `
@@ -172,7 +173,7 @@ export class Templates {
         `;
     }
 
-    getProductHTML(productData, number, groupId, deliveryHTML) {
+    getProductHTML(productData, number, groupId, deliveryHTML, businessTripHTML) {
         let technologies = productData?.technologies || [];
         if (!technologies.length) {
             technologies = [];
@@ -282,15 +283,7 @@ export class Templates {
                         </div>
                     </div>
                 </td>
-                <td class="block-center">
-                    <div class="task-container__item-business-trip">
-                        <div class="task-container__item-business-trip-type" value="${this.customToString(productData.businessTrip)}">
-                            <select class="task-container_group-item-dismantling-bottom" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.businessTrip]?.items, productData.businessTrip)}" value="${this.customToString(productData.dismantlingArea)}" data-product-field="businessTrip" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
-                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.businessTrip]?.items, productData.businessTrip)}
-                            </select>
-                        </div>
-                    </div>
-                </td>
+                ${businessTripHTML}
                 <td class="block-center">
                     <div class="task-container__item-delivery-container">
                         <div class="task-container__item-delivery">
@@ -411,6 +404,25 @@ export class Templates {
     
         return contentHTML;
     }
+
+    getBusinessTripHTML(groupData, technologiesCount) {
+        // {ID: '10369', VALUE: 'Командировка'}
+        // {ID: '10371', VALUE: 'Выезд'}
+        return `
+            <td class="shared block-center" style="grid-row: span ${technologiesCount}">
+                <div class="task-container__item-business-trip">
+                    <div class="task-container__item-business-trip-type" value="${this.customToString(groupData.businessTrip)}">
+                        <select class="task-container_group-item-dismantling-bottom" name="" id="" title="${this.getTitleFromEnums(this.fields?.group?.[SP_GROUP_FIELDS.businessTrip]?.items, groupData.businessTrip)}" value="${this.customToString(productData.dismantlingArea)}" data-product-field="businessTrip" data-type="select" data-group-id="${groupId}">
+                            ${this.getOptionsHTML(this.fields?.group?.[SP_GROUP_FIELDS.businessTrip]?.items, groupData.businessTrip)}
+                        </select>
+                    </div>
+                </div>
+            </td>
+        `;
+    }
+
+
+
 
     getDeliveryHTML(groupData, technologiesCount) {
         return `
