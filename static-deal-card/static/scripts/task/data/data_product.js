@@ -87,12 +87,12 @@ export class Product {
             const technologyThis = this.technologies[i];
             const technologyEtalon = productEtalon.technologies[i];
             technologyThis.update({
-                general: value ? technologyEtalon.general : '',
-                inKP: value ? technologyEtalon.inKP : false,
-                MCHS: value ? technologyEtalon.MCHS : false,
-                film: value ? technologyEtalon.film : '',
-                lamination: value ? technologyEtalon.lamination : '',
-                price: value ? technologyEtalon.price : 0,
+                general: technologyEtalon.general ? technologyEtalon.general : '',
+                inKP: technologyEtalon.inKP ? technologyEtalon.inKP : false,
+                MCHS: technologyEtalon.MCHS ? technologyEtalon.MCHS : false,
+                film: technologyEtalon.film ? technologyEtalon.film : '',
+                lamination: technologyEtalon.lamination ? technologyEtalon.lamination : '',
+                price: technologyEtalon.price ? technologyEtalon.price : 0,
             });
         }
     }

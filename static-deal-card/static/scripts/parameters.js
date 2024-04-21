@@ -1,6 +1,6 @@
 
 export const FOLDER_PREVIEW_ID = 947233;
-
+export const NOT_DISMANTLING_ID = 8069;
 export const FIELD_DEAL_ASSIGNED_BY_ID = 'ASSIGNED_BY_ID';
 
 // ID задачи СМЕТА
