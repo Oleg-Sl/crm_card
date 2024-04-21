@@ -47,9 +47,6 @@ export class TaskData {
     }
 
     setData(groups, products, technologies) {
-        // console.log("groups = ", groups);
-        // console.log("products = ", products);
-        // console.log("technologies = ", technologies);
         this.groupsData = [];
 
         for (let group of groups) {
@@ -70,6 +67,11 @@ export class TaskData {
     setSources(sourceFilesData) {
         this.sourceFilesData = sourceFilesData;
         this.notify();
+    }
+
+    setActualData() {
+        const { groups, products, technologies } = await this.getActualDataFromBx24();
+        this.setData(groups, products, technologies);
     }
 
     addObserver(observer) {
@@ -354,10 +356,8 @@ export class TaskData {
             [SP_GROUP_ID]: `crm.item.list?entityTypeId=${SP_GROUP_ID}&filter[parentId2]=${this.dealId}`,
             [`${SP_PRODUCT_ID}`]: `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}`,
             [`${SP_TECHOLOGY_ID}`]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}`,
-            // [`${SP_TECHOLOGY_ID}_3`]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}&start=100`,
 
             [SP_TECHOLOGY_TYPE_ID]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_TYPE_ID}&select[]=id&select[]=title`,
-            // [SP_FILMS_ID]: `crm.item.list?entityTypeId=${SP_FILMS_ID}&select[]=id&select[]=title`,
             [SP_WIDTH_ID]: `crm.item.list?entityTypeId=${SP_WIDTH_ID}&select[]=id&select[]=title&select[]=${SP_WIDTH_FIELDS.value}`,
             [SP_LAMINATION_ID]: `crm.item.list?entityTypeId=${SP_LAMINATION_ID}&select[]=id&select[]=title`,
             [SP_DEPENDENCE_ID]: `crm.item.list?entityTypeId=${SP_DEPENDENCE_ID}&select[]=id&select[]=title&select[]=${SP_DEPENDENCE_FIELDS.film}&select[]=${SP_DEPENDENCE_FIELDS.laminations}&select[]=${SP_DEPENDENCE_FIELDS.widths}`,
@@ -382,11 +382,11 @@ export class TaskData {
         technologies = technologies.concat(technologiesRemain);
 
         const technologiesType = data?.[SP_TECHOLOGY_TYPE_ID]?.items || [];
-        const widths = data?.[SP_WIDTH_ID]?.items || [] + widthsRemain;
-        const laminations = data?.[SP_LAMINATION_ID]?.items || [] + laminationsRemain;
+        let widths = data?.[SP_WIDTH_ID]?.items || [];
+        widths = widths.concat(widthsRemain);
+        let laminations = data?.[SP_LAMINATION_ID]?.items || [];
+        laminations = laminations.concat(laminationsRemain);
         const dependenceMaterial = data?.[SP_DEPENDENCE_ID]?.items || [];
-        console.log("products = ", products);
-        console.log("technologies = ", technologies);
 
         this.fields = {
             group: fieldGroup,
@@ -400,6 +400,35 @@ export class TaskData {
             laminations: laminations
         };
         this.setData(groups, products, technologies);
+    }
+
+
+    async getActualDataFromBx24() {
+        const cmd = {
+            [SP_GROUP_ID]: `crm.item.list?entityTypeId=${SP_GROUP_ID}&filter[parentId2]=${this.dealId}`,
+            [SP_PRODUCT_ID]: `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}`,
+            [SP_TECHOLOGY_ID]: `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}`,
+        };
+
+        const response = await this.bx24.callMethod('batch', {
+            halt: 0,
+            cmd: cmd,
+        });
+        let {productsRemain, technologiesRemain} = await this.getAllTechnologyData(response?.result_total);
+        
+        const data = response?.result;
+        const groups = data?.[SP_GROUP_ID]?.items || [];
+        let products = data?.[SP_PRODUCT_ID]?.items || [];
+        products = products.concat(productsRemain);
+        let technologies = data?.[SP_TECHOLOGY_ID]?.items || [];
+        technologies = technologies.concat(technologiesRemain);
+        console.log("products = ", products);
+        console.log("technologies = ", technologies);
+        return {
+            groups: groups,
+            products: products,
+            technologies: technologies,
+        };
     }
 
     async getAllTechnologyData(totals) {
