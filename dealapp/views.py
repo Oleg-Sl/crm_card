@@ -52,9 +52,9 @@ class TaskAppIndexApiView(views.APIView):
             match = re.search(r'\d+', r)
             id_entity = match.group(0) if match else None
             if placement == 'CRM_DEAL_DETAIL_TAB':
-                data = {"dealId": id_entity, "taskId": None}
+                data = {"dealId": id_entity, "taskId": 0}
             else:
-                data = {"taskId": id_entity, "dealId": None}
+                data = {"taskId": id_entity, "dealId": 0}
             return render(request, 'tpz/index.html', context=data)
         except TypeError:
             return HttpResponse("Ошибка: Не найден идентификатор задачи", status=400)
