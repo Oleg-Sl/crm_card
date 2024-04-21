@@ -87,6 +87,10 @@ export class Group {
         // {ID: '10369', VALUE: 'Командировка'}
         // {ID: '10371', VALUE: 'Выезд'}
         console.log("updateTripCost: ", costOfFood, costOfLiving, costOfTravel);
+        console.log("this.businessTripPeople: ", this.businessTripPeople);
+        console.log("this.businessTripAccommodation: ", this.businessTripAccommodation);
+        console.log("this.businessTripNutritions: ", this.businessTripNutritions);
+        console.log("this.businessTripMileages: ", this.businessTripMileages);
         let businessTripCost = 0;
         if (this.businessTrip == '10369') {
             businessTripCost = +this.businessTripPeople * ( +this.businessTripAccommodation * +costOfLiving + +this.businessTripNutritions * +costOfFood + +this.businessTripMileages * +costOfTravel);
