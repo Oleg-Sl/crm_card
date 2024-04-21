@@ -500,20 +500,22 @@ export class Templates {
         const installPercentage = +productData.installPercentage || 0;  // Монтаж - процент себестоимости
         const dismantlingCost = +productData.dismantlingCost || 0;  // Демонтаж - себестоимость
         const dismantlingPercent = +productData.dismantlingPercent || 0;  // Демонтаж - процент себестоимости
-        const businessTripCost = +productData.businessTripCost || 0;  // Командировка - себестоимость
-        const businessTripPercent = +productData.businessTripPercent || 0;  // Командировка - процент себестоимости
+        // const businessTripCost = +productData.businessTripCost || 0;  // Командировка - себестоимость
+        // const businessTripPercent = +productData.businessTripPercent || 0;  // Командировка - процент себестоимости
         const deliveryFrequency = +productData.deliveryFrequency || 0;  // Доставка - сколько раз
         const deliveryCostPerTime = +productData.deliveryCostPerTime || 0;  // Доставка - стоимость за раз
         const measurementCost = +productData.measurementCost || 0;  // Измерение - себестоимость
         const measurementPercent = +productData.measurementPercent || 0;  // Измерение - процент себестоимости
 
+        const businessTripCost = +groupData.businessTripCost || 0;  // Командировка - себестоимость
+        const businessTripPercent = +groupData.businessTripPercent || 0;  // Командировка - процент себестоимости
         const deliveryCost = +groupData.deliveryCost || 0;  // ЦП - себестоимость
         const deliveryPercentage = +groupData.deliveryPercentage || 0;  // ЦП - процент себестоимости
         const countProducts = groupData.products.length || 1;
         const priceWork = designPayment + measurementCost * (1 + measurementPercent / 100)
-                        + installDays * installCost * (1 + installPercentage / 100) 
-                        + dismantlingCost * (1 + dismantlingPercent / 100) 
-                        + businessTripCost * (1 + businessTripPercent / 100) 
+                        + installDays * installCost * (1 + installPercentage / 100)
+                        + dismantlingCost * (1 + dismantlingPercent / 100)
+                        + businessTripCost * (1 + businessTripPercent / 100) / countProducts
                         + deliveryFrequency * deliveryCostPerTime
                         + deliveryCost * (1 + deliveryPercentage / 100) / countProducts;
         for (let technology of technologies) {
