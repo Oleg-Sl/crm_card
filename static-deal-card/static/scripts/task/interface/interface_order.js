@@ -100,26 +100,6 @@ export class TaskOrderInterface {
         });
     }
 
-    // setSmartFields(fieldGroup, fieldProduct, fieldTechnology) {
-    //     this.fields = {
-    //         group: fieldGroup,
-    //         product: fieldProduct,
-    //         technology: fieldTechnology
-    //     };
-    //     this.templates.setSmartFields(this.fields);
-    // }
-
-    // setMaterialsData(dependencesMaterial, technologiesTypes, films, widths, laminations) {
-    //     this.materials = {
-    //         dependences: dependencesMaterial,
-    //         technologiesTypes: technologiesTypes,
-    //         films: films,
-    //         widths: widths,
-    //         laminations: laminations
-    //     };
-    //     this.templates.setMaterialsData(this.materials);
-    // }
-
     update() {
         let contentHTML = '';
         let number = 0;

@@ -79,22 +79,10 @@ export class Group {
         const value = newData[field];
         const productEtalon = this.products[0];
         const technologyEtalon = productEtalon.technologies[0];
-        // if (!value) {
-        //     return;
-        // }
-        // console.log("updateRepeatCheck", field, value);
         switch (field) {
             case "repeatTechnologies":
                 this.products.slice(1).forEach(product => {
                     product.copyTechnologyFromProduct(productEtalon, value);
-                    // product.updateTechnologies({
-                    //     general: value ? technologyEtalon.general : '',
-                    //     inKP: value ? technologyEtalon.inKP : false,
-                    //     MCHS: value ? technologyEtalon.MCHS : false,
-                    //     film: value ? technologyEtalon.film : '',
-                    //     lamination: value ? technologyEtalon.lamination : '',
-                    //     price: value ? technologyEtalon.price : 0,
-                    // });
                 });
                 break;
             case "repeatSources":

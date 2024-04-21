@@ -7,7 +7,6 @@ import {
     SP_TECHOLOGY_ID,
 
     SP_TECHOLOGY_TYPE_ID,
-    SP_FILMS_ID,
     SP_WIDTH_ID,
     SP_LAMINATION_ID,
     SP_DEPENDENCE_ID,
@@ -43,7 +42,6 @@ export class TaskData {
 
     async init() {
         await this.getDataFromBx24();
-
     }
 
     setData(groups, products, technologies) {
@@ -263,7 +261,6 @@ export class TaskData {
         }
     }
 
-
     async createCopyProduct(groupId, productId) {
         const group = this.groupsData.find(group => group.id == groupId);
         if (group) {
@@ -402,7 +399,6 @@ export class TaskData {
         this.setData(groups, products, technologies);
     }
 
-
     async getActualDataFromBx24() {
         const cmd = {
             [SP_GROUP_ID]: `crm.item.list?entityTypeId=${SP_GROUP_ID}&filter[parentId2]=${this.dealId}`,
@@ -485,7 +481,6 @@ export class TaskData {
             widthsRemain: widths
         };
     }
-
     
 }
 

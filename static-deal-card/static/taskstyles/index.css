@@ -90,13 +90,13 @@ body {
 
 #taskContainer .task-container__group-title span {
   color: #464A4E;
-  font: 700 10px "Open Sans", sans-serif;
+  font: 700 12px "Open Sans", sans-serif;
 }
 #taskContainer .task-container__group-title input {
   width: 75%;
   background: none;
   border: 1px solid rgba(0, 0, 0, 0);
-  font: 700 10px "Open Sans", sans-serif;
+  font: 700 12px "Open Sans", sans-serif;
 }
 #taskContainer table {
   display: grid;
@@ -113,12 +113,12 @@ body {
 }
 #taskContainer table thead tr th, #taskContainer table thead tr td, #taskContainer table tbody tr th, #taskContainer table tbody tr td {
   padding: 2px;
-  font: 400 8px "Open Sans", sans-serif;
+  font: 400 10px "Open Sans", sans-serif;
   border-right: 1px solid #97999B;
   border-bottom: 1px solid #97999B;
 }
 #taskContainer table thead tr th, #taskContainer table tbody tr th {
-  font: 700 10px "Open Sans", sans-serif;
+  font: 700 12px "Open Sans", sans-serif;
   border-right: 1px solid #97999B;
   border-top: 1px solid #97999B;
 }
@@ -141,7 +141,7 @@ body {
   grid-row: span 2;
 }
 #taskContainer table select, #taskContainer table input, #taskContainer table textarea {
-  font: 400 8px "Open Sans", sans-serif;
+  font: 400 10px "Open Sans", sans-serif;
   background: none;
   border: 1px solid rgba(151, 153, 155, 0.2);
   border-radius: 0;
@@ -246,7 +246,7 @@ body {
   flex-direction: column;
   box-sizing: border-box;
   gap: 2px;
-  font: 400 8px "Open Sans", sans-serif;
+  font: 400 10px "Open Sans", sans-serif;
 }
 #taskContainer table tbody .task-container__item-consumption .task-container__item-consumption-item {
   display: grid;
