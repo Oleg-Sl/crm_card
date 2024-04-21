@@ -20,9 +20,9 @@ import {
 
 
 export class TaskData {
-    constructor(bx24, taskId) {
+    constructor(bx24) {
         this.bx24 = bx24;
-        this.taskId = taskId;
+        // this.taskId = taskId;
         
         this.dealId = null;
         this.deal = null;
@@ -55,6 +55,7 @@ export class TaskData {
     //     await this.initData();
     // }
     async initFromTask(taskId) {
+        this.taskId = taskId;
         const taskData = await this.getTaskDataFromBx24();
         const dealId = this.extractNumberFromArray(taskData?.ufCrmTask);
         this.initFromDeal(dealId);

@@ -24,11 +24,11 @@ class App {
     async init() {
         if (this.taskId) {
             await this.dataManager.initFromTask(this.taskId);
+            if (this.taskId != this.dataManager.taskEstimate && this.taskId != this.dataManager.taskCommOffer) {
+                throw new Error("Task not found");
+            }
         } else {
             await this.dataManager.initFromDeal(this.dealId);
-        }
-        if (this.taskId != this.dataManager.taskEstimate && this.taskId != this.dataManager.taskCommOffer) {
-            throw new Error("Task not found");
         }
 
         this.uiTask.init();
