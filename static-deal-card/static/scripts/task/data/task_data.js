@@ -236,7 +236,7 @@ export class TaskData {
             const countTechnologyEtalon = productEtalon.technologies.length;
             for (let product of group.products.slice(1)) {
                 const count = product.technologies.length;
-                for (const i = 0; i < countTechnologyEtalon - count; ++i) {
+                for (let i = 0; i < countTechnologyEtalon - count; ++i) {
                     // let fields = technology.getFields();
                     // fields[`parentId${SP_PRODUCT_ID}`] = productIdNew;
                     // fields.parentId2 = this.dealId;
