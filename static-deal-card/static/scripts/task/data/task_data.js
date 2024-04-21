@@ -47,6 +47,9 @@ export class TaskData {
     }
 
     setData(groups, products, technologies) {
+        console.log("groups = ", groups);
+        console.log("products = ", products);
+        console.log("technologies = ", technologies);
         this.groupsData = [];
 
         for (let group of groups) {
