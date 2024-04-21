@@ -3,7 +3,7 @@ import { TaskData } from "./data/task_data.js";
 import { TaskAppInterface } from './interface/task_interface.js';
 
 
-const ALLOWED_USERS = [1, 255,];
+const ALLOWED_USERS = ['1', '255',];
 
 class App {
     constructor(taskId, dealId, bx24) {
@@ -55,7 +55,7 @@ class App {
     }
 
     initSettings() {
-        if (!ALLOWED_USERS.includes(this.dataManager.currentUser.ID)) {
+        if (!ALLOWED_USERS.includes(String(this.dataManager.currentUser.ID))) {
             this.btnTaskSettings.remove();
             return;
         }
