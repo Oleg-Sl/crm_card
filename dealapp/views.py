@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.views.decorators.clickjacking import xframe_options_exempt
 import logging
 import json
+import os
 
 
 log_file = 'dealapp.log'
