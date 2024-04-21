@@ -1,13 +1,7 @@
 
 import {
-    SP_GROUP_ID,
-    SP_PRODUCT_ID,
-    SP_TECHOLOGY_ID,
-    SP_DEPENDENCE_ID,
-    
     SP_GROUP_FIELDS,
     SP_PRODUCT_FIELDS,
-    SP_TECHOLOGY_FIELDS,
     SP_DEPENDENCE_FIELDS,
 } from '../../parameters.js';
 

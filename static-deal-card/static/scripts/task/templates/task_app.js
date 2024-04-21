@@ -1,16 +1,8 @@
 
 import {
-    SP_GROUP_ID,
-    SP_PRODUCT_ID,
-    SP_TECHOLOGY_ID,
-    SP_DEPENDENCE_ID,
-    
     SP_GROUP_FIELDS,
     SP_PRODUCT_FIELDS,
-    SP_TECHOLOGY_FIELDS,
     SP_DEPENDENCE_FIELDS,
-
-    NOT_DISMANTLING_ID,
 } from '../../parameters.js';
 
 
@@ -242,7 +234,7 @@ export class Templates {
                         <select name="" id="" data-product-field="measurement" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.measurement]?.items, productData.measurement)}" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
                             ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.measurement]?.items, productData.measurement, this.groupData.repeatMeasurement)}
                         </select>
-                        <input type="text" ${this.groupData.repeatMeasurement ? '' : 'readonly'} placeholder="Адрес" value="${this.customToString(productData.measurementAddress)}" title="${this.customToString(productData.measurementAddress)}" data-product-field="measurementAddress" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
+                        <input type="text" ${this.groupData.repeatMeasurement ? 'readonly' : ''} placeholder="Адрес" value="${this.customToString(productData.measurementAddress)}" title="${this.customToString(productData.measurementAddress)}" data-product-field="measurementAddress" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}">
                     </div>
                 </td>
                 <td class="task-container_group-item-design">
