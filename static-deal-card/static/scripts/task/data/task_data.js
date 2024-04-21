@@ -250,7 +250,6 @@ export class TaskData {
                 halt: 0,
                 cmd: cmd,
             });
-            console.log('alignmentQuantityTechnologiesForGroup = ', response);
             for (const key in response?.result) {
                 const technologyData = response?.result[key]?.item;
                 this.addTechnology(technologyData);

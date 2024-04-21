@@ -86,7 +86,7 @@ export class Group {
         switch (field) {
             case "repeatTechnologies":
                 this.products.slice(1).forEach(product => {
-                    product.copyTechnologyFromProduct(productEtalon);
+                    product.copyTechnologyFromProduct(productEtalon, value);
                     // product.updateTechnologies({
                     //     general: value ? technologyEtalon.general : '',
                     //     inKP: value ? technologyEtalon.inKP : false,
