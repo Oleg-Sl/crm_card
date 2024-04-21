@@ -25,6 +25,10 @@ export class TaskAppInterface {
         this.handlersGropupProducts();
         this.handlersProduct();
         this.handlersTechnology();
+        this.container.addEventListener('change', event => {
+            const target = event.target;
+            
+        });
     }
 
     handlersGropupProducts() {

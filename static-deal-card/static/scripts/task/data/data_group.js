@@ -71,6 +71,7 @@ export class Group {
         });
     }
 
+    
     updateRepeatCheck(field, newData) {
         if (this.products.length === 0 || this.products[0].technologies.length === 0) {
             return;
@@ -85,14 +86,15 @@ export class Group {
         switch (field) {
             case "repeatTechnologies":
                 this.products.slice(1).forEach(product => {
-                    product.updateTechnologies({
-                        general: value ? technologyEtalon.general : '',
-                        inKP: value ? technologyEtalon.inKP : false,
-                        MCHS: value ? technologyEtalon.MCHS : false,
-                        film: value ? technologyEtalon.film : '',
-                        lamination: value ? technologyEtalon.lamination : '',
-                        price: value ? technologyEtalon.price : 0,
-                    });
+                    product.copyTechnologyFromProduct(productEtalon);
+                    // product.updateTechnologies({
+                    //     general: value ? technologyEtalon.general : '',
+                    //     inKP: value ? technologyEtalon.inKP : false,
+                    //     MCHS: value ? technologyEtalon.MCHS : false,
+                    //     film: value ? technologyEtalon.film : '',
+                    //     lamination: value ? technologyEtalon.lamination : '',
+                    //     price: value ? technologyEtalon.price : 0,
+                    // });
                 });
                 break;
             case "repeatSources":

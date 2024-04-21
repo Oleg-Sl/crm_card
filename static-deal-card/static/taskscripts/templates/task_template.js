@@ -154,13 +154,13 @@ export class Template {
                     <div>
                         <div class="task-container__item-info">
                             <div class="task-container__item-title">
-                                <textarea name="" id="" placeholder="название" title="${this.customToString(productData.title)}" data-product-field="title" data-type="textarea" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>${this.customToString(productData.title)}</textarea>
+                                <textarea name="" id="" placeholder="название" title="${this.customToString(productData.title)}" data-product-field="title" data-type="textarea" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? 'readonly' : 'readonly'}>${this.customToString(productData.title)}</textarea>
                             </div>
                             <div class="task-container__item-count">
-                                <input type="text" name="" id="" placeholder="количество" title="${this.customToString(productData.quantity)}" value="${this.customToString(productData.quantity)}" data-product-field="quantity" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
+                                <input type="text" name="" id="" placeholder="количество" title="${this.customToString(productData.quantity)}" value="${this.customToString(productData.quantity)}" data-product-field="quantity" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? 'readonly' : 'readonly'}>
                             </div>
                             <div class="task-container__item-desc">
-                                <textarea name="" id=""  rows="3" placeholder="описание" data-product-field="description" data-type="textarea" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'} title="${this.customToString(productData.description)}" >${this.customToString(productData.description)}</textarea>
+                                <textarea name="" id=""  rows="3" placeholder="описание" data-product-field="description" data-type="textarea" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? 'readonly' : 'readonly'} title="${this.customToString(productData.description)}" >${this.customToString(productData.description)}</textarea>
                             </div>
                         </div>
                     </div>
@@ -188,10 +188,10 @@ export class Template {
                 <td class="block-center">
                     <div class="task-container__item-measure">
                         <div class="task-container__item-measure-status">
-                            <input type="text" name="" id="" title="${this.customToString(productData.measurement)}" value="${this.customToString(productData.measurement)}" data-product-field="measurement" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
+                            <input type="text" name="" id="" title="${this.customToString(productData.measurement)}" value="${this.customToString(productData.measurement)}" data-product-field="measurement" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? 'readonly' : 'readonly'}>
                         </div>
                         <div class="task-container__item-measure-address">
-                            <input type="text" name="" id="" title="${this.customToString(productData.measurementAddress)}" value="${this.customToString(productData.measurementAddress)}" data-product-field="measurementAddress" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
+                            <input type="text" name="" id="" title="${this.customToString(productData.measurementAddress)}" value="${this.customToString(productData.measurementAddress)}" data-product-field="measurementAddress" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? 'readonly' : 'readonly'}>
                         </div>
                         <div class="task-container__item-measure-costprice">
                             <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="себест. замера" title="${this.customToString(productData.measurementCost)}" value="${this.customToString(productData.measurementCost)}" data-product-field="measurementCost" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
@@ -238,14 +238,14 @@ export class Template {
                             </select>
                         </div>
                         <div class="task-container__item-deadlines-data">
-                            <input type="date" name="" id="" title="${this.customToString(productData.termsDate)}" value="${this.customToString(productData.termsDate)}" data-product-field="termsDate" data-type="date" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
+                            <input type="date" name="" id="" title="${this.customToString(productData.termsDate)}" value="${this.customToString(productData.termsDate)}" data-product-field="termsDate" data-type="date" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? 'readonly' : 'readonly'}>
                         </div>
                     </div>
                 </td>
                 <td class="block-center">
                     <div class="task-container__item-dismantling">
                         <div class="task-container__item-dismantling-area">
-                            <input type="number" name="" id="" placeholder="площадь" title="${this.customToString(productData.dismantlingArea)}" value="${this.customToString(productData.dismantlingArea)}" data-product-field="dismantlingArea" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
+                            <input type="number" name="" id="" placeholder="площадь" title="${this.customToString(productData.dismantlingArea)}" value="${this.customToString(productData.dismantlingArea)}" data-product-field="dismantlingArea" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? 'readonly' : 'readonly'}>
                         </div>
                         <div class="task-container__item-dismantling-difficulty-desc">
                             <select class="task-container_group-item-dismantling-top" name="" id="" title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.dismantling]?.items, productData.dismantling)}" data-product-field="dismantling" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
@@ -340,7 +340,7 @@ export class Template {
             let checked = technology.inKP ? 'checked' : '';
             contentHTML += `
                 <div class="task-container__item-is-offer technology-item technology-row" data-technology-id="${technology.id}">
-                    <input type="checkbox" name="" id="" ${checked} data-technology-field="inKP" data-type="checkbox" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" ${this.editable ? '' : 'readonly'}>
+                    <input type="checkbox" name="" id="" ${checked} data-technology-field="inKP" data-type="checkbox" data-group-id="${groupId}" data-product-id="${productId}" data-technology-id="${technology.id}" ${this.editable ? 'readonly' : 'readonly'}>
                 </div>
             `;
         }
@@ -482,19 +482,19 @@ export class Template {
             if (field.ID == value) {
                 contentHTML += `<option value="${field.ID}" selected>${field.VALUE}</option>`;
             } else {
-                contentHTML += `<option value="${field.ID}" ${this.editable ? '' : 'disabled'}>${field.VALUE}</option>`;
+                contentHTML += `<option value="${field.ID}" ${this.editable ? 'disabled' : 'disabled'}>${field.VALUE}</option>`;
             }
         }
         return contentHTML;
     }
 
     getTechnologyTypeOptionsHTML(techId) {
-        let technologyTypeListHTML = '<option value=""></option>';
+        let technologyTypeListHTML = '<option value="" disabled></option>';
         for (const {id, title} of this.materials.technologiesTypes) {
             if (id == techId) {
                 technologyTypeListHTML += `<option value="${id}" selected>${title}</option>`
             } else {
-                technologyTypeListHTML += `<option value="${id}" ${this.editable ? '' : 'disabled'}>${title}</option>`
+                technologyTypeListHTML += `<option value="${id}" ${this.editable ? 'disabled' : 'disabled'}>${title}</option>`
             }
         }
 
@@ -502,12 +502,12 @@ export class Template {
     }
 
     getFilmsOptionsHTML(filmId) {
-        let filmsListHTML = '<option value=""></option>';
+        let filmsListHTML = '<option value="" disabled></option>';
         for (const {id, title} of this.materials.dependences) {
             if (id == filmId) {
                 filmsListHTML += `<option value="${id}" selected>${title}</option>`
             } else {
-                filmsListHTML += `<option value="${id}" ${this.editable ? '' : 'disabled'}>${title}</option>`
+                filmsListHTML += `<option value="${id}" ${this.editable ? 'disabled' : 'disabled'}>${title}</option>`
             }
         }
 
@@ -515,7 +515,7 @@ export class Template {
     }
 
     getLaminationsOptionsHTML(filmId, laminationId) {
-        let laminationsHTML = '<option value=""></option>';
+        let laminationsHTML = '<option value="" disabled></option>';
         const dependence = this.materials.dependences.find(obj => obj[SP_DEPENDENCE_FIELDS.id] == filmId) || {};
         const laminationIds = dependence?.[SP_DEPENDENCE_FIELDS.laminations] || [];
         const laminationsList = this.materials.laminations.filter(obj => laminationIds.includes(String(obj.id)));
@@ -524,7 +524,7 @@ export class Template {
             if (id == laminationId) {
                 laminationsHTML += `<option value="${id}" selected>${title}</option>`
             } else {
-                laminationsHTML += `<option value="${id}" ${this.editable ? '' : 'disabled'}>${title}</option>`
+                laminationsHTML += `<option value="${id}" ${this.editable ? 'disabled' : 'disabled'}>${title}</option>`
             }
         }
 

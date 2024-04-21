@@ -79,6 +79,24 @@ export class Product {
         });
     }
 
+    copyTechnologyFromProduct(productEtalon) {
+        for (const i in productEtalon.technologies) {
+            if (i >= this.technologies.length) {
+                continue;
+            }
+            const technologyThis = this.technologies[i];
+            const technologyEtalon = productEtalon.technologies[i];
+            technologyThis.update({
+                general: value ? technologyEtalon.general : '',
+                inKP: value ? technologyEtalon.inKP : false,
+                MCHS: value ? technologyEtalon.MCHS : false,
+                film: value ? technologyEtalon.film : '',
+                lamination: value ? technologyEtalon.lamination : '',
+                price: value ? technologyEtalon.price : 0,
+            });
+        }
+    }
+
     saveChanges(field, newData) {
         const oldValue = this[field];
         const newValue = newData[field];
@@ -160,4 +178,5 @@ export class Product {
         }
         return fieldsObject;
     }
+
 }

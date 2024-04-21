@@ -112,6 +112,9 @@ export class TaskData {
     updateGroup(groupId, newData) {
         const group = this.groupsData.find(group => group.id == groupId);
         if (group) {
+            if (newData?.repeatTechnologies) {
+                this.alignmentQuantityTechnologiesForGroup(group);
+            }
             group.update(newData);
             this.notify();
         }
@@ -225,6 +228,34 @@ export class TaskData {
 
         return response?.item;
     }
+
+    async alignmentQuantityTechnologiesForGroup(group) {
+        if (group && group.products.length > 0 || group.products[0].technologies.length > 0) {
+            const productEtalon = group.products[0];
+            const countTechnologyEtalon = productEtalon.technologies.length;
+            for (let product of group.products.slice(1)) {
+                const count = product.technologies.length;
+                for (const i = 0; i < countTechnologyEtalon - count; ++i) {
+                    let fields = technology.getFields();
+                    fields[`parentId${SP_PRODUCT_ID}`] = productIdNew;
+                    fields.parentId2 = this.dealId;
+                    cmd[ind] = `crm.item.add?entityTypeId=${SP_TECHOLOGY_ID}&parentId${SP_PRODUCT_ID}=${product.id}`;
+                }
+            }
+            if (Object.keys(cmd).length === 0) {
+                return;
+            }
+            const response = await this.bx24.callMethod('batch', {
+                halt: 0,
+                cmd: cmd,
+            });
+            for (const key in response?.result) {
+                const technologyData = response?.result[key]?.item;
+                this.addTechnology(technologyData);
+            }
+        }
+    }
+
 
     async createCopyProduct(groupId, productId) {
         const group = this.groupsData.find(group => group.id == groupId);
