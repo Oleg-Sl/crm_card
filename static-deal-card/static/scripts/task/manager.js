@@ -103,7 +103,10 @@ export default class TaskManager {
                 technologies = technologies.concat(technologyData);
             }
         }
-        return {products, technologies}
+        return {
+            productsRemain: products,
+            technologiesRemain: technologies
+        };
     }
 
     getChangedData() {

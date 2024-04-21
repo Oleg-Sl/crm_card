@@ -447,7 +447,12 @@ export class TaskData {
                 laminations = laminations.concat(laminationsData);
             }
         }
-        return {products, technologies, laminations, widths}
+        return {
+            productsRemain: products,
+            technologiesRemain: technologies,
+            laminationsRemain: laminations,
+            widthsRemain: widths
+        };
     }
 
     
