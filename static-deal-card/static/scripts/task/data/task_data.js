@@ -240,7 +240,7 @@ export class TaskData {
                     // let fields = technology.getFields();
                     // fields[`parentId${SP_PRODUCT_ID}`] = productIdNew;
                     // fields.parentId2 = this.dealId;
-                    cmd[ind] = `crm.item.add?entityTypeId=${SP_TECHOLOGY_ID}&parentId${SP_PRODUCT_ID}=${product.id}`;
+                    cmd[i] = `crm.item.add?entityTypeId=${SP_TECHOLOGY_ID}&parentId${SP_PRODUCT_ID}=${product.id}`;
                 }
             }
             if (Object.keys(cmd).length === 0) {
