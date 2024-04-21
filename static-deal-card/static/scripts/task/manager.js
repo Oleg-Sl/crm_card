@@ -55,16 +55,49 @@ export default class TaskManager {
         };
 
         const data = await this.bx24.callBatchCmd(cmd);
+        let {productsRemain, technologiesRemain} = await this.getAllTechnologyData(response?.result_total);
 
         const groups = data?.[SP_GROUP_ID]?.items || [];
-        const products = data?.[SP_PRODUCT_ID]?.items || [];
-        const technologies = data?.[SP_TECHOLOGY_ID]?.items || [];
+        const products = data?.[SP_PRODUCT_ID]?.items || [] + productsRemain;
+        const technologies = data?.[SP_TECHOLOGY_ID]?.items || [] + technologiesRemain;
 
         return {
             groups: groups,
             products: products,
             technologies: technologies,
         };
+    }
+
+    async getAllTechnologyData(totals) {
+        let cmd = {};
+        let products = [];
+        let technologies =[];
+        if (SP_PRODUCT_ID in totals) {
+            for (let i = 50; i < totals[SP_PRODUCT_ID]; i += 50) {
+                cmd[`${SP_PRODUCT_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_PRODUCT_ID}&filter[parentId2]=${this.dealId}&start=${i}`;
+            }
+        }
+        if (SP_TECHOLOGY_ID in totals) {
+            for (let i = 50; i < totals[SP_TECHOLOGY_ID]; i += 50) {
+                cmd[`${SP_TECHOLOGY_ID}_${i}`] = `crm.item.list?entityTypeId=${SP_TECHOLOGY_ID}&filter[parentId2]=${this.dealId}&start=${i}`;
+            }
+        }
+
+        const response = await this.bx24.callMethod('batch', {
+            halt: 0,
+            cmd: cmd,
+        });
+
+        for (const key in response?.result) {
+            if (key.startsWith(SP_PRODUCT_ID)) {
+                const productData = response?.result[key]?.items;
+                products = products.concat(productData);
+            } else if (key.startsWith(SP_TECHOLOGY_ID)) {
+                const technologyData = response?.result[key]?.items;
+                technologies = technologies.concat(technologyData);
+            }
+        }
+        return {products, technologies}
     }
 
     getChangedData() {
