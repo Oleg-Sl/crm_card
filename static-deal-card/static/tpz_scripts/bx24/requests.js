@@ -85,7 +85,8 @@ export default class Bitrix24 {
         try {
             const result = await new Promise((resolve, reject) => {
                 BX24.appOption.set(key, value, response => {
-                    resolve(response.data());
+                    console.log("response = ", response);
+                    resolve(response);
                 });
             });
 
