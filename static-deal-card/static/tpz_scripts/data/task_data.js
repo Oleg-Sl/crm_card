@@ -46,7 +46,9 @@ export class TaskData {
         this.observers = [];
     }
 
-    // async init() {
+    async init() {
+        await this.initFromDeal(this.dealId);
+    }
     //     const taskData = await this.getTaskDataFromBx24();
     //     this.dealId = this.extractNumberFromArray(taskData?.ufCrmTask);
     //     if (!this.dealId) {
