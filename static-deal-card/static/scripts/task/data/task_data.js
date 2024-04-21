@@ -397,7 +397,6 @@ export class TaskData {
             laminations: laminations
         };
         this.setData(groups, products, technologies);
-        console.log("Getted all data from bx24: ", groups, products, technologies);
     }
 
     async getActualDataFromBx24() {
@@ -419,8 +418,6 @@ export class TaskData {
         products = products.concat(productsRemain);
         let technologies = data?.[SP_TECHOLOGY_ID]?.items || [];
         technologies = technologies.concat(technologiesRemain);
-        console.log("products = ", products);
-        console.log("technologies = ", technologies);
         return {
             groups: groups,
             products: products,

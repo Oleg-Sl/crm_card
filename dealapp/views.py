@@ -3,6 +3,7 @@ from rest_framework import views
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.clickjacking import xframe_options_exempt
+import logging
 
 
 class InstallApiView(views.APIView):
@@ -15,6 +16,8 @@ class IndexApiView(views.APIView):
     @xframe_options_exempt
     def post(self, request):
         r = request.data.get("PLACEMENT_OPTIONS", [])
+        logging.info(request.data)
+
         try:
             match = re.search(r'\d+', r)
             id_deal = match.group(0) if match else None
@@ -34,10 +37,11 @@ class TaskAppIndexApiView(views.APIView):
     @xframe_options_exempt
     def post(self, request):
         r = request.data.get("PLACEMENT_OPTIONS", [])
+        logging.info(request.data)
         try:
             match = re.search(r'\d+', r)
             id_task = match.group(0) if match else None
             data = {"id": id_task}
-            return render(request, 'task/index.html', context=data)
+            return render(request, 'tpz/index.html', context=data)
         except TypeError:
             return HttpResponse("Ошибка: Не найден идентификатор задачи", status=400)

@@ -4,8 +4,9 @@ import { TaskAppInterface } from './interface/task_interface.js';
 
 
 class App {
-    constructor(taskId, bx24) {
+    constructor(taskId, dealId, bx24) {
         this.taskId = taskId;
+        this.dealId = dealId;
         this.bx24 = bx24;
 
         this.containerTask = document.querySelector('#taskContainer');
@@ -13,14 +14,19 @@ class App {
         this.btnSave = document.querySelector('#btnSaveTaskChanges');
         this.btnCancel = document.querySelector('#btnCancelTaskChanges');
         
-        this.dataManager = new TaskData(this.bx24, this.taskId);
+        // this.dataManager = new TaskData(this.bx24, this.taskId);
+        this.dataManager = new TaskData(this.bx24);
         this.uiTask = new TaskAppInterface(this.containerTask, this.dataManager);
 
         this.initHandlers();
     }
 
     async init() {
-        await this.dataManager.init();
+        if (this.taskId) {
+            await this.dataManager.initFromTask(this.taskId);
+        } else {
+            await this.dataManager.initFromDeal(this.dealId);
+        }
         if (this.taskId != this.dataManager.taskEstimate && this.taskId != this.dataManager.taskCommOffer) {
             throw new Error("Task not found");
         }
@@ -108,7 +114,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     BX24.init(async () => {
         const bx24 = new BitrixService();
         await bx24.init();
-        const app = new App(taskId, bx24);
+        const app = new App(taskId, dealId, bx24);
         app.init();
     });
 });

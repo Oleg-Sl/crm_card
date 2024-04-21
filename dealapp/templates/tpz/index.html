@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="{% static 'tpz_styles/index.css' %}" rel="stylesheet">
+
+    <script src="//api.bitrix24.com/api/v1/"></script>
+    <script>
+        let taskId = {{ taskId }};
+        let dealId = {{ dealId }};
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="task-buttons">
+        <div class="task-buttons-save">
+            <div class="spinner d-none"></div>
+            <div id="btnEditTaskChanges">изменить</div>
+        </div>
+        <div class="task-buttons-change">
+            <div class="spinner d-none"></div>
+            <div id="btnSaveTaskChanges" class="d-none">сохранить</div>
+        </div>
+        <div>&nbsp;|&nbsp;</div>
+        <div class="task-buttons-cancel">
+            <div class="spinner d-none"></div>
+            <div id="btnCancelTaskChanges">отменить</div>
+        </div>
+    </div>
+    <div id="taskContainer">
+    </div>
+
+    <script type="module" src="{% static 'tpz_scripts/index.js' %}"></script>
+</body>
+</html>
