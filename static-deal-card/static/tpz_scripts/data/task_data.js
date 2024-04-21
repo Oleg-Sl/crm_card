@@ -58,7 +58,7 @@ export class TaskData {
         this.taskId = taskId;
         const taskData = await this.getTaskDataFromBx24();
         const dealId = this.extractNumberFromArray(taskData?.ufCrmTask);
-        this.initFromDeal(dealId);
+        await this.initFromDeal(dealId);
     }
 
     async initFromDeal(dealId) {
