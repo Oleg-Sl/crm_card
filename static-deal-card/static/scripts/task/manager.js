@@ -45,7 +45,7 @@ export default class TaskManager {
     async update() {
         // const data = await this.getActualDataFromBx24();
         // this.dataManager.setData(data.groups, data.products, data.technologies);
-        this.dataManager.setActualData();
+        await this.dataManager.setActualData();
     }
 
     // async getActualDataFromBx24() {

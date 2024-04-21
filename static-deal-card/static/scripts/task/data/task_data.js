@@ -69,7 +69,7 @@ export class TaskData {
         this.notify();
     }
 
-    setActualData() {
+    async setActualData() {
         const { groups, products, technologies } = await this.getActualDataFromBx24();
         this.setData(groups, products, technologies);
     }
