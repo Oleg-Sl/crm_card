@@ -7,7 +7,11 @@ import logging
 import json
 
 
-logging.basicConfig( filename='dealapp.log')
+log_file = 'dealapp.log'
+log_dir = os.path.dirname(os.path.abspath(__file__))
+log_path = os.path.join(log_dir, log_file)
+
+logging.basicConfig(filename=log_path, level=logging.INFO)
 
 class InstallApiView(views.APIView):
     @xframe_options_exempt
