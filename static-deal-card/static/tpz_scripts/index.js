@@ -112,16 +112,22 @@ class App {
 
     async handleTaskSettings(event) {
         const costOfFoodOld = await this.bx24.getOptions('costOfFood');
-        const costOfFoodNew = prompt('Стоимость питания (руб./день)', costOfFoodOld);
-        await this.bx24.setOptions('costOfFood', costOfFoodNew);
+        const costOfFoodNew = prompt('Стоимость питания (руб./день)', costOfFoodOld || 0);
+        if (costOfFoodNew) {
+            await this.bx24.setOptions('costOfFood', costOfFoodNew);
+        }
 
         const costOfLivingOld = await this.bx24.getOptions('costOfLiving');
-        const costOfLivingNew = prompt('Стоимость проживания (руб./день)', costOfLivingOld);
-        await this.bx24.setOptions('costOfLiving', costOfLivingNew);
+        const costOfLivingNew = prompt('Стоимость проживания (руб./день)', costOfLivingOld || 0);
+        if (costOfLivingNew) {
+            await this.bx24.setOptions('costOfLiving', costOfLivingNew);
+        }
 
         const costOfTravelOld = await this.bx24.getOptions('costOfTravel');
-        const costOfTravelNew = prompt('Стоимость одного киллометра (руб./км.)', costOfTravelOld);
-        await this.bx24.setOptions('costOfTravel', costOfTravelNew);
+        const costOfTravelNew = prompt('Стоимость одного киллометра (руб./км.)', costOfTravelOld || 0);
+        if (costOfTravelNew) {
+            await this.bx24.setOptions('costOfTravel', costOfTravelNew);
+        }
     }
 
     updateSources(sourceFilesData) {

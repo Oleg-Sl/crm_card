@@ -45,7 +45,8 @@ export default class BitrixService {
     }
 
     async getOptions(key) {
-        await this.bx24.getSettingsAppByKey(key);
+        const value = await this.bx24.getSettingsAppByKey(key);
+        return value;
     }
 
     async setOptions(key, value) {
