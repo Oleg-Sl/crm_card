@@ -457,20 +457,8 @@ export class Template {
     }
 
     getBusinessTripHTML(groupData, technologiesCount) {
-        // businessTrip: "ufCrm27_1713716049",                 // Командировка - тип
-        // businessTripCost: "ufCrm27_1713716159",             // Командировка - себестоимость
-        // businessTripPercent: "ufCrm27_1713716186",          // Командировка - процент
-        // businessTripPeople: "ufCrm27_1713716224",           // Командировка - сколько человек
-        // businessTripDays: "ufCrm27_1713716251",             // Командировка - сколько дней
-        // businessTripAccommodation: "ufCrm27_1713716251",    // Командировка - проживание ночей
-        // businessTripNutritions: "ufCrm27_1713716310",       // Командировка - питание дней
-        // businessTripMileages: "ufCrm27_1713716337",         // Командировка - пробег
-        // businessTripTypeDeparture: "ufCrm27_1713716398",    // Командировка - тип выезда
-        // businessTripCount: "ufCrm27_1713716453",            // Командировка - сколько раз
-        // businessTripCostOne: "ufCrm27_1713716481",          // Командировка - себестоимость за круг
         // {ID: '10369', VALUE: 'Командировка'}
         // {ID: '10371', VALUE: 'Выезд'}
-
         if (groupData.businessTrip == '10369') {
             return `
                 <td class="shared block-center" style="grid-row: span ${technologiesCount}">

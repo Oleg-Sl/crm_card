@@ -50,13 +50,7 @@ export class TaskData {
     async init() {
         await this.initFromDeal(this.dealId);
     }
-    //     const taskData = await this.getTaskDataFromBx24();
-    //     this.dealId = this.extractNumberFromArray(taskData?.ufCrmTask);
-    //     if (!this.dealId) {
-    //         throw new Error("Deal id not found");
-    //     }
-    //     await this.initData();
-    // }
+
     async initFromTask(taskId) {
         this.taskId = taskId;
         const taskData = await this.getTaskDataFromBx24();
@@ -89,6 +83,12 @@ export class TaskData {
         this.observers.forEach(observer => observer.render());
     }
 
+    async updateTaskSettings() {
+        this.costOfFood = await this.bx24.getOptions('costOfFood');
+        this.costOfLiving = await this.bx24.getOptions('costOfLiving');
+        this.costOfTravel = await this.bx24.getOptions('costOfTravel');
+    }
+
 
     // Работа с группами
     addGroup(groupData) {
@@ -114,6 +114,7 @@ export class TaskData {
         const group = this.groupsData.find(group => group.id == groupId);
         if (group) {
             group.update(newData);
+            group.updateTripCost(this.costOfFood, this.costOfLiving, this.costOfTravel);
             this.notify();
         }
     }

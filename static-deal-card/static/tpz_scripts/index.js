@@ -127,6 +127,7 @@ class App {
         if (costOfTravelNew) {
             await this.bx24.setOptions('costOfTravel', costOfTravelNew);
         }
+        await this.dataManager.updateTaskSettings();
     }
 
     updateSources(sourceFilesData) {

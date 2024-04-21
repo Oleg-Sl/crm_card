@@ -32,10 +32,10 @@ export class Group {
         this.businessTrip = data?.[SP_GROUP_FIELDS.businessTrip];                               // Командировка - тип
         this.businessTripCost = data?.[SP_GROUP_FIELDS.businessTripCost];                       // Командировка - себестоимость
         this.businessTripPercent = data?.[SP_GROUP_FIELDS.businessTripPercent];                 // Командировка - процент
-        this.businessTripPeople = data?.[SP_GROUP_FIELDS.businessTripPeople];                   // Командировка -  сколько человек
+        this.businessTripPeople = data?.[SP_GROUP_FIELDS.businessTripPeople];                   // Командировка - сколько человек
         this.businessTripDays = data?.[SP_GROUP_FIELDS.businessTripDays];                       // Командировка - сколько дней
         this.businessTripAccommodation = data?.[SP_GROUP_FIELDS.businessTripAccommodation];     // Командировка - проживание ночей
-        this.businessTripNutritions = data?.[SP_GROUP_FIELDS.businessTripNutritions];           // Командировка -  питание дней
+        this.businessTripNutritions = data?.[SP_GROUP_FIELDS.businessTripNutritions];           // Командировка - питание дней
         this.businessTripMileages = data?.[SP_GROUP_FIELDS.businessTripMileages];               // Командировка - пробег
         this.businessTripTypeDeparture = data?.[SP_GROUP_FIELDS.businessTripTypeDeparture];     // Командировка - тип выезда
         this.businessTripCount = data?.[SP_GROUP_FIELDS.businessTripCount];                     // Командировка - сколько раз
@@ -83,8 +83,19 @@ export class Group {
 
     }
 
+    updateTripCost(costOfFood, costOfLiving, costOfTravel) {
+        // {ID: '10369', VALUE: 'Командировка'}
+        // {ID: '10371', VALUE: 'Выезд'}
+        if (this.businessTrip == '10369') {
+            this.businessTripCost = +this.businessTripPeople * ( +this.businessTripAccommodation * +costOfLiving + +this.businessTripNutritions * +costOfFood + +this.businessTripMileages * +costOfTravel);
+        } else if (this.businessTrip == '10371') {
+            this.businessTripCost = +this.businessTripPeople * +this.businessTripCount * +this.businessTripCostOne;
+        } else {
+            this.businessTripCost = 0;
+        }
+    }
+
     updateField(field, value) {
-        console.log(`updateField(${field}, ${value})`);
         if (field in this) {
             this[field] = value;
         } else {
