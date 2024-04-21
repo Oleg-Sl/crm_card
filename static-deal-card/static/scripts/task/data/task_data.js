@@ -231,6 +231,7 @@ export class TaskData {
 
     async alignmentQuantityTechnologiesForGroup(group) {
         if (group && group.products.length > 0 || group.products[0].technologies.length > 0) {
+            let cmd = {};
             const productEtalon = group.products[0];
             const countTechnologyEtalon = productEtalon.technologies.length;
             for (let product of group.products.slice(1)) {
