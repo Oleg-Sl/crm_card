@@ -86,6 +86,7 @@ export class Group {
     updateTripCost(costOfFood, costOfLiving, costOfTravel) {
         // {ID: '10369', VALUE: 'Командировка'}
         // {ID: '10371', VALUE: 'Выезд'}
+        console.log("updateTripCost: ", costOfFood, costOfLiving, costOfTravel);
         let businessTripCost = 0;
         if (this.businessTrip == '10369') {
             businessTripCost = +this.businessTripPeople * ( +this.businessTripAccommodation * +costOfLiving + +this.businessTripNutritions * +costOfFood + +this.businessTripMileages * +costOfTravel);
