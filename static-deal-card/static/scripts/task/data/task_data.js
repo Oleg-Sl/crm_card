@@ -370,12 +370,12 @@ export class TaskData {
             cmd: cmd,
         });
 
-        // let {products, technologies, laminations, widths} = await this.getAllTechnologyData(response?.result_total);
-        await this.getAllTechnologyData(response?.result_total);
-        let products = [];
-        let technologies = [];
-        let laminations = [];
-        let widths = []
+        let {products, technologies, laminations, widths} = await this.getAllTechnologyData(response?.result_total);
+        // await this.getAllTechnologyData(response?.result_total);
+        // let products = [];
+        // let technologies = [];
+        // let laminations = [];
+        // let widths = []
         const data = response?.result;
         const fieldGroup = data?.fieldGroup?.fields;
         const fieldProduct = data?.fieldProduct?.fields;
@@ -438,7 +438,7 @@ export class TaskData {
         }
         console.log("totals = ", totals);
         console.log("cmd = ", cmd);
-        return;
+        // return;
         const response = await this.bx24.callMethod('batch', {
             halt: 0,
             cmd: cmd,
