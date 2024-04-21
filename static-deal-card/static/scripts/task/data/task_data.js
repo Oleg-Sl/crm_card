@@ -376,8 +376,10 @@ export class TaskData {
         const fieldTechnology = data?.fieldTechnology?.fields;
 
         const groups = data?.[SP_GROUP_ID]?.items || [];
-        const products = data?.[SP_PRODUCT_ID]?.items || [] + productsRemain;
-        const technologies = data?.[SP_TECHOLOGY_ID]?.items || [] + technologiesRemain;
+        let products = data?.[SP_PRODUCT_ID]?.items || [];
+        products = products.concat(productsRemain);
+        let technologies = data?.[SP_TECHOLOGY_ID]?.items || [];
+        technologies = technologies.concat(technologiesRemain);
 
         const technologiesType = data?.[SP_TECHOLOGY_TYPE_ID]?.items || [];
         const widths = data?.[SP_WIDTH_ID]?.items || [] + widthsRemain;
