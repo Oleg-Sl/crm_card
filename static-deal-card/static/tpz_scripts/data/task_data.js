@@ -46,9 +46,22 @@ export class TaskData {
         this.observers = [];
     }
 
-    async init() {
+    // async init() {
+    //     const taskData = await this.getTaskDataFromBx24();
+    //     this.dealId = this.extractNumberFromArray(taskData?.ufCrmTask);
+    //     if (!this.dealId) {
+    //         throw new Error("Deal id not found");
+    //     }
+    //     await this.initData();
+    // }
+    async initFromTask(taskId) {
         const taskData = await this.getTaskDataFromBx24();
-        this.dealId = this.extractNumberFromArray(taskData?.ufCrmTask);
+        const dealId = this.extractNumberFromArray(taskData?.ufCrmTask);
+        this.initFromDeal(dealId);
+    }
+
+    async initFromDeal(dealId) {
+        this.dealId = dealId;
         if (!this.dealId) {
             throw new Error("Deal id not found");
         }
