@@ -3,6 +3,8 @@ import { TaskData } from "./data/task_data.js";
 import { TaskAppInterface } from './interface/task_interface.js';
 
 
+const ALLOWED_USERS = [1, 255,];
+
 class App {
     constructor(taskId, dealId, bx24) {
         this.taskId = taskId;
@@ -13,6 +15,7 @@ class App {
         this.btnEdit = document.querySelector('#btnEditTaskChanges');
         this.btnSave = document.querySelector('#btnSaveTaskChanges');
         this.btnCancel = document.querySelector('#btnCancelTaskChanges');
+        this.btnTaskSettings = document.querySelector('#btnTaskSettings');
         
         // this.dataManager = new TaskData(this.bx24, this.taskId);
         this.dataManager = new TaskData(this.bx24);
@@ -24,16 +27,13 @@ class App {
     async init() {
         if (this.taskId) {
             await this.dataManager.initFromTask(this.taskId);
-            console.log("this.taskId = ", this.taskId);
-            console.log("this.taskEstimate = ", this.dataManager.taskEstimate);
-            console.log("this.taskCommOffer = ", this.dataManager.taskCommOffer);
             if (this.taskId != this.dataManager.taskEstimate && this.taskId != this.dataManager.taskCommOffer) {
                 throw new Error("Task not found");
             }
         } else {
             await this.dataManager.initFromDeal(this.dealId);
         }
-
+        this.initSettings();
         this.uiTask.init();
         this.uiTask.render(false);
         BX24.fitWindow();
@@ -52,6 +52,14 @@ class App {
         this.btnEdit.addEventListener('click', this.handleEditChanges.bind(this));
         this.btnSave.addEventListener('click', this.handleSaveChanges.bind(this));
         this.btnCancel.addEventListener('click', this.handleCancelChanges.bind(this));
+    }
+
+    initSettings() {
+        if (!ALLOWED_USERS.includes(this.currentUser.ID)) {
+            this.btnTaskSettings.remove();
+            return;
+        }
+        this.btnTaskSettings.addEventListener('click', this.handleTaskSettings.bind(this));
     }
 
     async handleEditChanges(event) {
@@ -100,6 +108,20 @@ class App {
         spinner.classList.add('d-none');
         this.btnSave.classList.add('d-none');
         this.btnEdit.classList.remove('d-none');
+    }
+
+    async handleTaskSettings(event) {
+        const costOfFoodOld = await this.bx24.getOptions('costOfFood');
+        const costOfFoodNew = prompt('Стоимость питания (руб./день)', costOfFoodOld);
+        await this.bx24.setOptions('costOfFood', costOfFoodNew);
+
+        const costOfLivingOld = await this.bx24.getOptions('costOfLiving');
+        const costOfLivingNew = prompt('Стоимость проживания (руб./день)', costOfLivingOld);
+        await this.bx24.setOptions('costOfLiving', costOfLivingNew);
+
+        const costOfTravelOld = await this.bx24.getOptions('costOfTravel');
+        const costOfTravelNew = prompt('Стоимость одного киллометра (руб./км.)', costOfTravelOld);
+        await this.bx24.setOptions('costOfTravel', costOfTravelNew);
     }
 
     updateSources(sourceFilesData) {

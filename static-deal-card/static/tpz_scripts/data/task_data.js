@@ -26,6 +26,7 @@ export class TaskData {
         
         this.dealId = null;
         this.deal = null;
+        this.currentUser = null;
         this.taskEstimate = null;
         this.taskCommOffer = null;
         this.fields = {
@@ -252,6 +253,7 @@ export class TaskData {
     async initData() {
         const data = await this.getDealData();
         this.deal = data?.deal || {};
+        this.currentUser = data?.currentUser || {};
         this.taskEstimate = this.deal?.[FIELD_DEAL_TASK_ESTIMATE];
         this.taskCommOffer = this.deal?.[FIELD_DEAL_TASK_COMMERC_OFFER];
 
@@ -273,6 +275,7 @@ export class TaskData {
     async getDealData() {
         const cmd = {
             deal: `crm.deal.get?id=${this.dealId}`,
+            currentUser: `user.current`,
 
             fieldGroup: `crm.item.fields?entityTypeId=${SP_GROUP_ID}`,
             fieldProduct: `crm.item.fields?entityTypeId=${SP_PRODUCT_ID}`,
@@ -295,6 +298,7 @@ export class TaskData {
         const data = response?.result?.result;
         
         const deal = data?.deal;
+        const currentUser = data?.currentUser;
         const fieldGroup = data?.fieldGroup?.fields;
         const fieldProduct = data?.fieldProduct?.fields;
         const fieldTechnology = data?.fieldTechnology?.fields;
@@ -311,6 +315,7 @@ export class TaskData {
 
         return {
             deal: deal,
+            currentUser: currentUser,
 
             fieldGroup: fieldGroup,
             fieldProduct: fieldProduct,

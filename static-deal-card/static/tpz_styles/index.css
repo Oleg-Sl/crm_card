@@ -2,36 +2,45 @@ body {
   font-family: "Open Sans", sans-serif !important;
 }
 
-.task-buttons {
+.task-header {
+  display: flex;
+}
+.task-header .task-settings {
+  padding-left: 10px;
+}
+.task-header .task-settings i:hover {
+  cursor: pointer;
+}
+.task-header .task-buttons {
   display: flex;
   justify-content: flex-end;
   font-weight: 700;
 }
-.task-buttons:hover {
+.task-header .task-buttons > div:hover {
   cursor: pointer;
 }
-.task-buttons > div {
+.task-header .task-buttons > div {
   position: relative;
 }
-.task-buttons .task-buttons-save, .task-buttons .task-buttons-cancel {
+.task-header .task-buttons .task-buttons-save, .task-header .task-buttons .task-buttons-cancel {
   padding-left: 17px;
 }
-.task-buttons #btnEditTaskChanges {
+.task-header .task-buttons #btnEditTaskChanges {
   color: #35f33f;
 }
-.task-buttons #btnEditTaskChanges:hover {
+.task-header .task-buttons #btnEditTaskChanges:hover {
   color: #0aaf1d;
 }
-.task-buttons #btnSaveTaskChanges {
+.task-header .task-buttons #btnSaveTaskChanges {
   color: #056cda;
 }
-.task-buttons #btnSaveTaskChanges:hover {
+.task-header .task-buttons #btnSaveTaskChanges:hover {
   color: #2f39f8;
 }
-.task-buttons #btnCancelTaskChanges {
+.task-header .task-buttons #btnCancelTaskChanges {
   color: #e63636;
 }
-.task-buttons #btnCancelTaskChanges:hover {
+.task-header .task-buttons #btnCancelTaskChanges:hover {
   color: #8e0b0b;
 }
 

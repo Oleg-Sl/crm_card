@@ -6,28 +6,34 @@ $input-height: 17px
 body
     font-family: 'Open Sans', sans-serif !important
 
-.task-buttons
+.task-header
     display: flex
-    justify-content: flex-end
-    font-weight: 700
-    &:hover
-        cursor: pointer
-    >div
-        position: relative
-    .task-buttons-save, .task-buttons-cancel
-        padding-left: 17px
-    #btnEditTaskChanges
-        color: #35f33f
-        &:hover
-            color: #0aaf1d
-    #btnSaveTaskChanges
-        color: #056cda
-        &:hover
-            color: #2f39f8
-    #btnCancelTaskChanges
-        color: #e63636
-        &:hover
-            color: #8e0b0b
+    .task-settings
+        padding-left: 10px
+        i:hover
+            cursor: pointer
+    .task-buttons
+        display: flex
+        justify-content: flex-end
+        font-weight: 700
+        &>div:hover
+            cursor: pointer
+        >div
+            position: relative
+        .task-buttons-save, .task-buttons-cancel
+            padding-left: 17px
+        #btnEditTaskChanges
+            color: #35f33f
+            &:hover
+                color: #0aaf1d
+        #btnSaveTaskChanges
+            color: #056cda
+            &:hover
+                color: #2f39f8
+        #btnCancelTaskChanges
+            color: #e63636
+            &:hover
+                color: #8e0b0b
 .d-none
     display: none
 

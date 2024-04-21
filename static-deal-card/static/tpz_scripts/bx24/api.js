@@ -44,6 +44,14 @@ export default class BitrixService {
         return data;
     }
 
+    async getOptions(key) {
+        await this.bx24.getSettingsAppByKey(key);
+    }
+
+    async setOptions(key, value) {
+        await this.bx24.setSettingsAppByKey(key, value);
+    }
+
     makeCall(phoneNumber) {
         this.bx24.makeCall(phoneNumber);
     }
