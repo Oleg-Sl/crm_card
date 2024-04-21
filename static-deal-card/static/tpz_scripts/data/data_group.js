@@ -84,6 +84,7 @@ export class Group {
     }
 
     updateField(field, value) {
+        console.log(`updateField(${field}, ${value})`);
         if (field in this) {
             this[field] = value;
         } else {
