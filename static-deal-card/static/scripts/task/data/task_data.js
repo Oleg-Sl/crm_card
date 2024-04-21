@@ -240,7 +240,7 @@ export class TaskData {
                     // let fields = technology.getFields();
                     // fields[`parentId${SP_PRODUCT_ID}`] = productIdNew;
                     // fields.parentId2 = this.dealId;
-                    cmd[i] = `crm.item.add?entityTypeId=${SP_TECHOLOGY_ID}&parentId${SP_PRODUCT_ID}=${product.id}`;
+                    cmd[i] = `crm.item.add?entityTypeId=${SP_TECHOLOGY_ID}&fields[parentId${SP_PRODUCT_ID}]=${product.id}&fields[parentId2]=${this.dealId}`;
                 }
             }
             if (Object.keys(cmd).length === 0) {
@@ -250,6 +250,7 @@ export class TaskData {
                 halt: 0,
                 cmd: cmd,
             });
+            console.log('alignmentQuantityTechnologiesForGroup = ', response);
             for (const key in response?.result) {
                 const technologyData = response?.result[key]?.item;
                 this.addTechnology(technologyData);
