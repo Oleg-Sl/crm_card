@@ -189,10 +189,12 @@ export class Template {
                 <td class="block-center">
                     <div class="task-container__item-measure">
                         <div class="task-container__item-measure-status">
-                            <input type="text" name="" id="" title="${this.customToString(productData.measurement)}" value="${this.customToString(productData.measurement)}" data-product-field="measurement" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? 'readonly' : 'readonly'}>
+                            <select title="${this.getTitleFromEnums(this.fields?.product?.[SP_PRODUCT_FIELDS.measurement]?.items, productData.measurement)}" data-product-field="measurement" data-type="select" data-group-id="${groupId}" data-product-id="${productData.id}">
+                                ${this.getOptionsHTML(this.fields?.product?.[SP_PRODUCT_FIELDS.measurement]?.items, productData.measurement)}
+                            </select>
                         </div>
                         <div class="task-container__item-measure-address">
-                            <input type="text" name="" id="" title="${this.customToString(productData.measurementAddress)}" value="${this.customToString(productData.measurementAddress)}" data-product-field="measurementAddress" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? 'readonly' : 'readonly'}>
+                            <input type="text" name="" id="" placeholder="адрес" title="${this.customToString(productData.measurementAddress)}" value="${this.customToString(productData.measurementAddress)}" data-product-field="measurementAddress" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? 'readonly' : 'readonly'}>
                         </div>
                         <div class="task-container__item-measure-costprice">
                             <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="себест. замера" title="${this.customToString(productData.measurementCost)}" value="${this.customToString(productData.measurementCost)}" data-product-field="measurementCost" data-type="text" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
@@ -216,7 +218,7 @@ export class Template {
                             </select>
                         </div>
                         <div class="task-container__item-mounting-count-day">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сколько дней" title="${this.customToString(productData.installDays)}" value="${this.customToString(productData.installDays)}" data-product-field="installDays" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
+                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="сколько дней" title="сколько дней" value="${this.customToString(productData.installDays)}" data-product-field="installDays" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                         </div>
                         <div class="task-container__item-mounting-symbol-mul">
                             <i class="bi bi-x"></i>
@@ -227,7 +229,7 @@ export class Template {
                             </select>
                         </div>
                         <div class="task-container__item-mounting-costprice">
-                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="себ. аренды за день" title="${this.customToString(productData.installCost)}" value="${this.customToString(productData.installCost)}" data-product-field="installCost" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
+                            <input class="${this.editable ? 'employee-mos' : ''}" type="number" name="" id="" placeholder="себ. аренды за день" title="себ. аренды за день" value="${this.customToString(productData.installCost)}" data-product-field="installCost" data-type="number" data-group-id="${groupId}" data-product-id="${productData.id}" ${this.editable ? '' : 'readonly'}>
                         </div>
                     </div>
                 </td>
