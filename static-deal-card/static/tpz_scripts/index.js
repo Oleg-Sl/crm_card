@@ -26,13 +26,16 @@ class App {
     async init() {
         if (this.taskId) {
             await this.dataManager.initFromTask(this.taskId);
-            if (this.taskId != this.dataManager.taskEstimate && this.taskId != this.dataManager.taskCommOffer) {
-                throw new Error("Task not found");
-            }
+            // if (this.taskId != this.dataManager.taskEstimate && this.taskId != this.dataManager.taskCommOffer) {
+            //     throw new Error("Task not found");
+            // }
         } else {
             await this.dataManager.initFromDeal(this.dealId);
         }
         this.initSettings();
+        if (!this.dataManager.dealId) {
+            throw new Error("Deal not found");
+        }
         this.uiTask.init();
         this.uiTask.render(false);
         BX24.fitWindow();
