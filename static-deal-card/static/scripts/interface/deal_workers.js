@@ -223,6 +223,18 @@ export default class DealWorkers {
         this.usersObserver = new UsersList(containerObserver, this.bx24, departments, usersObserversData);
     }
 
+    getMos() {
+        return this.userMOS.getUserId();
+    }
+
+    getMop() {
+        return this.userMOP.getUserId();
+    }
+
+    getObservers() {
+        return this.usersObserver.getUsersIds();
+    }
+
     getChangedData() {
         return {
             [FIELD_DEAL_RESPONSIBLE_MOP]: this.userMOP.getUserId(),

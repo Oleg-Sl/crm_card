@@ -160,4 +160,53 @@ export class TaskTemaplateBase {
     
         return digits;
     }
+
+    getMedia(dataObject) {
+        this.dataObject = dataObject;
+        const links = this.dataObject.dealSources.getLinks();
+        const files = this.dataObject.dealSources.getFiles();
+        const docs = this.dataObject.dealDocs.getData();
+
+        let contentSources = '';
+        let contentDocsLinks = '';
+        let contentDocsFiles = '';
+        // 🖼🔗
+        for (const { url, description } of links) {
+            contentSources += `[*][URL=${url}]🔗 ${url}[/URL] ${description}`;
+        }
+
+        for (const { url, urlPrev, title, size, desc } of files) {
+            contentSources += `[*][URL=${urlPrev}]🖼[/URL][URL=${url}]${url}[/URL] ${desc}`;
+        }
+
+        for (const { type, url, urlPrev, title, size, description } of docs) {
+            if (type === 'link') {
+                contentDocsLinks += `[*][URL=${url}]🔗 ${url}[/URL] ${description}`;
+            }
+            if (type === 'file') {
+                contentDocsFiles += `[*][URL=${urlPrev}]🖼[/URL][URL=${url}]${url}[/URL] ${description}`;
+            }
+        }
+
+        return `[U][B]Исходники - [/B][/U][TABLE]
+                [TR]
+                    [TD][B]Исходники[/B][/TD]
+                    [TD][B]Файлы[/B][/TD]
+                [/TR]
+                
+                [TR]
+                    [TD]${contentSources}[/TD]
+                    [TD]${contentDocsLinks}${contentDocsFiles}[/TD]
+                [/TR]
+            [/TABLE]
+        `;
+    }
+
+    getBody(dataObject) {
+        return `Описание Заказа (Что делаем, сколько, требования, особенности)
+${this.getDescriptionOrder(dataObject)}
+${this.getDealData(dataObject)}
+${this.getMedia(dataObject)}
+        `;
+    }
 }
